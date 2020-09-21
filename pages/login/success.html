@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>${operate}-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <!-- 页面样式 -->
+    <#include "/include/style_access.html" />
+</head>
+<body class="bgmain">
+<!-- header -->
+<#include "/include/access_header_up.html" />
+<div class="bgmain2 pt-30 pb-30">
+	<!-- 页面开始 -->
+	<div class="m-success">
+		<#if type?? && type=="register" >
+			<div class="hd registerhd">
+				<i class="icon-font icon-right1"></i>
+			 	<div class="info">
+			 	<h2>恭喜您注册成功！</h2>
+				<p><span class="text-danger">888元</span>新手红包，已发放到您的账户中，<a href="${tzp.getContextPath()}/spa/member/voucher" class="text-primary">请查看</a></p>
+			</div>
+			</div>
+		</#if>	
+		
+		<#if type?? && type=="regloan" >
+			<div class="hd registerhd">
+				<i class="icon-font icon-right1"></i>
+			 	<div class="info">
+				 	<h2>借款人注册成功！</h2>
+				</div>
+			</div>
+		</#if>
+		
+		<#if type??&& type=="riskass">
+			<div class="hd riskhd">
+				<i class="icon-font icon-right1"></i>
+			 	<div class="info">
+				 	<h2>${tips}</h2>
+			 		<p style="width:400px;">您的风险承受能力为${assessTypeName!''},可出借风险等级为${riskStr!''}的项目
+			 		<a class ="text-primary ml-5" href="${tzp.getContextPath()}/member/auth/risk-ass">重新测评</a>
+			 			<#if loanId??>
+			 				<a  class="btn btn-warning2 ml-10" href="${tzp.getContextPath()}/product/detail/${loanId}">继续出借</a>
+			 			</#if>
+			 		</p>
+				</div>
+			</div>
+		</#if>
+		<#if type??&& type=="recharge">
+			<div class="hd basehd">
+				<i class="icon-font icon-right1"></i>
+			 	<div class="info">
+				 	<h2>${tips}</h2>
+			 		<p class="text-warning mt-20">本次充值${(rechargeAmt?string(',###.##'))!'0.00'}元</p>
+			 		<p class="c-999">充值后账户余额${(availableAmt?string(',###.##'))!'0.00'}元</p>
+				</div>
+			</div>
+		</#if>
+		<div class="bd">
+			<#if authStatus?? && authStatus>
+				<div class="nextdiv">
+				<#if type??&& type=="recharge">
+					<a class="btn btn-default" href="${tzp.getContextPath()}/spa/member/account/index">查看我的账户</a>
+					<a class="btn btn-warning" href="${tzp.getContextPath()}/spa/product/index">我要出借</a>
+				<#else>
+					<a class="btn btn-default" href="${tzp.getContextPath()}/spa/member/account/index">查看我的账户</a>
+					<a class="btn btn-warning" href="${tzp.getContextPath()}/spa/product/index">浏览出借项目</a>
+				</#if>
+				</div>
+			</#if>
+			<#if _p2p_member_user??&&(_p2p_member_user.isDepositary !='1' && _p2p_member_user.isDepositary !='3' && _p2p_member_user.isDepositary !='4') >
+				<div class="deposit mt-10">
+					<a class="btn btn-info btn-deposit" href="${tzp.getContextPath()}/member/depository/form">开通存管账户</a>
+				</div>
+				<div class="text-r l20 mt-10"><a href="${tzp.getContextPath()}/" class="c-666">暂时跳过,回到首页</a></div>
+			</#if>
+		</div>
+	</div>
+	
+	<#if recomList??>
+	<div class="md-recommend mt-40">
+		<ul class="clearfix">
+			<#list recomList as shortLoan>
+				<li>
+					<#if shortLoan.awardRate?? && shortLoan.awardRate gt 0>
+			 			<#if shortLoan.awardType=='2'>
+	                       <i class="new-hard-icon"></i>
+			 			<#else>
+	                       <i class="jiaxi-icon"></i>
+			 			</#if>
+	                </#if>
+	                <h4><a href="${tzp.getContextPath()}/product/detail/${shortLoan.loanId!''}" target="_blank">
+	                <#if shortLoan.prdType=='0'><span class="u-label label-qn">企</span></#if>
+					<#if shortLoan.prdType=='1'><span class="u-label label-sn">农</span></#if>
+					<#if shortLoan.prdType=='2'><span class="u-label label-wh">微</span></#if>
+					<#if shortLoan.prdType=='3'><span class="u-label label-lb">保</span></#if>
+					<#if shortLoan.prdType=='4'><span class="u-label label-cb">车</span></#if>
+	                ${shortLoan.loanTitle!''}</a></h4>
+					<div class="rate mt-20">${shortLoan.platRate}<em>%<#if shortLoan.awardRate?? && shortLoan.awardRate gt 0>+${(shortLoan.awardRate)!0}%</#if></em></div>
+					<div class="desc mt-15">
+						<span class="term">${(shortLoan.minAmt!0)?string(',##0')}元起投 | ${shortLoan.loanPeriod!''}${shortLoan.periodStr}</span>
+						<#if shortLoan.loanStatus=='2'>
+						<span class="pay">剩余可投<b>${(shortLoan.remainAmount!0)?string(',##0')}</b>元</span>
+						<#else>
+						<span class="pay">出借完成</span>
+						</#if>
+					</div>
+					<#if shortLoan.loanStatus=='2'>
+	                  <#if shortLoan.awardType=='2' >
+	                   <#if isNew??&&isNew=='1'>
+	                  	 <div class="btndiv"><a  href="${tzp.getContextPath()}/product/detail/${shortLoan.loanId!''}" target="_blank" class="btn btn-warning">立即出借</a></div>
+	                   <#else>
+	                     <div class="btndiv"><a  href="${tzp.getContextPath()}/product/detail/${shortLoan.loanId!''}" target="_blank" class="btn btn-disabled">立即出借</a></div>
+	                   	</#if>
+	                  	<#else>
+	                   		<div class="btndiv"><a  href="${tzp.getContextPath()}/product/detail/${shortLoan.loanId!''}" target="_blank" class="btn btn-warning">立即出借</a></div>
+	                  	</#if>
+	                 <#else>
+	                 	<div class="btndiv"><a  href="${tzp.getContextPath()}/product/detail/${shortLoan.loanId!''}" target="_blank" class="btn btn-disabled">立即出借</a></div>
+	                 </#if>
+				</li>
+			</#list>
+		</ul>
+	</div>
+	</#if>
+</div>
+<#include "/include/login_footer.html" />
+<#include "/include/script_up.html" />
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>		

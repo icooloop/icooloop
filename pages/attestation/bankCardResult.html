@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>绑定银行账户成功-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+	<#include "/include/style_new.html" />
+	<!-- 页面样式 -->
+	<link rel="stylesheet" type="text/css" href="${tzp.getContextPath()}/src/css/pages/bank/bankCardSuccess.css?v=963571a">
+</head>
+<body>
+<#include "/include/header_new.html" />	
+<!--页面开始-->
+<div class="product-list-banner"></div>
+<!--出借成功信息-->
+<div class="subscription-success">
+	<div class="content">
+		<div class="clearfix">
+			<i class="icon-font icon-right pull-left text-success"><!--图标--></i>
+			<div class="pull-left info" >
+					<h2>${result!''}</h2>
+					<p style="font-size: 14px;margin-bottom: 20px;">银行卡绑定成功，如需更换绑定银行卡请联系客服。</p> 
+			</div>
+		</div>
+		<div class="text-center next">
+			<a class="btn btn-primary btn-lg" href="${tzp.getContextPath()}/spa/member/account/recharge">去充值</a>
+			<a class="btn btn-default btn-lg" href="${tzp.getContextPath()}/spa/product/index">去出借</a>
+		</div>
+	</div>
+</div>
+<#include "/include/footer.html" />
+<!-- 框架js -->
+<script src="${tzp.getContextPath()}/public/js/bootstrap.min.js?v=1d2c32c"></script>
+<script type="text/javascript" src="${tzp.getContextPath()}/src/js/common.js?v=1533bb3"></script> 
+<script src="${tzp.getContextPath()}/public/js/jquery-1.12.4.min.js?v=7a63e19"></script>
+<!-- 公共js -->
+<script type="text/javascript">
+    $(function(){
+    	$("#nav_member").addClass("on");
+    });
+</script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

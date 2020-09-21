@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>申请借款-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+  <#include "/include/style_up.html" />
+  <!-- 页面样式 -->
+	<#include "/loan/include/style.html" />
+</head>
+<body class="bgmain">
+<!-- header -->
+<#include "/loan/include/header.html" />
+<div class="ml-apply pt-50 pb-30">
+	<div class="step step1">
+		<ul class="clearfix">
+			<li>个人信息</li>
+			<li>借款意向</li>
+			<li>申请成功，等待审核</li>
+		</ul>
+	</div>
+	<div class="m-form loanform mt-25">
+		<form class="forminfo" action="" id="loanform" method="post">
+			<div class="title">申请借款</div>
+			<div class="descline"><span class="red">*</span>居住地址</div>
+			<div class="formline">
+				<div class="forminput"><input class="input-text" id="contractSite" name="contractSite" value="${draf.contractSite!''}" placeholder="请填写详细地址"></div>
+				<span class="icontip icon-font icon-error" for="contractSite"></span>
+			</div>
+			<div class="warndesc">示例：xx市xxx区xxx路(街道)xxx号xxx栋xxx单元xxx号</div>
+			<div class="descline"><span class="red">*</span>年收入</div>
+			<div class="formline">
+				<div class="forminput"><select id="cashIn" name="cashIn" class="select">
+					<option value="5万元以下"  <#if draf?? && draf.cashIn == '5万元以下' >selected = "selected"</#if>>5万元以下</option>
+					<option value="5-10万元" <#if draf?? && draf.cashIn == '5-10万元' >selected = "selected"</#if>>5-10万元</option>
+					<option value="10-20万元" <#if draf?? && draf.cashIn == '10-20万元' >selected = "selected"</#if> >10-20万元</option>
+					<option value="20-50万元" <#if draf?? && draf.cashIn == '20-50万元' >selected = "selected"</#if> >20-50万元</option>
+					<option value="50-100万元" <#if draf?? && draf.cashIn == '50-100万元' >selected = "selected"</#if> >50-100万元</option>
+					<option value="100万元以上" <#if draf?? && draf.cashIn == '100万元以上' >selected = "selected"</#if>>100万元以上</option>
+				</select></div>
+				<span class="icontip icon-font icon-error" for="cashIn"></span>
+			</div>
+			<div class="descline">公积金月缴存</div>
+			<div class="formline">
+				<div class="forminput"><input class="input-text" id="accumulationFundMoth" name="accumulationFundMoth" value="${draf.accumulationFundMoth!''}" placeholder="请填写公积金月缴存金额"></div>
+				<span class="icontip icon-font icon-error" for="accumulationFundMoth"></span>
+				<span class="unit">元</span>
+			</div>
+			<div class="descline">公积金缴存城市</div>
+			<div class="formline">
+				<div class="forminput"><input class="input-text" id="accumulationPro" name="accumulationPro" value="${draf.accumulationPro!''}" placeholder="请填写公积金缴存城市"></div>
+				<span class="icontip icon-font icon-error" for="accumulationPro"></span>
+			</div>
+			<div class="descline">行业</div>
+			<div class="formline">
+				<div class="forminput"><input class="input-text" id="trade" name="trade" value="${draf.trade!''}" placeholder="请填写您从事的行业"></div>
+				<span class="icontip icon-font icon-error" for="trade"></span>
+			</div>
+			<div class="descline"><span class="red">*</span>负债情况</div>
+			<div class="formline">
+				<div class="forminput"><select id="liabilities" name="liabilities" class="select">
+					<option value="5万元以下">5万元以下</option>
+					<option value="5-10万元">5-10万元</option>
+					<option value="10-20万元">10-20万元</option>
+					<option value="20-50万元">20-50万元</option>
+					<option value="50-100万元">50-100万元</option>
+					<option value="100万元以上">100万元以上</option>
+					<option value="自定义">自定义</option>
+				</select></div>
+				<span class="icontip icon-font icon-error" for="liabilities"></span>
+			</div>
+			<div class="warndesc">包括您在其他平台的借款，以及房贷、车贷等按揭款项</div>
+			<div class="descline"><span class="red">*</span>近6个月内征信逾期情况</div>
+			<div class="formline">
+				<div class="forminput"><select id="creditOverdue" name="creditOverdue" class="select">
+					<option value="6个月内未出现逾期" <#if draf?? && draf.creditOverdue == '6个月内未出现逾期' >selected = "selected"</#if>>6个月内未出现逾期</option>
+			        <option value="6个月内出现1次逾期" <#if draf?? && draf.creditOverdue == '6个月内出现1次逾期' >selected = "selected"</#if>>6个月内出现1次逾期</option>
+			        <option value="6个月内出现2次逾期" <#if draf?? && draf.creditOverdue == '6个月内出现2次逾期' >selected = "selected"</#if>>6个月内出现2次逾期</option>
+			        <option value="6个月内出现3次逾期" <#if draf?? && draf.creditOverdue == '6个月内出现3次逾期' >selected = "selected"</#if>>6个月内出现3次逾期</option>
+			        <option value="6个月内出现3次以上逾期" <#if draf?? && draf.creditOverdue == '6个月内出现3次以上逾期' >selected = "selected"</#if>>6个月内出现3次以上逾期</option>
+				</select></div>
+				<span class="icontip icon-font icon-error" for="creditOverdue"></span>
+			</div>
+			<div class="agreementdiv mt-10">
+				<label>
+                    <input class="icheck" type="checkbox" id="agreement" name="agreement" value="true">
+					<span class="vertical-middle agree-link">本人承诺在不同网络借款信息中介平台借款总余额不超过人民币100万元</span>
+                </label>
+                <span class="icontip icon-font icon-error" for="agreement"></span>
+			</div>
+			<div class="tipdiv mt-10" id="formtip1"></div>
+			<div class="formline mt-15">
+               <button type="submit" class="btn btn-submit">下一步</button>
+            </div>
+		</form>
+	</div>
+</div>
+<input id="isBank" value="<#if userBank??>false<#else>true</#if>">
+<#include "/include/login_footer.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.min.js?v=9fc6b5c"></script>
+<script src="${tzp.getContextPath()}/src/js/tools/validate_cn.js?v=10c4607"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/icheck/icheck.min.js?v=3144e54"></script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+<script src="${tzp.getContextPath()}/src/js/pages/loan/loan_apply.js?v=e2a8666"></script>
+</body>
+</html>		

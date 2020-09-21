@@ -1,0 +1,46 @@
+.m-access.land-bg{border-top: 1px solid #fff;background: url(/public/images/access/landbanner.jpg) no-repeat top center;}
+.wp,.m-access .centerwp{width:1080px;}
+.m-access-form .invited{top:-50px;line-height:50px;height:50px;}
+.m-access-form.registerform{top:40px;border-radius:0;}
+.m-access-form.registerform.hasinvited{top:64px;}
+.m-access-form .bd .formline .randcode{position:absolute;right:0;top:0;width:80px;height:44px;}
+.m-access,.m-access .centerwp{height:562px;min-height:562px;}
+
+.md-intro li{float:left;width:25%;background:#fff;position:relative;}
+.md-intro li a{display:block;height:160px;position:relative;cursor:default;}
+.md-intro li .icon-font{position:absolute;left:40px;top:40px;width:80px;height:80px;line-height:80px;display:inline-block;text-align:center;font-size:40px;color:#8c7ff4;border:2px solid #c8c2f8;border-radius:80px;}
+.md-intro li h2{padding-left:140px;padding-top:57px;font-size:16px;line-height:26px;color:#8c7ff4;}
+.md-intro li p{padding-left:140px;font-size:14px;line-height:20px;color:#8c7ff4;}
+
+.md-project{background:#f0eefd;text-align:center;padding:70px 0;}
+.md-project .hd{color:#8577ff;font-size:36px;line-height:1;padding-bottom:10px;}
+.md-project .bd ul{box-shadow:0 0 5px 2px #cec8fe;border-radius:15px;margin-top:50px;height:234px;text-align:center;overflow:hidden;background:#fff;color:#888;}
+.md-project .bd .item1{width:360px;background:#9083f4;height:100%;color:#fff;line-height:1;}
+.md-project .bd ul+ul .item1{background:#9e6fb8;}
+.md-project .bd .item2{padding-top:40px;width:300px;}
+.md-project .bd .item3{padding-top:40px;width:190px;}
+.md-project .bd .item4{padding-top:52px;width:220px;}
+.md-project .bd h2{padding-top:70px;font-size:42px;}
+.md-project .bd h6{padding-top:25px;font-size:24px;}
+.md-project .bd h4{font-size:22px;line-height:32px;}
+.md-project .bd p{font-size:16px;}
+.md-project .bd .title{display:inline-block;font-size:20px;line-height:36px;padding:0 30px;border-radius:36px;color:#9083f4;background:#f1effe;}
+.md-project .bd .title.newer{width:197px;background:url(/public/images/access/newerlabel.png) no-repeat center;color:#fff;}
+.md-project .bd .rate{font-size:72px;color:#9083f4;line-height:1;padding:15px 0;}
+.md-project .bd .text-import{color:#9083f4;}
+.md-project .bd .rate em{font-size:36px;}
+.md-project .bd .btn-go{font-size:22px;line-height:126px;display:inline-block;width:126px;border:2px solid #f26522;color:#f26522;border-radius:126px;}
+.md-project .bd .btn-go:hover{background:#f26522;color:#fff;}
+
+.md-steps .bd{padding-bottom:60px;text-align:center;}
+.md-steps .title{line-height:160px;text-align:center;font-size:36px;color:#8677ff;}
+.md-steps .bd li{float:left;position:relative;width:208px;margin:0 30px;border:1px solid #cec8fe;box-shadow:0 0 5px 2px #cec8fe;text-align:center;padding:50px 0 40px;border-radius:20px;}
+.md-steps .bd li .pic{line-height:120px;}
+.md-steps .bd li .num{width:140px;border-radius:140px 140px 0 0;line-height:70px;height:70px;background:#8677ff;color:#fff;font-size:36px;position:absolute;left:50%;margin-left:-70px;top:-50px;}
+.md-steps .bd li p{line-height:25px;color:#8677ff;font-size:16px;}
+.md-steps .bd li p.line1{line-height:50px;}
+.md-steps .bd .btn-go{display:inline-block;line-height:90px;height:90px;width:480px;text-align:center;color:#fff;font-size:30px;background:#f26c4f;border-radius:90px;}
+.md-steps .bd .btndiv{margin-top:90px;}
+
+.md-footer{color:#fff;text-align:center;font-size:14px;line-height:70px;height:70px;background:#4d7efa;}
+.md-footer a.keeplink{color:#fff;text-decoration:underline;}

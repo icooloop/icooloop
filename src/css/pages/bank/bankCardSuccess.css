@@ -1,0 +1,64 @@
+/*办卡成功页*/
+body {
+    background-color: #efefef;
+}
+
+.product-list-banner {
+    width: 100%;
+    position: absolute;
+    top: 108px;
+    height: 343px;
+    z-index:-1;
+}
+
+.subscription-success {
+    width: 800px;
+    background-color: #fff;
+    margin: 100px auto;
+    padding: 70px 0;
+}
+
+.subscription-success .content {
+    width: 500px;
+    margin: 0 auto;
+    font-size: 24px;
+    color: #060001;
+}
+
+.subscription-success .content .icon-right {
+    font-size: 70px;
+    margin: 0 20px 0 0;
+    color: #f29118;
+}
+
+.subscription-success .content h2 {
+    font-size: 24px;
+    margin: 0 0 10px;
+    line-height: 1.2;
+}
+.subscription-success .content .info{
+	width:300px;
+    margin: 25px 0 40px;
+    line-height: 1.6;
+}
+.subscription-success .process {
+    margin: 0 0 70px;
+    padding: 0 0 0 123px;
+    background: url(../../../images/product/bar.png) no-repeat 30px 12px;
+}
+
+.subscription-success .process ul li {
+    margin: 0 0 56px;
+}
+
+.subscription-success .process ul li span, .subscription-success .process ul li h4 {
+    font-size: 24px;
+}
+
+.subscription-success .process ul li span {
+    color: #999;
+}
+.subscription-success .next a{
+    width: 200px;
+    margin-right: 28px;
+}

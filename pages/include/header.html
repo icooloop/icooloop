@@ -1,0 +1,74 @@
+<!--header start-->
+<div class="head-top">
+		<div class="wp cl">
+			<div class="hotline">
+	            <img src="${tzp.getContextPath()}/public/images/other/topPhone.png?v=4b0f54c">
+	            <span class="mr-15">客服热线 400-090-9968 （工作日 09:00-18:00）</span>
+	        </div>
+	        <div class="careus" <#if (_p2p_member_user??&&(_p2p_member_user.userType=='3'||_p2p_member_user.userType=='4'||_p2p_member_user.userType=='5')) >style="display:none;"</#if>>
+	        	<div class="careitem"><i class="icon-font icon-weixin2 careicon"></i>
+	        		<div class="icontip"><img src="${tzp.getContextPath()}/public/images/fwcode.png?v=fb64116" class="mainpic">
+		        		<p>亿钱贷公众号</p>
+		        	</div>
+				</div>
+				<div class="careitem careitem2"><a href="${tzp.getContextPath()}/spa/static/downapp" target="_blank"><i class="icon-font icon-app2 careicon"></i></a>
+	        		<div class="icontip"><img src="${tzp.getContextPath()}/public/images/appcode.png?v=3b47618" class="mainpic">
+		        		<p>亿钱贷手机APP</p>
+		        	</div>
+				</div>
+	        </div>
+	        <div class="top_left">
+        	<#if _p2p_member_user??>
+				<span style="margin:0 3.5px 0 0!important"><a class="text-default user-name" href="${tzp.getContextPath()}/spa/member/account/index">您好，${(_p2p_member_user.nickName)}</a> </span>
+				<a class="text-default" href="${tzp.getContextPath()}/spa/shop/index"><i class="icon-font icon-shopcart text-warning"></i> 购物车<#if buy_cart_item_count?? && buy_cart_item_count gt 0><span class="text-warning"> ${buy_cart_item_count}</span></#if></a>
+	            <span <#if (_p2p_member_user.userType=='3'||_p2p_member_user.userType=='4'||_p2p_member_user.userType=='5') >style="display:none;"</#if>><a href="${tzp.getContextPath()}/spa/help/index" class="border1">帮助中心</a></span>
+				<span><a href="${tzp.getContextPath()}/logout" class="border1">安全退出</a></span>
+	    	<#else>
+	    		<span><a href="${tzp.getContextPath()}/spa/secure/login" class="text-default">登录</a></span>
+	    		<span><a href="${tzp.getContextPath()}/spa/secure/register" class="border1 text-default">注册</a></span>
+				<span><a class="text-default" href="${tzp.getContextPath()}/spa/shop/index"><i class="icon-font icon-shopcart text-warning"></i> 购物车</a></span>
+	            <span><a href="${tzp.getContextPath()}/spa/help/index" class="text-default">帮助中心</a></span>
+	    	</#if>
+           </div>
+		</div>
+	</div>
+	<div class="header">
+		<div class="wp main-nav">
+			<div class="header-logo">
+				<a class="l" href="${tzp.getContextPath()}/"><img src="${tzp.getContextPath()}/public/images/logo2019.png?v=33680fa"></a>
+			</div>
+			<ul class="nav nav-menu" <#if (_p2p_member_user??&&(_p2p_member_user.userType=='3'||_p2p_member_user.userType=='4'||_p2p_member_user.userType=='5')) >style="display:none;"</#if>>
+				<li id="nav_index" ><a href="${tzp.getContextPath()}/">首页</a></li>
+				<li id="nav_invest"><a href="${tzp.getContextPath()}/spa/plan/index">我要出借<span class="dot-new">●</span></a><i class="icon-font icon-bottom"></i>
+					<ul class="subnav">
+						<li><a href="${tzp.getContextPath()}/spa/plan/index">易智投</a></li>
+						<li><a href="${tzp.getContextPath()}/spa/product/index">散标出借<#if website_loan_count?? && website_loan_count gt 0>(${website_loan_count})</#if></a></li>
+						<li><a href="${tzp.getContextPath()}/spa/transfer/index">债权转让</a></li>
+						<#if _p2p_member_user?? && _p2p_member_user.vipStatus=='1' >
+                		<li><a href="${tzp.getContextPath()}/spa/product/vip">VIP专区</a></li>
+               			</#if>
+					</ul>
+				</li>
+				<li id="nav_info" ><a href="${tzp.getContextPath()}/spa/about/hegui">信息披露</a></li>
+				<li class="my-account" id="nav_member" >
+					<i class="icon-font icon-admin text-primary"></i>
+					<a href="${tzp.getContextPath()}/spa/member/account/index">我的账户</a>
+					<i class="icon-font icon-bottom"></i>
+					<ul class="account-list">
+						<li><a href="${tzp.getContextPath()}/spa/member/account/index"><span>账户总览</span></a></li>
+						<li><a href="${tzp.getContextPath()}/spa/member/invest/autobid"><span>易智投</span></a></li>
+						<li><a href="${tzp.getContextPath()}/spa/member/invest/holdlist"><span>散标资产</span></a></li>
+						<li><a href="${tzp.getContextPath()}/spa/member/invest/backplan"><span>回款计划</span></a></li>
+						<li><a href="${tzp.getContextPath()}/spa/member/account/recharge"><span>账户充值</span></a></li>
+						<li><a href="${tzp.getContextPath()}/spa/member/account/cash"><span>账户提现</span></a></li>
+						<li><a href="${tzp.getContextPath()}/spa/member/deal/index"><span>交易流水</span></a></li>
+						<li><a href="${tzp.getContextPath()}/spa/member/task"><span>任务中心</span></a></li>
+						<li><a href="${tzp.getContextPath()}/spa/member/voucher"><span>优惠券</span><#if _member_user_voucher ??><span class="dot">●</span></#if></a></li>
+						<li><a href="${tzp.getContextPath()}/spa/member/recommend"><span>推荐奖励</span></a></li>
+						<li><a href="${tzp.getContextPath()}/spa/member/secure/security"><span>账户设置</span></a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+<!--header end-->

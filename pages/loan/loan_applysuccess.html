@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>借款申请成功-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <!-- 页面样式 -->
+    <#include "/include/style_access.html" />
+	<#include "/loan/include/style.html" />
+</head>
+<body class="bgmain">
+<!-- header -->
+<#include "/loan/include/header.html" />
+<div class="bg_loansuccess pt-60 pb-60">
+	<!-- 页面开始 -->
+	<div class="m-success">
+		<div class="hd basehd">
+			<i class="icon-font icon-right1"></i>
+		 	<div class="info mt-10">
+			 	<h2>&nbsp;&nbsp;借款申请成功！</h2>
+			 	<p class="text-muted mt-10">请耐心等待审核，审核时间一般为3个工作日内</p>
+			</div>
+		</div>
+		<div class="bd loanbd">
+			<a href="${tzp.getContextPath()}/loans/user_loan" class="btn btn-theme">查看我的申请</a>
+		</div>
+	</div>
+</div>
+<#include "/include/login_footer.html" />
+<#include "/include/script_up.html" />
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>		

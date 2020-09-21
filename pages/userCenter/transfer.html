@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>债权转让-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+    <style>
+    .btn-disabled,.btn-disabled:hover,.btn-disabled:focus,.btn-disabled:active {color:#999!important;background:none!important;}
+    .btn-cancel,.btn-cancel:hover,.btn-second,.btn-second:hover{color: #f29118;background-color:#fff;border-color: #f29118;border:1px solid #f29118;min-width:50px;padding:0 5px;border-radius:5px;text-decoration:none!important;line-height:24px;height:24px;}
+    </style>
+</head>
+<body class="bgmain">
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+    <div class="m-user">
+        <div class="wp clearfix pt-20">
+			<#include "/userCenter/include/userMenu_up.html" />
+            <div class="mu-right">
+            	<div class=" mb-10">
+            		<div class="mu-tabs">
+		                <ul id="bondTypeList" class="tabs clearfix">
+		                    <li data-type="1" id="hold_tab" class="on">可转让</li>
+		                    <li data-type="2">转让中</li>
+		                    <li data-type="3">已转让</li>
+		                    <li data-type="4">已受让</li> 
+		                </ul>
+	                </div>
+	                <div class="mu-model mu-transfer pd-20" id="tableList">
+	                    <!-- 可转让-->
+	                    <table class="mu-table text-c table-cla table-repay" data-id="1">
+	                        <thead>
+	                        <tr>
+	                            <th>项目名称</th>
+	                            <th>出借本金（元）</th>
+	                            <th>待收利息（元）</th>
+	                            <th>起息日</th>
+	                            <th>到期日</th>
+	                            <th>状态</th>
+	                            <th>操作</th>
+	                        </tr>
+	                        </thead>
+	                        <tbody>
+	                  
+	                        </tbody>
+	                    </table>
+	                    <!-- 转让中-->
+	                    <table class="mu-table text-c table-cla table-hold" data-id="2" style="display: none">
+	                        <thead>
+	                        <tr>
+	                            <th>项目名称</th>
+	                            <th>转让金额（元）</th>
+	                            <th>手续费（元）</th>
+	                            <th>申请日期</th> 
+	                            <th>状态</th>
+	                            <th>操作</th>
+	                        </tr>
+	                        </thead>
+	                        <tbody>
+	                        </tbody>
+	                    </table>
+	                    <!-- 已转让-->
+	                    <table class="mu-table text-c table-cla table-repayed" data-id="3" style="display:none;">
+	                        <thead>
+	                        <tr>
+	                            <th>项目名称</th>
+	                            <th>转让金额（元）</th>
+	                            <th>手续费（元）</th>
+	                            <th>转让日期</th>
+	                            <th>状态</th>
+	                            <th>操作</th>
+	                        </tr>
+	                        </thead>
+	                        <tbody>
+	                        </tbody>
+	                    </table>
+	                    <!-- 已受让-->
+	                    <table class="mu-table text-c table-cla table-repayed" data-id="4" style="display:none;">
+	                        <thead>
+	                        <tr>
+	                            <th>项目名称</th>
+	                            <th>转让金额（元）</th>
+	                            <th>剩余期限</th>
+	                            <th>转让日期</th> 
+	                            <th>状态</th>
+	                            <th>操作</th>
+	                        </tr>
+	                        </thead>
+	                        <tbody>
+	                        </tbody>
+	                    </table>
+	                    <input name="pageNo" type="hidden" id="pageNo" value="1" />
+	                    <input name="pageSize" type="hidden" id="pageSize" value="10" />
+	                    <div id="laypage" class="page pagination" style="display: none;"></div>
+	                </div>
+	                <div class="mu-tip pt-20">
+	                    <div class="hd">温馨提示：</div>
+	                    <div class="bd">
+	                        <p class="bold">1、哪些债权可以进行债权转让？</p>
+							<p>答：1) 债权处于非逾期状态；<br>
+						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2) 债权持有时间不小于30天；<br>
+						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3) 距离项目结清日不小于15天；<br>
+						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4) 由保险公司出具保单的乐保贷项目禁止转让，其他乐保贷产品可以转让；<br>
+						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5) 债权还款日当日不可发起债权转让申请，如需进行债权转让，可于还款后第二日进行尝试；<br>
+						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6) 出借时如使用了红包，债权持有时间需大于等于红包使用期限条件才能进行债权转让；<br>
+						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7) 如出借时参与了平台奖励活动，债权转让条件请参看相应活动细则。</p>
+							<p class="bold">2、债权转让的需要收手续费吗？</p>
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：手续费为转让价格的0.5%，转让成功后收取；如债权持有大于等于90天，则免手续费；</p>
+	                    </div>
+	                </div>
+	            </div>
+            </div>
+        </div>
+   </div>
+</div>
+<input type="hidden" id="tabType" value="${tabType!''}">
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/bootstrap/tooltip.js?v=e33b418"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/user/bondTransfer.js?v=9106f5a"></script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

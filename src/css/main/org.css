@@ -1,0 +1,54 @@
+.text-center{text-align:center;}
+.copyright{color:#666;padding:20px;}
+.copyright p{line-height:30px;}
+.btn-theme,a.btn-theme{color:#fff !important;background-color:#625044 !important;border-color:#625044 !important;line-height:30px;height:30px;padding:0 12px;}
+.btn-theme2,a.btn-theme2{color:#625044 !important;background-color:#fff !important;border-color:#625044 !important;}
+.btn-theme2:hover{background:#625044!important;color:#fff!important;}
+.text-theme{color:#625044;}
+a.theme_hover:hover{color:#625044;}
+/*2 注册登录*/
+.m-access .centerwp{height:auto;}
+.m-access.loan-register{background: url(/public/images/loan/register_bg.jpg) no-repeat top center;min-height:678px;}
+.m-access.org-login{background: url(/public/images/org/login_bg.jpg) no-repeat top center;min-height:572px;}
+.m-access-form .hd{font-size:18px;}
+.m-access-form .extralogin{position:absolute;right:0;top:0;background:#ededed;width:104px;height:104px;background: url(/public/images/loan/triangle.png) no-repeat top right;}
+.m-access-form .extralogin .link{position:absolute;right:11px;;top:14px;display:inline-block;color:#3961cd;line-height:18px;text-align:center;}
+.m-access-form .extralogin .link:hover{text-decoration:none;}
+.m-access-form.registerform{top:60px;}
+.m-access-form.registerform .hd{line-height:1;height:auto;padding:40px 50px 0;border:none;}
+.m-access-form.registerform .hd h4{font-size:18px;color:#666;}
+.m-access-form.registerform .hd .tip{background:#faefe5;font-size:14px;line-height:20px;color:#9e7d65;text-align:center;padding:8px;font-size:12px;}
+.m-access-form .bd .btn-submit{background:#5148a3;}
+.m-access-form.loginform{top:100px;}
+/*3 注册成功*/
+.bg_loansuccess{background: url(/public/images/loan/user_bg.jpg) no-repeat top center;}
+.m-success{border-radius:10px;}
+.m-success .hd.registerhd{position:relative;height:150px;padding:0 200px;}
+.m-success .hd.registerhd .icon-font{position:absolute;left:220px;bottom:30px;}
+.m-success .hd.registerhd .info{position:absolute;left:310px;bottom:40px;color:#666;}
+.m-success .hd.registerhd .info h2{font-size:24px;line-height:40px;}
+.m-success .bd.loanbd{padding:30px 100px 80px;text-align:center;}
+/*5 账户中心*/
+.m-user{background:url(/public/images/org/user_bg.jpg) no-repeat top center;}
+.mu-left > a.on, .mu-left > a:hover{background:#625044;}
+.mu-safe .fl .safe-list li i.active{color:#625044;}
+.mu-safe .fl .level .progress-bar{background:#625044;}
+.userLeft-shrink > a:hover,.userLeft-shrink > a.on {background-color:#625044;}
+.user-total p.link a{color:#625044;border-color:#625044;}
+.user-total p.link a.on{color:#fff;background-color:#625044;border-color:#625044;}
+.mu-tabs .tabs li.on:before,
+.mu-cash .extract-form .item .submit,
+.mu-deal .btn-search,
+.m-attestation .attestation-Btn{background:#625044;}
+.mu-tabs .tabs li.on,.mu-tabs .tabs li.on a{color:#625044;}
+
+.mu-recharge .banklist li.on{background:url(/public/images/bank/bankon3.png) no-repeat;}
+.mu-recharge-form .btn-submit,.mu-recharge-form .btn-submit:hover,.mu-recharge-form .btn-submit:focus,.mu-recharge-form .btn-submit:active,
+.mu-cash-form .btn-submit,.mu-cash-form .btn-submit:hover,.mu-cash-form .btn-submit:focus,.mu-cash-form .btn-submit:active{background:#625044;}
+.mu-recharge-form .rechargetype li.on,.mu-cash-form .cashtype li.on{background:url(/public/images/user/typeon3.png) no-repeat 20px 21px;border-color:#b0a7a1;}
+.mu-recharge-form .formhd{color:#625044;}
+
+.mu-security .item a{color:#625044;border-color:#625044;}
+.mu-security .item a:hover,.mu-security .item a.on{background:#625044;color:#fff;border-color:#625044;}
+
+.mu-table .btn-theme2{color: #625044;background-color:#fff;border:1px solid #625044;min-width:50px;padding:0 5px;border-radius:5px;text-decoration:none!important;line-height:24px;height:24px;}

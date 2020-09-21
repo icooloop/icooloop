@@ -1,0 +1,11 @@
+@charset "utf-8";
+.page_con {text-align:center; clear:both; display:block}
+.pagination {text-align:center; clear:both; padding-bottom:10px;margin:0;}
+.pagination a {text-decoration:none; color:#747474; font-size:12px; font-weight:bold;}
+.pagination a:hover {border:1px solid #3961cd; color:#3961cd; background-color:#fff;width:31px; height:31px; }
+.pagination a,.pagination span {  display:inline-block;width:31px; height:31px;color:#6C7682; line-height:30px; overflow:hidden; font-size:12px; font-weight:normal; margin-right:10px;border:1px solid #DDDDDD; border-radius:3px; background-color:#fff}
+.pagination .current_page {border:1px solid #DDDDDD; width:31px; height:31px; line-height:30px; margin-right:10px; color:#fff;font-weight: bold;background-color:#3961cd;border-color:#3961cd;}
+.pagination .current_page:hover {border:1px solid #3961cd; color:#FFF;background-color:#3961cd;width:31px; height:31px; }
+.pagination .current_page.prev_1,.pagination .current_page.next_1 {color: #999; margin-top:30px; background-color:#fff}
+.pagination .prev_1,.pagination .next_1 {border:1px solid #DDDDDD; width:61px; height:31px;line-height:31px; margin-right:10px; margin-top:30px;}
+.pagination .prev_1:hover,.pagination .next_1:hover {background-color:#3961cd;border: 1px solid #3961cd;color: #fff;height: 31px;line-height: 31px;margin-right: 10px;width: 61px;cursor:pointer;}

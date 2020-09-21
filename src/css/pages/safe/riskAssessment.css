@@ -1,0 +1,65 @@
+.risk-assessment{
+    color:#666;
+}
+.risk-assessment .tips{
+    border:1px solid #f8b551;
+    background-color: #fff9de;
+    padding:22px 30px;
+    margin:20px 0;
+}
+.risk-assessment .panel-heading{
+    padding:24px 30px;
+    margin:0 8px 15px;
+    font-size: 18px;
+    border-bottom: 1px solid #e8e8e8;
+}
+.risk-assessment .panel{
+    border-radius: 0;
+    padding-bottom: 15px;
+}
+.risk-assessment .panel-body ul{
+    padding:0 30px;
+}
+.risk-assessment .panel-body ul li{
+    margin: 0 0 50px;
+}
+.risk-assessment .panel-body ul li h3{
+    padding:12px 24px;
+    margin:0 0 20px;
+    font-size: 14px;
+    background-color: #f4f4f4;
+}
+.risk-assessment .panel-body ul li .radio-list,.risk-assessment .panel-body ul li .checkbox-list{
+    padding:0 25px;
+}
+
+.risk-assessment .panel-body ul li p{
+	display:inline-block;
+    width:520px;
+}
+.risk-assessment .panel-body ul li p label{
+    vertical-align: middle;
+    margin:0;
+    width: 496px;
+}
+.risk-assessment .panel-body .btn-submit{
+    display: block;
+    margin:0 auto;
+    width:236px;
+    padding:12px 0;
+    font-size: 18px;
+}
+.risk-modal{
+    padding:50px 70px;
+}
+.risk-modal h2{
+    margin:0 0 40px;
+}
+.risk-modal .content{
+    margin:0 0 50px;
+    line-height: 1.6;
+}
+.risk-modal .btn{
+    width:188px;
+    padding:12px 0;
+}

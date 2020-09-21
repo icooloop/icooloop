@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>账户信息同步-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_new.html" />
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="${tzp.getContextPath()}/src/css/pages/account/auto.css?v=aa18bac">
+</head>
+<body>
+<!-- header -->
+<#include "/include/login_header.html" />
+<!-- 页面开始 -->
+<div class="auto-layer no-real-layer bind-success-layer">
+    <div class="center-block no-real-container bind-success-container">
+        <div class="no-real-boxer bind-success-boxer">
+            <h3 class="auto-title text-center"><i class="icon-font icon-right text-success vertical-middle"></i><span class="vertical-middle">账户绑定授权登录成功</span></h3>
+            <div class="info-layer vertical text-center row">
+                <div class="col-sm-5">
+                    <img src="/public/images/logo_hl.png?v=f64f282" />
+                    <ul class="info">
+                        <li><span>手机号码：</span>${(phone)!''}</li>
+                        <li><span>姓　　名：</span>${(idName)!''}</li>
+                        <li><span>证件号码：</span>${(idNo)!''}</li>
+                    </ul>
+                </div>
+                <div class="col-sm-2 split">
+                    <i class="icon-font icon-arrow-left text-primary"></i>
+                </div>
+                <div class="col-sm-5">
+                    <img src="/public/images/logo.png?v=5ebb42b" />
+                    <ul class="info">
+                        <li><span>手机号码：</span>${(yqdPhone)!''}</li>
+                        <li><span>姓　　名：</span>${(yqdRealName)!''}</li>
+                        <li><span>证件号码：</span>${(yqdUserIdno)!''}</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-default text-center progress-info">后续您可以通过红岭账户授权登录绑定的亿钱贷账户。</p>
+        </div>
+        <div class="auto-layer">
+            <div class="boxer text-center">
+               <a class="btn btn-primary btn-lg" href="${tzp.getContextPath()}/member/account/index">查看我的账户</a>
+            </div>
+        </div>
+    </div>
+</div>
+<#include "/include/bottom_script.html" />
+<!-- 页面js -->
+
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

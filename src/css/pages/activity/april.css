@@ -1,0 +1,93 @@
+body{
+    font-family:"PingFang SC" ,"Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,tahoma,arial,Verdana,sans-serif;
+}
+.main-content {
+    background: url(/public/images/activity/april/main.jpg) no-repeat center top;
+    text-align: center;
+}
+
+.main-content .container {
+    position: relative;
+    width: 1000px;
+    height: 1351px;
+    margin: 0 auto;
+    padding: 370px 0 0;
+    color: #fff;
+}
+
+.main-content .container h1 {
+    margin: 0 0 20px;
+    font-size:36px;
+    text-align: center;
+}
+
+.main-content .container p {
+    font-size: 16px;
+    margin: 0 0 12px;
+    text-align: center;
+}
+
+.main-content .container .red {
+    width: 752px;
+    margin: 0 0 10px 128px;
+    padding: 20px 0 14px;
+}
+
+.main-content .container .red li {
+    width: 376px;
+    float: left;
+}
+
+.main-content .container .red li h2 {
+    font-size: 70px;
+    text-align: center;
+}
+
+.main-content .container .red li .left {
+    width: 134px;
+    padding:0 0 0 10px;
+    float: left;
+}
+.main-content .container .red li .left p{
+    font-size:20px;
+}
+.main-content .container .red li .right {
+    padding:7px 0 0;
+    width: 214px;
+    float: left;
+}
+.main-content .container .red li .right h3{
+    color:#d02135;
+    font-size:28px;
+    text-align: center;
+    margin:0 0 14px;
+}
+.main-content .container .red li .right p{
+    width:140px;
+    margin:0 0 0 30px;
+}
+.main-content .container .explain{
+    position: absolute;
+    bottom:200px;
+    left:140px;
+}
+.main-content .container .reward{
+    color:#9a876a;
+    text-align: center;
+    position: absolute;
+    width:100%;
+    top:810px;
+}
+.main-content .container .reward h2{
+    font-size: 36px;
+    margin:0 0 15px;
+}
+.main-content .container .reward .bottom{
+    margin:250px 0 0;
+}
+.main-content .container .explain h3{
+    margin:0 0 20px;
+}
+.main-content .container .explain ul li{
+    margin:0 0 5px;
+}

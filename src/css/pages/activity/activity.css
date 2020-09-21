@@ -1,0 +1,17 @@
+.m-activity{background-color: #fff;padding: 40px 0;margin: 20px auto 40px;width:1200px;max-width: 1200px;}
+.activityTitle{margin-left: 60px;overflow: hidden;height: 50px;}
+.activityTitle span{font-size: 20px;color: #3961cd;border-bottom: 2px solid #3961cd;padding-bottom: 10px;}
+.activity-list{margin: 0 60px ;}
+.activity-list ul li{height: 222px;margin-bottom: 15px;padding: 10px 10px;border: 1px solid #E3E3E3;position: relative;}
+.activity-list ul li:hover{box-shadow: 0 0 10px 0 #E3E3E3;z-index: 10;border: 1px solid #fff;}
+.activity-list ul li:hover div h1{color: #3961cd;}
+.activity-list ul li h1{float: left; overflow: hidden; margin: 0 auto;}
+.activity-list ul li h1 img{max-width:693px;}
+.activity-list ul li div{ width: 300px; float: right;  text-align: center; margin-top: 35px;}
+.activity-list ul li div h2{font-size: 18px;color: #282828;margin-bottom: 20px;}
+.activity-list ul li div p{font-size: 16px;color: #666666;margin-bottom: 35px;}
+.activity-list ul li div p i{display: inline-block;width: 19px;height: 19px;background: url(/public/images/activity/time.png) no-repeat;vertical-align: sub;margin-right: 5px;}
+.activity-list ul li div p em{font-style: inherit; }
+.activity-list ul li div a{font-size: 14px;color: #fff;background-color: #3961cd;padding: 8px 30px;border-radius: 8px;text-decoration: none;}
+.activity-list ul li div a.readonly{background-color: #B5B5B5; cursor: default;}
+.activity-list ul li span{position:absolute;right:-1px;top: -1px;width: 64px;height: 70px;background: url(/public/images/activity/new.png) no-repeat;}

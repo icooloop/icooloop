@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<#if isSuccess??&&isSuccess=='1'>
+    	<title>开通新网银行存管成功-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#else>
+     	<title>开通新网银行存管-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    </#if>
+    <#include "/include/style_up.html" />
+    <!-- 页面样式 -->
+    <#include "/include/style_access.html" />
+</head>
+<body class="bgmain">
+<!-- header -->
+<#include "/loan/include/header.html" />
+<div class="bgmain2 pt-60 pb-60">
+	<!-- 页面开始 -->
+	<div class="m-success pt-40 pb-40">
+		<div class="hd basehd">
+			<i class="icon-font <#if isSuccess??&&isSuccess=='1'> icon-right1 <#else> icon-error </#if> "></i>
+		 	<div class="info">
+			 	<h2>${result!''}</h2>
+			</div>
+		</div>
+		<div class="bd">
+			
+			<#if isSuccess??&&isSuccess=='1'>
+				<#if idNoType??&&idNoType!='PRC_ID'>
+					<div class="text-c text-muted">非大陆居民身份证认证用户请补充上传证件
+						<span class="u-what righttip">
+							<i class="icon-font icon-wenhao"></i>
+							<span class="notes">未上传证件照片，将无法进行出借。您也<br>可通过【我的账户-账户设置-上传证件照】<br>再次进行证件照片上传操作</span>
+						</span>
+					</div>
+					<div class="nextdiv mt-10">
+						<a href="${tzp.getContextPath()}/member/auth/identify" class="btn btn-theme">上传证件照片</a>
+					</div>
+				<#else>
+					<div class="nextdiv">
+						<a href="${tzp.getContextPath()}/member/account/index" class="btn btn-theme">查看我的账户</a>
+					</div>
+				</#if>
+			</#if>
+		</div>
+	</div>
+</div>
+<#include "/include/login_footer.html" />
+<#include "/include/script_up.html" />
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>		

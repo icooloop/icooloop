@@ -1,0 +1,20 @@
+.m-act{position:relative;min-height:2732px;background:url(/public/images/event/inrecommend/main.jpg) no-repeat top center;}
+.m-act .wp{width:913px;}
+.m-act .acttime{position:absolute;top:378px;left:0;width:100%;line-height:1;color:#666;text-align:center;font-size:13px;}
+.m-act .bd{position:absolute;top:1421px;left:0;width:100%;}
+.m-act .total{text-align:center;line-height:50px;text-align:center;font-size:18px;color:#45341a;}
+.m-act .total em{color:#c00;}
+.m-act .datadiv{background:url(/public/images/event/inrecommend/form.png) no-repeat;height:842px;padding:10px 15px 0;margin-top:30px;}
+.m-act .datatable{margin:0 auto;}
+.m-act .datatable th{text-align:center;line-height:64px;padding:0 5px;font-size:16px;}
+.m-act .datatable td{text-align:center;line-height:75px;padding:0 5px;color:#564833;}
+.m-act .remark1{line-height:1;padding:0 20px;padding-top:20px;}
+.m-act .nobody{line-height:36px;border:1px dashed #9f9f9f;margin-right:70px;margin-left:30px;padding-right:50px;}
+.m-act .rule{padding:0 20px;}
+.m-act .rule h2{font-size:16px;line-height:20px;padding-bottom:15px;}
+.m-act .rule p{line-height:24px;}
+.copyright{text-align:center;border-top:1px solid #aaa;line-height:74px;position:absolute;left:0;bottom:0;width:100%;}
+
+
+
+

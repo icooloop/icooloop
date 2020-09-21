@@ -1,0 +1,103 @@
+@font-face {
+    font-family: "Impact";
+    src: url("/public/font/Impact/Impact.woff2") format("woff2"),
+         url("/public/font/Impact/Impact.woff") format("woff"),
+         url("/public/font/Impact/Impact.ttf") format("truetype"),
+         url("/public/font/Impact/Impact.eot") format("embedded-opentype"),
+         url("/public/font/Impact/Impact.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
+.g-mainer{background:#f6bfc9 url(/public/images/event/2019/apr/bg.jpg) no-repeat bottom center;padding-bottom:600px;}
+.md-act{position:relative;background:url(/public/images/event/2019/apr/banner.jpg) no-repeat top center;padding-top:530px;overflow:hidden;}
+
+.md-mode1>.desc{color:#a24960;line-height:20px;padding-top:30px;text-align:center;font-size:18px;}
+.md-mode1 .bd{padding:0 0 100px;height:310px;}
+.md-mode1 .bd li{float:left;width:320px;text-align:center;}
+.md-mode1 .bd li:nth-child(2n){width:280px;}
+.md-mode1 .bd li .rate{color:#fff;font-size:68px;line-height:1;padding-top:120px;padding-left:10px;height:115px;background:url(/public/images/event/2019/apr/cat1.png) no-repeat right bottom;font-family: "Impact";}
+.md-mode1 .bd li .rate em{font-size:36px;padding-left:2px;font-family:'Microsoft Yahei';}
+.md-mode1 .bd li:nth-child(2n) .rate{background:url(/public/images/event/2019/apr/cat2.png) no-repeat center bottom;}
+.md-mode1 .bd li .btn-act,.md-mode1 .bd li a.btn-act:visited{display:inline-block;cursor:pointer;background:none;margin-left:-20px;width:140px;line-height:58px;height:58px;margin-top:-29px;font-size:18px;text-align:center;color:#fff;border-radius:50px;transition:all 0.2s;background:#44aea3;}
+.md-mode1 .bd li .btn-act.disabled{background:#ddd;color:#888;}
+.md-mode1 .bd li h6{line-height:20px;color:#a72743;font-size:18px;margin-top:30px;margin-left:-20px;}
+
+.md-mode2{text-align:center;position: relative;color:#641038;}
+.md-mode2 .rank{position: absolute;left:170px;top:215px;width:140px;line-height:1.2;font-size:16px;left:170px;top:215px;}
+.md-mode2 .rank em{font-size:36px;}
+.md-mode2 .desc{font-size:18px;position: absolute;left:390px;top:190px;line-height:50px;text-align:left;}
+
+.md-mode3 .bd{background:#f6bfc9 url(/public/images/event/2019/apr/bg2.png) no-repeat bottom center;padding-bottom:35px;}
+.md-mode3 .datatable{border:15px solid #f8dcd0;}
+.md-mode3 .datatable+.datatable{border-left:none;}
+.md-mode3 .datatable th,
+.md-mode3 .datatable td{color:#444;text-align:center;font-size:24px;background:#fff;padding:0;}
+.md-mode3 .datatable td{color:#666;}
+.md-mode3 .datatable td em{display: inline-block;font-size:14px;transform:translate(2px,-10px);}
+.md-mode3 .datatable tr{height:80px;}
+.md-mode3 .datatable tr+tr{border-top:1px dashed #f6967a;}
+.md-mode3 .datatable tr+tr td+td{color:#ea6191;}
+.md-mode3 .datatable tr.on td{background:#fb99b5;color:#fff;position: relative;}
+.md-mode3 .datatable tr.on .rank:after{display:block;content:'您在这里';position:absolute;right:0;top:-16px;width:100px;line-height:32px;height:32px;text-align:center;font-size:18px;color:#fff;background:#9e0b0f;border-radius:10px;}
+.md-mode3 .desc{color:#7d003e;font-size:18px;padding-top:15px;text-align:center;}
+
+.md-mode4{position: relative;margin-top:160px;}
+.md-mode4 .bd{padding:0 40px;}
+.md-mode4 .bd li{float: left;width:33.33%;text-align: center;color:#f16c9a;background:#f6bfc9 url(/public/images/event/2019/apr/bonus.png) no-repeat top center;position: relative;height: 430px;}
+.md-mode4 .bd li .desc1{padding-top:70px;line-height:30px;font-size:24px;}
+.md-mode4 .bd li .amount{line-height:1;font-size:134px;line-height:170px;font-family:'Impact';}
+.md-mode4 .bd li .desc2{padding-top:30px;line-height:30px;font-size:22px;color:#fff;}
+.md-mode4 .bd li .btn-act{width:230px;line-height:64px;height:64px;border-radius:64px;background:none;margin-top:12px;font-size:22px;color:#ce2906;}
+.md-mode4 .bd li .btn-act.disabled{background:#b7b7b7;color:#fff;cursor:not-allowed;}
+.md-mode4 .condition{position: absolute;left:240px;bottom:130px;width:720px;padding:50px 0;background:rgba(0,0,0,.6);color:#fff;border-radius:10px;text-align:center;font-size:18px;line-height:30px;}
+
+.md-rule{color:#a24960;padding:80px 90px 0;}
+.md-rule h2{font-size:24px;line-height:1;padding-bottom:30px;}
+.md-rule p{line-height:30px;font-size:18px;}
+
+.md-footer{color:#fff;text-align:center;font-size:14px;line-height:90px;height:90px;background:url(/public/images/event/2019/apr/bgft.png) repeat-x center;}
+.md-footer a.keeplink{color:#fff;text-decoration:underline;}
+
+.md-getbonus .bd{position:fixed;top:50%;left:50%;width:828px;height:748px;margin-left:-414px;margin-top:-374px;
+		transition:all 0.4s;opacity:0;background:url(/public/images/event/2019/apr/getbonus.png) no-repeat;text-align:center;color:#8f6a40;z-index:2000;}
+.md-getbonus.getbonus .bd{opacity:0;animation: bounceinT 1s forwards 0.4s;}
+.md-getbonus .btn-act{width:180px;line-height:62px;height:62px;margin-right:10px;;text-align:center;background:#44aea3;color:#fff;font-size:24px;border-radius:74px;cursor:pointer;}
+.md-getbonus .btn-act:hover{opacity:0.9;}
+.md-getbonus .desc{padding-top:300px;color:#b73c66;font-size:24px;line-height:40px;}
+
+.win_state{	
+	position:fixed;top:50%;left:50%;	
+	margin:-50px 0 0 -50px;
+	text-align:center;line-height:1;	
+	z-index:1999;opacity:0;transform:translateY(300px);
+	animation: win_state_show 1.4s forwards 0.4s;
+}
+
+@keyframes win_state_show{   
+	30%{opacity:1;transform:translateY(-30px);}
+	40%{opacity:1;transform:translateY(0);transform:perspective(400px) translate3d(0,0,180px) rotate3d(0,1,0,-190deg);animation-timing-function:ease-out}
+	50%{transform:perspective(400px) translate3d(0,0,180px) rotate3d(0,1,0,-170deg);animation-timing-function:ease-in}
+	80%{opacity:1;transform:perspective(400px) scale3d(.95,.95,.95);animation-timing-function:ease-in}
+	100%{opacity:0;transform:perspective(400px);animation-timing-function:ease-in}
+}
+.pig{animation: pig 1s forwards 0.1s !important;}
+@keyframes pig{
+	40%{transform:scale(1.2,1);}
+	60%{transform:scale(1,.6);}
+	100%{transform:scale(1,1);}
+}
+@keyframes bounceinT{0%{opacity:0;transform:translateY(-2000px)} 60%{opacity:1;transform:translateY(30px)} 80%{transform:translateY(-10px)} 100%{opacity:1;transform:translateY(0)}}
+.flower {animation-duration:1s;animation-name:flower;}
+@keyframes flower{
+	0%{opacity:0;transform:scale(.3,.3);}
+	70%{opacity:1;transform:scale(1.05,1.05);}
+	100%{opacity:1;transform:scale(1,1);}
+}
+.rotate1 {animation-duration:1s;animation-name:rotate1;}
+@keyframes rotate1{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+.rotate2 {animation-duration:1s;animation-name:rotate2;}
+@keyframes rotate2{0%{transform:rotate(0deg);}100%{transform:rotate(-360deg);}}
+
+
+
+

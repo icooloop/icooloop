@@ -1,0 +1,32 @@
+.main-content {background:url("/public/images/activity/august/main.jpg") no-repeat top center;height:3179px;}
+.main-content .container {position:relative;width:1100px;}
+.red-info {position:absolute;top:770px;padding:0 20px;}
+
+.red-info .red-icon {width:87px;height:80px;background:url("/public/images/activity/august/red_icon.png") no-repeat;color:#fff;padding:40px 0 0;margin:0 auto;font-size:22px;}
+.red-info .title {color:#ffcc99;font-size:16px;line-height:30px;height:90px;margin-bottom:90px;}
+.red-info .title em{font-size:36px;font-style:normal;}
+.red-info .red-icon span {font-size:12px;}
+.red-info table {width:490px;text-align:center;color:#fff;}
+.red-info table th {height:50px;}
+.red-info table th,.red-info table td {text-align:center;font-size:18px;font-weight:400;}
+.red-info table tr td {height:112px;}
+.red-info table.last td {height:140px;}
+.year-rate-layer {position:absolute;top:1740px;}
+.year-rate-layer .table-boxer {width:1100px;border:3px solid #c70d1c;margin:0 0 70px;}
+.year-rate-layer >p {color:#fffece;font-size:16px;}
+.year-rate-layer .title {color:#d42d1e;font-size:16px;margin:0 0 20px;}
+.year-rate-layer table {width:100%;background-color:#fff;}
+.year-rate-layer table tr th,.year-rate-layer table tr td {text-align:center;}
+.year-rate-layer table tr th {font-size:18px;height:70px;color:#663300;}
+.year-rate-layer table tr td {height:77px;color:#663300;font-size:16px;}
+.year-rate-layer table tbody tr:nth-child(2n+1) td {background-color:#f1eee9;}
+.year-rate-layer table tr td strong,.year-rate-layer table tr td img,.year-rate-layer table tr td span {vertical-align:middle;}
+.year-rate-layer table tr td strong {font-size:24px;margin:0 2px 0 15px;font-weight:normal;}
+ul.rule {position:absolute;top:2590px;color:#333;font-size:16px;padding:0 0 0 70px;}
+ul.rule li {margin:0 0 15px;}
+ul.rule li ul {margin:15px 0 10px 33px;}
+.btn-go {display:inline-block;background:#f80;color:#fff;width:96px;line-height:32px;text-align:center;border-radius:32px;border:none;font-size:16px;}
+.btn-go:hover {background:#ff7610;text-decoration:none;color:#fff;}
+.btn-go.disabled,.btn-go.disabled:hover {background:#acacac;}
+.copy-right{line-height: 78px;background-color: #fff;color:#333;text-align: center;}
+.copy-right a{color:#333;}

@@ -1,0 +1,405 @@
+.new-hard {
+    background-image: url('/public/images/activity/red/main.jpg');
+    padding: 0;
+    height: 3413px;
+}
+
+.new-hard .login-container {
+    height: 618px;
+    margin:0 auto 72px;
+}
+
+.new-hard .explain {
+    background-color: #fff;
+}
+.new-hard .red-list{
+    width:850px;
+    margin: 151px auto 30px;
+    padding:0 0 0 20px;
+}
+.new-hard .red-list li{
+    float:left;
+    width:233px;
+    margin:0 60px 110px 0;
+    text-align: center;
+}
+.new-hard .red-list li:nth-child(3n){
+    margin:0;
+}
+.new-hard .red-list li h3{
+    color:#d61c34;
+    font-size:50px;
+    margin:0 0 155px;
+}
+.new-hard .red-list li h3 span{
+    font-size:22px;
+}
+.new-hard .red-list li p{
+    color:#666;
+    font-size:18px;
+}
+.new-hard .rule-list{
+    margin:145px auto 338px;
+    width:1140px;
+    font-size:16px;
+}
+.new-hard .rule-list li{
+    margin:0 0 8px;
+    color:#333;
+}
+.new-hard .explain img {
+    width: 100%;
+}
+.new-hard .title{
+    color:#ffe9c6;
+    font-size:48px;
+    text-align: center;
+}
+.new-hard .process-list{
+    margin:220px auto 198px;
+    width:1293px;
+}
+.new-hard .process-list li{
+    float:left;
+    text-align: center;
+    margin:0 180px 0 0;
+    color:#ed480d;
+    font-size:20px;
+    height: 66px;
+    line-height: 66px;
+}
+.new-hard .process-list li:first-child{
+    margin:0 222px 0 106px;
+}
+.new-hard .process-list li:last-child{
+    margin:0;
+}
+.new-hard .process-list li p{
+    margin:8px 0 0px;
+    line-height: 1;
+}
+.new-hard .product-list{
+    margin:150px auto 280px;
+    width:1010px;
+}
+.new-hard .product-list li{
+    position: relative;
+    float:left;
+    width:485px;
+    padding:0 40px;
+    margin:0 36px 0 0;
+}
+.new-hard .product-list li:last-child{
+    margin:0;
+}
+.new-hard .product-list h3{
+    margin:0 0 10px;
+    font-size:40px;
+}
+.new-hard .product-list .rate{
+    width:150px;
+}
+.new-hard .product-list .rate{
+    font-size:80px;
+}
+.new-hard .product-list .info{
+    width:220px;
+    padding:19px 0 0 10px;
+    font-size:28px;
+}
+.new-hard .product-list .info p{
+    margin:0;
+}
+.new-hard .product-list li a{
+    position: absolute;
+    display: block;
+    top:5px;
+    right: 35px;
+    width:184px;
+    height: 40px;
+    color:#fff;
+    font-size:20px;
+    line-height: 40px;
+    border-radius: 20px;
+    text-align: center;
+    background-color: #ff6c00;
+}
+.new-hard .info-list{
+    margin:180px auto 481px;
+    width:1293px;
+}
+.new-hard .info-list li{
+    float:left;
+    width:220px;
+    margin:0 0 0 180px;
+    color:#fe4415;
+}
+.new-hard .info-list li:first-child{
+    margin:0 0px 0 210px;
+}
+.new-hard .info-list li:last-child{
+    margin:0 0px 0 210px;
+    width:240px;
+}
+.new-hard .info-list li h3{
+    font-size:32px;
+    margin:0 0 20px;
+}
+.new-hard .info-list li p{
+    font-size:18px;
+    margin:0 0 5px;
+}
+.new-hard .reg-link{
+    display: block;
+    width:606px;
+    height: 115px;
+    line-height: 115px;
+    padding:0 0 0 170px;
+    font-size:40px;
+    color:#ef182a;
+    margin:0 auto;
+}
+.new-hard .reg-link:hover{
+    text-decoration: none;
+}
+.company-info {
+    background-color: #fff;
+    padding: 25px 0;
+}
+
+.company-info .slide-item {
+    position: relative;
+    width: 425px;
+    float: left;
+}
+
+.company-info .slide-item:last-child {
+    width: 350px;
+}
+
+.company-info .slide-item .icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 10px 0 0;
+}
+
+.company-info .slide-item .icon-font {
+    font-size: 92px;
+    color: #b88e51;
+    line-height: 1;
+}
+
+.company-info .slide-item .title {
+    color: #b88e51;
+    font-size: 22px;
+    margin: 0 0 5px;
+}
+
+.company-info .slide-item .front,
+.company-info .slide-item .back {
+    position: absolute;
+    display: block;
+    height: 92px;
+    width: 92px;
+    background-color: #f8f8f7;
+    border-radius: 50px;
+    -webkit-transition: all .5s ease-in-out;
+    /*淡入淡出效果*/
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    -webkit-backface-visibility: hidden;
+    /*元素背面不可见*/
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.company-info .slide-item .back {
+    color: #999;
+    -webkit-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.company-info .icon:hover .front {
+    -webkit-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.company-info .icon:hover .back {
+    -webkit-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+
+.new-hard-product {
+    padding: 70px 0;
+}
+
+.new-hard-product img {
+
+}
+
+.new-hard-product > ul {
+    margin: 40px auto 0;
+    width: 960px;
+}
+
+.new-hard-product > ul li {
+    width: 278px;
+    display: inline-block;
+    margin: 0 25px 0 0;
+    color: #666;
+}
+
+.new-hard-product > ul li:last-child {
+    margin: 0;
+}
+
+.new-hard-product > ul li .item {
+    border-radius: 6px;
+    padding: 46px 35px 35px;
+    background-color: #fff;
+}
+
+.new-hard-product > ul li .item:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
+}
+
+.new-hard-product > ul li .item h3 {
+    font-size: 24px;
+    margin: 0 0 20px;
+}
+
+.new-hard-product > ul li .item p {
+    margin: 0 0 10px;
+}
+
+.new-hard-product > ul li .item p.rate {
+    font-size: 40px;
+}
+
+.new-hard-product > ul li .item p.rate span {
+    font-size: 16px;
+}
+
+.new-hard-product > ul li .item a.btn {
+    margin: 35px 0 0;
+}
+
+.new-hard-product > ul li.center {
+    position: relative;
+    top: 20px;
+    padding: 0;
+    width: 342px;
+}
+
+.new-hard-product > ul li.center .item {
+    position: relative;
+    color: #fff;
+    border: 2px solid #f29118;
+    background: #ff6f4c; /* 一些不支持背景渐变的浏览器 */
+    background: -moz-linear-gradient(180deg, #ff6f4c, #ff3808);
+    background: -webkit-gradient(linear, 0 0, 0 right, from(#ff6f4c), to(#ff3808));
+    background: -o-linear-gradient(180deg, #ff6f4c, #ff3808);
+    background: -prefix-linear-zgradient(180deg, #ff6f4c, #ff3808);
+    background: -webkit-linear-gradient(180deg, #ff6f4c, #ff3808);
+    background: linear-gradient(180deg, #ff6f4c, #ff3808);
+}
+
+.new-hard-product > ul li.center .item:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+}
+
+.new-hard-product > ul li.center .item .rate {
+    color: #fff;
+    font-size: 52px;
+}
+
+.new-hard-product > ul li.center .item p {
+    font-size: 18px;
+}
+
+.new-hard-product > ul li.center .item h3 {
+    font-size: 30px;
+}
+
+.new-hard-product > ul li.center .item .btn {
+    background-color: #fff;
+    color: #ff6640;
+    margin: 50px 0 0;
+}
+
+.new-hard-product > ul li.center .item .day {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 89px;
+    height: 92px;
+    background: url("/public/images/activity/newhard_icon_day.png") no-repeat;
+}
+
+.new-hard-product > ul li.center .item .day span {
+    position: absolute;
+    transform: rotate(45deg);
+    display: block;
+    font-size: 20px;
+    top: 18px;
+    right: 10px;
+}
+
+.reg-modal {
+    width: 420px;
+}
+
+.layui-layer-content {
+    height: auto !important;
+}
+
+.reg-modal .company-form .msg {
+    margin: 0 0 10px;
+}
+
+.login-form .tab-content {
+    margin: 0;
+}
+
+.new-hard .login-title {
+    color: #3961cd;
+    background-color: #fff;
+    height: 56px;
+    margin: 0;
+    padding: 28px 0 0;
+}
+
+.new-hard .login-title.recommend-title {
+    padding: 0;
+    line-height: 56px;
+    color: #ff5c35;
+    font-size: 20px;
+}
+
+.new-hard .login-title.recommend-title .text-primary {
+    color: #666;
+    margin:0 3px;
+}
+.new-hard .register-form-layer{
+    top:120px;
+    padding:10px 0 0;
+    background-color: #fff;
+    border-radius: 8px;
+}
+.new-hard .register-form{
+    padding-top:10px;
+    padding-bottom:10px;
+}
+.login-form{
+    background:none;
+}
+.new-hard .register-form .company-form .agreement .agree-link{
+    margin:0;
+}

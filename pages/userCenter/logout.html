@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>注销帐号-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+	<#include "/include/style_new.html" />
+	<!-- 页面样式 -->
+	<link rel="stylesheet" href="${tzp.getContextPath()}/src/css/pages/account/login.css?v=2e0e651">
+	<link rel="stylesheet" href="${tzp.getContextPath()}/src/css/pages/account/register.css?v=cb37da5">
+	<style>
+		.slidercodeLayer{
+			padding: 25px;
+		}
+		.slidercodeLayer h3{
+			font-weight: bold;
+			margin:0 0 10px;
+			font-size: 16px;
+			line-height: 1.5;
+		}
+		.slidercodeLayer ul li{
+			line-height: 1.8;
+		}
+		.slidercodeLayer a{
+			margin:15px 0 0;
+		}
+	</style>
+</head>
+<body>
+<!-- header -->
+<#include "/include/login_header.html" />
+<!-- 页面开始 -->
+<div class="login-layer register-layer">
+	<div class="center-block login-container">
+		<!-- 找回密码form -->
+		<div class="login-form register-form forget-pwd">
+			<h3 class="login-title">注销帐号</h3>
+			<form class="form-horizontal company-form forget-pwd-form" id="changeBindMobileForm" method="post" action="${tzp.getContextPath()}/secure/findPwd/setLoginPwd">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<div class="list-group">
+							<span class="list-group-addon">当前手机号</span>
+							<input class="form-control" value="${userMobile!''}" readonly="readonly" maxlength="11" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<div class="list-group code-group">
+							<span class="list-group-addon">验证码</span>
+							<input class="form-control" id="code" name="phoneCode" placeholder="6位数字" maxlength="6">
+							<span class="text-center list-group-addon list-group-code-btn" id="getMobileCode">获取验证码</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group text-danger msg">
+					<div class="col-sm-12 error-div">
+						<i class="icon-font icon-error"></i><span class="vertical-middle" id="errorMsg"></span>
+					</div>
+				</div>
+				<div class="form-group submit">
+					<div class="col-sm-12">
+						<button type="submit" class="btn btn-lg btn-primary btn-block">确认注销</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<#include "/include/login_footer.html" />
+</div>
+<div style="display: none" class="slidercodeLayer" id="slidercodeLayer">
+	<h3>特别提醒：您正在对您的亿钱贷账户（以下称“账户”）进行销户操作，当您勾选“同意”并成功提交注销申请后，即表示您已充分阅读、理解并接受以下全部内容。如您有不同意的条款，请您立即停止账户注销操作。您提交注销账户申请后，该申请不可撤销，因此请您谨慎操作。</h3>
+	<ul>
+		<li>1、注销账户后将导致亿钱贷终止为您提供相关服务，同时您也会丧失以下权益：
+			<ul>
+				<li>（1）您将无法继续使用该账号进行登录操作，您账号的个人资料和账户信息将会被清空且无法恢复；</li>
+				<li>（2）您理解并同意，账号注销后，您未解除绑定的银行卡将自动解除，账号剩余的财产（包括但不限于：未提取的金额、未使用的优惠券等）视为您自愿、主动放弃，自账号注销时清零且无法恢复。</li>
+			</ul>
+		</li>
+		<li>2、在账号注销审核期间，如果您的账户涉及或可能涉及争议、纠纷（包括但不限于举报、投诉、诉讼、仲裁、国家有权机关调查等），亿钱贷平台有权自行中止或终止账户注销程序而无需另行经您同意。</li>
+		<li>3、注销账户同时应遵守《亿钱贷注册服务协议》的相关条款。</li>
+	</ul>
+	<p class="text-center">
+		<a id="closeBtn" class="btn btn-lg btn-primary btn-block">同意</a>
+	</p>
+</div>
+<#include "/include/bottom_script.html" />
+<!-- 页面js -->
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.min.js?v=9fc6b5c"></script>
+<script src="${tzp.getContextPath()}/src/js/tools/validate_cn.js?v=10c4607"></script>
+<script src="${tzp.getContextPath()}/src/js/plugins/jquery.CountDown.js?v=0f45807"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/account/logout.js?v=699f90a"></script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

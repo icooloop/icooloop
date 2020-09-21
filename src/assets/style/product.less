@@ -1,0 +1,168 @@
+@import "~@/assets/style/config.less";
+.bgproduct{background:#efefef;}
+.screen-list{
+    background:#fcfcfc;
+    .bd{
+        position: relative;
+        padding:15px 10px;
+        li{
+            line-height:48px;
+            .title{margin-right:25px;padding-left:10px;}
+            .u-label{margin-right:5px;font-size:12px;}
+            a{margin-right:25px;}
+            a.active,a:hover,a:active,a:focus{color:@primary-color;font-weight:700;}
+            a:hover{text-decoration:underline}
+        }
+        .moretype{
+            position: absolute;
+            left:50%;
+            bottom:-21px;
+            background:url(./../images/product/moretype.png) no-repeat;
+            line-height:42px;
+            width:305px;
+            text-align:center;
+            margin-left:-152px;
+            color:@muted-color;
+            cursor: pointer;
+        }
+    }
+}
+.m-layer-subscription{
+    .warntip{background:#fff0d1;color:#960;padding:10px 20px 15px;line-height:20px;
+        h4{text-align:center;line-height:30px;padding:0;margin:0;font-size:15px;font-weight:700;}
+        p{width:360px;margin:0 auto;}
+    }
+    .bd{padding:10px 0 25px;width:380px;margin:0 auto;
+        .amount{color:#f39118;}
+        .agreementdiv{font-size:13px;font-weight:700;color:#999;}
+        .btn-subscription{line-height:44px;height:44px;width:100%;font-size:16px;border-radius:5px;}
+        table{
+            td.product,td.transfer{line-height: 24px;}
+            td .text-muted{width:100px;}
+            td label{margin:0 5px 0 0;color:#666;line-height: 24px;}
+        }
+    }
+    .datatable tr{border:none;}
+    .datatable td{border:none;padding:0;line-height:40px;vertical-align: middle;
+        b{font-size:20px;padding-right:3px;font-weight:normal;}
+    }
+    .biddetail{
+        border-top:1px dashed #ccc;border-bottom:1px dashed #ccc;text-align:center;padding:20px 20px 25px;
+        .title{line-height:20px;}
+        .details{
+            display:flex;margin-top:20px;
+            li{flex:1;}
+            li+li{border-left:1px solid #ebebeb;}
+            .rate{font-size:36px;line-height:1;padding-top:4px;position:relative;display:inline-block;
+                em{font-size:24px;}
+            }
+            .limit{font-size:24px;line-height:1;height:40px;padding-top:16px;
+                em{font-size:16px;}
+            }
+        }
+    }
+}
+.mp-detail-total{
+    padding-right:405px;
+    position: relative;
+    background:#f9f9f9;
+    color:#666;
+    .bd{
+        padding:30px 70px;background:#fff;min-height:340px;
+        .title{font-size:20px;
+            .ulabel{font-size:14px;padding:4px 5px;}
+            em{color:#999;font-size:18px;}
+        }
+        .details{
+            display:flex;margin-top:40px;text-align:center;
+            li{flex:1;}
+            li+li{border-left:1px solid #ebebeb;}
+            h2{font-size:36px;line-height:1;padding-top:4px;position:relative;display:inline-block;
+                em{font-size:24px;}
+            }
+        }
+        .total{font-size:16px;line-height:30px;
+            em{font-size:18px;}
+        }
+        .progress{line-height:20px;}
+        .desc{display:flex;justify-content:space-between;line-height:40px;}
+    }
+    .sd{
+        position: absolute;
+        right:0;
+        top:0;
+        width:405px;
+        padding:20px 50px;
+        overflow: hidden;
+        .item{font-size:16px;line-height:40px;overflow: hidden;}
+        .amt{font-size:36px;line-height:50px;}
+        .bidtime{height:40px;}
+        .btndiv{
+            .btn{width:145px;line-height:50px;border-radius:5px;margin-top:20px;font-size:16px;}
+            .btn.btn-block{width:100%}
+        }
+    }
+    .sd.success{
+        padding-top:70px;
+        text-align: center;
+        .icon-right1{color: #999; font-size: 70px;line-height:1;}
+        .subscription-title{font-size:42px;color: #999;margin:15px 0 25px;line-height:1;}
+    } 
+}
+.mp-detail-total.transferdetail .bd{min-height:310px;
+    .details li+li{border:none;}
+}
+.mp-detail-details{
+    background:#fff;
+    margin-top:30px;
+    .maincontent{padding:40px 70px;background:#fff;position: relative;
+        .table td,.table th{border:1px solid #d2d2d2;height:40px;padding:5px 10px;width: 240px;}
+        .table.text-c td,
+        .table.text-c th{text-align: center;}
+        .recordtable th,
+        .detailtable td:nth-child(2n+1){background-color:#edf2f9;}
+        .detailtable td:nth-child(2n){width: 300px;}
+        .page-title{font-size:18px;line-height:1;}
+        .page-title .icon-font{margin-right:5px;}
+        hr{margin-top:30px;margin-bottom:30px;border:0;border-top: 1px dashed #eee;}
+    }
+    .nologin{text-align:center;font-size:18px;}
+}
+.subscription-success{
+    position: relative; width: 620px; background-color: #fff; margin: 0 auto;  border-radius: 20px;
+    .hd{color: #060001;padding:20px 60px;border-bottom:1px dashed #ddd;
+        .layer{padding-left:60px;}
+        .next{margin:40px 0 0;}
+        .icon-font{font-size: 70px;float: left;margin-right:50px;margin-left:70px;}
+        h2{font-size: 18px;margin-top:25px;font-weight:700;}
+        p{line-height:30px;color:#666;}
+    }
+    .bd{padding:50px;}
+    .process{padding-left:190px; background: url(./../images/product/bar.png) no-repeat 105px 8px;
+        li{text-align: left;position: relative;
+            span,h4{font-size: 16px;}
+            span{color: #999;}
+            h4{font-weight:700;}
+        }
+        li+li{margin-top:40px;}
+    }
+    .process.process2{background: url(./../images/product/bar2.png) no-repeat 105px 8px;}
+    .process.process3{background: url(./../images/product/bar3.png) no-repeat 105px 8px;}
+    .btn{width:220px;}
+}
+.ani-shopplus{	
+    position:fixed;top:50%;left:50%;	
+    margin:-180px 0 0 -60px;width:120px;	
+    text-align:center;line-height:1;	
+    font-size:60px;z-index:9999999999;	
+    text-shadow: 2px 2px 15px #ff7610;color:#ff7610;    
+    animation: shopplus 1.2s forwards 1;
+    .icon-font{font-size:100px;}   
+}   
+@keyframes shopplus{    
+    0%{opacity:0;transform:scale(.01);}    
+    45%{opacity:1;transform:scale(1);}    
+    75%{opacity:1;transform:scale(1);}    
+    100%{opacity:0;transform:scale(5);}
+}
+ 

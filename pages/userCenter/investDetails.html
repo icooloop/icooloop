@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<head>
+<html lang="zh-CN">
+    <title>出借详情-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+</head>
+<body class="bgmain">
+<!-- 页面开始 -->
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+	<div class="m-user">
+		<div class="wp clearfix pt-20">
+			<#include "/userCenter/include/userMenu_up.html" />
+			<div class="mu-right mu-details">
+				<div class="">
+					<div class="clearfix">
+						<div class="mu-details-headleft">
+							<div class="hd clearfix">
+								<div class="l">${vo.loanTitle!''}
+									<#if debtDetailVo.isPlan >
+									<span style="z-index: 9" class="u-what righttip"><span class="yi-icon">易</span>
+										<span class="notes">此资产为易智投退出后的散标资产</span>
+									</span>
+
+									</#if>
+								</div>
+								<div class="l ml-20"><span class="status">
+								<#if investStatus=='1' >
+								${vo.loanStatusStr!''}
+								<#else>
+								
+								${debtDetailVo.debtStatusStr!''}</#if></span></div>
+								<#if (investRecord)??>
+									<#if investRecord?size==1>
+										<#list investRecord as page>
+										<em class="l ml-30">出借时间&nbsp;&nbsp;&nbsp;${(page.investTime?string('yyyy-MM-dd HH:mm:ss'))!''}</em>
+										</#list>
+									<#else>
+										<div class="l ml-30 record">
+											出借记录&nbsp;&nbsp;${investRecord?size}次
+											<span class="u-what bottomtip"><i class="icon-font icon-info1"></i>
+												<span class="notes">
+													<#list investRecord as page>
+														<div><span class="text-muted pr-30">${(page.investTime?string('yyyy-MM-dd HH:mm:ss'))!''}</span>出借本金<span class="text-warning pl-5">${(page.investAmt!0)?string(',##0.00')}</span>&nbsp;元
+														<#if page.couponAmt?? && page.couponAmt gt 0>
+															，使用红包<span class="text-warning pl-10">${(page.couponAmt!0)?string(',##0.00')}</span>&nbsp;元
+														</#if>
+														<#if page.interestTicket?? && page.interestTicket gt 0>
+															，使用奖励券<span class="text-warning pl-10">${(page.interestTicket!0)?string(',##0.00')}%</span>
+														</#if>
+														</div>
+													</#list>
+												</span></span>
+										</div>
+									</#if>
+								<#else>
+								<em class="l ml-30">出借时间&nbsp;&nbsp;&nbsp;${(investTime?string('yyyy-MM-dd HH:mm:ss'))!''}</em>
+								</#if>
+								<em class="l ml-40"><i class="icon-font icon-clock mr-5"></i>${vo.repayModeStr}</em>
+								<#if investStatus!='1'>
+								<#if debtDetailVo.debtStatus=="1">
+									<#if canTransfer>
+									<div class="r"><a class="btn btn-primary" href="${tzp.getContextPath()}/spa/member/transfer/apply/${debtId}">转让</a></div>
+									<#else>
+										<div class="r"><a class="btn btn-primary btn-disabled" href="javascript:;">不可转让</a></div>
+									</#if>
+								<#elseif debtDetailVo.debtStatus=="2">
+								</#if>
+								
+								</#if>
+								<!-- <div class="more"><a class="btn btn-primary" href="javascript:;">转让</a></div> -->
+							</div>
+							<div class="mu-account-total clearfix total4">
+								<div class="item">
+									<h4>出借本金（元）</h4>
+									<h1>${(investAmt!0)?string(',##0.00')}</h1>
+								</div>
+								
+								<#if investStatus=='1' || debtDetailVo.debtStatus=="1" || debtDetailVo.debtStatus=="2" >
+								<div class="item hand">
+									<h4>预期收益（元）<span class="u-what righttip"><i class="icon-font icon-wenhao"></i>
+										<span class="notes">1、预期收益 = 预期项目利息 + 预期平台奖励<br>
+										 2、预期项目利息为该项目本身的利息<br>
+										 3、预期平台奖励包括出借奖励、奖励券收益、红包收益</span></span></h4>
+									<h1>${(planIncome + planAllAward + (planPenaltyIncome)!0)?string(',##0.00')}</h1>
+									<ul class="menu">
+										<li>预期项目利息（元）<span>${(planIncome!0)?string(',##0.00')}</span></li>
+										<li>预期平台奖励（元）<span>${(planAllAward!0)?string(',##0.00')}</span></li>
+										<#if planPenaltyIncome?? && planPenaltyIncome gt 0>
+											<li>逾期罚息+逾期利息（元）<span>${(planPenaltyIncome!0)?string(',##0.00')}</span></li>
+										</#if>
+									</ul>
+								</div>
+								</#if>
+								<div class="item">
+									<h4>项目期限</h4>
+									<h1>${prdPeriod!''}<em>${periodUnitStr!''}</em></h1>
+								</div> 
+								<div class="item">
+									<h4>协议约定年化利率</h4>
+									<h1 class="text-warning">${(prdRate!0)?string(',##0.00')}<em>%
+											<#if (awardRate > 0)>
+												+${(awardRate!0)?string(',##0.00')}%
+											</#if>
+										</em>
+									</h1>
+								</div>
+							</div>
+						</div>
+					</div>
+					<#if interestTicket??||(couponAmt?? && couponAmt gt 0) || investStatus!='1'>
+						<ul class="mu-details-headinfos clearfix">
+							<#if investStatus!='1'>
+							<li><em>起息时间</em>
+								<span>${calcPeroid!''}</span></li>
+							<li><em>到期时间</em>
+								<span>${settleDate!''}</span></li>
+							</#if>
+							
+							<#if couponAmt?? && couponAmt gt 0>
+							<li class="text-r"><em>使用红包</em>
+								<span class="text-warning">${(couponAmt!0)?string(',##0.00')}元</span></li>
+							</#if>
+							<#if interestTicket??>
+								<li class="text-r"><em>使用奖励券</em>
+									<span class="text-warning">+${interestTicket}</span></li>
+								</#if>
+							
+						</ul>
+					</#if>
+				</div>
+				<#if investStatus!='1'>
+				<div class="mu-details-module  mt-20" id="invest-div-1">
+					<div class="hd"><em>回款计划 （${repayedPeriod!''}/${planPeriod!''}）</em>
+					<#if debtDetailVo.debtStatus=='3' || debtDetailVo.debtStatus=='4'>
+					<div class="more">
+						<span class="c-666">已回本金(元)</span>
+						<span class="pl-10 pr-40">${(debtDetailVo.receivedPrincipal!0)?string(',##0.00')}</span>
+						<span class="c-666">已收收益(元)<span class="u-what righttip"><i class="icon-font icon-wenhao"></i>
+							<span class="notes">已收收益 = 项目利息 + 出借奖励 + 红包/奖励券收益</span></span></span>
+						<span class="pl-10">${((debtDetailVo.receivedIncome+couponAmt)!0)?string(',##0.00')}</span>
+						</div>
+					</#if>
+					</div>
+					<div class="bd">
+						<table class="table mu-table text-c">
+							<thead>
+								<tr>
+									<th>回款期数</th>
+									<th>到期时间</th>
+									<th>本金(元)</th>
+									<th>收益(元)</th>
+									<th>状态</th>
+								</tr>
+							</thead>
+							<tbody>
+								<#if (repaylist)??>
+									<#list repaylist as page>
+										<tr>
+											<td>${page.repayPeriod!''}</td>
+											<td>${(page.planDate?string('yyyy-MM-dd'))!''}</td>
+											<td>${(page.planPrincipal!0)?string(',##0.00')}</td>
+											<td>${((page.planInterest + page.ticketAward+ page.planPlatReward + page.planSubsidyAmt + page.planPenalty + page.planPenaltyInterest)!0)?string(',##0.00')}</td>
+											<td>${page.repayStatusStr!''}</td>
+										</tr>
+									</#list>
+									<#else>
+										<tr>
+											<td class="text-c" colspan="5"><img style="margin:15px 0" class="record" src="/public/images/user/record.png?v=9113ae7"></td>
+										</tr>
+								</#if>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				</#if>
+				<div class="mu-details-module mt-20">
+						<#if (showContract?? &&showContract)>
+						<div class="hd"><em>相关协议</em></div>
+						<div class="bd">
+							<#if investStatus=='1'>
+								<a target="_blank" href="${tzp.getContextPath()}/contract/exchange?assetsId=${vo.loanId!''}" class="text-warning">《${subscribeName!''}》</a><br/>
+								<a target="_blank" href="${tzp.getContextPath()}/contract/debt-risk" class="text-warning">《风险及禁止性行为提示书》</a>
+							<#else>
+								<#if beforApplyId??>
+									<a target="_blank" href="${tzp.getContextPath()}/member/invest/view/${beforApplyId!''}?contractType=3" class="text-warning">《债权转让协议》</a><br/>
+									<a target="_blank" href="${tzp.getContextPath()}/member/invest/view/${beforApplyId!''}?contractType=15" class="text-warning">《风险及禁止性行为提示书》</a>
+								</#if>
+								<#if currentApplyId??>
+									<a target="_blank" href="${tzp.getContextPath()}/member/invest/view/${currentApplyId!''}?contractType=3" class="text-warning">《债权转让协议》</a>
+								</#if>
+								<#if  debtDetailVo?? && debtDetailVo.originalDebtId??>
+								<#else>
+									<a target="_blank" href="${tzp.getContextPath()}/member/invest/view/${vo.loanId!''}?contractType=13" class="text-warning">《${subscribeName!''}》</a>
+									<#if agreement??>
+									<br/><a target="_blank" href="${tzp.getContextPath()}/member/invest/view/${debtDetailVo.debtId!''}?contractType=17" class="text-warning">《风险及禁止性行为提示书》</a> 
+									</#if>
+								</#if>
+								<br/>
+								<#if showGuarantee?? && showGuarantee  >
+									<a target="_blank" href="${tzp.getContextPath()}/member/invest/view/${vo.loanId!''}?contractType=19" class="text-warning">《保证担保函》</a> 
+								</#if>
+									<#if picMap?? && picMap?size gt 0  >
+										<#list picMap as picl>
+										<a target="_blank" href="${picl.fileLink!''}" class="text-warning">《借款保证保险保单》</a> 
+										</#list>
+								</#if>
+							</#if>
+						</div>
+					<#else>
+						<div class="hd"><em>风险及禁止性行为提示书</em></div>
+						<div class="bd">
+							<a target="_blank" href="${tzp.getContextPath()}/contract/template/risk" class="text-warning">《风险及禁止性行为提示书》</a>
+								<#if showGuarantee?? && showGuarantee  >
+									<a target="_blank" href="${tzp.getContextPath()}/member/invest/view/${vo.loanId!''}?contractType=19" class="text-warning">《保证担保函》</a> 
+								</#if>
+									<#if picMap?? && picMap?size gt 0  >
+									<#list picMap as picl>
+									<a target="_blank" href="${picl.fileLink!''}">《借款保证保险保单》</a> 
+									</#list>
+								</#if>
+						</div>
+					</#if>
+					
+				</div>
+				
+			<#if investStatus!='1'&&( debtDetailVo.debtStatus=='2'||debtDetailVo.debtStatus=='1')>
+					<div class="mu-tip  mt-20">
+				<div class="hd">温馨提示</div>
+				<div class="bd">
+					<p>1、哪些债权可以进行债权转让？</p>
+					<p>答：1) 债权处于非逾期状态；<br>
+						<span class="pl-25">2) 债权持有时间不小于30天；</span><br>
+						<span class="pl-25">3) 距离项目结清日不小于15天；</span><br>
+						<span class="pl-25">4) 由保险公司出具保单的乐保贷项目禁止转让，其他乐保贷产品可以转让。</span><br>
+						<span class="pl-25">5) 债权还款日当日不可发起债权转让申请，如需进行债权转让，可于还款后第二日进行尝试；</span><br>
+						<span class="pl-25">6) 出借时如使用了红包，债权持有时间需大于等于红包使用期限条件才能进行债权转让；</span><br>
+						<span class="pl-25">7) 如出借时参与了平台奖励活动，债权转让条件请参看相应活动细则。</span>
+					</p>
+					<p class="mt-20">2、债权转让的需要收手续费吗？</p>
+					<p>答：手续费为转让价格的0.5%，转让成功后收取；如债权持有大于等于90天，则免手续费;</p>
+				</div>
+				
+			</div>
+			</#if>
+			</div>
+		</div>
+	</div>
+</div>
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script>
+<script type="text/javascript">
+$(function(){
+	$("#investMenu").addClass("on");
+})
+
+function cancelApply(transferApplyId){
+    layer.confirm('您确定要撤回该笔债权转让吗？',{btn:['确认','取消'],closeBtn:false,title:false},function(){
+    	$.ajax({
+            url: basePath+'/member/transfer/cancel',
+            type: 'post',
+            dataType: 'json',
+            data: {'transferApplyId': transferApplyId},
+            cache: false,
+            async: false,
+            success: function (data) {
+            	var result = eval("("+data+")");
+				if (result.success!=undefined&&!result.success) {
+					layer.msg(result.msg); 
+				}else{
+					layer.msg(result.msg,function(){
+						location.href=basePath+'/spa/member/invest/holdlist';
+					})
+				}
+            }
+    	}); 
+    })
+}
+</script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

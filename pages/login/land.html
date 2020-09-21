@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>注册-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_access.html" />
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="${tzp.getContextPath()}/src/css/pages/account/land.css?v=80a77cb">
+</head>
+<body>
+<!-- 页面开始 -->
+<div class="m-access land-bg" id="banner">
+    <div class="m-access-layer">
+        <div class="centerwp">
+            <!--注册第一步-->
+            <div class="m-access-form registerform <#if code??>hasinvited</#if>" id="regModal">
+                <#if code??>
+                    <div class="invited">你的好友<span class="text-primary">${realName}</span>邀请你注册</div>
+                </#if>
+                <div class="bd iconlabel">
+                    <form class="forminfo pt-30" action="" id="personForm">
+                        <input type="hidden" name="userType" value="1" />
+                        <input type="hidden" id="userSpread" name="userSpread" value="" />
+                        <#if code??>
+                            <input type="hidden" value="${code!''}" name="recommendCode">
+                        </#if>
+                        <div class="formline">
+                            <div class="formlabel"><i class="icon-font icon-shouji1"></i></div>
+                            <div class="forminput"><input class="input-text" id="personMobile" name="userPhone" maxlength="11"  autocomplete="off"  value="${phone!}" placeholder="请输入手机号码"></div>
+                            <span class="icontip icon-font icon-error" for="personMobile"></span>
+                        </div>
+                        <div class="formline mt-20">
+                            <div class="formlabel"><i class="icon-font icon-lock1"></i></div>
+                            <div class="forminput"><input class="input-text" id="personPassword" name="userPassword" type="password" placeholder="请设置密码（6-20位数字和字母）" autocomplete="new-password" onpaste="return false"></div>
+                            <span class="eyepwd" id="changePwdType"><i class="icon-font icon-eye"></i></span>
+                            <span class="icontip icon-font icon-error" for="personPassword" style="right:30px;"></span>
+                        </div>
+                        <div class="formline mt-20">
+                            <div class="formlabel"><i class="icon-font icon-tuxing"></i></div>
+                            <div class="forminput"><input class="input-text input-code" maxlength="5" id="personCaptcha" name="randCode" placeholder="图形验证码"></div>
+                            <img src="${tzp.getContextPath()}/txjcaptcha.svl" class="randcode" id="personCaptchaImg" alt="图形验证码" onclick="this.src='${tzp.getContextPath()}/txjcaptcha.svl?'+Math.random()">
+                            <span class="icontip icon-font icon-error" for="personCaptcha"></span>
+                        </div>
+                        <div class="formline mt-20">
+                            <div class="formlabel"><i class="icon-font icon-duanxin"></i></div>
+                            <div class="forminput"><input class="input-text input-code" id="personVerifyCode" name="phoneCode" maxlength="6" placeholder="手机验证码"></div>
+                            <span class="icontip inputtip-code icon-font icon-error" for="personVerifyCode"></span>
+                            <div class="codebtn" id="codebtn"><a href="javascript:;" class="c-link" id="getPersonVerifyCode">获取验证码</a></div>
+                            <div class="helptip" id="codehelp"></div>
+                        </div>
+                        <div class="agreementdiv mt-20">
+                            <label>
+                                <input class="icheck" type="checkbox" id="personAgreement" name="agreement" value="true">
+                                <span class="vertical-middle agree-link">我已阅读并同意</span>
+                                <a target="_blank" href="${tzp.getContextPath()}/contract/zhuce">《亿钱贷注册协议》</a>
+                                <a target="_blank" href="${tzp.getContextPath()}/spa/about/risktip">《风险及禁止性行为提示书》</a>
+                            </label>
+                        </div>
+                        <div class="tipdiv mt-10" id="formtip1"></div>
+                        <div class="formline mt-10">
+                           <button type="submit" class="btn btn-submit">立即注册</button>
+                        </div>
+                        <div class="text-c mt-20">
+                         		  已有账号? <a class="text-primary" href="${tzp.getContextPath()}/secure/login">请登录</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="md-intro">
+    <ul class="wp clearfix">
+        <li><a href="javascript:;"><i class="icon-font icon-company2"></i>
+            <h2>上市背景</h2>
+            <p>A股上市公司控股</p>
+        </a></li>
+        <li><a href="javascript:;"><i class="icon-font icon-socket"></i>
+            <h2>银行存管</h2>
+            <p>新网银行资金存管</p>
+        </a></li>
+        <li><a href="javascript:;"><i class="icon-font icon-bridge"></i>
+            <h2>合规运营</h2>
+            <p>拥抱监管，合规发展</p>
+        </a></li>
+        <li><a href="javascript:;"><i class="icon-font icon-company-verify"></i>
+            <h2>风险管理</h2>
+            <p>多重风控优质资产</p>
+        </a></li>
+    </ul>
+</div>
+<div class="md-project">
+    <div class="hd">优质项目 自由选择</div>
+    <div class="bd">
+        <ul class="wp clearfix">
+            <li class="l item1">
+                <h2>易智投</h2>
+                <h6>自动匹配&nbsp;&nbsp;分散出借</h6>
+            </li>
+            <li class="l item2">
+                <div class="title newer">新手专享1个月</div>
+                <div class="rate">12<em>%</em></div>
+                <p>协议约定年化利率</p>
+            </li>
+            <li class="l item3">
+                <h4>委托期限</h4>
+                <h4 class="text-import">30天</h4>
+                <h4 class="mt-30">起投金额</h4>
+                <h4 class="text-import">1000元</h4>
+            </li>
+            <li class="l item4">
+                <a href="#banner" class="btn-go arctic_scroll">立即委托</a>
+            </li>
+        </ul>
+        <ul class="wp clearfix">
+            <li class="l item1">
+                <h2>优质散标</h2>
+                <h6>多种选择&nbsp;&nbsp;方便灵活</h6>
+            </li>
+            <li class="l item2">
+                <div class="title">微花贷</div>
+                <div class="rate">8<em>%</em></div>
+                <p>协议约定年化利率</p>
+            </li>
+            <li class="l item3">
+                <h4>委托期限</h4>
+                <h4 class="text-import">30天</h4>
+                <h4 class="mt-30">起投金额</h4>
+                <h4 class="text-import">100元</h4>
+            </li>
+            <li class="l item4">
+                <a href="#banner" class="btn-go arctic_scroll">立即出借</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="md-steps">
+    <div class="wp bd">
+        <div class="title">简单四步，新手壕赚888元</div>
+        <ul class="mt-50 clearfix">
+            <li>
+                <div class="num">01</div>
+                <div class="pic"><img src="/public/images/access/landstep1.png?v=34248bd" alt=""></div>
+                <p>30秒快速注册<br>赚888元红包</p>
+            </li>
+            <li>
+                <div class="num">02</div>
+                <div class="pic"><img src="/public/images/access/landstep2.png?v=cb26d06" alt=""></div>
+                <p>开通新网银行存管<br>资金有保障</p>
+            </li>
+            <li>
+                <div class="num">03</div>
+                <div class="pic"><img src="/public/images/access/landstep3.png?v=e0cb47c" alt=""></div>
+                <p>选择合适出借项目<br>专享12%约定年化利率</p>
+            </li>
+            <li>
+                <div class="num">04</div>
+                <div class="pic"><img src="/public/images/access/landstep4.png?v=7839b07" alt=""></div>
+                <p class="line1">出借立返享收益</p>
+            </li>
+        </ul>
+        <div class="btndiv"><a href="#banner" class="btn-go arctic_scroll">立即注册，领取福利</a></div>
+    </div>
+</div>
+<div class="md-footer">
+    <p>亿钱贷　|　© 2018 All Rights Reserved　|　深圳市亿钱贷电子商务有限公司    <a href="http://www.miit.gov.cn/" class="keeplink" target="_blank" rel="noopener noreferrer">粤ICP备14041671号-1</a>　|　市场有风险，出借需谨慎</p>
+</div>
+<#include "/include/script_up.html" />
+<!-- 页面js -->
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.js?v=eb7ebdc"></script>
+<script src="${tzp.getContextPath()}/src/js/tools/validate_cn.js?v=10c4607"></script>
+<script src="${tzp.getContextPath()}/src/js/plugins/jquery.CountDown.js?v=0f45807"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/icheck/icheck.min.js?v=3144e54"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/account/land.js?v=3230635"></script>
+<script>
+    $('.m-footer').hide();
+    var regStart = '${regStart!1}';
+</script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

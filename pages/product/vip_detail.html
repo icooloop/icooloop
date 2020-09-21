@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>详情-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="${tzp.getContextPath()}/src/css/main/product.css?v=5d7b9e2">
+</head>
+<body class="bgmain">
+<!-- header -->
+<#include "/include/header_up.html" />
+<!-- 页面开始 -->
+<div class="mp-detail mp-vipdetail pt-40 pb-40">
+	<div class="wp">
+		<div class="clearfix">
+			<div class="mp-detail-info">
+				<h3 class="title">
+                    <span class="name">${(defaultPrd.getFontStr())!'委托出借服务'}</span>
+                    <span class="type">${(defaultPrd.prdNo)!''}</span>
+                </h3>
+				<div class="info clearfix mt-50">
+					<div class="item money">
+						<h2>￥<span class="text-info">${(defaultPrd.minAmount?string(',##0.00'))!' - '}</span></h2>
+						<p>最低委托金额（元）</p>
+					</div>
+                    <div class="item rate">
+						<h2 class="text-info">${(defaultPrd.prdRate?string('#.##'))!' - '}<span>%
+						<#if defaultPrd.awardRate?? && defaultPrd.awardRate gt 0 >+${defaultPrd.awardRate}%</#if></span></h2>
+                        <p>协议约定年化利率<span class="u-what"><i class="icon-font icon-wenhao"></i><span class="notes">此利率不构成亿钱贷对出借人的<br>任何承诺，最终收益以实际为准</span></span></p>
+                    </div>
+                    <div class="item term">
+                        <h2><st>${(defaultPrd.prdPeriod)!' - '}</st><span>个月</span></h2>
+                        <p>借款期限</p>
+                    </div>
+                </div>
+			</div>
+			<#if defaultPrd.prdStatus=='3' >
+			<form class="mp-detail-subscription" id="investForm">
+			        		<input type="text" id="assessStatus" value="${(assessStatus)!0}" class="passwordhide">
+				<p class="text-default">剩余可委托金额（元）<#if accountVo??&&(accountVo.availableAmt>=100) ><a class="btn btn-info btn-xs r" id="gotoRechargeBtn" target="_blank" href="${tzp.getContextPath()}/spa/member/account/recharge"  title="">充值</a></#if></p>
+                <h2 class="pt-10"> ${(defaultPrd.getRemainAmountFront()?string(',##0.00'))!' - '}</h2>
+				<p class="pt-10">账户余额 ${((accountVo.availableAmt)!0)?string(',##0.00')}元<a class="btn btn-xs btn-info r" id="maxInvestBtn" href="javascript:;" >最大出借</a></p>
+                <div class="subscription-input" id="subscriptionDiv">
+                    <input maxlength="8" onkeyup="value=value.replace(/\b(0+)/gi,'');value=value.replace(/[^\d]/gi,'');checkInpValid(this);" type="text" class="input-text" id="money" placeholder="请输入委托出借金额">
+					<span class="unit">元</span>
+				</div>
+				<div class="tipdiv"></div>
+				<button type="submit" class="btn btn-submit btn-info" id="confirmBtn">委托出借</button>
+			</form>
+			<#elseif defaultPrd.prdStatus=='2' >
+				<div class="mp-detail-subscription">
+					<div class="subscription-success text-c">
+	    				<i class="icon-font icon-right1"></i>
+						<h2 class="subscription-title">${(defaultPrd.publishTime?string('HH:mm'))!'-'}开启</h2>
+	    			</div>
+				</div>
+			<#else>
+				<div class="mp-detail-subscription">
+				<div class="subscription-success text-c">
+    				<i class="icon-font icon-right1"></i>
+					<h2 class="subscription-title">已满额</h2>
+					<#if defaultPrd.finishTime??>
+					<p class="text-muted subscription-time">募集完成时间  ${(defaultPrd.finishTime?string('yyyy-MM-dd HH:mm:ss'))!''}</p>
+					</#if>
+    				
+    			</div>
+			</div>
+			</#if>
+			
+		</div>
+	
+	<#if defaultPrd?? &&defaultPrd.prdStatus??&& defaultPrd.prdStatus == '3'>
+        	<input type="hidden" id="currentPrdId" value="${(defaultPrd.prdId)!''}">
+        <#else>
+        	<input type="hidden" id="currentPrdId" value="">
+        </#if>
+        
+        <input type="hidden" id="availableAmt" value="${(accountVo.availableAmt)!0}">
+        <input type="hidden" id="currentRemainAmount" value="${(defaultPrd.getRemainAmountFront())!'0'}">
+        <input type="hidden" id="currentMaxAmount" value="${(defaultPrd.maxAmount)!'0'}">
+        <input type="hidden" id="currentMinAmount" value="${(defaultPrd.minAmount)!'0'}">
+        <input type="hidden" id="loginFlag" value="<#if _p2p_member_user??>1<#else>0</#if>" >      
+	
+	
+		<div class="mp-vipdetail-desc mt-20" id="detailDesc">
+			<div class="hd">
+		    	<div class="info1">一般1天</div>
+		    	<div class="prdPeriod"><span class="target-month">${(defaultPrd.prdPeriod)!' - '}</span>个月后</div>
+		        <img class="banner" src="${tzp.getContextPath()}/public/images/product/transfer_detail_info.png?v=9b3c809">
+	        </div>
+	        <!-- 详情数据 -->
+	        <ul class="tabs clearfix mt-20">
+	            <li><a href="javascript:;">服务详情</a></li>
+	            <li><a href="javascript:;">出借资产明细</a></li>
+	            <li><a href="javascript:;">委托记录</a></li>
+	        </ul>
+	        <div class="maincontent">
+	            <section class="tab-pane base-info">
+	           <table>
+                    <tr>
+                        <td>服务编号</td>
+                        <td class="target-prdno">${(defaultPrd.prdNo)!''}</td>
+                    </tr>
+                    <tr>
+                        <td>简介</td>
+                        <td>易智投是亿钱贷推出的委托出借工具，在基于出借人的自主选择前提下，通过系统自动匹配，协助出借人分散出借。</td>
+                    </tr>
+                    <tr>
+                        <td>协议约定年化利率</td>
+                        <td>
+                        	<span class="target-rate">${(defaultPrd.prdRate?string('#.##'))!' - '}</span>%
+                        	
+                        	<#if defaultPrd.awardRate?? && defaultPrd.awardRate gt 0 >
+                        	<span class="target-award-rate-div" ><span class="target-award-rate" >+${(defaultPrd.awardRate?string('#.##'))}</span>%</span>
+                        	</#if>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>委托期限</td>
+                        <td><span class="target-month">${(defaultPrd.prdPeriod)!' - '}</span>个月，指亿钱贷为出借人提供“易智投”出借服务的期限，委托期内，
+                        出借人委托出借金额无法取出，易智投的债权也无法转让；委托出借的实际标的期限可能会超过委托期限，委托期满，根据出借人的选择，
+                        授权平台将全部未到期债权进行债权转让或者继续持有未到期债权直至到期。平台不承诺债权转让成功，未能成功转让的债权，出借人需持相应借款项目直至到期。</td>
+                    </tr>
+                    <tr>
+                        <td>出借范围</td>
+                        <td>见“出借资产明细”下的具体借款标的，平台将依据出借人的风险能力评估结果匹配相应风险等级的标的。</td>
+                    </tr>
+                    <tr>
+                        <td>授权出借规则</td>
+                        <td>最低委托金额<span class="target-min">${(defaultPrd.minAmount?string(',##0.00'))!' - '}</span>元，最高委托金额<span class="target-max">${(defaultPrd.maxAmount?string(',##0.00'))!' - '}</span>元（将依据出借人的风险能力评估结果进行调整）。</td>
+                    </tr>
+                    <tr>
+                        <td>回款方式</td>
+                        <td>委托期满，已到期的债权和转让成功的债权的本息等金额，在扣除平台服务费用后，返回至账户可用余额。未到期选择继续持有的和债权转让失败的，按相应借款标的项目的具体还款日回款。</td>
+                    </tr>
+                    <tr>
+                        <td>起息日</td>
+                        <td>17：00前委托出借成功，预计当天起息；17：00后委托成功，预计次日起息。以实际起息日为准。</td>
+                    </tr>
+                    <tr>
+                        <td>费用说明</td>
+                         <#if _p2p_member_user??>
+                     	<td>平台服务费用详见<a class="text-primary" target="_blank" href="${tzp.getContextPath()}/contract/entrust?assetsId=${defaultPrd.prdId!''}">《委托出借协议》</a>。</td>
+                     	<#else>
+                     	<td>平台服务费用详见<a class="text-primary" onclick="layerLogin();" href="javascript:void(0)" >《委托服务协议》</a>。</td>
+                     </#if>
+                    </tr>
+                    <tr>
+                        <td>常见问题</td>
+                        <td>参见帮助中心<a class="text-primary" href="https://www.yiqiandai.com/help/question?faqType=8f3020812c54497b94718882fd127485" >易智投相关说明</a></td>
+                    </tr>
+                </table>
+	            </section>
+	            <section class="tab-pane detail-list">
+	                <p class="text-muted">说明：<br>
+						1. 易智投服务匹配出借的项目包括平台已发布或待发布的所有直接借款项目和债权转让项目；<br>
+						2. 以下列表中的项目可能因应实际情况发生增减，可在我的账户-我的易智投详情页面查询实际匹配出借情况。</p>
+	                <table class="mt-10">
+	                    <thead>
+	                        <tr>
+	                            <th>项目名称</th>
+	                            <th>借款总额/待投金额(元)</th>
+	                            <th>借款期限/剩余期限</th>
+	                            <!-- <th>风险评级</th> -->
+	                            <th>详情</th>
+	                        </tr>
+	                    </thead>
+	                    <tbody id="assetsRecordTable">
+	                    </tbody>
+	                </table>
+	                <div class="page text-c">
+	                    <input name="pageNo1" type="hidden" id="pageNoAsset" value="1">
+	                    <div id="laypage-assets" class="pagination"></div>
+	                </div>
+	            </section>
+	            <section class="tab-pane reload">
+	                <table>
+	                    <thead>
+	                        <tr>
+	                            <th>出借人</th>
+	                            <th>委托金额(元)</th>
+	                            <th>委托时间</th>
+	                        </tr>
+	                    </thead>
+	                    <tbody id="investRecordTable">
+	                    </tbody>
+	                </table>
+	                <div class="page text-c">
+	                    <input name="pageNo2" type="hidden" id="pageNoInvest" value="1">
+	                    <div id="laypage-invest" class="pagination"></div>
+	                </div>                
+	            </section>
+	        </div>
+	    </div>
+	</div>
+</div>
+<!-- <div class="mp-vipdetail novip pt-40 pb-40"> -->
+<!-- 	<div class="bd wp"> -->
+<!-- 		<div><img src="/public/images/product/vip.png?v=52ec504" alt=""></div> -->
+<!-- 		<h2>此项目仅限VIP用户查看</h2> -->
+<!-- 		<h6><span id="countDownTxt">5</span>秒后自动返回首页...</h6> -->
+<!-- 		<div><a class="btn btn-info btn-go"  href="javascript:;">查看其它项目</a></div> -->
+<!-- 	</div> -->
+<!-- </div> -->
+
+
+<div id="subscriptionLayer" class="m-layer-subscription layui-layer-wrap">
+    <input value="1.09" type="hidden" id="interestInputAmt" name="interestInputAmt">
+   	<div class="warntip">
+   		<h4>流动性风险提示</h4>
+   		<p>委托期满，未到期的债权授权平台发起债权转让，平台不承诺债权转让成功，未能成功转让的债权，出借人需持有相应借款项目直至到期。</p>
+   	</div>
+    <div class="bd">
+        <table class="table datatable">
+            <tbody>
+            <tr>
+                <td class="text-muted2" width="120">服务名称：</td>
+                <td class="target-prdname">${(defaultPrd.getFontStr())!'委托出借服务'}</td>
+            </tr>
+            <tr>
+                <td class="text-muted2">服务编号：</td>
+                <td class="target-prdno">${(defaultPrd.prdNo)!''}</td>
+            </tr>
+            <tr>
+                <td class="text-muted2">委托出借金额：</td>
+                <td><b id="investAmtTd">100</b>元</td>
+            </tr>
+            <tr id="voucherTicketTr">
+                <td class="text-muted2">选择优惠券<span class="u-what"><i class="icon-font icon-wenhao"></i><span class="notes">平台自动匹配的红包/奖励券不保证符合您的最优选择，以您实际确认使用为准</span></span> ：</td>
+                <td class="discount-type" id="selectVoucherTd">
+                    <div id="voucherDiv">
+                        <select id="selectVoucher" name="" class="selectpicker discount-select" multiple="">
+<!--                             <option data-limitamount="30000" data-awardamount="300" data-adddays="0" data-awardtype="2" value="0a242180554a4beaa3305d2af41c9c3a">单笔出借满30000返300(限6个月以上)</option> -->
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+	            <td class="text-muted2">预期收益：</td>
+	            <td><span class="amount"><b id="interestAmtTd">0</b>元</span><span class="u-what bottomtip"><i class="icon-font icon-wenhao"></i><span class="notes" id="interestAmtDetail"></span></span></td>
+	        </tr>
+            <tr>
+                <td class="text-muted2">出借标的范围：</td>
+                <td class="product" id="prdtypeTd">
+                    <label> 企链贷/三农贷/优车贷/微花贷/微企贷</label>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-muted2">委托债转：</td>
+                <td class="transfer">
+                    <label>
+                        <input class="icheck" checked type="checkbox" name="quitType" id="quitType" value="1">
+                        委托期满，授权平台将未到期债权自动发起债权转让
+                    </label>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="agreementdiv mt-10">
+            <label class="">
+                <input class="icheck" type="checkbox" id="agreement" name="agreement" value="true">
+                <span class="vertical-middle agree-link">我已阅读并同意</span>
+                 <a target="_blank" id="encontract" href="${tzp.getContextPath()}/contract/entrust?assetsId=${defaultPrd.prdId!''}">《委托出借协议》</a>
+                   <a target="_blank" href="${tzp.getContextPath()}/contract/entrust-risk">《风险及禁止性行为提示书》</a>
+                <#if showTemplate??&&showTemplate=='1'>
+                <a target="_blank" href="${tzp.getContextPath()}/contract/liquidity">《流动性风险提示书》</a>
+                </#if>
+            </label>
+        </div>
+        <div class="text-c mt-20" id="submitText">
+            <button class="btn btn-info btn-subscription" id="submitSubscriptionBtn" data-loading-text="等待中...">确认</button>
+        </div>
+        <p class="text-c text-muted2 mt-15">市场有风险，出借需谨慎</p>
+    </div>
+</div>
+
+<input type="hidden" id="userAssessLimit" value="${(userAssessLimit)!0}">
+<input type="hidden" id="userId" value="${(_p2p_member_user.userId)!''}">
+<!--风险提示-->
+<div id="riskModel" style="display: none;padding:30px;">
+    <p>您的风险承受能力为<span class="text-danger" ><#if  _p2p_member_user??>${_p2p_member_user.riskAss!''}</#if></span>，相对应的出借金额上限为<span class="text-danger">${userAssessLimit!0}万元</span></p>
+    <p>当前累计已出借<span class="text-danger" id="totalDueStr">0.00</span>元,请修改出借金额或重新进行<a class="text-primary" href="${tzp.getContextPath()}/member/auth/risk-ass">风险评测</a></p>
+    <p class="text-c mt-30"><button class="btn btn-primary" style="padding:0 12px;line-height:30px;height:30px;" onclick="javascript:layer.closeAll()">我知道了</button></p>
+</div>
+
+
+<!--风险评估-->
+<div class="m-layer-risk" id="userRiskDiv">
+	<div class="bd">
+		<div class="closeicon" onclick="layer.closeAll()"><i class="icon-font icon-close"></i></div>
+	    <div class="pic"><img src="${tzp.getContextPath()}/public/images/product/img_risk.png?v=1f5111a"></div>
+	    <h5><#if riskTip??&&riskTip=='0'>您风险评估已过期<#else>您尚未完成风险评估</#if><br>完成评估后即可继续出借</h5>
+	    <h6>为了让我们更好的了解您的风险偏好与风险承受能力</h6>
+	    <div><a class="btn btn-primary" href="javascript:;" onclick="needRisk()">立即评测</a></div>
+    </div>
+</div>
+<input type="hidden" id="ifVip" value="false"/>
+<input type="hidden" value="<#if _p2p_member_user??&&_p2p_member_user.isDepositary??  >${_p2p_member_user.isDepositary!''} </#if>" id="isDepositary"><!--风险评估-->
+
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/bootstrap.min.js?v=1d2c32c"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/icheck/icheck.min.js?v=3144e54"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.min.js?v=9fc6b5c"></script>
+<script src="${tzp.getContextPath()}/src/js/tools/validate_cn.js?v=10c4607"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/select/bootstrap-select.js?v=f7c1e57"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script>
+<script src="${tzp.getContextPath()}/public/js/jquery.SuperSlide.2.1.1.js?v=c85539b"></script>
+<!-- 页面js -->
+<script src="${tzp.getContextPath()}/src/js/pages/product/zeroOnePage.js?v=ae2219e"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/product/autobid_detail.js?v=82b0114"></script>
+<script type="text/javascript">
+var platRate=${defaultPrd.prdRate!'0'}//出借利率
+var awardRate=${defaultPrd.awardRate!'0'};//奖励利率
+</script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

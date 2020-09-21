@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>易智投-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+      <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+    <style type="text/css">
+    .label-exit{color:#993333;border:1px solid #b56c6c;border-radius:3px;font-size:12px;padding:3px 5px;}
+    </style>
+</head>
+<body class="bgmain">
+<!-- 页面开始 -->
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+	<div class="m-user">
+		<div class="wp clearfix pt-20">
+			<#include "/userCenter/include/userMenu_up.html" />
+			<div class="mu-right mu-autobid">
+				<div class="mu-autobid-detail">
+					<div class="mu-tabs">
+						<ul class="tabs clearfix" id="bondTypeList">
+							<li data-type="1"><a href="javascript:;">申请中(${investCount!0})</a></li>
+							<li class="on" data-type="2"><a href="javascript:;">持有中(${repayCount!0})</a></li>
+							<li data-type="3"><a href="javascript:;">已到期</a></li>
+						</ul>
+					</div>
+					<div class="bd" id="tableList">
+							<input name="pageSize" type="hidden" id="pageSize" value="10" />
+							<!-- 申请中div -->
+							<div data-id="1" style="display: none" class="js-control-div">
+								<div class="u-wxtip">当天17点前发布的易智投，将会在当天17点结束募集；当天17点后发布的易智投，将在次日17点结束募集。</div>
+								<ul class="mu-autobid-data clearfix mt-40">
+									<li>
+										<span>委托出借本金(元)</span>
+										<em class="txtInvestAmt">${invest1}</em>
+									</li>
+									<li>
+										<span>预期收益(元)</span>
+										<em class="txtIncomeAmt">${income1}</em>
+									</li>
+								</ul>
+								<table class="mu-table text-c mt-40" >
+									<thead>
+										<tr>
+											<th>委托时间</th>
+											<th>易智投服务编号</th>
+											<th>委托出借本金（元）</th>
+											<th>协议约定年化利率</th>
+											<th>委托期限 </th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+								<input name="pageNo1" type="hidden" id="pageNo1" value="1" />
+			                   	<div id="laypage1" class="page pagination" style="display: none;"></div>	
+		                   	</div>		
+	                   		<!-- 委托中div -->	
+		                   	<div data-id="2" class="js-control-div">
+								<ul class="mu-autobid-data clearfix mt-20">
+									<li>
+										<span>待收本金(元)</span>
+										<em class="txtInvestAmt">${invest2}</em>
+									</li>
+									<li>
+										<span>待收收益(元)</span>
+										<em class="txtIncomeAmt">${income2}</em>
+									</li>
+								</ul>			
+								<table class="mu-table text-c mt-40">
+									<thead>
+										<tr>
+											<th>易智投服务编号</th>
+											<th>待收本金（元）</th>
+											<th>协议约定年化利率</th>
+											<th>待收收益（元）</th>
+<!-- 											<th>委托期限 </th> -->
+											<th>到期时间</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+								<input name="pageNo2" type="hidden" id="pageNo2" value="1" />
+			                   	<div id="laypage2" class="page pagination" style="display: none;"></div>
+		                   	</div>
+	                   		<!-- 到期的div -->
+							<div data-id="3" style="display: none" class="js-control-div">
+								<ul class="mu-autobid-data clearfix mt-20">
+									<li>
+										<span>已收本金(元)</span>
+										<em class="txtInvestAmt">${invest3}</em>
+									</li>
+									<li>
+										<span>已收收益(元)</span>
+										<em class="txtIncomeAmt">${income3}</em>
+									</li>
+								</ul>									
+								<table class="mu-table text-c mt-40" >
+									<thead>
+										<tr>
+											<th>易智投服务编号</th>
+											<th>已收本金（元）</th>
+											<th>协议约定年化利率</th>
+											<th>已收收益（元）</th>
+											<th>到期时间</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+								<input name="pageNo3" type="hidden" id="pageNo3" value="1" />
+			                   	<div id="laypage3" class="page pagination" style="display: none;"></div>
+		                   	</div>	
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+</div>
+<input type="hidden" id="tabType" value="${tabType!''}">
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/user/autobid.js?v=a633f19"></script>
+</body>
+</html>

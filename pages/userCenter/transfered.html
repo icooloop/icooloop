@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>债权转让-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+	<#include "/include/style_user.html" />
+</head>
+<body class="bgmain">
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+	<div class="m-user">
+        <div class="wp">
+            <div class="breadcrumb"><span><a href="${tzp.getContextPath()}/">亿钱贷首页</a></span>&gt;<span><a href="${tzp.getContextPath()}/spa/member/account/index">我的账户</a></span>&gt;<span><a href="${tzp.getContextPath()}/spa/member/invest/holdlist">散标资产</a></span>&gt;<span>债权详情</span></div>
+			<div class="mu-zqdetail-total">
+				<div class="hd">
+					<span class="name">${vo.loanTitle!''}</span>
+					<span class="split ml-10 mr-10">|</span>
+					<span class="text-muted">${vo.repayModeStr}</span>
+				</div>
+				<div class="bd">
+					<ul class="total clearfix">
+						<li>
+							<h2>${(prdRate!0)?string(',##0.00')}<em>%
+											<#if (awardRate > 0)>
+												+${(awardRate!0)?string(',##0.00')}%
+											</#if>
+										</em></h2>
+							<h6>原项目协议约定年化利率<span class="u-what"><i class="icon-font icon-wenhao"></i><span class="notes">此利率不构成亿钱贷对出借人的<br>任何承诺，最终收益以实际为准</span></span></h6>
+						</li>
+						<li>
+							<h2>${(sellTransferPrice!0)?string(',##0.00')}
+<!-- 								<#if discountScale?? && discountScale gt 0> -->
+<!-- 									<span class="u-what righttip"><i class="icon-font icon-wenhao"></i> -->
+<!-- 										<span class="notes">转让金额 = 债权本金${(debtDetailVo.planPrincipal!0)?string(',##0.00')}元  X (1 - 折价${(discountScale*100)?string(',##0.0')}%) + 垫付利息${(advanceInterest!0)?string(',##0.00')}元 </span></span></h4> -->
+<!-- 										</#if> -->
+							</h2>
+							<h6>转让金额（元）</h6>
+						</li>
+						<li>
+							<h2>${sellRemainDays!''}</h2>
+							<h6>剩余期限</h6>
+						</li>
+					</ul>
+					<div class="transferinfo">
+						<div class="title">债转信息</div>
+						<ul class="infos clearfix">
+							<li><em>债转本金（元）</em>
+								<span>${(sellTransferPrincipal!0)?string(',##0.00')}</span></li>
+							<li><em>手续费</em>
+								<span>${(sellTransferFee!0)?string(',##0.00')}</span></li>
+							<li><em>垫付利息（元）<span class="u-what"><i class="icon-font icon-wenhao"></i><span class="notes">这是您收到的垫付利息，为该笔债权自上个<br>还款日至成功转让日的期限内，未结算的利息</span></span></em>
+								<span>${(sellAdvanceAmt!0)?string(',##0.00')}</span></li>
+								<#if discountScale?? && discountScale gt 0>
+								<li><em>折价比例</em>
+								<span>${(discountScale*100)?string(',##0.0')}%</span></li>
+								</#if>
+						</ul>
+						<div class="text-r mt-10"><a href="${tzp.getContextPath()}/member/invest/detail/${debtId}" class="text-primary">原项目资产详情&gt;</a></div>
+					</div>
+					<div class="transferstatus">
+						<div class="status"><img src="${tzp.getContextPath()}/public/images/user/transfered.png?v=60b011d" alt=""></div>
+						<div class="desc">转让日期：${(sellDealTime?string('yyyy-MM-dd HH:mm:ss'))!''} <br>
+						 <a target="_blank" href="${tzp.getContextPath()}/member/invest/view/${currentApplyId!''}?contractType=3"  class="text-primary">《债权转让协议》</a></div>
+<!-- 						<div class="desc">转让日期：${(settleDate?string('yyyy-MM-dd HH:mm:ss'))!''} <br> <a href="" class="text-primary">《债权转让协议》</a></div> -->
+					</div>
+				</div>
+			</div>
+			
+			<div class="mu-zqdetail-details mt-30" id="transferDetails">
+				<div class="mu-tabs hd mt-20">
+					<ul class="tabs clearfix" id="bondTypeList">
+						<li><a href="javascript:;">原项目详情</a></li>
+						<li><a href="javascript:;">原项目风险评估</a></li>
+						<li><a href="javascript:;">原项目出借记录</a></li>
+						<li><a href="javascript:;">原项目还款计划</a></li>
+						<#if loanLatter?? && vo.latterShow?? && vo.latterShow =='1'>
+						<li><a href="javascript:;">贷后管理</a></li>
+						</#if>
+					</ul>
+				</div>
+				<div class="bd">
+					<section id="protectDetail">
+				<#if vo.oldRemark??>
+		        <!-- 老数据 -->
+		        	${vo.oldRemark!''}
+		        <#else>
+		         <#if vo.prdType=='3'>
+		          <div class="page-title">
+	                    <i class="icon-font icon-flag text-primary"></i>项目介绍
+	                </div>
+	                <div class="item-content mt-20">
+						<p class="textIndent2">该项目主要针对群体为具有良好信用记录的个人与企业。在该群体向第三方机构提供不动产作为抵押且获机构对应的增信（包括但不限于担保函、保函或借款保证保险）支持的基础上所提供的信息撮合服务。</p>
+						<div><a target="_blank" href="${tzp.getContextPath()}/public/pdf/JKBXBXBDMB.pdf" class="text-primary">《借款保证保险投保单模板》</a></div>
+					</div>
+	                <hr/>
+		         </#if>
+	                <div class="page-title">
+	                    <i class="icon-font icon-flag text-primary"></i>借款人信息
+	                </div>
+	                <div class="item-content">
+	                    <table class="table detailtable mt-30">
+	                        <tbody>
+	                        <tr>
+	                            <td>
+	                                借款人
+	                            </td>
+	                            <td>
+	                                <#if personFarm??>${personFarm.userNameStr!'--'}</#if>
+	                                <#if companyScm??>${companyScm.companyNameStr!'--'}</#if>
+	                                <#if companyFarm??>${companyFarm.companyNameStr!'--'}</#if>
+	                            </td>
+	                            <td>
+	                                <#if personFarm??>
+	                                    学历
+	                                    <#else>
+	                                        行业
+	                                </#if>
+	                            </td>
+	                            <td>
+	                                <#if personFarm??>
+	                                	<#if personFarm.degree=='0'>
+	                                	小学
+	                                	<#elseif personFarm.degree=='1'>
+	                                	初中
+	                                	<#elseif personFarm.degree=='2'>
+	                                	高中
+	                                	<#elseif personFarm.degree=='3'>
+	                                	中专
+	                                	<#elseif personFarm.degree=='4'>
+	                                	大专
+	                                	<#elseif personFarm.degree=='5'>
+	                                	本科
+	                                	<#elseif personFarm.degree=='6'>
+	                                	硕士
+	                                	<#elseif personFarm.degree=='7'>
+	                                	博士
+	                                	<#elseif personFarm.degree=='8'>
+	                                	博士后
+	                                	<#elseif personFarm.degree=='9'>
+	                                	其它
+	                                	<#else>
+		                                </#if>	
+	                                </#if>
+	                                <#if companyScm??>${companyScm.industry!'--'}</#if>
+	                                <#if companyFarm??>${companyFarm.industry!'--'}</#if>
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <td>
+	                                <#if personFarm??>
+	                                    上年度经营收入
+	                                    <#else>
+	                                        上年度主营业务收入
+	                                </#if>
+	                            </td>
+	                            <td>
+	                                <#if personFarm?? && personFarm.cashIn!=''>${personFarm.cashIn!'--'}</#if>
+	                                <#if companyScm?? && companyScm.cashIn!=''>${companyScm.cashIn!'--'}</#if>
+	                                <#if companyFarm?? && companyFarm.cashIn!=''>${companyFarm.cashIn!'--'}</#if>
+	                            </td>
+	                            <td>
+	                                对外债务
+	                            </td>
+	                            <td>
+	                                <#if personFarm??>${personFarm.liabilities!'--'}</#if>
+	                                <#if companyScm??>${companyScm.liabilities!'--'}</#if>
+	                                <#if companyFarm??>${companyFarm.liabilities!'--'}</#if>
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <td>
+	                                借款前6个月内借款人征信报告中的逾期情况
+	                            </td>
+	                            <td>
+	                                <#if personFarm??>${personFarm.creditOverdue!'--'}</#if>
+	                                <#if companyScm??>${companyScm.creditOverdue!'--'}</#if>
+	                                <#if companyFarm??>${companyFarm.creditOverdue!'--'}</#if>
+	                            </td>
+	                            <td>
+	                                其他网络借贷平台借款情况
+	                            </td>
+	                            <td>
+	                                <#if personFarm??>${personFarm.other!'--'}</#if>
+	                                <#if companyScm??>${companyScm.other!'--'}</#if>
+	                                <#if companyFarm??>${companyFarm.other!'--'}</#if>
+	                            </td>
+	                        </tr>
+	                        </tbody>
+	                    </table>
+	                </div>
+	                <hr/>
+	                <div class="page-title">
+	                    <i class="icon-font icon-flag text-primary"></i>项目信息
+	                </div>
+	                <div class="item-content">
+	                    <table class="table detailtable mt-30">
+	                        <tbody>
+	                        <tr>
+	                            <td>
+	                                项目分类
+	                            </td>
+	                            <td>
+	                                ${prdInfo.productName!'--'}
+	                            </td>
+	                            <td>
+	                                借款金额
+	                            </td>
+	                            <td>
+	                                ${(vo.loanAmt?string(',##0.00'))!'0'}元
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <td>
+	                                借款用途
+	                            </td>
+	                            <td>
+	                                ${vo.loanPurpose!'--'}
+	                            </td>
+	                            <td>
+	                                借款期限
+	                            </td>
+	                            <td>
+	                                ${vo.loanPeriod!''} ${vo.periodStr!'--'}
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <td>
+	                                标的年利率
+	                            </td>
+	                            <td>
+	                                ${(vo.platRate?string(',##0.00'))!'0'}%
+	                            </td>
+	                            <td>
+	                                还款方式
+	                            </td>
+	                            <td>
+	                                ${vo.repayModeDesc!'--'}
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <td>
+	                                还款来源
+	                            </td>
+	                            <td>
+	                                ${vo.repaySource!'--'}
+	                            </td>
+	                            <td>
+	                              募集开始日期
+	                            </td>
+	                            <td>
+	                                ${(vo.releaseTime?string('yyyy-MM-dd HH:mm:ss'))!'--'}
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <td>
+	                                募集期
+	                            </td>
+	                            <td>
+	                                ${vo.raisePeriod!'0'}天
+	                            </td>
+	                            <td>
+	                                起息日
+	                            </td>
+	                            <td>
+	                                <#if vo.loanStatus=='9' || vo.loanStatus=='6' || vo.loanStatus=='7' || vo.loanStatus=='8'>
+	                                    ${(vo.interestDate?string('yyyy-MM-dd'))!''}
+	                                    <#else>
+	                                        满标放款后起息
+	                                </#if>
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <td>
+	                                项目介绍
+	                            </td>
+	                            <td>
+	                                ${vo.loanRemark!'--'}
+	                            </td>
+	                              <td>
+                                担保措施
+                            </td>
+                            <td>
+                                ${vo.assurePlan!'--'}
+                            </td>
+	                        </tr>
+	                        </tbody>
+	                    </table>
+	                </div>
+	                <hr/>
+	                 <#if ext??>
+	                 <div class="page-title">
+	                    <i class="icon-font icon-flag text-primary"></i>附加信息
+	                </div>
+	                <div class="item-content">
+	                    <table class="table detailtable mt-30">
+	                        <tbody>
+	                        <tr>
+	                            <td>
+	                                车牌号
+	                            </td>
+	                            <td>
+	                                ${ext.plateNumberFuzzy!'--'}
+	                            </td>
+	                            <td>
+	                                厂牌型号
+	                            </td>
+	                            <td>
+	                                ${ext.brandModelFuzzy!'--'}
+	                            </td>
+	                        </tr>
+	                        
+	                         <tr>
+	                            <td>
+	                                车架号
+	                            </td>
+	                            <td>
+	                                ${ext.frameNumberFuzzy!'--'}
+	                            </td>
+	                            <td>
+	                                初登日期
+	                            </td>
+	                            <td>
+	                              ${(ext.registrationTime?string('yyyy-MM-dd'))!'--'}
+	                            </td>
+	                        </tr>
+	                        
+	                         <tr>
+	                            <td>
+	                               车辆评估价值
+	                            </td>
+	                            <td>
+	                                ${(ext.evaluationValue)!'--'}
+	                            </td>
+	                            <td>
+	                                车身颜色
+	                            </td>
+	                            <td>
+	                               ${ext.carColor!'--'}
+	                            </td>
+	                        </tr>
+	                        
+	                        </tbody></table></div>
+	                        
+	                         <hr/>
+	                          </#if>
+	                <#if picMap?? && (picMap?size gt 0) >
+	                    <div class="page-title">
+	                        <i class="icon-font icon-flag text-primary"></i>附件材料
+	                    </div>
+	                    <div id="enclosureList" class="enclosure-list">
+	                        <#list picMap as plist>
+	                            <img src="${(plist.fileLink)!''}" class="img-fluid">
+	                        </#list>
+	                    </div>
+	                </#if>
+                </#if>
+					</section>
+					<section>
+					<#if vo.oldRisk??> 
+						${vo.oldRisk!''}
+					<#else> 
+						<table class="table detailtable">
+											<tbody>
+									<#if guarantorStr??>
+									<tr>
+										<td>担保/回购方</td>
+										<td>${guarantorStr!''}</td>
+									</tr>
+									<tr>
+										<td>担保/回购方简介</td>
+										<td>${vo.guarantorIntroduction!''}</td>
+									</tr>
+									</#if>
+									<tr>
+										<td>风险控制措施</td>
+										<td><div class="defaultfont"><#if riskControl?? && riskControl.riskMeasure?? &&
+											riskControl.riskMeasure!=''> ${riskControl.riskMeasure!'--'}
+											<#else></#if></div></td>
+									</tr>
+		
+									<tr>
+										<td>风险提示</td>
+										<td><div class="defaultfont"><#if riskControl?? && riskControl.reminder?? &&
+											riskControl.reminder!=''> ${riskControl.reminder!'--'}
+											<#else></#if></div></td>
+									</tr>
+									<#if (details)?? && details?size gt 0>
+									<tr>
+										<td>风险等级</td>
+										<td><div class="defaultfont">
+										  <#if orgRisk??>${orgRisk.riskGradeStr!''}<#else>--</#if>
+										</div></td>
+									</tr>
+									 </#if>
+								</tbody>
+						</table>
+					</#if>
+					</section>
+					<section>
+						<table class="table recordtable text-c">
+							<thead>
+							<tr>
+								<th>出借人</th>
+								<th>投标金额（元）</th>
+								<th>投标时间</th>
+							</tr>
+							</thead>
+							<tbody id="investRecordTable"></tbody>
+						</table>
+						<div class="page">
+							<input name="pageNo" type="hidden" id="pageNo" value="1" />
+							<input name="pageSize" type="hidden" id="pageSize" value="10" />
+							<div id="laypage" class="pagination" ></div>
+						</div>
+					</section>
+					<section>
+						<table class="table recordtable text-c">
+							<thead>
+							<tr>
+								<th>合约还款日期</th>
+								<th>还款金额（元）</th>
+								<th>状态</th>
+							</tr>
+							</thead>
+							<tbody id="repayRecordTable">
+								        <#list loanRepaymentPlans as lrps>
+                            <tr>
+                                <td>${(lrps.periodEndTime?string('yyyy-MM-dd'))!''}</td>
+                                <td>${(((lrps.planPayPrincipalInterest)!0)?string("#,##0.00"))!'0.00'}</td>
+                                <td>${(lrps.repaymentStatusStr)!''}</td>
+                            </tr>
+                        </#list>
+							</tbody>
+						</table>
+					</section>
+					
+					 <#if loanLatter?? && vo.latterShow?? && vo.latterShow =='1'>
+					<section>
+						<table class="table detailtable">
+							<tbody id="modeTable">
+						         <tr>
+                            <td>借款资金运用情况</td>
+                            <td> <#if loanLatter.amtPurpose?? && loanLatter.amtPurpose!=''> ${loanLatter.amtPurpose!'--'} <#else>--</#if> </td>
+                            <td>借款人经营状况及财务状况</td>
+                            <td><#if loanLatter.manageInfo?? && loanLatter.manageInfo!=''> ${loanLatter.manageInfo!'--'} <#else>--</#if></td>
+                        </tr>
+                        <tr>
+                            <td>借款人还款能力变化情况</td>
+                            <td><#if loanLatter.repayInfo?? && loanLatter.repayInfo!=''> ${loanLatter.repayInfo!'--'} <#else>--</#if></td>
+                            <td>借款人逾期情况</td>
+                            <td><#if loanLatter.overdueSituation?? && loanLatter.overdueSituation!=''> ${loanLatter.overdueSituation!'--'} <#else>--</#if></td>
+                        </tr>
+                        <tr>
+                            <td>借款人涉诉情况</td>
+                            <td><#if loanLatter.lawsuits?? && loanLatter.lawsuits!=''> ${loanLatter.lawsuits!'--'} <#else>--</#if></td>
+                            <td>借款人受行政处罚情况</td>
+                            <td><#if loanLatter.penalize?? && loanLatter.penalize!=''> ${loanLatter.penalize!'--'} <#else>--</#if></td>
+                        </tr>
+                        <tr>
+                            <td>其他可能影响借款人还款的重大信息</td>
+                            <td><#if loanLatter.other?? && loanLatter.other!=''> ${loanLatter.other!'--'} <#else>--</#if></td>
+                        </tr>
+							</tbody>
+						</table>
+					</section>
+					</#if>
+				</div>
+			</div>
+
+			<div class="mu-tip  mt-30">
+				<div class="hd">温馨提示</div>
+				<div class="bd">
+					<p>1、哪些债权可以进行债权转让？</p>
+					<p>答：1) 债权处于非逾期状态；<br>
+						<span class="pl-25">2) 债权持有时间不小于30天；</span><br>
+						<span class="pl-25">3) 距离项目结清日不小于15天；</span><br>
+						<span class="pl-25">4) 由保险公司出具保单的乐保贷项目禁止转让，其他乐保贷产品可以转让；</span><br>
+						<span class="pl-25">5) 债权还款日当日不可发起债权转让申请，如需进行债权转让，可于还款后第二日进行尝试；</span><br>
+						<span class="pl-25">6) 出借时如使用了红包，债权持有时间需大于等于红包使用期限条件才能进行债权转让；</span><br>
+						<span class="pl-25">7) 如出借时参与了平台奖励活动，债权转让条件请参看相应活动细则。</span>
+					</p>
+					<p class="mt-20">2、债权转让的需要收手续费吗？</p>
+					<p>答：手续费为转让价格的0.5%，转让成功后收取；如债权持有大于等于90天，则免手续费;</p>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/jquery.SuperSlide.2.1.1.js?v=c85539b"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/product/zeroOnePage.js?v=ae2219e"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script>
+<script type="text/javascript">
+var totalCount = 0;
+var isFirstPage = true;
+var pageSize = $.trim($('#pageSize').val());
+	$(function(){
+		$("#transferDetails").slide({titCell:".hd li",mainCell:".bd",trigger:"click"});
+		 initInvetsRecord();
+	})
+	
+function initPage(){
+	$("#laypage").pagination({
+		totalCount : totalCount,
+		pageSize : pageSize,
+		clickEvent : function(page_index, _this) {
+			$("#pageNo").val(page_index + 1);
+			fn();
+		}
+	});
+}
+	/**
+ *显示出借记录
+ **/
+function initInvetsRecord () { 
+	var url = basePath+"/product/invest/record/${vo.loanId}";
+	var _table=$('#investRecordTable');
+	_table.empty();
+	$.ajax({
+		url:url,
+		type:'post',
+		dataType:'json',
+		data:{pageNo:$('#pageNo').val(),'pageSize':pageSize},
+		cache:false,
+		async:false,
+		success:function(data){
+			var result = $.parseJSON(data);
+			var html=[];
+			if(result.count > 0){
+				$.each(result.data,function(i,o){
+					html.push('<tr><td>',o.starUserName,'</td>');
+					var investAmtStr = formatCurrency(o.investAmt) + '';
+					investAmtStr = investAmtStr.substring(0, investAmtStr.indexOf("."));
+					html.push('<td>',investAmtStr,'</td>');	
+					html.push('<td>',formartDate(o.investTime,"yyyy-MM-dd hh:mm:ss"),'</td>');	
+					html.push('</tr>');
+				});
+				
+			}else{
+				html.push('<tr><td colspan="3"><img style="margin:15px 0" class="record" src="/public/images/user/record.png?v=9113ae7"></td></tr>')
+			}
+			_table.append(html.join(''));
+			totalCount = result.count;
+			if(isFirstPage){//初始化分页，后续只修改列表值
+				isFirstPage=false;
+                initPage();
+			}
+			if(totalCount>pageSize){
+				fn=initInvetsRecord;
+				$('#laypage').show();
+			}else{
+				$('#laypage').hide();
+			}
+		}
+	});
+}
+</script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

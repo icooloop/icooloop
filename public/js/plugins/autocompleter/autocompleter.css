@@ -1,0 +1,12 @@
+.autocompleter{width:302px;background:#fff;position:absolute;top:44px;left:120px;z-index: 100;}
+.autocompleter,.autocompleter-hint{position: absolute!important;}
+.autocompleter-list{max-height:200px;overflow:auto;border-radius:0 0 4px;border:1px solid #d2d2d2;border-top:none; list-style: none; margin: 0; padding: 0; text-align: left; -webkit-box-sizing: border-box; box-sizing: border-box;}
+.autocompleter-item-selected{background: #fff;}
+.autocompleter-item{line-height:40px;padding:0 10px; color: #444444; font-size:16px; cursor: pointer;}
+.autocompleter-item:hover{background: #f5f5f5;}
+.autocompleter-item strong{ text-shadow: 0 1px 0 #ffffff;}
+.autocompleter-item span{color: #bbbbbb;}
+.autocompleter-hint{color: #ccc; text-align:left; top:-53px; font-weight:400; left:0; width: 100%; padding:12px 12px 12px 16px; font-size:14px; display:none;}
+.autocompleter-hint span{color: transparent;}
+.autocompleter-hint-show{display: block;}
+.autocompleter-closed{display: none;}

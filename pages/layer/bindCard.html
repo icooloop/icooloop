@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>快捷登录-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+</head>
+<body>
+<div class="mu-layer-bindbank">
+
+	    <#if (userInfo.userIdno) ?? >
+	        <#assign tempUserIdno = userInfo.userIdnoStr >
+	        <#assign tempUserRealName = userInfo.realName>
+	    </#if>
+	    
+	<div class="hd">
+		<div class="title">绑定银行卡</div>
+		<div class="tip text-primary mt-15">充值之前绑定银行卡，采用同卡进出的认证机制，<br>保障您的资金安全</div>
+		<a href="javascript:top.layer.closeAll();" class="close"><i class="icon-font icon-close"></i></a>
+	</div>
+	<div class="bd">
+		<form class="m-form mu-recharge-form formtype2" id="bankCardForm" action="">
+			<div class="formline mt-15">
+				<div class="forminput">
+					<div class="formlabel">开户银行</div>
+					<div class="u-select">
+						<input type="hidden" id="bankCode" name="bankCode" class="selecthide">
+						<div class="xzcontent">请选择开户银行</div>
+						<ul class="dropdown-menu">
+                            	<#if payQuotas ??>
+                                <#list payQuotas as item>
+                                    <li val="${item.bankCode!''}" single-amount=${item.singleAmount!''} limit-str=${item.remark!''} >${item.bankCodeCn}(${item.remark})</li>
+                                </#list>
+                                </#if>							
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="c-999 f-12 pdleft l20 mt-5">*目前支持的银行及其限额信息</div>
+			<div class="formline mt-15">
+				<div class="formlabel">银行卡号</div>
+				<div class="forminput"><input type="text" class="input-text" placeholder="请输入银行卡号" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="26" id="bankNo" name="bankNo"></div>
+			</div>
+			<div class="formline mt-15">
+				<div class="formlabel">姓名</div>
+				<div class="forminput"><input type="text" class="input-text" value="${tempUserRealName!''}" readonly="readonly" id="realName" name="realName"></div>
+			</div>
+			<div class="formline mt-15">
+				<div class="formlabel">身份证</div>
+				<div class="forminput"><input type="text" class="input-text" value="${tempUserIdno!''}" readonly="readonly" id="idNo" name="idNo"></div>
+			</div>
+			<div class="formline mt-15">
+				<div class="formlabel">预留手机号</div>
+				<div class="forminput"><input type="text" class="input-text" placeholder="银行预留手机号" id="userMobile" name="userMobile" maxlength="11"></div>
+			</div>
+			<div class="formline mt-15">
+				<div class="formlabel">短信验证码</div>
+				<div class="forminput"><input type="text" class="input-text" placeholder="4-6位验证码" id="verifyCode" name="verifyCode" maxlength="6">
+					<button id="getCodeBtn" class="get-code-btn" type="button">获取验证码</button>
+				</div>
+			</div>
+			<div class="tipdiv mt-10" id="formtip1"></div>
+			<div class="formline mt-10">
+				<button type="submit" class="btn btn-submit" id="submit">绑卡</button>
+			</div>
+		</form>
+	</div>
+</div>
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.js?v=eb7ebdc"></script>
+<script src="${tzp.getContextPath()}/src/js/tools/validate_cn.js?v=10c4607"></script>
+<script src="${tzp.getContextPath()}/src/js/plugins/jquery.CountDown.js?v=0f45807"></script>
+<script type="text/javascript">
+var redirectUrl = "${redirectUrl!''}";
+if(redirectUrl!=''){
+	window.parent.layer.closeAll();
+	window.parent.location.href = basePath + redirectUrl;
+}
+var isFlag=true;
+jQuery.validator.addMethod("isFlag",function(value,element,params){ 
+    return isFlag; 
+},"");
++(function(){
+	 //绑定银行卡验证
+       var validator= $("#bankCardForm").validate({
+            ignore: "", //验证隐藏input
+            keyup:false,
+            rules: { // 验证规则
+            	bankCode:{
+            		required: true
+            	},
+                bankNo: {
+                    required: true,
+                    number: true,
+                    minlength:16,
+                    maxlength:24,
+                    remote: {
+                        type: "POST",
+                        dataType: "json",
+                        url: basePath +"/member/auth/checkBankno",
+                        data: {
+                        	bankNo: function () {
+                                return $("#bankNo").val();
+                            },
+                            bankCode: function () {
+                                return $("#bankCode").val();
+                            }
+                        }
+                    }
+                },
+                realName: {
+                    required: true,
+                    minlength:2,
+                    maxlength:10
+                },
+                idNo: {
+                    required: true
+                },
+                userMobile: {
+                    required: true,
+                    isMobile:true
+                },
+                verifyCode: {
+                    required: true,
+                    minlength: 4,
+                    maxlength: 6
+                }
+            },
+            // 设置错误信息
+            messages: {
+            	bankCode:{
+            		required: '请选择开户银行'
+            	},
+            	bankNo: {
+                    required: '请输入银行卡号',
+                    number: '请输入正确的银行卡号',
+                    minlength:'请输入正确的银行卡号',
+                    maxlength:'请输入正确的银行卡号',
+                    remote:'银行卡号不正确'
+                },
+                realName: {
+                    required: '请输入持卡人姓名',
+                    minlength:'姓名不正确',
+                    maxlength:'姓名不正确'
+                },
+                idNo: {
+                    required: "请输入身份证号",
+                    isID:'身份证号码不正确'
+                },
+                userMobile: {
+                    required: '请输入手机号号码',
+                    isMobile:'手机号码不正确'
+                },
+                verifyCode: {
+                    required: "请输入验证码",
+                    minlength: "验证码不正确",
+                    maxlength: "验证码不正确"
+                }
+            },
+            // 错误信息显示
+            errorPlacement: function (error, element) {
+            	var $element = $(element);
+                var $id=$element.attr('id');
+                var $icontip=$('.icontip[for="'+$id+'"]');
+                $icontip.attr("class","icontip icon-font icon-error").show();
+                $element.addClass("Validform_error");
+            },
+            // 验证成功
+            success: function (error, element) {
+                var $element = $(element);
+                var $id=$element.attr('id');
+                var $icontip=$('.icontip[for="'+$id+'"]');
+                $icontip.attr("class","icontip icon-font icon-right").show();
+                $element.addClass("Validform_right");
+            },
+            invalidHandler: function (form, validator) { // 错误提示
+                $.each(validator.errorList, function (key, value) {
+                	if(value.message){
+                		 $("#formtip1").html('<span class="errortip"><i class="icon-font icon-error"></i>'+value.message+'</span>');
+                         return false;
+                	}
+                });
+            },
+            submitHandler: function (form) { //验证通过提交表单
+            	$("#formtip1").html('');
+            	$.ajax({
+                    type: "post",
+                    url: basePath +"/member/auth/bindCard",
+                    data: $(form).serialize(),
+                    success: function (data) {
+                    	if(data.successed){
+                    		top.location.reload();
+                    	}else{
+                    		$("#formtip1").html('<span class="errortip"><i class="icon-font icon-error"></i>'+data.message+'</span>');
+                    	}
+                    }
+                });
+            }
+        });
+      //发送验证码
+        $('#getCodeBtn').on('click', function () {//快捷发送短信   	
+        	$("#verifyCode").rules('remove');
+            if (validator.form()) {
+            	$("#formtip1").html('');
+                $(this).CountDown({
+                    data: $('#bankCardForm').serialize(),
+                    isMsg: true,
+                    isCallBack: 'message',//回调信息字段
+                    start: true,
+                    isSeed: true,
+                    isClick: false,
+                    isUpdateDate:"#bankCardForm",
+                    successName:'successed',
+                    successProp:true,
+                    url: basePath +"/member/auth/verifyCard"
+                });
+            }
+        })
+})()
+$("#submit").on("click",function(){
+	$("#verifyCode").rules('add',{
+		 required: true,
+         minlength: 4,
+         maxlength: 6
+	});
+})
+$('#bankCode').on('change',function(){
+	$(this).valid();
+})
+</script>
+</body>
+</html>	

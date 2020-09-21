@@ -1,0 +1,211 @@
+@wp-width:1200px;
+@color-main:#bd5a3d;
+@voucher-btn-color:#fb6874;
+@diabled-color:#acacac;
+@rule-color:#844831;
+@double-btn-color:#f6cc64;
+.btn-double,.btn-double:hover{
+    width:299px;
+    line-height:63px;
+    height:63px;
+    border-radius:63px;
+    background:@double-btn-color;
+    font-size:22px;
+    color:#dc1500;
+    margin-top:25px;
+}
+.btn-double.disabled{
+    color:#fff;
+    background:@diabled-color;
+}
+.md-act{
+    position:relative;
+    min-width:@wp-width;
+    background:#ffd7b3 url(./../../images/event/2019/may/bg0.jpg) no-repeat top center;
+    padding-top:557px;
+    overflow:hidden;
+    .desc{
+        color:@color-main;
+        font-size:18px;
+        line-height:20px;
+    }
+    .md-vouchers{
+        text-align: center;
+        height:600px;
+        .list{
+            overflow: hidden;
+            padding-left:104px;
+            padding-top:120px;
+            li{
+                float: left;
+                width:255px;
+                padding-top:55px;
+                .rate{display:none;}
+                .limit{color:@color-main;line-height:30px;}
+                .btn-act{
+                    display:inline-block;
+                    cursor:pointer;
+                    width:114px;
+                    line-height:34px;
+                    height:34px;
+                    font-size:16px;
+                    color:#fff;
+                    border-radius:34px;
+                    transition:all 0.2s;
+                    background:@voucher-btn-color;
+                }
+                .btn-act.disabled{
+                    color:#fff;
+                    background:@diabled-color;
+                }
+            }
+            li:nth-child(1){padding-top:0;}
+            li:nth-child(4){padding-top:15px;}
+        }
+    }
+    .md-fanxian{
+        text-align:center;
+        height:706px;
+        position: relative;
+        color:#fff;
+        .cashdesc{
+            font-size:18px;
+            line-height:20px;
+        }
+        .area1{
+            position: absolute;
+            bottom:396px;
+            left:0;
+            width:100%;
+            .cashamt{
+                font-size:40px;
+                line-height:60px;
+            }
+            .double{
+                display: inline-block;
+                padding:10px 45px;
+                line-height:1;
+                font-size:16px;
+                background:#f6694e;
+                border-radius:10px;
+                em{
+                    font-size:30px;
+                }
+            }
+        }
+        .area2{
+            position: absolute;
+            top:470px;
+            left:0;
+            width:100%;
+            .tip{
+                margin-top:10px;
+                color:#851800;
+                font-size:14px;
+            }
+        }
+    }
+    .md-rule{
+        color:@rule-color;
+        font-size:18px;
+        line-height:35px;
+        padding:100px 95px;
+    }
+}
+.md-getbonus{
+    position: relative;
+    width:468px;
+    height:600px;
+    background:url(../../images/event/2019/may/getbonus.png) no-repeat;
+    text-align:center;
+    .desc1{
+        padding-top:158px;
+        line-height:1;
+        font-size:24px;
+        color:#7d5520;
+    }
+    .desc2{
+        padding-top:140px;
+        line-height:30px;
+        font-size:16px;
+        color:#8f6a40;
+        em{
+            font-size:24px;
+            color:#fe1e43;
+        }
+    }
+    .btndiv{
+        position:absolute;
+        bottom:72px;
+        left:0;
+        width:100%;
+        .btn-act{
+            width:190px;
+            height:48px;
+            line-height:48px;
+            border-radius:50px;
+            color:#fff;
+            font-size:20px;
+            padding-bottom:2px;
+        }
+    }
+    .close{
+        position:absolute;
+        right:20px;
+        top:20px;
+        cursor: pointer;
+        .icon-font{
+            color:#fff;
+            font-size:30px;
+        }
+    }
+}
+.md-getdouble{
+    position: relative;
+    width:433px;
+    height:600px;
+    background:url(../../images/event/2019/may/getdouble.png) no-repeat;
+    text-align:center;
+    padding-top:203px;
+    color:#fff;
+    .result{
+        font-size:24px;
+        line-height:1;
+        padding-bottom:30px;
+    }
+    .resultdesc{
+        font-size:18px;
+        line-height:30px;
+        min-height:120px;
+    }
+    .btn-double{
+        width:200px;
+        height:42px;
+        line-height:42px;
+        font-size:18px;
+    }
+    .close{
+        position:absolute;
+        right:-20px;
+        top:5px;
+        cursor: pointer;
+        .icon-font{
+            color:#fff;
+            font-size:30px;
+        }
+    }
+}
+.win_state{	
+	position:fixed;top:50%;left:50%;	
+	margin:-50px 0 0 -50px;
+	text-align:center;line-height:1;	
+	z-index:1999;opacity:0;transform:translateY(300px);
+	animation: win_state_show 1.4s forwards 0.4s;
+}
+@keyframes win_state_show{   
+	30%{opacity:1;transform:translateY(-30px);}
+	40%{opacity:1;transform:translateY(0);transform:perspective(400px) translate3d(0,0,180px) rotate3d(0,1,0,-190deg);animation-timing-function:ease-out}
+	50%{transform:perspective(400px) translate3d(0,0,180px) rotate3d(0,1,0,-170deg);animation-timing-function:ease-in}
+	80%{opacity:1;transform:perspective(400px) scale3d(.95,.95,.95);animation-timing-function:ease-in}
+	100%{opacity:0;transform:perspective(400px);animation-timing-function:ease-in}
+}

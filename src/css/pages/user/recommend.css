@@ -1,0 +1,51 @@
+.mu-tabs{position:relative;border-bottom:1px solid #d2d2d2;background:#f9f9f9;}
+.mu-tabs .tabs li{float:left;width:186px;line-height:60px;height:60px;text-align:center;position:relative;cursor:pointer;font-size:16px;display:block;}
+.mu-tabs .tabs li a{display:block;position:relative;font-size:16px;}
+.mu-tabs .tabs li:hover{color:#00479d;background:#e8e8e8;text-decoration:none;}
+.mu-tabs .tabs li.on{color:#00479d;background:#fff;}
+.mu-tabs .tabs li.on:before{display:block;content:'';height:3px;width:100%;background:#3961cd;position:absolute;left:0;top:0;z-index:1;}
+.mu-tabs .tabs li.on:after{display:block;content:'';height:1px;width:100%;background:#fff;position:absolute;left:0;bottom:-1px;z-index:1;}
+.mu-tabs .more{position:absolute;right:20px;top:0;line-height:60px;}
+
+.mu-table{width:100%;}
+.mu-table .text-c th,.mu-table .text-c td,.mu-table.text-c th,.mu-table.text-c td{text-align:center;}
+.mu-table tbody tr{border-bottom:1px dashed #f3f3f3;}
+.mu-table th{background:#f7f7f7;line-height:50px;padding:0 5px;}
+.mu-table td{line-height:50px;padding:5px;}
+.mu-table td .line2{line-height:25px;}
+.mu-table td .line2 a:hover{text-decoration:underline;}
+
+.mu-panel .utitle{position: relative;padding-left: 40px;background-color: #fff;border-bottom: 1px solid #D2D2D2;}
+.mu-panel .utitle h1{line-height: 60px;color: #333333;font-size:18px;margin:0;padding:0;}
+.mu-panel .bd{background:#fff;padding:20px;position:relative;}
+
+.mu-recommend-info{position:relative;z-index:6;}
+.mu-recommend-info .hd{line-height:60px;background:#fffaf0;padding:0 20px;font-size:16px;border-bottom:1px solid #e5e5e5;vertical-align:middle;}
+.mu-recommend-info .hd .icon{width:22px;margin-right:10px;}
+.mu-recommend-info .bd{padding:25px 0;background:#fff;}
+.mu-recommend-info .list li{width:33%;float:left;min-height:130px;}
+.mu-recommend-info .list li+li{border-left:1px solid #d2d2d2;}
+.mu-recommend-info .list h4{font-size:16px;color:#999;line-height:30px;text-align:center;margin:0;padding-top:5px;}
+.mu-recommend-info .list p{line-height:30px;font-size:18px;line-height:1;} 
+.mu-recommend-info .list .desc{line-height:30px;font-size:16px;padding-left:25px;}
+.mu-recommend-info .list .desc .icon-font{font-size:18px;margin-right:10px;}
+.mu-recommend-info .list .num{font-size:36px;font-weight:700;}
+
+.mu-recommend-details .bd {padding:20px;background-color:#fff;}
+.mu-recommend-details .bd .datatable {text-align:center;width:100%;}
+.mu-recommend-details .bd .datatable tr th {background-color:#f3ede8;color:#333;height:46px;vertical-align:middle;text-align:center;}
+.mu-recommend-details .bd .datatable tbody tr:nth-child(2n){background:#f9f9f9;}
+.mu-recommend-details .bd .datatable tr td,.mu-recommend-details .bd .datatable tr th {border:1px solid #bfbfbf;}
+.mu-recommend-details .bd .datatable tr td {color:#666;height:46px;vertical-align:middle;}
+.mu-recommend-details .bd .input-date{display:inline-block;border:1px solid #bbb;border-radius:10px;width:100px;line-height:30px;height:30px;margin-right:20px;padding:0 20px;box-sizing:content-box;}
+.mu-recommend-details .bd .desc1{line-height:30px;font-size:16px;}
+.mu-recommend-details .bd .warntip{line-height:20px;color:#999;}
+
+.mu-recommend-type .sd{position:absolute;top:50px;left:20px;text-align:center;width:230px;}
+.mu-recommend-type .sd p{font-size:18px;color:#999;padding-top:20px;line-height:24px;}
+.mu-recommend-type .mn{padding-left:230px;line-height:30px;padding-top:10px;}
+.mu-recommend-type .mn h2{font-size:18px;color:#000;font-weight:700;padding-bottom:5px;}
+.mu-recommend-type .mn p{font-size:16px;color:#666;}
+.mu-recommend-type .mn .btn{width:146px;line-height:38px;font-size:18px;border-radius:10px;padding:0 10px;}
+
+.m-rule{display:none;padding:20px;line-height:24px;}

@@ -1,0 +1,87 @@
+/*main*/
+.attestation-head{line-height: 130px;height: 130px;position: relative;}
+.attestation-head span{width:301px;height:44px;left: 430px;top: 50px;position: absolute;display: inline-block;background: url(/public/images/v2/index/logo.png) no-repeat;}
+.attestation-head a{float:right;color: #666; font-size: 16px; }
+.attestation-head a:hover{color: #3961cd;text-decoration: underline;}
+.m-attestation{width: 530px;margin: 50px auto 0;}
+
+/*certification.html*/
+.attestation-form{background-color: #fff;padding: 20px 75px;}
+.attestation-form > h1{line-height: 70px;color: #333333;font-size: 24px;text-align: center;}
+.attestation-form > ul > li{font-size: 14px;margin-bottom: 20px;}
+.attestation-form > ul > li > h2{color: #999;margin-bottom: 10px;}
+.attestation-form > ul > li > input{width: 93%;padding: 12px 5px 12px 20px;border: 1px solid #D2D2D2;border-radius: 10px;font-size: 14px;color: #666666;-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;}
+.attestation-form > ul > li > input::-webkit-placeholder,.attestation-form > ul > li > input::placeholder{color: #ccc;}
+.attestation-form > ul > li > textarea{width: 91.8%;height: 85px;padding: 5px 10px 0 20px;border: 1px solid #D2D2D2;border-radius: 5px;font-size: 14px;color: #666666;resize: none;-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;}
+.attestation-form > ul > li > p{margin-top: 10px;}
+.attestation-form > ul > li p > i{width: 18px;height: 18px;display: inline-block;background: url(/public/images/user/error.png) no-repeat;vertical-align: text-bottom;margin-right: 3px;}
+.file-list > li .file-name img{max-width:300px;}
+.attestation-file{font-size: 14px;color: #999;}
+.attestation-file > span{position: relative;color: #3961cd;font-size: 16px;margin-left: 10px;cursor: pointer;text-decoration: underline;}
+.attestation-file  > span > input{position: absolute;width: 100%;height: 100%;opacity: 0;left: 0; cursor: pointer;}
+.attestation-Btn{width: 100%;height: 50px;line-height: 50px;margin: 25px auto;text-align: center;font-size: 18px;cursor: pointer;border-radius: 10px;color: #fff;background-color: #3961cd;}
+.attestation-list{background-color: #F9F9F9;padding: 25px 0;}
+.attestation-list > li{width: 176px;text-align: center;float: left;}
+.attestation-list > li i{
+	font-size:80px;
+	line-height: 1;
+}
+
+.attestation-list > li > h1{font-size: 18px;color: #666;margin-top: 20px;}
+.attestation-list > li > h2{color: #666;font-size: 14px;margin-top: 10px;line-height: 20px;}
+.attestation-list > li img{height:64px;}
+/*bankCard.html*/
+.attestation-form > ul > li > .select-comm{position: relative;height: 45px;border-radius: 10px;font-size: 14px;}
+.attestation-form > ul > li > .select-1{width: 100%;}
+.attestation-form > ul > li > .select-comm > *{position: absolute;}
+.attestation-form > ul > li > .select-comm > select{width: 100%;height: 100%;color: #666;padding-left: 10px;cursor: pointer;border-radius: 10px;border-color:#D2D2D2;}
+.attestation-form > ul > li > .select-comm > span{font-size: 14px;color: #cccccc;top: 15px;left: 20px;}
+.attestation-form > ul > li > .select-comm > i{width: 12px;height: 20px;background: url(/public/images/user/select.png) no-repeat;right: 10px;top: 15px;}
+.attestation-form > ul > li > .select-2{width: 48.93%;display: inline-block;}
+.attestation-form .error-tips{color: #c00;display: none;}
+
+/*pwd.html*/
+.m-pwd > div{width: 100%;font-size: 14px;margin-bottom: 20px;border-radius: 10px;box-sizing: border-box;border: 1px solid #D2D2D2;}
+.attestation-form > h1 > em{color: #999;font-size: 14px;}
+.attestation-form > div > em{font-size: 14px;display: inline-block;width: 50px;text-align: left;margin-left: 20px;color: #999;}
+.attestation-form > div .set-pwd{font-size: 14px;display: inline-block;width: 70px;text-align: left;margin-left: 20px;color: #999;}
+.attestation-form > div > input{width: 200px;padding: 12px 5px 12px 10px;font-size: 14px;color: #666666;-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;}
+.attestation-form > .attestation-form-div > .div-2{float: right;}
+.attestation-form > div > input::-webkit-placeholder,.attestation-form > div > input::placeholder{color: #ccc;}
+.attestation-form > .error-msg {border: 0; margin:0;display: none;color: #fa5555;}
+.attestation-form > .pwd-next{border: 0;font-size: 18px;}
+.attestation-form > .attestation-form-div{border: 0;}
+.attestation-form > .attestation-form-div > div{display: inline-block;}
+.attestation-form > .attestation-form-div .div-1{width: 290px;font-size: 14px;border-radius: 10px;box-sizing: border-box;border: 1px solid #D2D2D2;}
+.attestation-form > .attestation-form-div .div-1 > em{font-size: 14px;display: inline-block;text-align: left;margin-left: 20px;color: #999;}
+.attestation-form > .attestation-form-div .div-1 > input{width: 130px;padding: 12px 5px 12px 10px;font-size: 14px;color: #666666;-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;}
+.attestation-form > .attestation-form-div .div-1 > input::-webkit-placeholder,.attestation-form > .attestation-form-div .div-1 > input::placeholder{color: #ccc;}
+.attestation-form > .attestation-form-div .div-1 .form-control-feedback{
+	margin:0 0 0 20px;
+}
+.attestation-form > .attestation-form-div > .div-2 > input{color:#3961cd;padding-top: 13px;cursor: pointer;}
+.attestation-form > .attestation-form-div > .div-2 > input[disabled]{
+	color:#999;
+}
+.has-success .form-control-feedback {color: #67c23a;margin:0 0 0 10px; }
+.has-error .form-control-feedback {color: #fa5555;margin:0 0 0 10px;  }
+
+.sure > div > input{width: 240px;}
+.sure > div >i.pwd-hide{width: 33px;height: 19px;display: inline-block;background: url(/public/images/user/pwd-hide.png) no-repeat;vertical-align: middle;float: right;margin-top: 12px;margin-right: 10px;cursor: pointer;}
+.sure > div >i.pwd-hide.pwd-show{background: url(/public/images/user/pwd-show.png) no-repeat;}
+
+.s-ing{background-color: #fff;padding: 71px 0;width: 530px;margin: 0 auto;color: #666; display: none;}
+.s-ing img{display: block; margin: 0 auto;}
+.s-ing h1{font-size: 24px;text-align: center;margin: 30px auto;}
+.s-ing p{font-size: 14px;margin: 0 130px;}
+.s-ing a{width: 260px;display: block;margin-top: 100px;}
+
+.attestation-footer{text-align: center;}
+.attestation-footer p{ margin-bottom: 5px;font-size: 14px;color: #666;}
+.attestation-footer p a{ color: #666;}
+
+::-webkit-input-placeholder {color:#b3b3b3;font-size:12px;}
+:-moz-placeholder {color:#b3b3b3;font-size:12px;}
+::-moz-placeholder {color:#b3b3b3;font-size:12px;}
+:-ms-input-placeholder {color:#b3b3b3;font-size:12px;}
+:-o-input-placeholder {color:#b3b3b3;font-size:12px;}

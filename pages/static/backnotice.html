@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <link rel="stylesheet" href="${tzp.getContextPath()}/src/css/pages/static/backnotice.css">
+</head>
+<body>
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+	<div class="ma-about">
+		<div class="md-banner"></div>
+		<div class="md-mode1">
+			<div class="atitle"><em>平台存量待收</em></div>
+			<div class="wp"><p class="text-r pr-30"  style="font-size:14px;">数据更新截止时间：<#if staOperationalData??>${(staOperationalData.stsDate?string('yyyy-MM-dd'))!'-'}</#if></p></div>
+			<div class="bd wp mt-10">
+				<ul class="list">
+					<li><div class="item">
+						<p>借贷余额（元）</p>
+						<h2><#if staOperationalData??>${(staOperationalData.stillLoanBalance?string(',##0.00'))!'-'}</#if></h2>
+					</div></li>
+					<li><div class="item">
+						<p>当前借款人数量（人)</p>
+						<h2><#if staOperationalData??>${staOperationalData.stillLoanPepole!'-'}</#if></h2>
+					</div></li>
+					<li><div class="item">
+						<p>借贷余额笔数（笔）</p>
+						<h2><#if staOperationalData??>${staOperationalData.stillLoan!'-'}</#if></h2>
+					</div></li>
+					<li><div class="item">
+						<p>利息余额（元）</p>
+						<h2><#if staOperationalData??>${(staOperationalData.interAmt?string(',##0.00'))!'-'}</#if></h2>
+					</div></li>
+				</ul>
+			</div>
+		</div>
+		<div class="md-mode2 wp">
+			<div class="atitle"><em>今日回款情况</em></div>
+			<div class="remark wp"><p class="text-r pr-30">数据更新截止时间：<#if staOperationalData??>${((staOperationalData.stsDate?string('yyyy-MM-dd hh'))+':00')!'-'}</#if></p></div>
+			<div class="total mt-10">
+				<ul class="list">
+					<li>
+						<p>今日平台预计将回款（元）</p>
+						<h2>${(todayRepayInfo.planPriInt?string(',##0.00'))!'-'}</h2>
+					</li>
+					<li>
+						<p>目前已回款（元）</p>
+						<h2>${(todayRepayInfo.hasPriInt?string(',##0.00'))!'-'}</h2>
+					</li>
+				</ul>
+			</div>
+			<div class="searchdiv mt-40">
+				项目名称：<input class="input-text input-search" type="text" name="loanTitle" id="loanTitle" value="" />
+				<button type="button" class="btn btn-primary btn-search ml-10" onclick="initBackData()">搜 索</button>
+			</div>
+			<table class="datatable mt-10">
+				<thead>
+					<tr>
+						<th>项目名称</th>
+						<th>本金（元）</th>
+						<th>利息（元）</th>
+						<th>期数</th>
+						<th>回款情况</th>
+					</tr>
+				</thead>
+				<tbody id="backTable"></tbody>
+			</table>
+			<div class="page mt-20">
+				<input name="pageNo" type="hidden" id="pageNo" value="1" />
+				<input name="pageSize" type="hidden" id="pageSize" value="10" />
+				<div id="laypage" class="pagination"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script>
+<script>
+var totalCount = 0;
+var isFirstPage = true;
+var pageSize = $.trim($('#pageSize').val());
+$(function(){
+	$("#nav_info").addClass('on');
+	initBackData();
+})
+function initPage(){
+	$("#laypage").pagination({
+		totalCount : totalCount,
+		pageSize : pageSize,
+		clickEvent : function(page_index, _this) {
+			$("#pageNo").val(page_index + 1);
+			initBackData();
+		}
+	});
+}
+function initBackData(){
+	var url = basePath+"/static/collected-list";
+	var _table=$('#backTable');
+	var loanTitle=$("#loanTitle").val();
+	_table.empty();
+	$.ajax({
+		url:url,
+		type:'post',
+		dataType:'json',
+		data:{pageNo:$('#pageNo').val(),'pageSize':pageSize,'loanTitle':loanTitle},
+		cache:false,
+		async:false,
+		success:function(data){
+			var result = $.parseJSON(data);
+			var html=[];
+			if(result.count > 0){
+				$.each(result.data,function(i,o){
+					var tolink=basePath+'/spa/product/detail/'+o.loanId
+					var loanTitleClass=(loanTitle=='')?'':'important';
+					html.push('<tr class="hand '+loanTitleClass+'" onclick="window.location.href=\'/spa/product/detail/'+o.loanId+'\'"><td>',o.loanTitle,'</td>');
+					html.push('<td>',formatCurrency(o.planPayPrincipal),'</td>');  //formatCurrency(o.investAmt)
+					html.push('<td>',formatCurrency(o.planPayInterest),'</td>');	
+					html.push('<td>',o.currentPeriod,'/',o.planPeriod,'</td>');
+					html.push('<td>',o.repaymentStatusStr,'</td>');	 //formartDate(o.investTime,"yyyy-MM-dd")
+					html.push('</tr>');
+				});
+			}else{
+				html.push('<tr><td colspan="5" style="padding:30px 0">搜索结果：当天该项目没有回款数据</td></tr>')
+			}
+			_table.append(html.join(''));
+			totalCount = result.count;
+			if(isFirstPage){//初始化分页，后续只修改列表值
+				isFirstPage=false;
+                initPage();
+			}
+			if(totalCount>pageSize){
+				fn=initBackData;
+				$('#laypage').show();
+			}else{
+				$('#laypage').hide();
+			}
+		}
+	});
+}
+
+</script>
+</body>
+</html>

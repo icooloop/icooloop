@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>自动跳转新网银行-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+	<#include "/include/style_new.html" />
+	<!-- 页面样式 -->
+</head>
+<body>
+<!--出借成功信息-->
+<div class="subscription-success">
+	<div class="content text-center">
+		<div class="clearfix">
+			<p class="text-default" style="margin:0 0 30px"><span id="timeStr"></span>自动跳转新网银行...</p>
+		</div>
+	</div>
+</div>
+
+<!-- 充值表单框 -->
+<div style="display: none;">
+    <form class="mt-10 clearfix" action="${result.postUrl}"  method="post" id="submit_form">
+    	<#list result.postMap?keys as key>
+	    	<input type="hidden" name="${key}" value='${result.postMap['${key}']}'>
+		</#list>
+		
+		<input type="submit">
+    </form>
+</div>
+
+<#include "/include/bottom_script.html" />
+<script type="text/javascript">
+$("#submit_form").submit();
+</script>
+</body>
+</html>

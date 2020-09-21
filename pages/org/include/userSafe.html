@@ -1,0 +1,67 @@
+<div class="mu-safe user-shadow clearfix">
+	<div class="user-logo"><img src="${tzp.getContextPath()}/public/images/org/user.png?v=22cf12b" id="userPicUrl"> </div>
+	<div class="fl">
+		<p class="company" title="${(_p2p_member_user.nickName)}">${(_p2p_member_user.nickName)},欢迎您
+		<#if _p2p_member_user.isDefaultUsername?? && _p2p_member_user.isDefaultUsername=="1" >
+		<span class="text-primary" id="changeUserNameTxt">修改用户名</span>
+		</#if>
+		</p>
+		
+		<#assign safeFlag = 0>
+		<ul class="safe-list clearfix" id="safeUl">
+			<li>
+				<#if _p2p_member_user.isDepositary =='1'> <#assign safeFlag = safeFlag + 25 >
+				<i class="icon-font icon-deposit active"></i>
+				<span class="tag">已开通存管</span>			
+				<#else>
+					<i class="icon-font icon-deposit"></i>
+					<span class="tag"><a class="text-primary"  target="_blank" href="${tzp.getContextPath()}/member/depository/form">去开通存管</a></span>
+				</#if>				
+			</li>
+		</ul>
+		<#if _p2p_member_user.needUpdateTrdePwd??&& _p2p_member_user.needUpdateTrdePwd=='1'>
+		<p class="text-danger">亿钱贷系统升级，为了您的账户安全，请重新设置交易密码</p>
+		</#if>
+	</div>
+	<div class="fr">
+		<div class="user-total">
+			<p>可用余额<strong>${((accountVo.availableAmt!0)?string(',##0.00'))!0}</strong>元</p>
+			<p>冻结金额<strong>${((accountVo.frozeAmt!0)?string(',##0.00'))!0}</strong>元</p>
+			<p class="link"><a href="${tzp.getContextPath()}/member/account/recharge" class="on">充值</a> <a href="${tzp.getContextPath()}/member/account/cash">提现</a> </p>
+		</div>
+	</div>
+</div>
+<script>
+	$("#changeUserNameTxt").on('click',function(){
+        layer.prompt({title: '修改用户名',content:'<input type="text" class="layui-layer-input" style="margin:0 0 8px;" placeholder="请输入新的用户名" /><p class="text-danger" style="font-size: 12px">*用户名仅能修改一次</p>', formType: 0,minlength:6,maxlength: 18}, function(userName, index){
+            $.ajax({
+                type: "post",
+                dataType: "json",
+                url: basePath +"/member/secure/username/update",
+                data: {"userName":userName},
+                success: function (data) {
+                	console.log(data)
+                    if (data.success) {
+                    	layer.msg('修改成功',{}, function(){
+                    		window.location.href=basePath+"/loan/user";
+    					});
+                    	
+                    } else {
+                        layer.msg(data.msg, {icon: 5});
+                    }
+                }
+            });
+
+        });
+	})
+	function layerBindCard(){
+		layer.open({
+    		type:2,
+    		title:false,
+    		closeBtn:false,
+    		shadeClose: true,
+    		area: ['530px', '580px'],
+    		content:basePath+"/layer/bindCardLoan"
+    	});
+	}
+</script>

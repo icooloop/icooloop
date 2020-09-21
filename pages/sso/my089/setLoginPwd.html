@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<title>账户信息同步-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+<#include "/include/style_new.html" />
+<!-- 页面样式 -->
+<link rel="stylesheet"
+	href="${tzp.getContextPath()}/src/css/pages/account/auto.css?v=aa18bac">
+</head>
+<body>
+	<!-- header -->
+	<#include "/include/login_header.html" />
+	<!-- 页面开始 -->
+	<div class="auto-layer set-user-name-layer set-login-pwd-layer">
+
+			<form  class="form-horizontal company-form" id="modalForm" method="post">
+			<input type="hidden" id="type" name="type" value="${(type)!''}"> 
+			<input
+				type="hidden" id="my089Uuid" name="my089Uuid"
+				value="${(my089Uuid)!''}"> 
+			 <input
+				type="hidden" id="hluserDES" name="hluserDES"
+				value="${(hluserDES)!''}">	 	
+			<input type="hidden" id="newPhone" name="newPhone" value="${(newPhone)!''}">	
+			<input type="hidden" id="loginName" name="loginName" value="${(loginName)!''}">	
+			<div class="center-block set-user-name-container">
+				<h3 class="auto-title text-center">设置登录密码</h3>
+				<p class="text-primary text-center progress-info">请设置您在亿钱贷的登录密码</p>
+				<div class="set-user-name-boxer">
+					<label>登录密码：</label> <input class="form-control" type="password" id="loginPassword" name="loginPassword"
+						placeholder="请输入登录密码" minlength="6" maxlength="20" autocomplete="new-password" />
+					<button class="btn btn-primary btn-lg btn-block" type="submit"
+						id="setLoginPwdBtn">确定</button>
+				</div>
+			</div>
+		</form>
+
+	</div>
+	<#include "/include/bottom_script.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.js?v=eb7ebdc"></script>
+<script src="${tzp.getContextPath()}/src/js/tools/validate_cn.js?v=10c4607"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/icheck/icheck.min.js?v=3144e54"></script>
+<script src="${tzp.getContextPath()}/src/js/plugins/jquery.CountDown.js?v=0f45807"></script>
+	<!-- 页面js -->
+	<script>
+	var validateModalForm=$('#modalForm').validate({
+		 keyup:false, 
+		invalidHandler: function (form, validator) { // 错误提示
+	            $.each(validator.errorList, function (key, value) {
+	                $("#errorMsg").text(value.message).parent().parent()
+	                    .css('visibility', 'visible');
+	                return false;
+	            });
+	        },
+	        // 设置错误信息
+	        messages: {
+	        	loginPassword: {
+	                required: "请输入亿钱贷登录密码" 
+	               
+	            },
+	            
+	        },
+		 submitHandler: function (form) { //验证通过提交表单
+	            $("#submit").addClass("disabled").attr("disabled", true);
+	            $.ajax({
+	                type : "post",
+	                dataType : "text",
+	                url : basePath + '/sso/my089-perfect',
+	                data : $(form).serialize(),
+	                success : function(data) {
+	                	if(data.indexOf("sso") != -1){
+	                		//跳转路径
+	                		window.location.href =basePath+"/"+data; 
+	                	}else{
+	                		 layer.msg(data);
+	                	}
+	                   
+	                   
+	                    $("#submit").addClass("disabled").attr("disabled", false);
+	                }
+	            });
+	        }
+		
+	});
+	</script>
+	<!-- 统计 -->
+	<#include "/include/count.html" />
+</body>
+</html>

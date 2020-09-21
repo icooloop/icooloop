@@ -1,0 +1,85 @@
+.panel{
+    border-radius: 0;
+}
+.user-right .info {
+    padding: 20px 33px;
+    margin:0 0 15px;
+    background-color: #fff;
+}
+
+.user-right .info .title {
+    margin: 0 0 40px;
+}
+
+.user-right .info .title span {
+    margin: 0 0 0 40px;
+    font-size: 16px;
+    color: #666;
+}
+
+.user-right .info .info-list {
+
+}
+
+.user-right .info .info-list > div {
+    position: relative;
+    font-size: 16px;
+}
+
+.user-right .info .info-list > div:before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #d2d2d2;
+}
+
+.user-right .info .info-list > div:last-child:before {
+    width: 0;
+}
+
+.user-right .info .info-list p {
+    margin: 15px 0;
+}
+
+.user-right .info .info-list p.num {
+    font-size: 42px;
+}
+
+.user-right .info .info-list p.reg, .user-right .info .info-list p.num {
+    margin: 0 0 15px;
+}
+
+.user-right .info .info-list p.reg span {
+    margin: 0 30px 0 5px;
+    font-size: 28px;
+}
+
+.user-right .info .info-list a.btn {
+    width: 140px;
+}
+.user-right .panel-body .table{
+    margin:0;
+}
+.user-right .panel-body .table td, .user-right .panel-body .table.table-bordered {
+    border-color: #d3cea3;
+}
+
+.user-right .panel-body .table thead th {
+    background-color: #f29118;
+    color: #fff;
+    text-align: center;
+    height: 48px;
+    border-color: #f29118;
+    vertical-align: middle;
+}
+
+.user-right .panel-body .table td {
+    height: 40px;
+    vertical-align: middle;
+}
+.user-right .panel-body .table td p{
+    margin:0;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>活动专区-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_new.html" />
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="${tzp.getContextPath()}/src/css/pages/activity/activity.css?v=054e20f">
+</head>
+<body>
+<!-- header -->
+<#include "/include/header_new.html" />	
+<!-- 页面开始 -->
+<div class="m-activity wp">
+    <div class="activityTitle"><span>活动专区</span></div>
+    <div class="clearFix activity-list">
+    <form action="" id="myform" method="post">
+		<input type="hidden" id="pageNo" name="pageNo" value="${pagelist.pageNo!'1'}"/>
+		<input type="hidden" id="pageSize"  value="${pagelist.pageSize!'5'}"/>
+		<input type="hidden" id="totalPages"  value="${pagelist.totalPages!'1'}"/>
+        <ul class="clearFix">
+        <#if pagelist??>
+        	<#list pagelist.result as item>
+        	<li>
+                <h1><img src="${item.eventBanner!''}?v=${.now}"> </h1>
+                <div>
+                    <h2>${item.actName!'活动'}</h2>
+                    <p><i></i><em>${(item.startDate?string('yyyy-MM-dd'))!''}</em> 至 <em>${(item.endDate?string('yyyy-MM-dd'))!''}</em> </p>
+                    <#if item.validAble>
+                    	<#if item.eventLink?? && item.eventLink!=''>
+                    	<a href="${item.eventLink}" >查看详情</a>
+                    	<#else>
+                    	<a href="javascript:;;" >查看详情</a>
+                    	</#if>
+                    	
+                   	<#else>
+                   		<#if item.eventLink?? && item.eventLink!=''>
+                    	<a href="${item.eventLink}" class=" btn-disabled readonly">已结束</a>
+                    	<#else>
+                    	<a href="javascript:;;" class=" btn-disabled readonly">已结束</a>
+                    	</#if>
+                   	</#if>
+                </div>
+                <#if item_index==0 && pagelist.pageNo==1><span></span></#if>
+            </li>
+        	</#list>
+        </#if>
+        </ul>
+        <div id="laypage" class="page_con pagination" <#if pagelist.totalCount lt 6 >style="display: none;"</#if>></div>
+        </form>
+    </div>
+</div>
+
+
+<#include "/include/footer_new.html" />
+<#include "/include/bottom_script.html" />
+<script type="text/javascript" src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script>
+<!-- 页面js -->
+<script type="text/javascript">
+$(function(){
+	//1.焦点图轮换
+	initPage();
+	$("#nav_act").addClass("on");
+})
+//分页
+function initPage(){
+	var totalCount=${(pagelist.totalCount)!0};
+	var pageSize=${(pagelist.pageSize)!5};
+    var pages=Math.ceil(totalCount/pageSize);
+    $("#laypage").pagination({
+		totalCount : totalCount,
+		pageSize : pageSize,
+		currentPage : ${(pagelist.pageNo)!1} - 1,
+		clickEvent : function(page_index, _this) {
+			$("#pageNo").val(page_index + 1);
+			$('#myform').submit();
+		}
+	});
+}
+</script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

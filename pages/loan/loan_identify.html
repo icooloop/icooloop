@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>开通存管账户-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <!-- 页面样式 -->
+    <#include "/include/style_access.html" />
+    <#include "/loan/include/style.html" />
+</head>
+<body class="bgdesc">
+<!-- header -->
+<#include "/loan/include/header.html" />
+<div class="m-access-form deposit_identify mt-30">
+<#if (_p2p_member_user??&&_p2p_member_user.userType=='5')  ||  (_p2p_member_user??&&_p2p_member_user.userType=='3')>
+	<div class="hd">借款人开通存管账户</div>
+<#elseif (_p2p_member_user??&&_p2p_member_user.userType=='4')>
+	<div class="hd">合作机构开通存管账户</div>
+<#else>	
+	<div class="hd">出借人人开通存管账户</div>
+</#if>
+	<div class="bd">
+		<form class="forminfo" action="${tzp.getContextPath()}/member/loan/depository/reg" method="post" id="identifyForm" target="_blank">
+			<div class="formdesc mt-30">姓名</div>
+			<div class="formline mt-5">
+				<div class="forminput"><input onblur="checkRealname()" class="input-text" value="${realName!''}" name="realname" id="realname" onkeyup="this.value=this.value.replace(/^ +| +$/g,'')" placeholder="请输入真实姓名"></div>
+				<span class="icontip icon-font icon-error" for="realname"></span>
+			</div>
+			<div class="formdesc mt-15">证件类型</div>
+			<div class="formline mt-5">
+				<div class="u-select">
+					<input type="hidden" id="idnoType" name="idnoType" class="selecthide" value="1">
+					<div class="xzcontent">身份证</div>
+					<ul class="dropdown-menu">
+                        <li val="1">身份证</li>
+	               		<li val="5">港澳居民来往内地通行证</li>
+	               		<li val="6">台湾居民来往大陆通行证</li>
+	               		<li val="10">香港地区身份证</li>
+	               		<li val="11">台胞证</li>						
+					</ul>
+				</div>
+				<span class="icontip icon-font icon-error" for="idnoType"></span>
+			</div>
+			<div class="formdesc mt-15">证件号码</div>
+			<div class="formline mt-5">
+				<div class="forminput"><input onblur="checkIdNo()" class="input-text" value="${idCardNo!''}" name="idNo" id="idNo" placeholder="请输入您的证件号码"></div>
+				<span class="icontip icon-font icon-error" for="idNo"></span>
+			</div>
+			<div class="tipdiv mt-10" id="formtip1"></div>
+            <div class="formline mt-10">
+               <button type="submit" class="btn btn-submit" id="subbt">开通银行存管</button>
+            </div>
+		</form>
+	</div>
+</div>
+<#include "/include/login_footer.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.js?v=eb7ebdc"></script>
+<script src="${tzp.getContextPath()}/src/js/tools/validate_cn.js?v=10c4607"></script>
+<script type="text/javascript">
+$(function(){
+	var validator= $("#identifyForm").validate({
+        ignore: "", //验证隐藏input
+        keyup:false,
+        rules: { // 验证规则
+        	realname:{
+        		required: true
+        	},
+        	idnoType:{
+        		required: true
+        	},
+        	idNo:{
+        		required: true
+        	}
+        },
+        // 设置错误信息
+        messages: {
+        	realname:{
+        		required: "请输入您的姓名"
+        	},
+        	idNo:{
+        		required: "请输入您的证件号码"
+        	}
+        },
+        // 错误信息显示
+        errorPlacement: function (error, element) {
+        	var $element = $(element);
+            var $id=$element.attr('id');
+            var $icontip=$('.icontip[for="'+$id+'"]');
+            $icontip.attr("class","icontip icon-font icon-error").show();
+            $element.addClass("Validform_error");
+        },
+        // 验证成功
+        success: function (error, element) {
+            var $element = $(element);
+            var $id=$element.attr('id');
+            var $icontip=$('.icontip[for="'+$id+'"]');
+            $icontip.attr("class","icontip icon-font icon-right").show();
+            $element.addClass("Validform_right");
+        },
+        invalidHandler: function (form, validator) { // 错误提示
+            $.each(validator.errorList, function (key, value) {
+            	if(value.message){
+            		 $("#formtip1").html('<span class="errortip"><i class="icon-font icon-error"></i>'+value.message+'</span>');
+                     return false;
+            	}
+            });
+        },
+        submitHandler: function (form) { //验证通过提交表单
+        	$("#formtip1").html('');
+        	$(form)[0].submit();
+        }
+    });
+})
+
+</script>
+</body>
+</html>		

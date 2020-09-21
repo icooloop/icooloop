@@ -1,0 +1,397 @@
+.btn-disabled,.btn-disabled:hover,.btn-disabled:focus,.btn-disabled:active {color:#999;background:none;border-color:transparent;cursor:not-allowed;}
+#carouselHome .carousel-inner .item {
+    height: 358px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#carouselHome .carousel-inner .item a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+#carouselHome .carousel-indicators{
+    bottom:3px;
+}
+.total-data {
+    padding: 20px 0;
+}
+
+.total-data span {
+    margin: 0 40px 0 0;
+}
+
+.total-data span strong {
+    margin: 0 0 0 5px;
+}
+
+.intro {
+    margin: 0 0 30px;
+}
+
+.intro > div {
+    padding: 0 14px 0 0;
+}
+
+.intro > div:last-child {
+    padding-right: 0;
+}
+
+.intro > div .layer {
+    position: relative;
+    padding: 20px 0;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.intro > div:first-child .layer .mark {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    left:0;
+    bottom:0;
+    background: -moz-linear-gradient(45deg, #cacaca 0%, #fff 50%);
+    background: -o-linear-gradient(45deg, #cacaca 0%, #fff 50%);
+    background: -webkit-linear-gradient(45deg, #cacaca 0%, #fff 50%);
+    background: linear-gradient(45deg, #cacaca 0%, #fff 50%);
+    z-index: 0;
+}
+.intro > div:last-child .layer .mark {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    right:0;
+    bottom:0;
+    background: -moz-linear-gradient(315deg, #cacaca 0%, #fff 50%);
+    background: -o-linear-gradient(315deg, #cacaca 0%, #fff 50%);
+    background: -webkit-linear-gradient(315deg, #cacaca 0%, #fff 50%);
+    background: linear-gradient(315deg, #cacaca 0%, #fff 50%);
+    z-index: 0;
+}
+.intro > div .layer h3,.intro > div .layer p{
+    position: relative;
+}
+.intro > div .layer h3 {
+    font-size: 18px;
+}
+
+.intro > div .layer .icon-font {
+    font-size: 80px;
+}
+
+.notice {
+    padding: 20px 0;
+}
+
+.notice ul {
+    margin: 3px 0 0 24px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.product-list {
+    color: #666;
+    margin: 0 0 30px;
+}
+
+.product-list li {
+    margin: 0 0 25px;
+}
+
+.product-list li:first-child h2 {
+
+}
+
+.product-list li .left {
+    position: relative;
+    width: 289px;
+}
+.product-list li .left img{
+    width:289px;
+}
+.product-list li .left .boxer {
+    position: absolute;
+    width: 100%;
+    top: 120px;
+    text-align: center;
+    color: #fff;
+}
+
+.product-list li .left .boxer h2 {
+    margin: 0 0 10px;
+}
+
+.product-list li .left .boxer p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.product-list li .left .boxer:first-child {
+    top: 100px;
+}
+
+.product-list li .right {
+    margin: 0 0 0 295px;
+}
+
+.product-list li .right li {
+    margin: 0 0 1px;
+    padding: 22px 20px 22px 35px;
+    background-color: #fff;
+    cursor: pointer;
+    height: 88px;
+}
+.product-list li .right li:hover{
+    background: #fff; /* 一些不支持背景渐变的浏览器 */
+    background: -moz-linear-gradient(top, #efefef, #fff);
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#efefef), to(#fff));
+    background: -o-linear-gradient(top, #efefef, #fff);
+    background: -webkit-linear-gradient(top, #efefef, #fff);
+    background: linear-gradient(top, #efefef, #fff);
+}
+.product-list li .right li.empty {
+    height: 267px;
+    vertical-align: middle;
+    display: table-cell;
+    width: 100%;
+}
+
+.product-list li .right li.empty i {
+    font-size: 48px;
+}
+
+.product-list li .right li .product-link {
+    margin: 6px 0 0;
+    width: 82px;
+}
+
+.product-list li .right li h4 {
+    margin: 0;
+    font-weight: bold;
+}
+.product-list li .right li h4.name{
+    color: #333;
+    font-size:16px;
+    margin:12px 0 0;
+}
+.product-list li .right li h4.name.sn{
+    color:#007130;
+}
+.product-list li .right li h4.rate{
+    font-size:22px;
+}
+.product-list li .right li h4.rate i.jiaxi-icon{
+    position: absolute;
+    width:28px;
+    height: 18px;
+    line-height: 18px;
+    top: -13px;
+    right: -30px;
+    font-style: normal;
+    font-size:10px;
+    color:#fff;
+    text-align: center;
+    background: #cca74f; /* 一些不支持背景渐变的浏览器 */
+    background: -moz-linear-gradient(left, #8b6815 30%, #cca74f);
+    background: -webkit-gradient(linear, 0 0, 30% right, from(#8b6815), to(#cca74f));
+    background: -o-linear-gradient(left, #8b6815 30%, #cca74f);
+    background: -prefix-linear-zgradient(left, #8b6815 30%, #cca74f);
+    background: -webkit-linear-gradient(left, #8b6815 30%, #cca74f);
+    background: linear-gradient(left, #8b6815 30%, #cca74f);
+    border-radius: 4px;
+    -webkit-transform: scale(.8);
+    transform: scale(.8);
+}
+.product-list li .right li h4.limit{
+    font-weight: normal;
+    margin:2px 0 2px;
+    font-size:18px;
+    color:#333;
+}
+.product-list li .right li h4.limit span{
+    font-size:12px;
+}
+.product-list li .right li.autobid{height:160px;padding:50px 20px 50px 35px;line-height:60px;position:relative;}
+.product-list li .right li.autobid h4{line-height:1;font-weight:normal;padding-bottom:10px;}
+.product-list li .right li.autobid h4 .rate{font-size:30px;}
+.product-list li .right li.autobid p{line-height:20px;}
+.product-list li .right li.autobid .autobidIcon{position:absolute;left:210px;top:0;line-height:1;}
+.product-list ul li .progress {
+    position: relative;
+    border-radius: 0;
+    width: 120px;
+    height: 5px;
+    overflow: visible;
+    margin:20px 0;
+}
+
+.product-list ul li .progress .progress-bar {
+    width: 0;
+    transition: width .5s ease-in .2s;
+}
+
+.product-list ul li .progress .progress-bar span {
+    position: absolute;
+    top: -8px;
+    right: -40px;
+    color: #333;
+}
+.product-list li .right li h4 span {
+    font-weight: normal;
+}
+.product-list li .right li h4 span.icon{
+    position: relative;
+}
+.product-list li .right li p {
+    margin: 0;
+    color:#777;
+}
+
+.product-list li .right li a.btn {
+    margin: 5px 0 0;
+}
+
+.news {
+    margin: 0 0 30px;
+}
+
+.news .title {
+    margin: 0 0 20px;
+}
+
+.news .title h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.news .title a {
+    margin: 3px 0 0;
+}
+
+.news ul {
+    background-color: #fff;
+    padding: 25px 25px 10px;
+    height: 230px;
+}
+
+.news ul li {
+    margin: 0 0 15px;
+    color: #333;
+    font-size: 16px;
+}
+
+.news ul li span {
+    margin: 0 10px 0 3px;
+}
+
+.news ul li a {
+    color: #333;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.news ul li a:hover {
+    text-decoration: none;
+    color: #f29118;
+}
+
+.news .off, .news .com {
+    width: 48%;
+}
+
+.industry {
+    margin: 0 0 30px;
+}
+
+.industry .title {
+    margin: 0 0 20px;
+}
+
+.industry .title h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.industry .title a {
+    margin: 3px 0 0;
+}
+
+.industry ul li {
+    width: 362px;
+    height: 240px;
+    margin: 0 55px 0 0;
+    background-color: #fff;
+    float: left;
+}
+
+.industry ul li:last-child {
+    margin: 0;
+}
+
+.industry ul li img {
+    width: 100%;
+    max-width: 100%;
+}
+
+.industry ul li .layer {
+    padding: 20px;
+}
+
+.industry ul li .layer h2 {
+    margin: 0 0 15px;
+    font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 320px;
+}
+
+.industry ul li .layer .btn {
+    margin: 20px 0 0;
+}
+
+.coop {
+    margin: 0 0 30px;
+}
+
+.coop .title {
+    margin: 0 0 20px;
+}
+
+.coop .title h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.coop .title a {
+    margin: 3px 0 0;
+}
+
+.coop img {
+    margin: 0 52px 10px 0;
+}
+
+.coop img:nth-child(5n) {
+    margin-right: 0;
+}
+
+.bottom-tip {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .7);
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.bottom-tip i {
+    cursor: pointer;
+}
+.mi-copyright{padding-bottom:20px;}
+.mi-copyright p{text-align:center;background:#ccd5e4;color:#5c636d;border-radius:5px;line-height:40px;}

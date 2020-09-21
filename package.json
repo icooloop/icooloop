@@ -1,23 +1,69 @@
 {
-  "name": "templete",
-  "version": "1.1.1",
-  "description": "A VuePress project created by vuepress-creator.",
-  "main": "index.js",
+  "name": "webapp",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs",
-    "deploy": "bash deploy.sh",
-    "push": "bash push.sh"
-  },
-  "keywords": [],
-  "author": "Feng L.H.",
-  "license": "MIT",
-  "devDependencies": {
-    "vuepress": "^1.5.2"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+	"push": "bash push.sh",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "core-js": "^2.6.11",
-    "vuepress-theme-antdocs": "^1.1.1"
+    "animate.css": "^3.7.0",
+    "ant-design-vue": "^1.3.8",
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
+    "core-js": "^2.6.5",
+    "echarts": "^4.2.1",
+    "moment": "^2.24.0",
+    "vee-validate": "^2.2.3",
+    "vue": "^2.6.10",
+    "vue-awesome-swiper": "^3.1.3",
+    "vue-baidu-map": "^0.21.19",
+    "vue-clipboard2": "^0.3.0",
+    "vue-count-to": "^1.0.13",
+    "vue-i18n": "^8.10.0",
+    "vue-layer": "^1.0.0",
+    "vue-router": "^3.0.3",
+    "vuex": "^3.0.1",
+    "wowjs": "^1.1.3"
   },
-  "creator": ">=2.0.0"
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.6.0",
+    "@vue/cli-plugin-eslint": "^3.6.0",
+    "@vue/cli-service": "^3.6.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-import": "^1.11.0",
+    "babel-polyfill": "^6.26.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "vue-template-compiler": "^2.5.21"
+  },
+  "eslintConfig": {
+    "root": false,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/standard"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }

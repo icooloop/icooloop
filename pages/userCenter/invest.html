@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>散标资产-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+	<#include "/include/style_user.html" />
+	<style>
+	.btn-disabled,.btn-disabled:hover,.btn-disabled:focus,.btn-disabled:active {color:#999!important;background:none!important;}
+	.btn-primary,.btn-primary:hover{min-width:45px;padding:0 5px;line-height:22px;height:22px;font-size:12px;text-decoration:none!important;border-radius:22px;}
+	</style>
+</head>
+<body class="bgmain">
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+    <div class="m-user">
+        <div class="wp clearfix pt-20">
+			<#include "/userCenter/include/userMenu_up.html" />
+            <div class="mu-right">
+				<div class="mu-tabs">
+					<ul class="tabs clearfix">
+						<li onclick="changeTable(this)" data-id="1" id="hold_tab" <#if tabType?? && tabType=='holdList'>class="on"</#if>>待回款(${investCount!0})</li>
+						<li onclick="changeTable(this)" data-id="2" <#if tabType?? && tabType=='holdList'><#else>class="on"</#if>>持有中(${repayCount!0})</li>
+						<li onclick="changeTable(this)" data-id="3">转让中(${transferingCount!0})</li>
+						<li onclick="changeTable(this)" data-id="4">已结清</li>
+						<li onclick="changeTable(this)" data-id="5">已转让</li>
+					</ul>
+				</div>
+				<div class="mu-model pd-20">
+							<ul class="mu-autobid-data clearfix mt-20 mb-40 page_sts" id="investing" style="display: none;">
+								<li>
+									<span>出借本金(元)</span>
+									<em class="txtInvestAmt">${(investPrincipal!0)?string(',##0.00')}</em>
+								</li>
+								<li>
+									<span>预期收益(元)</span>
+									<em class="txtInvestAmt">${(investIncome!0)?string(',##0.00')}</em>
+								</li>
+							</ul>
+							<ul class="mu-autobid-data clearfix mt-20 mb-40 page_sts" id="repaying" >
+								<li>
+									<span>待收本金(元)</span>
+									<em class="txtInvestAmt">${(holdPrincipal!0)?string(',##0.00')}</em>
+								</li>
+								<li>
+									<span>待收收益(元)</span>
+									<em class="txtInvestAmt">${(holdIncome!0)?string(',##0.00')}</em>
+								</li>
+							</ul>
+							<ul class="mu-autobid-data clearfix mt-20 mb-40 page_sts" id ="settled"  style="display: none;">
+								<li>
+									<span>已收本金(元)</span>
+									<em class="txtInvestAmt">${(endPrincipal!0)?string(',##0.00')}</em>
+								</li>
+								<li>
+									<span>已收收益(元)</span>
+									<em class="txtInvestAmt">${(endIncome!0)?string(',##0.00')}</em>
+								</li>
+							</ul>
+						<!-- 待放款中-->
+						<table class="mu-table text-c table-cla table-repay" data-id="1" style="display:none;">
+							<thead>
+								<tr>
+									<th>出借时间</th>
+									<th>项目名称</th>
+									<th>出借本金（元）</th>
+									<th>协议约定年化利率</th>
+									<th>借款期限</th>
+									<th>状态</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="td-color"><a href="#"></a></td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- 持有中-->
+						<table class="mu-table text-c table-cla table-hold" data-id="2" id="tableList">
+							<thead>
+								<tr>
+									<th>项目名称</th>
+									<th>待收本金（元）</th>
+									<th>协议约定年化利率</th>
+									<th>待收收益（元）</th>
+									<th>回款期数</th>
+									<th>回款时间</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="td-color"><a href="#"></a></td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- 转让中-->
+						<table class="mu-table text-c table-cla table-repayed" data-id="3" style="display:none;" id="tableTransfer">
+						<thead>
+								<tr>
+									<th>申请日期</th> 
+									<th>项目名称</th>
+									<th>转让金额（元）</th>
+									<th>手续费（元）</th>
+									<th>状态</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="td-color"><a href="#"></a></td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- 已结束-->
+						<table class="mu-table text-c table-cla table-repayed" data-id="4" style="display:none;">
+						<thead>
+								<tr>
+									<th>项目名称</th>
+									<th>出借本金（元）</th>
+									<th>已收收益（元）</th>
+									<th>到期时间</th>
+									<th>协议约定年化利率</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="td-color"><a href="#"></a></td>
+								</tr>
+							</tbody>
+						</table>
+						<!--已转让-->
+						<table class="mu-table text-c table-cla table-repayed" data-id="5" style="display:none;">
+						<thead>
+								<tr>
+									<th>转让日期</th>
+									<th>项目名称</th>
+									<th>转让金额（元）</th>
+									<th>手续费（元）</th>
+									<th>状态</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="td-color"><a href="#"></a></td>
+								</tr>
+							</tbody>
+						</table>
+						<input name="pageNo" type="hidden" id="pageNo" value="1" />
+						<input name="pageSize" type="hidden" id="pageSize" value="10" />
+						<div id="laypage" class="page pagination" style="display: none;"></div>
+				</div>
+            </div>
+        </div>
+   </div>
+</div>
+<input type="hidden" id="tabType" value="${tabType!''}">
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script type="text/javascript" src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script> 
+<script type="text/javascript">
+var totalCount = 0;
+var pageSize = $.trim($('#pageSize').val());
+var fn = null;
+//分页
+function initPage(){
+	$("#laypage").pagination({
+		totalCount : totalCount,
+		pageSize : pageSize,
+		clickEvent : function(page_index, _this) {
+			$("#pageNo").val(page_index + 1);
+			fn();
+		}
+	});
+	//债权转让撤回框
+	$("#tableTransfer").on('click','.btn-cancel',function(){
+		var transferApplyId = $(this).attr("data-id"); 
+		layer.confirm('您确定要撤销该笔债权转让吗？',{btn:['确认','取消'],closeBtn:false,title:false},function(){
+			$.ajax({
+				url: basePath+'/member/transfer/cancel',
+				type: 'post',
+				dataType: 'json',
+				data: {'transferApplyId': transferApplyId},
+				cache: false,
+				async: false,
+				success: function (data) {
+					var result = eval("("+data+")");
+					if (result.success!=undefined&&!result.success) {
+						layer.msg(result.msg); 
+					}else{
+						layer.msg(result.msg,function(){
+							location.href=basePath+'/spa/member/invest/holdlist';
+						})
+					}
+				}
+			}); 
+		})
+	})
+
+}
+$(function(){
+	var tabType = $("#tabType").val();
+	if(tabType=='holdList'){
+		$("#tabType").val('');
+		changeTable($("#hold_tab"));
+	}else{
+		initRepayingData();
+		initPage();
+	}
+	$("#nav_member").addClass("on");
+})
+
+//tab的点击切换
+function changeTable(obj){
+	$(".page_sts").hide();
+	var _this=$(obj);
+	_this.addClass("on").siblings().removeClass("on");
+	var index=_this.attr("data-id");
+	$('.table-cla').hide();
+	var _table=$('.table-cla[data-id="'+index+'"]');
+	_table.show();
+	$('#laypage').hide();
+	$('#pageNo').val(1);
+
+	if(index=='1'){
+		$("#investing").show();
+		initHoldData();
+	}else if(index=='2'){
+		$("#repaying").show();
+		initRepayingData();
+	}else if(index=='3'){
+		initTransferData();
+	}else if(index=='4'){
+		$("#settled").show();
+		initSettleData();
+	}else if(index=='5'){
+		initTransferedData();
+	}
+	initPage();
+}
+//待放款
+function initHoldData(){
+	var _table=$('.table-cla[data-id="1"] tbody');
+	_table.empty();
+	$.ajax({
+		url:'${tzp.getContextPath()}/member/invest/invest-list',
+		type:'post',
+		dataType:'json',
+		data:{pageNo:$('#pageNo').val(),'pageSize':pageSize},
+		cache:false,
+		async:false,
+		success:function(data){
+			var result = $.parseJSON(data);
+			var html=[];
+			if(result.count > 0){
+				$.each(result.data,function(i,o){
+// 					Date startDate,Date endDate,String investType,String status
+					var str= formatCurrency(o.platRate);
+					var awardRate=o.awardRate;
+					if(awardRate>0){
+						str=str+"%+"+formatCurrency(o.awardRate);
+					}
+					html.push('<tr>');
+					html.push('<td>',formartDate(o.investTime,'yyyy-MM-dd hh:mm:ss'),'</td>');
+					html.push('<td>',o.loanTitle,'</td>');
+					html.push('<td>',formatCurrency(o.investAmt),'</td>');
+					html.push('<td>',str,'%</td>');
+					html.push('<td>',o.loanPeriod,o.periodtUnitStr,'</td>');
+					html.push('<td>满标中&nbsp;',o.percent,'%</td>');
+					html.push('<td><a class="text-primary" href="${tzp.getContextPath()}/member/invest/investing-details/',o.investId,'">查看详情</a></td>');
+					html.push('</tr>');
+					
+				});
+			}else{
+				html.push('<tr><td colspan="8"><img style="margin:15px 0" class="record" src="/public/images/user/record.png?v=9113ae7"></td></tr>')
+			}
+			_table.append(html.join(''));
+			totalCount = result.count;
+			if(totalCount>pageSize){
+				fn = initHoldData;
+				$('#laypage').show();
+			}else{
+				$('#laypage').hide();
+			}
+			
+		}
+	});
+}
+
+
+//持有中
+function initRepayingData(){
+	var _table=$('.table-cla[data-id="2"] tbody');
+	_table.empty();
+	$.ajax({
+		url:'${tzp.getContextPath()}/member/invest/repay-list',
+		type:'post',
+		dataType:'json',
+		data:{pageNo:$('#pageNo').val(),'pageSize':$('#pageSize').val()},
+		cache:false,
+		async:false,
+		success:function(data){
+			var result = $.parseJSON(data);
+			var html=[];
+			if(result.count>0){
+				$.each(result.data,function(i,obj){
+					html.push('<tr>');
+					html.push('<td>',obj.loanTitle,'</td>');
+					
+					html.push('<td>',formatCurrency(obj.sumPrincipal),'</td>');
+					
+					var str= formatCurrency(obj.platRate);
+					var awardRate=obj.awardRate;
+					if(awardRate>0){
+						str=str+"%+"+formatCurrency(obj.awardRate);
+					}
+					html.push('<td>',str,'%</td>');
+					
+					html.push('<td>',formatCurrency(obj.planIncome),'</td>');
+					html.push('<td>',obj.repayPeriod+" / " +obj.planPeriod,'</td>');
+					html.push('<td>',formartDate(obj.nextRepayTime,"yyyy-MM-dd"),'</td>');
+					
+			     
+					html.push('<td><div class="line2"><a class="text-primary" href="${tzp.getContextPath()}/member/invest/detail/',obj.debtId,'">查看详情</a>');
+				 	if(obj.isTransferApplyStatus){
+                    	html.push('<br><a class="btn btn-primary btn-transfer" href="${tzp.getContextPath()}/spa/member/transfer/apply/',obj.debtId,'">转让</a></td>');
+                    }
+					html.push('</tr>');
+					
+				});
+			}else{
+				html.push('<tr><td colspan="6"><img style="margin:15px 0" class="record" src="/public/images/user/record.png?v=9113ae7"></td></tr>')
+			}
+			_table.append(html.join(''));
+			totalCount = result.count;
+			if(totalCount>pageSize){
+				fn = initRepayingData;
+				$('#laypage').show();
+			}else{
+				$('#laypage').hide();
+			}
+			
+		}
+		
+	});
+}
+//已结束
+function initSettleData(){
+	var _table=$('.table-cla[data-id="4"] tbody');
+	_table.empty();
+	$.ajax({
+		url:'${tzp.getContextPath()}/member/invest/repayed-list',
+		type:'post',
+		dataType:'json',
+		data:{pageNo:$('#pageNo').val(),'pageSize':pageSize},
+		cache:false,
+		async:false,
+		success:function(data){
+			var result = $.parseJSON(data);
+			var html=[];
+			if(result.count>0){
+				$.each(result.data,function(i,obj){
+					html.push('<tr>');
+					html.push('<td>',obj.loanTitle,'</td>');
+					html.push('<td>',formatCurrency(obj.buyPrice),'</td>');
+					html.push('<td>',formatCurrency(obj.totalIncome),'</td>');
+					html.push('<td>',formartDate(obj.settleDate,"yyyy-MM-dd"),'</td>');
+					var str= formatCurrency(obj.platRate);
+					var awardRate=obj.awardRate;
+					if(awardRate>0){
+						str=str+"%+"+formatCurrency(obj.awardRate);
+					}
+					html.push('<td>',str,'%</td>');
+					html.push('<td><a class="text-primary" href="${tzp.getContextPath()}/member/invest/detail/',obj.debtId,'">查看详情</a></td>');
+					html.push('</tr>');
+				});
+			}else{
+				html.push('<tr><td colspan="6"><img style="margin:15px 0" class="record" src="/public/images/user/record.png?v=9113ae7"></td></tr>')
+			}
+			_table.append(html.join(''));
+			totalCount = result.count;
+			if(totalCount>pageSize){
+				fn = initSettleData;
+				$('#laypage').show();
+			}else{
+				$('#laypage').hide();
+			}
+		}
+	});
+}
+
+//转让中
+function initTransferData(){
+	var _table=$('.table-cla[data-id="3"] tbody');
+	_table.empty();
+	$.ajax({
+		url:'${tzp.getContextPath()}/member/transfer/transfer-list',
+		type:'post',
+		dataType:'json',
+		data:{pageNo:$('#pageNo').val(),'pageSize':pageSize},
+		cache:false,
+		async:false,
+		success:function(data){
+			var result = $.parseJSON(data);
+			var html=[];
+			if(result.count>0){
+				$.each(result.data,function(i,o){
+					html.push('<tr>');
+					 html.push('<td>', formartDate(o.createTime, 'yyyy-MM-dd'), '</td>');
+                    html.push('<td>', o.loanTitle, '</td>');
+                    html.push('<td>', formatCurrency(o.transferPrice), '</td>');
+                    html.push('<td>', formatCurrency(o.transferFee), '</td>'); 
+                   
+                    if(o.applyStatus==1){
+						html.push('<td>','转让审核中','</td>');
+					}else if(o.applyStatus==2){
+						html.push('<td>','转让中','</td>');
+					}else if(o.applyStatus==3){ 
+						html.push('<td>','已转让','</td>');
+					}else if(o.applyStatus==4){ 
+						html.push('<td>','已撤销','</td>');
+					}
+					 
+                    html.push('<td><div class="line2"><a class="text-primary" href="/member/transfer/detail/', o.debtId, '">查看详情</a>');
+                    html.push('<br><a class="btn btn-primary btn-cancel" href="javascript:;;" data-id="', o.transferApplyId, '">撤销</a></div></td>'); 
+                    html.push('</tr>');
+				});
+			}else{
+				html.push('<tr><td colspan="6"><img style="margin:15px 0" class="record" src="/public/images/user/record.png?v=9113ae7"></td></tr>')
+			}
+			_table.append(html.join(''));
+			totalCount = result.count;
+			if(totalCount>pageSize){
+				fn = initTransferData;
+				$('#laypage').show();
+			}else{
+				$('#laypage').hide();
+			}
+		}
+	});
+}
+
+//已转出
+function initTransferedData(){
+	var _table=$('.table-cla[data-id="5"] tbody');
+	_table.empty();
+	$.ajax({
+		url:'${tzp.getContextPath()}/member/transfer/transfered-list',
+		type:'post',
+		dataType:'json',
+		data:{pageNo:$('#pageNo').val(),'pageSize':pageSize},
+		cache:false,
+		async:false,
+		success:function(data){
+			var result = $.parseJSON(data);
+			var html=[];
+			if(result.count>0){
+				$.each(result.data,function(i,o){
+					html.push('<tr>');
+			        html.push('<td>', formartDate(o.dealTime, 'yyyy-MM-dd'), '</td>');
+                    html.push('<td>', o.loanTitle, '</td>');
+                    html.push('<td>', formatCurrency(o.transferPrice), '</td>');
+                    html.push('<td>', formatCurrency(o.transferFee), '</td>'); 
+                    if(o.applyStatus==1){
+						html.push('<td>','转让审核中','</td>');
+					}else if(o.applyStatus==2){
+						html.push('<td>','转让中','</td>');
+					}else if(o.applyStatus==3){ 
+						html.push('<td>','已转让','</td>');
+					}else if(o.applyStatus==4){ 
+						html.push('<td>','已撤销','</td>');
+					}
+					 
+                    html.push('<td><a class="text-primary" href="/member/transfer/detail/', o.debtId, '">查看详情</a>');
+                    html.push('</tr>');
+				});
+			}else{
+				html.push('<tr><td colspan="6"><img style="margin:15px 0" class="record" src="/public/images/user/record.png?v=9113ae7"></td></tr>')
+			}
+			_table.append(html.join(''));
+			totalCount = result.count;
+			if(totalCount>pageSize){
+				fn = initTransferedData;
+				$('#laypage').show();
+			}else{
+				$('#laypage').hide();
+			}
+		}
+	});
+}
+</script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

@@ -1,0 +1,84 @@
+body {
+    font-family: "Conv_HelveticaNeueLTStd-Lt", "Microsoft Yahei", "Hiragino Sans GB", "Helvetica Neue", Helvetica, tahoma, arial, Verdana, sans-serif, "WenQuanYi Micro Hei";
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+}
+
+.main-content {
+    position: relative;
+    background: url(../../../../public/images/activity/recommend/main.jpg?v3) no-repeat top center;
+    height: 2231px;
+    color: #e7381b;
+}
+
+.main-content .layer {
+    position: absolute;
+    width: 100%;
+    top: 1220px;
+    left: 0;
+}
+
+.main-content .layer .container {
+    width: 1200px;
+    margin: 0 auto;
+
+}
+
+.main-content .layer p.title {
+    margin: 0 0 220px;
+}
+
+.main-content .layer p.info, .main-content .layer p.title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.main-content .layer p.info {
+    color: #ffd9ba;
+    margin: 25px auto;
+    text-align: center;
+    color: #fff;
+    padding: 5px 12px;
+    background-color: #e7381b;
+    width: 700px;
+}
+
+.main-content .layer table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    color: #e7381b;
+    width: 100%;
+    text-align: center;
+    margin: 0 0 10px;
+    font-size: 22px;
+}
+
+.main-content .layer table tr:first-child {
+    font-weight: bold;
+}
+
+.main-content .layer table tr td {
+    border: 2px solid #e7381b;
+    line-height: 70px;
+}
+
+.main-content .layer .explain {
+    margin: 280px 0 0;
+    color: #fff;
+}
+
+.main-content .layer .explain h3 {
+    margin: 0 0 25px;
+}
+
+.main-content .layer .explain ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.main-content .layer .explain ul li {
+    margin: 0 0 15px;
+}

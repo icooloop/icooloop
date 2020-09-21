@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+	<!-- 页面样式 -->
+	<link rel="stylesheet" type="text/css" href="${tzp.getContextPath()}/src/css/pages/product/success.css?v=f4e017f">
+</head>
+<body class="bgmain">
+<#include "/include/header_up.html" />
+<div class="g-mainer pd-40">
+	<div class="subscription-success">
+		<#if failMessage ?? >
+	    	<div class="hd clearfix">
+		        <i class="icon-font icon-cat-fail text-danger"></i>
+		        <h2>提现失败!</h2>
+				<p class="text-danger">${failMessage}</p>
+		    </div>
+	    <#else>
+		    <div class="hd clearfix">
+		        <i class="icon-font icon-cat-success text-success"></i>
+		        <h2>${result!'您的提现申请已提交，请等待系统审核!'}</h2>
+		    </div>
+		    <div class="bd">
+		        <ul class="process process2">
+		            <li>
+		                <h4>提交提现申请</h4>
+		                <span>${createTime?string('yyyy-MM-dd HH:mm')}</span>
+		            </li>
+		            <li>
+		                <h4>银行处理中</h4>
+		                <span>${createTime?string('yyyy-MM-dd HH:mm')}</span>
+		            </li>
+		        </ul>
+		    </div>
+	    </#if>
+        <div class="ft text-c pd-30">
+            <a class="btn btn-warning size-X radius" href="${tzp.getContextPath()}/spa/member/account/index">查看我的账户</a>
+        </div>
+	</div>
+</div>
+
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<!-- 公共js -->
+<script type="text/javascript">
+</script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

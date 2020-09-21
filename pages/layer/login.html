@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>快捷登录-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <!-- 页面样式 -->
+    <#include "/include/style_access.html" />
+	<style>
+		.m-access-form.loginform{
+			top:0;
+		}
+	</style>
+</head>
+<body style="min-width:440px">
+	<div class="m-access-form loginform loginlayer" id="loginform">
+		<div class="hd">
+			<ul class="clearfix">
+				<li  class="on">账户登录</li>
+				<li>扫码登录</li>
+			</ul>
+		</div>
+		<div class="bd">
+			<section class="formlogin" >
+				<form class="forminfo" action="${tzp.getContextPath()}/secure/dologin${((!callbackUrl??)!false)?string("","?callbackUrl=${(callbackUrl)!''}")}" method="post" id="companyForm">
+					<#if publicKeyMap??>
+						<input type="hidden" id="modulus" value="${publicKeyMap.modulus}" />
+						<input type="hidden" id="exponent" value="${publicKeyMap.exponent}" />
+                           <input type="hidden" name="userType" value="2" />
+                           <input type="hidden" id="userName" name="userMobile" value="" />
+                       </#if>
+                       <input type="password" autocomplete="off" class="passwordHide"><!-- 防止浏览器记住密码 -->
+					<div class="formline mt-20">
+						<div class="forminput"><input onblur="accountCheck()" onkeyup="this.value=this.value.replace(/\s+/g,'')" class="input-text" id="userMobile" value="" maxlength="18" placeholder="请输入手机号/用户名"></div>
+						<span class="icontip icon-font icon-error" for="userMobile"></span>
+					</div>
+					<div class="formline mt-15">
+						<div class="forminput"><input onblur="passwordCheck()" onkeyup="this.value=this.value.replace(/\s+/g,'')" class="input-text" onpaste="return false" oncontextmenu="return false" value="" oncopy="return false" oncut="return false" autocomplete="new-password" type="password" maxlength="20" id="userPassword" name="userPassword" placeholder="登录密码"></div>
+						<span class="icontip icon-font icon-error" for="userPassword"></span>
+					</div>
+					<div class="formline mt-15" id="captcha_div" <#if !captchaneed?? >style="display: none;"</#if>>
+						<div class="forminput"><input onblur="verifyCheck()" class="input-text input-code" id="captcha" name="captcha" placeholder="验证码" maxlength="5"></div>
+						<div class="codebtn"><img src="${tzp.getContextPath()}/txjcaptcha.svl"  alt="验证码" onclick="this.src='${tzp.getContextPath()}/txjcaptcha.svl?'+Math.random()" id="captcha-img"></div>
+						<span class="icontip icon-font icon-error" for="captcha"></span>
+					</div>
+                      <div class="mt-15">
+                          <label>
+                              <input class="icheck" type="checkbox" id="saveUserName" name="saveUserName" value="true">
+                              <span class="vertical-middle agree-link">记住用户名</span>
+                          </label>
+                          <a class="text-primary pull-right" href="${tzp.getContextPath()}/secure/findPwd" target="_parent">忘记密码</a>
+                      </div>
+					<div class="tipdiv mt-10" id="formtip1"><#if errorInfo??><span class="errortip"><i class="icon-font icon-error"></i>${errorInfo!''}</span></#if></div>
+                       <div class="formline mt-10">
+                          <button type="button" class="btn btn-submit" id="subbt" onclick="onSubmit()">安全登录</button>
+                       </div>
+				</form>
+			</section>
+			<section class="qrcodelogin mb-20" style="display:none;">
+				<div id="scanBefore">
+					<div class="qrcodediv">
+						<img alt="" src="${tzp.getContextPath()}/secure/login/qrcode" id="qrcodeImg">
+						<div class="invalid" id="qrcodeInvalid">
+							<p>二维码已失效</p>
+							<a class="btn btn-primary mt-15" href="javascript:;" onclick="refreshQrcode()">刷新</a>
+						</div>
+					</div>
+					<div class="qrcodedesc mt-15">打开<a class="text-primary" href="${tzp.getContextPath()}/spa/static/downapp" target="_blank">亿钱贷APP</a> 扫描二维码</div>
+					<div class="qrcodetip mt-30"><img alt="" src="${tzp.getContextPath()}/public/images/access/qrcodetip.png?v=30b692a"></div>
+				</div>
+				<div id="scanAfter" style="display:none;">
+					<div class="pt-30"><i class="icon-font icon-right1"></i></div>
+					<h2 class="mt-25">扫描成功</h2>
+					<div class="qrcodedesc mt-20">请在手机上 确认登录</div>
+					<div class="qrcodetip mt-30"><img alt="" src="${tzp.getContextPath()}/public/images/access/qrcodetip.png?v=30b692a"></div>
+				</div>
+			</section>
+		</div>
+        <div class="otherlogin">
+             <!--<a class="otherlink" href="${tzp.getContextPath()}/sso/toHlctLogin" target="_parent">-->
+                 <!--<img src="/public/images/logo_hl_icon.png?v=0d8a763" />&nbsp;红岭创投账号登录-->
+             <!--</a> -->
+             <a class="text-primary" href="${tzp.getContextPath()}/spa/secure/register" target="_parent">注册新用户</a>
+         </div>
+	</div>
+<#include "/include/security.html" />
+<#include "/include/script_up.html" />
+<!-- 页面js -->
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.min.js?v=9fc6b5c"></script>
+<script src="${tzp.getContextPath()}/src/js/tools/validate_cn.js?v=10c4607"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/icheck/icheck.min.js?v=3144e54"></script>
+<script type="text/javascript">
+var captchaneed =false;
+var mobileReg = /^(13|14|15|18|17|16|19)[0-9]{9}$/;
+var loginReg =  /^[a-zA-Z]([\w]{5,17})$/;
+var isNull = /^[\s]{0,}$/;
+var isTimeout = true;
+
++function () {
+	<#if logined ?? >
+		afterSubmitSuccess();
+	</#if>
+    $("#userMobile").focus();
+	if(window.localStorage&&window.localStorage.userName){
+	    $("#saveUserName").prop('checked',window.localStorage.isSaveUserName);
+	    $("#userMobile").val(window.localStorage.userName);
+	    $("#userPassword").focus();
+	}
+	//美化单复选框
+	$('input.icheck').iCheck({ //checkbox增强
+	    checkboxClass: 'icheckbox',
+	    radioClass: 'iradio'
+	});
+	<#if captchaneed ?? >
+		captchaneed =true;
+		$("#captcha_div").show();
+	</#if>
+	//键盘确定事件
+	$(this).keydown(function (e){
+		if(e.which == "13"){
+			onSubmit();
+		}
+	});
+	scan();
+}();
+
+function accountCheck() {
+	var icontip=$(".icontip[for='userMobile']");
+	var p = $("#formtip1");
+	var th=$("#userMobile");
+	var v=$.trim(th.val());
+    p.html('');
+	icontip.hide();
+	th.removeClass("Validform_error").removeClass("Validform_right");
+	
+  if(v==""){
+	  th.addClass("Validform_error");
+      p.html('<span class="errortip"><i class="icon-font icon-error"></i>用户名不能为空</span>');
+      icontip.attr("class","icontip icon-font icon-error").show();
+   	  return false;
+  }
+	var flag = mobileReg.test(v) &&  v.length==11;
+	if(!(v.length>=2&&v.length<=18)){
+		th.addClass("Validform_error");
+	    p.html('<span class="errortip"><i class="icon-font icon-error"></i>请输入正确的用户名/手机号</span>');
+	    icontip.attr("class","icontip icon-font icon-error").show();
+		return false;
+	}
+	p.html('');
+ 	th.addClass("Validform_right");
+ 	icontip.attr("class","icontip icon-font icon-right").show();
+  	return true;
+}
+function passwordCheck() {
+	var icontip=$(".icontip[for='userPassword']");
+	var p = $("#formtip1");
+	var th=$("#userPassword");
+	var v=$.trim(th.val());
+    p.html('');
+	icontip.hide();
+	th.removeClass("Validform_error").removeClass("Validform_right");
+	
+  if(v==""){
+	    th.addClass("Validform_error");
+	    p.html('<span class="errortip"><i class="icon-font icon-error"></i>密码不能为空</span>');
+	    icontip.attr("class","icontip icon-font icon-error").show();
+    	return false;
+  }
+  if(v.length<6){
+	  	th.addClass("Validform_error");
+	    p.html('<span class="errortip"><i class="icon-font icon-error"></i>请输入正确的密码</span>');
+	    icontip.attr("class","icontip icon-font icon-error").show();
+  		return false;
+  }
+    p.html('');
+	th.addClass("Validform_right");
+	icontip.attr("class","icontip icon-font icon-right").show();
+  return true;
+}
+function verifyCheck() {
+	var icontip=$(".icontip[for='captcha']");
+	var p = $("#formtip1");
+	var th=$("#captcha");
+	var v=$.trim(th.val());
+    p.html('');
+	icontip.hide();
+	th.removeClass("Validform_error").removeClass("Validform_right");
+  	var verifyCodeRex=/^[a-z0-9]{5}$/;
+  if(v==""){
+	  	th.addClass("Validform_error");
+	    p.html('<span class="errortip"><i class="icon-font icon-error"></i>验证码不能为空</span>');
+	    icontip.attr("class","icontip inputtip-code icon-font icon-error").show();
+		return false;
+  }else if (!verifyCodeRex.test(v)) {
+	    th.addClass("Validform_error");
+	    p.html('<span class="errortip"><i class="icon-font icon-error"></i>请填写正确的验证码</span>');
+	    icontip.attr("class","icontip inputtip-code icon-font icon-error").show();
+		return false;
+	}
+  	p.html('');
+	th.addClass("Validform_right");
+	icontip.attr("class","icontip inputtip-code icon-font icon-right").show();
+  return true;
+}
+//验证表单
+function checkForm(){
+	  var flag = accountCheck() && passwordCheck();
+	  if(captchaneed){
+	     flag = flag && verifyCheck();
+	  }
+	  return flag;
+}
+
+function encodePwd(){
+	  var _input=$("input[name='userPassword']");
+	  var pwd=$.trim(_input.val());
+	  var modulus=$('#modulus').val();
+	  var exponent=$('#exponent').val();
+	  setMaxDigits(130);
+	  var key = new RSAKeyPair(exponent,"",modulus);
+	  var result = encryptedString(key, pwd);  
+	  if(result) {
+		 _input.val(result);
+	  }		  
+}
+
+function onSubmit(){
+	if(!checkForm()){
+		return;
+	}
+	beforeSubmit();
+	encodePwd();
+	var param = {};
+	param.userLoginName = $("#userMobile").val();
+	param.userPassword = $("#userPassword").val();
+	param.captcha = $("#captcha").val();
+	$.post("${tzp.getContextPath()}/secure/login/ajax",param,function(data){
+		var result =  data; //eval("("+data+")");
+		if (result.successed!=undefined&&!result.successed) {
+			afterSubmitFail(result);
+		} else {
+			afterSubmitSuccess();
+		}
+	});
+}
+
+//登录成功后的处理
+function afterSubmitSuccess(){
+  if(window.localStorage){
+      if($("#saveUserName").is(":checked")){
+          window.localStorage.userName=$('#userMobile').val();
+          window.localStorage.isSaveUserName=true;
+      }else{
+          window.localStorage.userName='';
+          window.localStorage.isSaveUserName=false;
+      }
+  }
+  top.location.reload();
+}
+//登录失败后的处理
+function afterSubmitFail(result){
+	$("#formtip1").html('<span class="errortip"><i class="icon-font icon-error"></i>'+result.message+'</span>');
+	captchaneed = result.captchaneed;
+	if(captchaneed){
+		$("#captcha_div").show();
+	}
+	
+	$("#userPassword").val("");
+	$("#captcha").val("");
+	if(captchaneed){
+		$("#captcha-img").click();
+	}
+	$(".input-text").removeClass("Validform_error").removeClass("Validform_right");
+	$(".icontip").hide();
+	$("#subbt").html('安全登录').removeClass("disabled").attr("disabled",false);
+}
+//登录前的处理
+function beforeSubmit(){
+	$("#formtip1").html("");
+	$("#subbt").html('<img src="${tzp.getContextPath()}/public/images/other/loading.gif?v=9804a03" class="mr-5" height="20">验证中...').addClass("disabled").attr("disabled",true);
+}
+//二维码失效
+function invalidQrcode(){
+	$("#qrcodeInvalid").show();
+	$("#scanBefore").show();
+	$("#scanAfter").hide();
+}
+//二维码刷新
+function refreshQrcode(){
+	$("#qrcodeImg").attr("src", basePath + '/secure/login/qrcode?'+Math.random());
+	$("#qrcodeInvalid").hide();
+	scan();
+}
+//二维码扫描成功
+function scanSuccess(){
+	$("#scanBefore").hide();
+	$("#scanAfter").show();
+}
+
+$("#loginform .hd li").each(function(i){
+ 	var _this=$(this);
+ 	_this.on('click',function(){
+ 		_this.addClass("on").siblings().removeClass("on");
+ 		$("#loginform .bd section").eq(i).show().siblings().hide();
+    });
+});
+
+function scan(){
+	if(!isTimeout){
+		return;
+	}
+	isTimeout = false;
+    $.ajax({
+        url: basePath +"/secure/login/scan",
+        data: {},
+        dataType: "JSON",
+        timeout: 35000,
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        	isTimeout = true;
+            if (textStatus == "timeout") { // 请求超时
+            	scan(); // 递归调用
+                // 其他错误，如网络错误等
+                } else { //其他错误每1.5s执行一次扫描
+                	setTimeout(scan(),1.5*1000)
+                }
+            },
+        success: function (data, textStatus) {
+        	if(data.code == '1'){//扫码登录成功
+        		afterSubmitSuccess();
+                return;
+            }if(data.code == '0'){//已经扫码,继续扫描直至确认登录
+            	isTimeout = true;
+            	scanSuccess();
+            }if(data.code == '-1'){
+            	invalidQrcode();
+            	isTimeout = true;
+           	 	return;
+            }else{//登录失败
+            	isTimeout = true;
+            	setTimeout(scan(),1.5*1000)
+            }
+        }
+    });
+	
+}
+</script>
+</body>
+</html>	

@@ -1,0 +1,272 @@
+.new-hard .login-container {
+    background: url('/public/images/activity/novice/banner.jpg') no-repeat center top;
+    padding: 0;
+}
+
+.new-hard .login-container {
+    height: 336px;
+}
+
+.new-hard .explain {
+	position:relative;
+	height:1249px;
+    background:url(/public/images/activity/novice/novice_main.png) no-repeat center top;
+}
+.new-hard .explain a{
+	position: absolute;
+    top: 1010px;
+    left: 50%;
+    margin-left:-257px;
+    width: 556px;
+    height: 98px;
+}
+.new-hard .explain img {
+    width: 100%;
+}
+
+.company-info {
+    background-color: #fff;
+    padding: 25px 0;
+}
+
+.company-info .slide-item {
+    position: relative;
+    width: 425px;
+    float: left;
+}
+
+.company-info .slide-item:last-child {
+    width: 350px;
+}
+
+.company-info .slide-item .icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 10px 0 0;
+}
+
+.company-info .slide-item .icon-font {
+    font-size: 92px;
+    color: #b88e51;
+    line-height: 1;
+}
+
+.company-info .slide-item .title {
+    color: #b88e51;
+    font-size: 22px;
+    margin: 0 0 5px;
+}
+
+.company-info .slide-item .front,
+.company-info .slide-item .back {
+    position: absolute;
+    display: block;
+    height: 92px;
+    width: 92px;
+    background-color: #f8f8f7;
+    border-radius: 50px;
+    -webkit-transition: all .5s ease-in-out;
+    /*淡入淡出效果*/
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    -webkit-backface-visibility: hidden;
+    /*元素背面不可见*/
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.company-info .slide-item .back {
+    color: #999;
+    -webkit-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.company-info .icon:hover .front {
+    -webkit-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.company-info .icon:hover .back {
+    -webkit-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+
+.new-hard-product {
+    padding: 70px 0;
+}
+
+.new-hard-product img {
+
+}
+
+.new-hard-product > ul {
+    margin: 40px auto 0;
+    width: 960px;
+}
+
+.new-hard-product > ul li {
+    width: 278px;
+    display: inline-block;
+    margin: 0 25px 0 0;
+    color: #666;
+}
+
+.new-hard-product > ul li:last-child {
+    margin: 0;
+}
+
+.new-hard-product > ul li .item {
+    border-radius: 6px;
+    padding: 46px 35px 35px;
+    background-color: #fff;
+}
+
+.new-hard-product > ul li .item:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
+}
+
+.new-hard-product > ul li .item h3 {
+    font-size: 24px;
+    margin: 0 0 20px;
+}
+
+.new-hard-product > ul li .item p {
+    margin: 0 0 10px;
+}
+
+.new-hard-product > ul li .item p.rate {
+    font-size: 40px;
+}
+
+.new-hard-product > ul li .item p.rate span {
+    font-size: 16px;
+}
+
+.new-hard-product > ul li .item a.btn {
+    margin: 35px 0 0;
+}
+
+.new-hard-product > ul li.center {
+    position: relative;
+    top: 20px;
+    padding: 0;
+    width: 342px;
+}
+
+.new-hard-product > ul li.center .item {
+    position: relative;
+    color: #fff;
+    border: 2px solid #f29118;
+    background: #3961cd; /* 一些不支持背景渐变的浏览器 */
+    background: -moz-linear-gradient(180deg, #3961cd, #ff3808);
+    background: -webkit-gradient(linear, 0 0, 0 right, from(#3961cd), to(#ff3808));
+    background: -o-linear-gradient(180deg, #3961cd, #ff3808);
+    background: -prefix-linear-zgradient(180deg, #3961cd, #ff3808);
+    background: -webkit-linear-gradient(180deg, #3961cd, #ff3808);
+    background: linear-gradient(180deg, #3961cd, #ff3808);
+}
+
+.new-hard-product > ul li.center .item:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+}
+
+.new-hard-product > ul li.center .item .rate {
+    color: #fff;
+    font-size: 52px;
+}
+
+.new-hard-product > ul li.center .item p {
+    font-size: 18px;
+}
+
+.new-hard-product > ul li.center .item h3 {
+    font-size: 30px;
+}
+
+.new-hard-product > ul li.center .item .btn {
+    background-color: #fff;
+    color: #ff6640;
+    margin: 50px 0 0;
+}
+
+.new-hard-product > ul li.center .item .day {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 89px;
+    height: 92px;
+    background: url("/public/images/activity/newhard_icon_day.png") no-repeat;
+}
+
+.new-hard-product > ul li.center .item .day span {
+    position: absolute;
+    transform: rotate(45deg);
+    display: block;
+    font-size: 20px;
+    top: 18px;
+    right: 10px;
+}
+
+.reg-modal {
+    width: 420px;
+}
+
+.layui-layer-content {
+    height: auto !important;
+}
+
+.reg-modal .company-form .msg {
+    margin: 0 0 10px;
+}
+
+.login-form .tab-content {
+    margin: 0;
+}
+
+.new-hard .login-title {
+    color: #3961cd;
+    background-color: #fff;
+    height: 56px;
+    margin: 0;
+    padding: 28px 0 0;
+}
+
+.new-hard .login-title.recommend-title {
+    padding: 0;
+    line-height: 56px;
+    background-color: #ff5c35;
+    font-size: 16px;
+    color: #fff;
+}
+
+.new-hard .login-title.recommend-title .text-primary {
+    color: #ffff00;
+    margin:0 3px;
+}
+.register-recommend .register-form-layer{
+    top:50px;
+}
+.opt{
+	background: #eee;
+	padding:60px 0;
+	text-align: center;
+}
+
+.opt img{
+	max-width:100%;
+}
+.opt ul{
+	text-align: left;
+	padding:40px 0 0 20px;
+	color:#b88e51;
+}
+.opt ul li{
+	margin:0 0 10px;
+}

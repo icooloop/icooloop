@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="baidu-site-verification" content="kRgG3K9bcT" />
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="robots" content="">
+    <title>企业认证-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+   	<#include "/include/style.html" />
+    <link rel="stylesheet" type="text/css" href="${tzp.getContextPath()}/src/css/v2/attestation.css?v=487a982">
+    <style>
+    	.mainContent{
+    		padding-top:50px;
+    	}
+    	
+    </style>
+</head>
+<body>
+<!-- header -->
+<#include "/include/header.html" />
+<div class="mainContent">
+    <div class="wp">
+        <div class="m-attestation">
+            <form id="attestationForm" class="attestation-form" method="post">
+                <h1>企业认证</h1>
+                <ul class="clearFix">
+                	<#if redirectMessage??>
+	                	<li>
+	                	<p><i></i>${redirectMessage!''}</p>
+	                	</li>
+                	</#if>
+                	
+                    <li>
+                        <h2>企业名称</h2><input type="text" placeholder="请输入企业名称" id="companyName" name="companyName"  
+                        <#if detail.companyName??> 
+                        	value="${detail.companyName!''}" 
+                        <#else>
+                        	 <#if _p2p_member_user??>
+                					value="${(_p2p_member_user.realName)!(_p2p_member_user.nickName)}" 
+                			<#else>
+                					value=""	
+                			</#if>
+                        </#if>>
+                    </li>
+                    <li>
+                        <h2>营业执照号码或三网合一号</h2><input type="text" placeholder="请输入证件号码" id="businessLicense" name="businessLicense" value="${detail.businessLicense!''}">
+                    </li>
+                    <li>
+                        <h2>法定代表人</h2><input type="text" placeholder="请输入法定代表人姓名" id="companyLegalPerson" name="companyLegalPerson" value="${detail.companyLegalPerson!''}">
+                    </li>
+                    <li>
+                        <h2>公司地址</h2><textarea id="companyAddress" name="companyAddress" value="${detail.companyAddress!''}">${detail.companyAddress!''}</textarea>
+                    </li>
+                    <li>
+                        <h2>注册资本</h2><input type="text" placeholder="请输入注册资本" id="registerCapital" name="registerCapital" value="${detail.registerCapital!''}">
+                    </li>
+                    <li>
+                        <h2>成立时间</h2><input type="text" placeholder="请输入公司的成立时间" id="establishTime" name="establishTime" value="${(detail.establishTime?string('yyyy-MM-dd'))!''}" onClick="WdatePicker({skin:'twoer'})">
+                    </li>
+                </ul>
+                <div class="attestation-file">营业执照扫描件<span id="upbutten"><span id="uploadBtn"><#if (detail?? && detail.businessLicenseUrl??)>重新上传<#else>点击上传</#if></span><input type="file" id="upfile" name="upfile"></span></div>
+                <ul style="list-type:none" class="file-list" id="fileList">
+	                <li id="file-o_1buunntg11jeo1n71i41ts31s868"><p class="file-name"><img src="${detail.businessLicenseUrl!''}"></p></li>
+	                <p></p><p class="progress"></p>
+                </ul>
+                <input type="hidden" id="uploadUrl" name="uploadUrl" value="${detail.businessLicenseUrl!''}"/>
+                <#if detail.auditStatus?? >
+	                <#if detail.auditStatus == '0'>
+	               	 	<button type="submit" class="attestation-Btn">审核中</button>
+	                <#elseif detail.auditStatus == '1'>
+	                	<button type="submit" class="attestation-Btn">审核成功</button>
+	                <#else>	
+	                	<button type="submit" class="attestation-Btn" id="attestationBtn">提交审核</button>
+	                </#if>
+                <#else>
+                	<button type="submit" class="attestation-Btn" id="attestationBtn">提交审核</button>
+                </#if>
+           </form>
+            <ul class="attestation-list clearFix">
+                <li><i class="icon-font icon-bridge text-primary"></i><h1>上市背景</h1> <h2>A股上市公司控股<br/>信息公开透明</h2></li>
+                <li><i class="icon-font icon-socket text-primary"></i><h1>优质资产</h1> <h2>供应链及三农贷款<br/>支持实体经济</h2></li>
+                <li><i class="icon-font icon-prize text-primary"></i><h1>普惠金融</h1> <h2>合规运营稳健发展<br/>构筑金融桥梁</h2></li>
+            </ul>
+        </div>
+        <div class="s-ing">
+            <img src="${tzp.getContextPath()}/public/images/other/s.png?v=127b2e2">
+            <h1>您的企业认证申请已提交</h1>
+            <p>工作人员将会24小时内审核，请耐心等待。有任何问题请随时联系客服。</p>
+            <a class="attestation-Btn" href="${tzp.getContextPath()}/member/account/index">查看我的账户</a>
+        </div>
+        <div class="attestation-footer pb-40 pt-40">
+            <#include "/include/copyright.html" />
+            <p><a href="http://www.miit.gov.cn/" target="_blank" rel="noopener noreferrer">粤ICP备14041671号-1</a></p>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="${tzp.getContextPath()}/public/js/plugins/pluploaod/plupload.full.min.js?v=2572045"></script>
+<script type="text/javascript" src="${tzp.getContextPath()}/public/js/plugins/layer/layer.js?v=7804f70"></script>
+<script type="text/javascript" src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.min.js?v=9fc6b5c"></script>
+<script type="text/javascript" src="${tzp.getContextPath()}/public/js/plugins/My97DatePicker/WdatePicker.js?v=704070c"></script>
+<script type="text/javascript" src="${tzp.getContextPath()}/public/js/bootstrap.min.js?v=1d2c32c"></script>
+<script>
+ 	var uploader = new plupload.Uploader({ //实例化一个plupload上传对象
+		browse_button : 'upfile',
+		multi_selection:false,// 只能选中一个
+		url : '${tzp.getContextPath()}/member/auth/upload',
+		file_data_name:'fileData',//提交文件name
+		flash_swf_url : 'js/Moxie.swf',
+		silverlight_xap_url : 'js/Moxie.xap',
+		filters: {
+		  mime_types : [ //只允许上传图片文件和rar压缩文件
+		    { title : "图片文件", extensions : "jpg,gif,png,bmp" }
+		  ],
+		  max_file_size : '10240kb', //最大只能上传1M的文件
+		  prevent_duplicates : false //不允许队列中存在重复文件
+		}
+	});
+	uploader.init(); //初始化
+	var l_index = '';
+	//绑定文件添加进队列事件
+	uploader.bind('FilesAdded',function(uploader,files){
+		$("#uploadUrl").val('');
+		l_index= layer.load(2,{skin:''});
+		uploader.start();
+	})
+	uploader.bind('FileUploaded',function(uploader,file,responseObject){
+		layer.close(l_index);
+		var result=$.parseJSON(responseObject.response);
+	   	if(result.success){
+			var html = '<li id="file-' + file.id +'"><p class="file-name"><img src="' + result.data[0].picUrl + '"/></li></p><p class="progress"></p>';
+			$("#uploadUrl").val(result.data[0].picUrl);
+			$('#fileList').html(html);
+			$("#uploadBtn").text('重新上传');
+		}else{
+			layer.msg(result.msg, {shift: 6,time:2000,skin:'layui-layer-hui'});
+		}
+	});
+    $(document).on('click', '#fileList a.pic_delete', function () {
+        $(this).parent().remove();
+        var toremove = '';
+        var id = $(this).attr("data-val");
+        for (var i in uploader.files) {
+            if (uploader.files[i].id === id) {
+                toremove = i;
+            }
+        }
+        uploader.files.splice(toremove, 1);
+    });
+    $("#fileList").on('click','img',function(){
+    	 // 获取元素
+        var theimg = $(this);
+        var url = theimg.attr("src");
+        // 新建图片
+        var imgcontent = '<img src="'+url+'" class="imgviewer">';
+        var setting = {
+            type: 1,
+            title: false,
+            closeBtn: 0,
+            skin: 'layui-layer-nobg', //没有背景色
+            shadeClose: true,
+            shade: 0.6, //遮罩透明度
+            content: imgcontent
+        }
+
+        var windowH = $(window).height();
+        var windowW = $(window).width();
+
+        getImageWidth(url,function(w,h){
+            // 调整图片大小
+            if(w>windowW || h>windowH){
+                if(w>windowW && h>windowH){
+                    w = theimg.width()*3;
+                    h = theimg.height()*3;
+                    setting.area = [w+"px",h+"px"];
+                    //console.log(w+","+h);
+                }else if(w>windowW){
+                    setting.area = [windowW*0.5+"px",windowW*0.5/w*h+"px"];
+                }else{
+                    setting.area = [windowH*0.5/h*w+"px",windowH*0.5+"px"];
+                }
+                //console.log(setting.area);
+            }else{
+                setting.area = [w+"px",h+"px"];
+            }
+            // 设置layer
+            layer.open(setting);
+        });
+    })
+    function getImageWidth(url,callback){
+	    var img = new Image();
+	    img.src = url;
+	
+	    // 如果图片被缓存，则直接返回缓存数据
+	    if(img.complete){
+	        callback(img.width, img.height);
+	    }else{
+	            // 完全加载完毕的事件
+	        img.onload = function(){
+	            callback(img.width, img.height);
+	        }
+	    }
+	}
+    $("#attestationForm").validate({
+        // 验证规则
+        rules: {
+        	companyName: {
+                required: true,
+                minlength: 2,
+                maxlength: 30
+            },
+            businessLicense: {
+                required: true,
+                minlength: 2,
+                maxlength: 30
+            },
+            companyLegalPerson:{
+                required: true,
+                minlength: 2,
+                maxlength: 10
+            },
+            companyAddress:{
+                required: true,
+                minlength: 2,
+                maxlength: 150
+            },
+            registerCapital:{
+                required: true,
+                minlength: 1,
+                maxlength: 15,
+                number:true
+            },
+            establishTime:{
+                required: true,
+                minlength: 1,
+                maxlength: 15
+            }
+        },
+        // 设置错误信息
+        messages: {
+            companyName: {
+                required: "请输入企业名称",
+                minlength: '请输入正确的企业名称',
+                maxlength: '请输入正确的企业名称'
+            },
+            businessLicense: {
+                required: "请输入证件号码",
+                minlength: '请输入正确的证件号码',
+                maxlength: '请输入正确的证件号码'
+            },
+            companyLegalPerson: {
+            	required: "请输入法定代表人",
+                minlength: '请输入正确的法定代表人',
+                maxlength: '请输入正确的法定代表人'
+            },
+            companyAddress: {
+            	required: "请输入公司地址",
+                minlength: '请输入正确的公司地址',
+                maxlength: '请输入正确的公司地址'
+            }
+            ,
+            registerCapital: {
+            	required: "请输入注册资本",
+                minlength: '请输入正确的注册资本',
+                maxlength: '请输入正确的注册资本',
+                number:"请输入数字"
+            }
+            ,
+            establishTime: {
+            	required: "请输入成立时间",
+                minlength: '请输入正确的成立时间',
+                maxlength: '请输入正确的成立时间'
+            }
+        },
+        // 错误信息显示
+        errorPlacement: function (error, element) {
+            var $element = $(element);
+            var $parent = $element.parent();
+            var $errorIcon = $parent.children('p');
+            if (!$errorIcon.length) {//如果没有错误的图标元素添加一个
+                $errorIcon = $parent.append('<p></p>').children('p');
+            }
+            $errorIcon.show().html('<i></i>'+error.html());
+        },
+        //验证成功
+        success: function (error, element) {
+            var $element = $(element);
+            var $parent = $element.parent();
+            var $errorIcon = $parent.children('p');
+            if ($errorIcon.length) {
+            	$errorIcon.hide();
+            }
+        },
+        submitHandler: function (form) { //验证通过提交表单
+       	 	var uploadUrl = $("#uploadUrl").val();
+            if(uploadUrl==''){
+            	layer.msg("请先上传附件！");
+            	return false;
+            } 
+            var load_index= layer.load(2,{skin:''});
+            $.ajax({
+    			url : basePath + "/member/auth/sumbit",
+    			type : "POST",
+    			dataType : "JSON",
+    			async: false,
+    			data : {
+    				companyName:$('#companyName').val(),
+    				registerCapital:$('#registerCapital').val(),
+    				businessLicense:$('#businessLicense').val(),
+    				companyLegalPerson:$('#companyLegalPerson').val(),
+    				registerCapital:$('#registerCapital').val(),
+    				companyAddress:$('#companyAddress').val(),
+    				establishTime:$('#establishTime').val(),
+    				businessLicenseUrl:$('#uploadUrl').val()
+    			},
+    			success : function(data) {
+    				layer.close(load_index);
+    				var result = eval("(" + data + ")");
+    				if (result.success != undefined && !result.success) {
+    					layer.msg(result.msg, {shift: 6,time:2000,skin:'layui-layer-hui'});
+    				} else {
+    				   $(".m-attestation").hide();
+    				   $(".s-ing").show();
+    				}
+    			}
+    		});
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>出借成功-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+	<#include "/include/style_new.html" />
+	<!-- 页面样式 -->
+	<link rel="stylesheet" type="text/css" href="${tzp.getContextPath()}/src/css/pages/product/subscriptionSuccess.css?v=31be487">
+</head>
+<body>
+<#include "/include/header_new.html" />	
+<!--页面开始-->
+<div class="product-list-banner"></div>
+<!--出借成功信息-->
+<div class="subscription-success subscription-success-new">
+	<div class="content">
+		<div class="clearfix text-center layer">
+			<p style="float:left;margin:0 10px 0 0">
+				<i class="icon-font icon-right1 text-success"><!--图标--></i>
+			</p>
+			<h2 style="margin-top:26px;text-align: left">您已成功投标</h2>
+			<p style="text-align: left" class="text-default">${(result.investAmount!0)?string(',##0')} 元 | ${(result.prdName!'')}</p>
+			<div style="margin:60px 0 -30px" class="process">
+			<ul>
+				<li>
+					<h4>成功出借${(result.investAmount!0)?string(',##0')}元
+							<#if result.useCoupon??&&result.useCoupon gt 0>，使用红包${result.useCoupon?string(',##0')}</#if>
+					<#if result.interestTicket??&&result.interestTicket gt 0>，使用奖励券${result.interestTicket?string(',##0.00')}%</#if>
+					</h4>
+					<span>${(investTime?string('yyyy-MM-dd HH:mm:ss'))!''}</span>
+				</li>
+				<li>
+					<h4>开始计息</h4>
+					<span>满标后，放款成功开始计息</span>
+				</li>
+				<li>
+					<h4>项目到期</h4>
+					<span>起息日${result.settleStr!''}后到期， 
+					 <#if result.expectedIncome gt 1>
+						预期收益${(result.expectedIncome!0)?string(',##0.00')}元
+					<#else>
+						预期收益${(result.expectedIncome!0)}元
+                    </#if>
+					</span>
+				</li>
+			</ul>
+		</div>
+		</div>
+		<div class="text-center next">
+			<a class="btn btn-default btn-lg" href="${tzp.getContextPath()}/spa/member/invest/holdlist?tabType=holdList">查看我的资产</a>
+			<a class="btn btn-info btn-lg" href="${tzp.getContextPath()}/spa/product/index">查看其他项目</a>
+		</div>
+	</div>
+</div>
+<#include "/include/footer_new.html" />
+<!-- 框架js -->
+<#include "/include/bottom_script.html" />
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

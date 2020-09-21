@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>开通存管账户-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <!-- 页面样式 -->
+    <#include "/include/style_access.html" />
+    <#if (_p2p_member_user??&&_p2p_member_user.userType=='5')>
+		<#include "/loan/include/style.html" />
+	</#if>
+</head>
+<body class="bgdesc">
+<!-- header -->
+<#include "/loan/include/header.html" />
+<div class="m-access-form deposit_identify mt-30">
+	<div class="hd">
+		<div class="logo"><img alt="" src="${tzp.getContextPath()}/public/images/user/deposit_logo.png?v=4f61cf3" height="50"></div>
+		<h4>账户升级为新网银行存管账户</h4>
+		<h6>为保障您的资金安全，请先开通存管帐户</h6>
+	</div>
+	<div class="bd">
+		<form class="forminfo" action="${tzp.getContextPath()}/member/depository/reg" method="post" id="identifyForm" target="_blank" onsubmit="return checkForm();">
+			<div class="formdesc mt-30">姓名</div>
+			<div class="formline mt-5">
+				<div class="forminput">
+				<input class="input-text"  value="${hiderealName!''}"  <#if isReadOnly??&&isReadOnly=='1'>readonly="readonly"</#if> name="hiderealname" id="hiderealname" onkeyup="this.value=this.value.replace(/^ +| +$/g,'')" placeholder="请输入真实姓名"></div>
+				<input type="hidden" value="${realName!''}" name="realname" id="realname">
+				<span class="icontip icon-font icon-error" for="realname"></span>
+			</div>
+			<div class="l20 c-666 f-12 mt-5" id="nameTip" style="display:none;">*为确保存管成功开户，请输入您的简体中文姓名</div>
+			 <#if (_p2p_member_user??&&_p2p_member_user.userType!='5')>
+				<div class="formdesc mt-15">证件类型</div>
+				<div class="formline mt-5">
+					<select class="select" name="idCardType" id="idCardType" onchange="changeIdCardType()">
+						<#list XwIdCardType as rm>
+							<option value="${rm.value}"  <#if  idCardType??&&(idCardType==rm.value)>selected="selected"</#if> >${rm.cnName}</option>
+						</#list>
+					</select>
+					<span class="icontip icon-font icon-error" for="idCardType"></span>
+				</div>
+			<#else>
+				<div class="formdesc mt-15">证件类型</div>
+				<div class="formline mt-5">
+					<select class="select" name="idCardType" id="idCardType" >
+							<option value="PRC_ID" >身份证</option>
+					</select>
+					<span class="icontip icon-font icon-error" for="idCardType"></span>
+				</div>
+			</#if>
+			
+			
+			<div class="formdesc mt-15">证件号码</div>
+			<div class="formline mt-5">
+				<div class="forminput">
+				<input class="input-text" value="${hideidCardNo!''}"  <#if isReadOnly??&&isReadOnly=='1'>readonly="readonly"</#if> name="idNoTip" id="idNoTip" placeholder="请输入您的证件号码">
+				<input type="hidden" value="${idCardNo!''}" name="idNo" id="idNo">
+				
+				</div>
+				<span class="icontip icon-font icon-error" for="idNo"></span>
+			</div>
+			<div class="tipdiv mt-10" id="formtip1"></div>
+            <div class="formline mt-10">
+               <button type="submit" class="btn btn-submit" id="subbt">开通银行存管</button>
+            </div>
+		</form>
+	</div>
+</div>
+<#include "/include/login_footer.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.js?v=eb7ebdc"></script>
+<script src="${tzp.getContextPath()}/src/js/tools/validate_cn.js?v=10c4607"></script>
+<script type="text/javascript">
+$(function(){
+	$("#subbt").on('click', function () {
+		
+	})
+	$("#idNoTip").focus(function(){
+		var indexidNo = $("#idNoTip").val();
+		var isIdNoShow = false;
+		if(indexidNo.indexOf("**") >= 0){
+			isIdNoShow = true;
+		}
+		var realIdNo = $("#idNo").val();
+		if(isIdNoShow){
+			$("#idNoTip").val(realIdNo);
+		}else{
+			$("#idNo").val($("#idNoTip").val());
+		}
+		
+		
+	})
+	
+	$("#idNoTip").blur(function(){
+		var indexidNo = $("#idNoTip").val();
+		var isIdNoShow = false;
+		if(indexidNo.indexOf("**") >= 0){
+			isIdNoShow = true;
+		}
+		var realIdNo = $("#idNo").val();
+		if(isIdNoShow){
+			$("#idNoTip").val(realIdNo);
+		}else{
+			$("#idNo").val($("#idNoTip").val());
+		}
+	})
+	
+	
+	
+	$("#hiderealname").focus(function(){
+		var indexName = $("#hiderealname").val();
+		var isShow = false;
+		if(indexName.indexOf("**") >= 0){
+			isShow = true;
+		}
+		var realName = $("#realname").val();
+		if(isShow){
+			$("#hiderealname").val(realName);
+		}else{
+			$("#realname").val($("#hiderealname").val());
+		}
+	})
+	
+	$("#hiderealname").blur(function(){
+		var indexName = $("#hiderealname").val();
+		var isShow = false;
+		if(indexName.indexOf("**") >= 0){
+			isShow = true;
+		}
+		var realName = $("#realname").val();
+		if(isShow){
+			$("#hiderealname").val(realName);
+		}else{
+			$("#realname").val($("#hiderealname").val());
+		}
+	})
+	
+	
+	
+	
+})
+
+function changeIdCardType(){
+	($("#idCardType").val()=='COMPATRIOTS_CARD')?$("#nameTip").show():$("#nameTip").hide();
+}
+
+function checkForm(){
+	if(!checkRealname()||!checkIdNo()){
+		return false;
+	}
+	$("#formtip1").html("");
+	return true;
+}
+//1.1 验证姓名
+function checkRealname(){
+	var icontip=$(".icontip[for='realname']");
+	var p = $("#formtip1");
+	var th=$("#realname");
+	var v=$.trim(th.val());
+    p.html('');
+	icontip.hide();
+	th.removeClass("Validform_error").removeClass("Validform_right");
+	
+  if(v==""){
+	  th.addClass("Validform_error");
+      p.html('<span class="errortip"><i class="icon-font icon-error"></i>真实姓名不能为空</span>');
+      icontip.attr("class","icontip icon-font icon-error").show();
+   	  return false;
+  }
+  var regRealname = /^[\u4E00-\u9FA5]{2,8}(·[\u4E00-\u9FA5]{1,8})*$/;
+  var idCardType=$("#idCardType").val();
+  if(idCardType=='PRC_ID'&&!regRealname.test(v)){//身份证
+		th.addClass("Validform_error");
+	    p.html('<span class="errortip"><i class="icon-font icon-error"></i>请输入正确的真实姓名</span>');
+	    icontip.attr("class","icontip icon-font icon-error").show();
+		return false;
+  }
+	p.html('');
+ 	th.addClass("Validform_right");
+ 	icontip.attr("class","icontip icon-font icon-right").show();
+  	return true;
+}
+function checkIdNo(){
+	var idCardType=$("#idCardType").val();
+	var icontip=$(".icontip[for='idNo']");
+	var p = $("#formtip1");
+	var th=$("#idNo");
+	var v=$.trim(th.val());
+    p.html('');
+	icontip.hide();
+	th.removeClass("Validform_error").removeClass("Validform_right");
+	if(v==""){
+	  	th.addClass("Validform_error");
+      	p.html('<span class="errortip"><i class="icon-font icon-error"></i>证件号码不能为空</span>');
+      	icontip.attr("class","icontip icon-font icon-error").show();
+   	  	return false;
+  	}
+	if(idCardType=='PRC_ID'){//身份证
+		if(!isID(v)){
+			th.addClass("Validform_error");
+		    p.html('<span class="errortip"><i class="icon-font icon-error"></i>请正确填写您的身份证号码</span>');
+		    icontip.attr("class","icontip icon-font icon-error").show();
+			return false;
+		}
+	}else{
+		//var gatReg =/^[0-9a-zA-Z()（）]*$/g;
+		if((v.length<6)||(v.length>20)){
+			th.addClass("Validform_error");
+		    p.html('<span class="errortip"><i class="icon-font icon-error"></i>请输入正确的证件号码</span>');
+		    icontip.attr("class","icontip icon-font icon-error").show();
+			return false;
+		}
+	}
+	p.html('');
+ 	th.addClass("Validform_right");
+ 	icontip.attr("class","icontip icon-font icon-right").show();
+  	return true;
+}
+//4.3 判断是否为身份证
+function isID(idNo){
+	var city = {
+        11: "北京",
+        12: "天津",
+        13: "河北",
+        14: "山西",
+        15: "内蒙古",
+        21: "辽宁",
+        22: "吉林",
+        23: "黑龙江 ",
+        31: "上海",
+        32: "江苏",
+        33: "浙江",
+        34: "安徽",
+        35: "福建",
+        36: "江西",
+        37: "山东",
+        41: "河南",
+        42: "湖北 ",
+        43: "湖南",
+        44: "广东",
+        45: "广西",
+        46: "海南",
+        50: "重庆",
+        51: "四川",
+        52: "贵州",
+        53: "云南",
+        54: "西藏 ",
+        61: "陕西",
+        62: "甘肃",
+        63: "青海",
+        64: "宁夏",
+        65: "新疆",
+        71: "台湾",
+        81: "香港",
+        82: "澳门",
+        91: "国外 "
+    };
+	 if (!idNo || !/^\d{6}(18|19|20)?\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/i.test(idNo)) {
+	        return false;
+	    }
+
+	    if (!city[idNo.substr(0, 2)]) {
+	        return false;
+	    }
+
+	    //18位身份证需要验证最后一位校验位
+	    if (idNo.length == 18) {
+	        var arrExp = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];//加权因子
+	        var arrValid = [1, 0, "X", 9, 8, 7, 6, 5, 4, 3, 2];//校验码
+	        var sum = 0, idx;
+	        for (var i = 0; i < idNo.length - 1; i++) {
+	            // 对前17位数字与权值乘积求和
+	            sum += parseInt(idNo.substr(i, 1), 10) * arrExp[i];
+	        }
+	        // 计算模（固定算法）
+	        idx = sum % 11;
+	        // 检验第18为是否与校验码相等
+	        return arrValid[idx] == idNo.substr(17, 1).toUpperCase();
+	    }
+	    return true;
+}
+</script>
+</body>
+</html>		

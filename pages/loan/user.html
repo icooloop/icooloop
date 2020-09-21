@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>账户中心-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+    <link rel="stylesheet" href="${tzp.getContextPath()}/src/js/plugins/calendar/fullcalendar.css?v=fc6e94b">
+    <#include "/loan/include/style.html" />
+</head>
+<body class="bgmain">
+<!-- 页面开始 -->
+<#include "/loan/include/header.html" />
+<div class="g-mainer">
+	<div class="m-user">
+		<div class="wp clearfix">
+			<div class="breadcrumb"><span><a href="${tzp.getContextPath()}/">亿钱贷首页</a></span>&gt;<span><a href="${tzp.getContextPath()}/member/account/index">我的账户</a></span>&gt;<span>账户总览</span></div>
+			<#include "/loan/include/userMenu.html" />
+			<div class="mu-right">
+				<#include "/loan/include/userSafe.html" />
+				<div class="mu-account-total clearfix user-shadow">
+                    <div class="item br1">
+                        <h4>待还本金(元)</h4>
+                        <h1>${(planPayPrincipal!0)?string(',##0.00')}</h1>
+                    </div>
+                    <div class="item br1"><h4>待还利息(元)</h4>
+                        <h1>${(planPayInterest!0)?string(',##0.00')}</h1>
+                    </div>
+                    <div class="item"><h4>待还借款笔数</h4>
+                    	<h1 class="h1-color-last"><a href="${tzp.getContextPath()}/member/loan/list" class="text-primary">${stillNum!'0'}</a></h1>
+                  	</div> 
+                </div>
+                <div id="planList" class="mu-account-plan user-shadow clearfix mt-20">
+                    <div class="hd mu-title">
+                   		<h4>还款计划</h4>
+                    </div>
+                    <div class="bd">
+                   		<div class="calendarlist" id="calendarList"></div>
+                   		<div class="calendardesc" id="monthRepayList"></div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+<input type="hidden" value="${isDepositary!''}" id="isDepositary">
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script type="text/javascript">
+<#if repayData??>
+var repayData=${repayData};
+<#else>
+var repayData={"count":0,"data":[]};
+</#if>
+
+</script>
+<script src="${tzp.getContextPath()}/public/js/bootstrap.min.js?v=1d2c32c"></script>
+<script src="${tzp.getContextPath()}/public/js/moment.min.js?v=8a8f8ba"></script>
+<script src="${tzp.getContextPath()}/src/js/plugins/calendar/fullcalendar.js?v=6f757eb"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/loan/user.js?v=6200af6"></script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

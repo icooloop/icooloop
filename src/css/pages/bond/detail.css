@@ -1,0 +1,397 @@
+/* 产品详情页 */
+body {
+    background-color: #efefef;
+}
+
+.product-detail-banner {
+    position: absolute;
+    top: 108px;
+    width: 100%;
+    height: 348px;
+    background: url(/public/images/product/product_detail_bg.jpg) no-repeat center;
+    z-index: 0;
+}
+
+.product-detail-content {
+    position: relative;
+    margin: 50px 0 20px;
+}
+
+
+.product-detail-content .product-detail-info {
+	position:relative;
+    width: 810px;
+    height:319px;
+    padding: 58px;
+    border-right: 1px solid #eaeaea;
+    background-color: #fff;
+}
+
+.product-detail-content .product-detail-info h3.title {
+    margin: 0 0 34px;
+    font-size: 22px;
+    font-weight: normal;
+    color:#060001;
+}
+
+.product-detail-content .product-detail-info h3.title span {
+    color: #999;
+}
+.product-detail-content .product-detail-info h3.title span span{
+    color:#999;
+    margin:0 0 0 4px;
+}
+.product-detail-content .product-detail-info h3.title span.split {
+    margin: 0 15px 0 12px;
+}
+
+.product-detail-content .product-detail-info .info {
+    margin: 0 0 35px -46px;
+    text-align: center;
+}
+
+.product-detail-content .product-detail-info .info h2 {
+    font-size: 36px;
+    font-weight: normal;
+    margin: 0 0 20px;
+}
+
+.product-detail-content .product-detail-info .info h2 span {
+    font-size: 24px;
+}
+
+.product-detail-content .product-detail-info .info p {
+    margin: 0;
+    padding: 0 0 0 5px;
+    font-size: 18px;
+}
+
+.product-detail-content .product-detail-info .progress {
+    position: relative;
+    border-radius: 0;
+    height: 4px;
+    overflow: visible;
+}
+
+.product-detail-content .product-detail-info .progress .progress-bar {
+    width: 0;
+    transition: width .5s ease-in .2s;
+}
+
+.product-detail-content .product-detail-info .progress .progress-bar span {
+    position: absolute;
+    top: -9px;
+    right: -68px;
+    font-size: 24px;
+    color: #999;
+}
+.product-detail-content .product-detail-info .new-hard-info{
+	position: absolute;
+	bottom:15px;
+	left:60px;
+}
+.product-detail-content .product-detail-info .new-hard-info span{
+	margin:0 3px;
+}
+.product-detail-subscription {
+    width: 390px;
+    padding: 22px 50px;
+    color: #333;
+    font-size: 16px;
+    background-color: #fafafa;
+}
+
+.product-detail-subscription p {
+    margin: 0 0 10px;
+}
+
+.product-detail-subscription h2 {
+    font-size: 40px;
+    margin: 0 0 10px;
+}
+.product-detail-subscription .form-group.msg{
+    padding: 3px 0 0;
+	height: 30px;
+	margin:0;
+	font-size:14px;
+}
+.product-detail-subscription .form-group.msg span{
+	margin-left:3px;
+}
+.product-detail-subscription .form-group.msg span a{
+	font-weight: bold;
+	text-decoration: underline;
+}
+.product-detail-subscription p.subscription-time {
+    margin: 0 0 15px;
+}
+
+.product-detail-subscription div.subscription-input {
+    position: relative;
+}
+
+.product-detail-subscription div.subscription-input .input-text {
+    position: absolute;
+   	right: 46px;
+    top: 22px;
+}
+
+.product-detail-subscription .subscription-success {
+    margin: 31px 0 51px;
+}
+.product-detail-subscription .subscription-success .icon-right1{
+   	color: #999;
+    font-size: 70px;
+}
+.product-detail-subscription .subscription-success .subscription-title{
+	font-size:42px;
+ 	color: #999;
+ 	margin:0 0 25px;
+}
+.product-detail-list {
+    margin: 0 auto 30px;
+    background-color: #fff;
+}
+
+.product-detail-list .nav-tabs {
+    border-bottom: 1px solid #bebebe;
+    padding-left: 70px;
+}
+
+.product-detail-list .nav-tabs li {
+    margin: 0;
+}
+
+.product-detail-list .nav-tabs li a, .product-detail-list .nav-tabs li a:hover, .product-detail-list .nav-tabs li a:focus {
+    border: none;
+    border-radius: 0;
+    color: #666;
+}
+
+.product-detail-list .nav-tabs li a {
+    width: 142px;
+    padding: 16px 0;
+    margin: 0;
+    font-size: 18px;
+    text-align: center;
+}
+
+.product-detail-list .nav-tabs li.active a {
+    background-color: #3961cd;
+    color: #fff;
+}
+
+.product-detail-list .tab-content .enclosure-list img{
+    width:300px;
+}
+
+.product-detail-list .tab-content .page-title {
+    font-size: 18px;
+    height: 18px;
+    line-height: 18px;
+    color: #333;
+    border-left-width: 8px;
+    padding:0;
+    border:none;
+}
+.product-detail-list .tab-content .page-title i{
+    vertical-align: top;
+    margin:0 5px 0 0;
+}
+.product-detail-list .tab-content .item-content {
+    margin: 0 0 45px 0;
+    line-height: 1.6;
+}
+.product-detail-list .tab-content .item-content img{
+    max-width: 1000px;
+}
+.product-detail-list .tab-content .protect-detail {
+    padding: 0 0 50px;
+}
+.product-detail-list .tab-content .tab-pane{
+    padding: 25px 50px 25px 70px;
+    width:100%;
+    min-height: 600px;
+    position: relative;
+}
+.product-detail-list .tab-content .tab-pane img{
+    max-width: 100%;
+}
+.product-detail-list .tab-content .tab-pane hr{
+    border-style:dashed;
+}
+.product-detail-list .tab-content .login-layer{
+    position: absolute;
+    height: 100%;
+    width:100%;
+    left:0;
+    top:0;
+    background-color: #fff;
+    text-align: center;
+}
+.product-detail-list .tab-content .login-layer img{
+    margin:50px 0 15px;
+}
+.product-detail-list .tab-content .login-layer p{
+    color:#666;
+    width:100%;
+    font-size:18px;
+    text-align: center;
+}
+.product-detail-list .tab-content .table td, .product-detail-list .tab-content .table.table-bordered {
+    border-color: #bfbfbf;
+}
+
+.product-detail-list .tab-content .table thead th {
+    background-color: #edf2f9;
+    color: #666;
+    text-align: center;
+    height: 48px;
+    border-color: #bfbfbf;
+    vertical-align: middle;
+    border-width: 1px;
+}
+
+.product-detail-list .tab-content .table td {
+    height: 46px;
+    vertical-align: middle;
+}
+.product-detail-list .tab-content .table td:nth-child(2n+1){
+    background-color: #edf2f9;
+    width:240px;
+}
+.product-detail-list .tab-content .table td:nth-child(2n){
+    width:300px;
+}
+.product-detail-list .tab-content .table.security td:nth-child(2n+1){
+    width:130px;
+}
+.product-detail-list .tab-content .table.security td:nth-child(2n){
+    width:750px;
+}
+.product-detail-list .tab-content .table.invest td:nth-child(2n+1){
+    background-color: #fff;
+}
+.product-detail-list .tab-content .table.invest td:nth-child(2n){
+
+}
+.product-detail-list .tab-content .table.mode td:nth-child(2n+1){
+    text-align: left;
+    width:220px;
+}
+.product-detail-list .tab-content .page-title h4 {
+    color: #333;
+    margin: 0 0 10px;
+}
+
+.product-detail-list .tab-content .bank-info {
+    margin:0 0 20px 0;
+}
+.product-detail-list .tab-content .bank-info i{
+	vertical-align: middle;
+}
+.product-detail-list .tab-content .bank-info span {
+    margin-right: 20px;
+    vertical-align: middle;
+    font-size:16px;
+    margin: 0 15px 0 5px;
+}
+
+/*出借灯箱*/
+.layui-layer-page .layui-layer-content{
+	overflow: visible!important;
+}
+.layui-layer, .subscription-modal {
+    border-radius: 6px !important;
+}
+
+.subscription-modal {
+    display: none;
+    padding: 28px 34px;
+    height: 100%;
+    background-color: #f2f2f2;
+}
+
+.subscription-modal h2 {
+    font-size: 24px;
+    margin: 0 0 20px;
+}
+
+.subscription-modal .table, .subscription-modal .table td {
+    border-color: #ddd;
+    font-size: 16px;
+}
+
+.subscription-modal .table td {
+    height: 46px;
+    vertical-align: middle;
+}
+
+.subscription-modal .table td.discount-type label {
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+    vertical-align: middle;
+    margin: 0 7px 0 3px;
+}
+
+.subscription-modal .table td b {
+    font-size: 22px;
+    margin: 0 5px 0 0;
+}
+
+.subscription-modal .table td.text-right {
+    width: 140px;
+}
+
+.subscription-modal .btn-subscription {
+    padding: 8px 45px;
+    font-size: 24px;
+}
+
+.discount-select.bootstrap-select.btn-group.show-tick {
+    margin: 10px 0 0;
+    width: 282px;
+}
+
+.discount-select.bootstrap-select.btn-group.show-tick .dropdown-menu li a span.check-mark {
+    position: absolute;
+    display: inline-block;
+    right: 15px;
+    color: #d4d4d4;
+}
+
+.discount-select.bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a span.check-mark {
+    color: #2ac247;
+}
+
+.discount-select.bootstrap-select.btn-group.show-tick .dropdown-menu li a {
+    padding: 8px 20px;
+}
+/*分页*/
+.main-nav .nav li {
+    	margin-left: 0px; 
+	}
+	.pagination {
+      	display: block;
+    	padding-left: 0;
+    	margin: 0;
+     	border-radius: 0px;
+     	padding-bottom: 0px !important;
+}
+/*layer*/
+.layui-layer-content{
+	border-radius: 10px;
+}	
+.disclaimer-modal{
+	padding:20px;
+}
+.disclaimer-modal p{
+	line-height: 1.6;
+}
+#period-div .popover-content{  min-width: 200px;}
+.mt-30{margin-top:30px}
+
+.popover-content{
+    min-width: 200px;
+}

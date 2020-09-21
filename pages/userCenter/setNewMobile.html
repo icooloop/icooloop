@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>设置新手机号码-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_new.html" />
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="${tzp.getContextPath()}/src/css/pages/account/login.css?v=2e0e651">
+    <link rel="stylesheet" href="${tzp.getContextPath()}/src/css/pages/account/register.css?v=cb37da5">
+</head>
+<body>
+<!-- header -->
+<#include "/include/login_header.html" />
+<!-- 页面开始 -->
+<div class="login-layer register-layer">
+    <div class="center-block login-container">
+        <!-- 找回密码form -->
+        <div class="login-form register-form forget-pwd">
+            <h3 class="login-title">修改绑定手机号码</h3>
+            <p class="text-primary text-center progress-info">设置新手机号码</p>
+            <form class="form-horizontal company-form forget-pwd-form" id="changeBindMobileForm" method="post" action="${tzp.getContextPath()}/secure/findPwd/setLoginPwd">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="list-group">
+                            <span class="list-group-addon">新手机号</span>
+                            <input class="form-control" id="phone" name="phone" placeholder="请输入手机号码" maxlength="11" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="list-group code-group">
+                            <span class="list-group-addon">验证码</span>
+                            <input class="form-control" id="code" name="code" placeholder="6位数字" maxlength="6">
+                            <span class="text-center list-group-addon list-group-code-btn" id="getMobileCode">获取验证码</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-danger msg">
+                    <div class="col-sm-12 error-div">
+                        <i class="icon-font icon-error"></i><span class="vertical-middle" id="errorMsg"></span>
+                    </div>
+                </div>
+                <div class="form-group submit">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-lg btn-primary btn-block">下一步</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <#include "/include/login_footer.html" />
+</div>
+<#include "/include/bottom_script.html" />
+<!-- 页面js -->
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.min.js?v=9fc6b5c"></script>
+<script src="${tzp.getContextPath()}/src/js/tools/validate_cn.js?v=10c4607"></script>
+<script src="${tzp.getContextPath()}/src/js/plugins/jquery.CountDown.js?v=0f45807"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/account/setNewMobile.js?v=4727513"></script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

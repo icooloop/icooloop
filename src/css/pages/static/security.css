@@ -1,0 +1,70 @@
+.md-act{background:url(/public/images/static/security/banner.jpg) no-repeat top center;padding-top:360px;}
+.md-act .mtitle{padding:30px;text-align:center;}
+.md-act .mtitle h2{font-size:32px;font-weight:700;color:#333;line-height:1;padding-bottom:20px;background:url(/public/images/static/security/safe_icon1.png) no-repeat bottom center;}
+.md-act .mtitle.title2 h2{color:#fff;background:url(/public/images/static/security/safe_icon2.png) no-repeat bottom center;}
+.md-act .mtitle.title3 h2{color:#1c56b4;background:url(/public/images/static/security/safe_icon3.png) no-repeat bottom center;}
+
+.md-strategy .steps{position:relative;height:258px;background:url(/public/images/static/security/safe_list1.png) no-repeat center;width:1152px;margin-left:auto;margin-right:auto;}
+.md-strategy .steps.steps2{background:url(/public/images/static/security/safe_list2.png) no-repeat center;}
+.md-strategy .steps:before{display:block;content:'';position:absolute;left:143px;top:67px;width:960px;height:160px;background:#fff;}
+.md-strategy .steps.steps2:before{left:138px;width:980px;height:162px;}
+.md-strategy .steps .icon{background:url(/public/images/static/security/safe_list1.png) no-repeat;width:126px;height:127px;position:absolute;top:67px;}
+.md-strategy .steps.steps2 .icon{background-image:url(/public/images/static/security/safe_list2.png);}
+.md-strategy .steps .icon1{background-position:-143px -67px;left:143px;}
+.md-strategy .steps .icon2{background-position:-313px -67px;left:313px;}
+.md-strategy .steps .icon3{background-position:-478px -67px;left:483px;}
+.md-strategy .steps .icon4{background-position:-643px -67px;left:653px;}
+.md-strategy .steps .icon5{background-position:-809px -67px;left:823px;}
+.md-strategy .steps .icon6{background-position:-973px -67px;left:993px;}
+.md-strategy .steps.steps2 .icon1{background-position:-138px -67px;}
+.md-strategy .steps.steps2 .icon2{background-position:-308px -67px;}
+.md-strategy .steps.steps2 .icon3{background-position:-478px -67px;}
+.md-strategy .steps.steps2 .icon4{background-position:-647px -67px;}
+.md-strategy .steps.steps2 .icon5{background-position:-820px -67px;}
+.md-strategy .steps.steps2 .icon6{background-position:-990px -69px;}
+.md-strategy .steps .arrow{background:url(/public/images/static/security/safe_list1.png) no-repeat;background-position:-280px -120px;width:28px;height:21px;position:absolute;top:120px;}
+.md-strategy .steps.steps2 .arrow{background-image:url(/public/images/static/security/safe_list2.png);background-position:-273px -120px;}
+.md-strategy .steps .arrow:nth-child(2n){background-position:-447px -120px;}
+.md-strategy .steps.steps2 .arrow:nth-child(2n){background-position:-444px -120px;}
+.md-strategy .steps .arrow1{left:280px;}
+.md-strategy .steps .arrow2{left:450px;}
+.md-strategy .steps .arrow3{left:620px;}
+.md-strategy .steps .arrow4{left:790px;}
+.md-strategy .steps .arrow5{left:960px;}
+.md-strategy .steps .desc{position:absolute;top:205px;font-size:18px;line-height:20px;width:126px;text-align:center;}
+.md-strategy .steps .desc1{left:143px;}
+.md-strategy .steps .desc2{left:313px;}
+.md-strategy .steps .desc3{left:483px;}
+.md-strategy .steps .desc4{left:653px;}
+.md-strategy .steps .desc5{left:823px;}
+.md-strategy .steps .desc6{left:993px;}
+.md-strategy .list{width:1150px; text-align: center;margin-bottom:70px;margin-left:auto;margin-right:auto;}
+.md-strategy .list li{width:210px; float:left; padding:60px 30px 40px; margin:0 22px 0 0; background: #fff; /* 一些不支持背景渐变的浏览器 */ background: -moz-linear-gradient(top, #fff, #dadada); background: -webkit-gradient(linear, 0 0, 0 bottom, from(#fff), to(#dadada)); background: -o-linear-gradient(top, #fff, #dadada); background: -prefix-linear-zgradient(top, #fff, #dadada); background: -webkit-linear-gradient(top, #fff, #dadada); background: linear-gradient(top, #fff, #dadada);}
+.md-strategy .list li:last-child{margin:0;}
+.md-strategy .list i{margin:0 0 20px; color:#1c56b4; font-size:48px;}
+.md-strategy .list h3{font-weight: bold; margin:0 0 20px; font-size:18px; color:#333;}
+.md-strategy .list p{color:#666; text-align: left; line-height: 2;}
+
+.md-depository{padding:30px 0 55px; text-align: center; background: url(/public/images/static/security/safe_info.jpg) no-repeat top center;}
+.md-depository .list{width:1170px;margin:30px auto;}
+.md-depository .list li{float:left;width:370px;background:#fff;margin:0 10px;padding:40px 0;}
+.md-depository .list li .pic{line-height:90px;}
+.md-depository .list li h4{font-size:16px;font-weight:700;padding-top:30px;padding-bottom:15px;line-height:20px;}
+.md-depository .list li p{line-height:24px;}
+
+.md-technology{background-color: #fff;padding:80px 0 120px;}
+.md-technology .container{width:1150px;}
+.md-technology ul li{width: 250px;text-align:left;float:left;text-align:center;}
+.md-technology ul li+li{margin-left:50px;}
+.md-technology ul li div{margin-top: 40px;}
+.md-technology ul li div i{font-size:52px;color:#1c56b4;}
+.md-technology ul li h3{font-size: 18px;color: #666;line-height: 30px;margin-top: 15px;margin-bottom: 15px;font-weight: bold}
+.md-technology ul li p{font-size: 14px;color: #666;line-height: 24px;text-align:left;}
+
+.md-law{width:100%;padding:50px 0 150px; background:url(/public/images/static/security/safe_bottom.jpg) no-repeat top center;margin:0;}
+.md-law ul li{width: 400px;height: 360px;float:left;position:relative;padding: 0 70px;margin-left: 26px;border: 2px solid #58595d;}
+.md-law ul li div{margin-top: 50px;margin-bottom: 25px;text-align: center;}
+.md-law ul li div i{font-size:64px; color:#d1cfcc;}
+.md-law ul li p{text-align:left;font-size: 16px;color: #fff;line-height: 28px;}
+.md-join{display:none}
+.md-law .container{width:1150px;}

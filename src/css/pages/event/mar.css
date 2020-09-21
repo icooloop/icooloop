@@ -1,0 +1,76 @@
+.g-mainer{background:#6e011b url(/public/images/event/mar/bg.jpg) no-repeat top center;}
+.md-act{position:relative;background:url(/public/images/event/mar/banner.png) no-repeat top center;padding-top:430px;overflow:hidden;}
+.md-act .wp{width:1000px;}
+.md-act .f21{position:absolute;bottom:156px;right:50%;margin-right:790px;}
+.md-act .f22{position:absolute;bottom:-20px;right:50%;margin-right:630px;z-index:10;}
+.md-act .f23{position:absolute;bottom:60px;right:50%;margin-right:410px;}
+.md-act .f24{position:absolute;bottom:42px;left:50%;margin-left:410px;}
+.md-act .f25{position:absolute;bottom:-42px;left:50%;margin-left:590px;z-index:10;}
+.md-act .f26{position:absolute;bottom:178px;left:50%;margin-left:800px;}
+
+.md-mode1 .hd{position:relative;background:url(/public/images/event/mar/title1.png) no-repeat top center;padding-top:102px;min-height:70px;text-align:center;}
+.md-mode1 .hd .desc1{line-height:20px;color:#971723;font-size:16px;}
+.md-mode1 .hd .desc2{display:inline-block;line-height:42px;font-size:16px;width:210px;background:#f69679;color:#ffe56e;border-radius:42px;margin-top:30px;}
+.md-mode1 .bd{padding:0 40px;height:270px;}
+.md-mode1 .bd li{float:left;width:25%;text-align:center;}
+.md-mode1 .bd li .rate{display:inline-block;color:#b10000;font-size:30px;width:137px;padding-left:10px;line-height:145px;height:145px;background:url(/public/images/event/mar/flower4.png) no-repeat center;}
+.md-mode1 .bd li .rate em{font-size:12px;padding-left:2px;}
+.md-mode1 .bd li:nth-child(2n) .rate{background:url(/public/images/event/mar/flower5.png) no-repeat center;}
+.md-mode1 .bd li .btn-act,.md-mode1 .bd li a.btn-act:visited{display:inline-block;cursor:pointer;background:none;width:139px;line-height:48px;height:48px;font-size:18px;text-align:center;color:#ebe2ad;border-radius:50px;transition:all 0.2s;background:#ff0f56;}
+.md-mode1 .bd li .btn-act:hover{opacity:0.8;}
+.md-mode1 .bd li .btn-act.disabled{background:#ddd;color:#888;}
+.md-mode1 .bd li h6{line-height:20px;color:#a72743;font-size:15px;margin-top:25px;}
+
+.md-rule{margin-top:160px;color:#4d3b3d;padding:0 100px 250px;}
+.md-rule h2{font-size:24px;line-height:1;padding-bottom:30px;}
+.md-rule p{line-height:36px;}
+
+.md-footer{color:#fff;text-align:center;font-size:14px;line-height:90px;height:90px;background:url(/public/images/event/mar/bgft.png) repeat-x center;}
+.md-footer a.keeplink{color:#fff;text-decoration:underline;}
+
+.md-getbonus .bd{position:fixed;top:50%;left:50%;width:580px;height:640px;margin-left:-290px;margin-top:-320px;
+		transition:all 0.4s;opacity:0;background:url(/public/images/event/mar/getbonus.png) no-repeat;text-align:center;color:#8f6a40;z-index:2000;}
+.md-getbonus.getbonus .bd{opacity:0;animation: bounceinT 1s forwards 0.4s;}
+.md-getbonus .btndiv{position:absolute;bottom:42px;right:0;width:580px;text-align:center;}
+.md-getbonus .btn-act{width:277px;line-height:74px;height:74px;text-align:center;background:url(/public/images/event/mar/getbonusbtn.png) no-repeat;color:#fff;font-size:24px;border-radius:74px;cursor:pointer;}
+.md-getbonus .btn-act:hover{opacity:0.8;}
+.md-getbonus .desc1{padding-top:64px;font-size:36px;line-height:1;margin-bottom:240px;}
+.md-getbonus .desc2 p{font-size:24px;line-height:1;padding-bottom:15px;}
+.md-getbonus .desc2 em{color:#fe1e43;font-size:36px;}
+
+.win_state{	
+	position:fixed;top:50%;left:50%;	
+	margin:-50px 0 0 -50px;
+	text-align:center;line-height:1;	
+	z-index:1999;opacity:0;transform:translateY(300px);
+	animation: win_state_show 1.4s forwards 0.4s;
+}
+
+@keyframes win_state_show{   
+	30%{opacity:1;transform:translateY(-30px);}
+	40%{opacity:1;transform:translateY(0);transform:perspective(400px) translate3d(0,0,180px) rotate3d(0,1,0,-190deg);animation-timing-function:ease-out}
+	50%{transform:perspective(400px) translate3d(0,0,180px) rotate3d(0,1,0,-170deg);animation-timing-function:ease-in}
+	80%{opacity:1;transform:perspective(400px) scale3d(.95,.95,.95);animation-timing-function:ease-in}
+	100%{opacity:0;transform:perspective(400px);animation-timing-function:ease-in}
+}
+.pig{animation: pig 1s forwards 0.1s !important;}
+@keyframes pig{
+	40%{transform:scale(1.2,1);}
+	60%{transform:scale(1,.6);}
+	100%{transform:scale(1,1);}
+}
+@keyframes bounceinT{0%{opacity:0;transform:translateY(-2000px)} 60%{opacity:1;transform:translateY(30px)} 80%{transform:translateY(-10px)} 100%{opacity:1;transform:translateY(0)}}
+.flower {animation-duration:1s;animation-name:flower;}
+@keyframes flower{
+	0%{opacity:0;transform:scale(.3,.3);}
+	70%{opacity:1;transform:scale(1.05,1.05);}
+	100%{opacity:1;transform:scale(1,1);}
+}
+.rotate1 {animation-duration:1s;animation-name:rotate1;}
+@keyframes rotate1{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+.rotate2 {animation-duration:1s;animation-name:rotate2;}
+@keyframes rotate2{0%{transform:rotate(0deg);}100%{transform:rotate(-360deg);}}
+
+
+
+

@@ -1,0 +1,122 @@
+.warntip1{background:#fff9de;color:#ce9c6a;padding:20px 75px;text-align:center;line-height:24px;font-size:16px;}
+.warntip2{display:inline-block;position:relative;}
+.warntip2 .tip{display:none;position:absolute;left:0;top:30px;background:#ebebeb;white-space:nowrap;font-size:12px;line-height:24px;padding:0 10px;border-radius:3px;}
+.warntip2 .icon-font{cursor:pointer;}
+.warntip2:hover .tip{display:block;}
+.warntip2:hover .tip:before{display:block;content:"";width:0;height:0;border:8px solid transparent;border-left-color:#ebebeb;position:absolute;left:10px;top:-8px;}
+/*main*/
+.attestation-head{line-height: 130px;height: 130px;position: relative;}
+.attestation-head span{width:301px;height:44px;left: 430px;top: 50px;position: absolute;display: inline-block;background: url(../../images/v2/index/logo.png) no-repeat;}
+.attestation-head a{float:right;color: #666; font-size: 16px; }
+.attestation-head a:hover{color: #3961cd;text-decoration: underline;}
+.m-attestation{width: 530px;margin: 50px auto 0;}
+
+/*certification.html*/
+.attestation-form{background-color: #fff;padding:30px 75px;}
+.attestation-form > h1{line-height: 70px;color: #333333;font-size: 24px;text-align: center;}
+.attestation-form > ul > li{font-size: 14px;padding-bottom:20px;position: relative}
+.attestation-form > ul > li > h2{color: #666;margin-bottom: 10px;}
+.attestation-form > ul > li > input{width: 93%;padding: 12px 5px 12px 20px;border: 1px solid #D2D2D2;border-radius: 10px;font-size: 14px;color: #666666;-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;}
+.attestation-form > ul > li > input::-webkit-placeholder,.attestation-form > ul > li > input::placeholder{color: #ccc;}
+.attestation-form > ul > li > textarea{width: 91.8%;height: 85px;padding: 5px 10px 0 20px;border: 1px solid #D2D2D2;border-radius: 5px;font-size: 14px;color: #666666;resize: none;-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;}
+.attestation-form > ul > li > input:focus,.attestation-form > ul > li > textarea:focus
+{ border-color: #d73232;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(215, 50, 50, .6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(215, 50, 50, .6); }
+.attestation-form > ul > li > p{margin-top: 10px;}
+.attestation-form > ul > li > p > i{width: 18px;height: 18px;display: inline-block;background: url(../../images/v2/attestation/error.png) no-repeat;vertical-align: text-bottom;margin-right: 3px;}
+.attestation-form > ul > li .get-code-btn {
+    position: absolute;
+    right: 10px;
+    top: 27px;
+    padding: 10px;
+    color: #333!important;
+}
+.attestation-form > ul > li .get-code-btn[disabled]{color:#999;}
+.attestation-form li .select{width:100%;padding: 12px 5px 12px 20px;border: 1px solid #D2D2D2;border-radius: 10px;font-size: 14px;color: #666;}
+
+.file-list > li .file-name img{max-width:300px;}
+.attestation-file{font-size: 14px;color: #999;}
+.attestation-file > span{position: relative;color: #3961cd;font-size: 16px;margin-left: 10px;cursor: pointer;text-decoration: underline;}
+.attestation-file  > span > input{position: absolute;width: 100%;height: 100%;opacity: 0;left: 0; cursor: pointer;}
+.attestation-Btn{width: 100%;height: 50px;line-height: 50px;margin: 25px auto;text-align: center;font-size: 18px;cursor: pointer;border-radius: 10px;color: #fff;background-color: #3961cd;}
+.attestation-Btn.disabled{background:#ccc;cursor:not-allowed;}
+.attestation-list{background-color: #F9F9F9;padding: 25px 0;}
+.attestation-list > li{width: 176px;text-align: center;float: left;}
+.attestation-list > li > h1{font-size: 18px;color: #666;margin-top: 20px;}
+.attestation-list > li > h2{color: #666;font-size: 14px;margin-top: 10px;line-height: 20px;}
+.attestation-list > li i{
+    font-size:80px;
+    line-height: 1;
+}
+/*bankCard.html*/
+.attestation-form > ul > li > .select-comm{position: relative;height: 45px;border: 1px solid #D2D2D2;border-radius: 10px;font-size: 14px;padding: 0 0 0 15px;}
+.attestation-form > ul > li > .select-1{width: 100%;}
+.attestation-form > ul > li > .select-comm > *{position: absolute;}
+.attestation-form > ul > li > .select-comm > select{width: 100%;height: 100%;opacity: 0;color: #666666;padding-left: 10px;cursor: pointer;}
+.attestation-form > ul > li > .select-comm > span{font-size: 14px;color: #cccccc;top: 15px;left: 20px;}
+.attestation-form > ul > li > .select-comm > i{width: 12px;height: 20px;background: url(../../images/v2/attestation/select.png) no-repeat;right: 10px;top: 15px;}
+.attestation-form > ul > li > .select-2{width: 48.93%;display: inline-block;}
+.attestation-form .error-tips{color: #c00;display: none;text-align: center}
+
+/*pwd.html*/
+.m-pwd > div{width: 100%;font-size: 14px;margin-bottom: 20px;border-radius: 10px;box-sizing: border-box;border: 1px solid #D2D2D2;}
+.attestation-form > h1 > em{color: #999;font-size: 14px;}
+.attestation-form > div > em{font-size: 14px;display: inline-block;width: 50px;text-align: left;margin-left: 20px;color: #999;}
+.attestation-form > div .set-pwd{font-size: 14px;display: inline-block;width: 70px;text-align: left;margin-left: 20px;color: #999;}
+.attestation-form > div > input{width: 60%;padding: 12px 5px 12px 10px;font-size: 14px;color: #666666;-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;}
+.attestation-form > .attestation-form-div > .div-2{float: right;}
+.attestation-form > div > input::-webkit-placeholder,.attestation-form > div > input::placeholder{color: #ccc;}
+.attestation-form > .error-msg {border: 0;    display: none;color: #fa5555;}
+.attestation-form > .pwd-next{border: 0;font-size: 18px;}
+.attestation-form > .attestation-form-div{border: 0;}
+.attestation-form > .attestation-form-div > div{display: inline-block;}
+.attestation-form > .attestation-form-div .div-1{width: 74%;font-size: 14px;margin-bottom: 20px;border-radius: 10px;box-sizing: border-box;border: 1px solid #D2D2D2;}
+.attestation-form > .attestation-form-div .div-1 > em{font-size: 14px;display: inline-block;text-align: left;margin-left: 20px;color: #999;}
+.attestation-form > .attestation-form-div .div-1 > input{width: 50%;padding: 12px 5px 12px 10px;font-size: 14px;color: #666666;-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;}
+.attestation-form > .attestation-form-div .div-1 > input::-webkit-placeholder,.attestation-form > .attestation-form-div .div-1 > input::placeholder{color: #ccc;}
+.attestation-form > .attestation-form-div > .div-2 > input{color:#3961cd;padding-top: 13px;}
+.form-control-feedback{
+    display: block;
+    padding:5px 0;
+    font-size:14px;
+}
+.has-success .form-control-feedback {color: #67c23a;}
+.has-error .form-control-feedback {color: #fa5555;}
+
+.sure > div > input{width: 50%;}
+.sure > div >i.pwd-hide{width: 33px;height: 19px;display: inline-block;background: url(../../images/v2/attestation/pwd-hide.png) no-repeat;vertical-align: middle;float: right;margin-top: 12px;margin-right: 10px;cursor: pointer;}
+.sure > div >i.pwd-hide.pwd-show{background: url(../../images/v2/attestation/pwd-show.png) no-repeat;}
+
+.s-ing{background-color: #fff;padding: 71px 0;width: 530px;margin: 0 auto;color: #666; display: none;}
+.s-ing img{display: block; margin: 0 auto;}
+.s-ing h1{font-size: 24px;text-align: center;margin: 30px auto;}
+.s-ing p{font-size: 14px;margin: 0 130px;}
+.s-ing a{width: 260px;display: block;margin-top: 100px;}
+
+.attestation-footer{text-align: center;}
+.attestation-footer p{ margin-bottom: 5px;font-size: 14px;color: #666;}
+.attestation-footer p a{ color: #666;}
+
+.u-idcardpic{display:block;border:1px solid #d2d2d2;border-radius:10px;height:160px;text-align:center;position:relative;cursor:pointer;overflow:hidden;}
+.u-idcardpic .tip{width:100%;position:absolute;left:0;top:50%;z-index:200;height:60px;margin-top:-30px;color:#ccc;}
+.u-idcardpic .input-file{opacity:0;filter: alpha(opacity=0);width:100%;height:100%;position:absolute;left:0;top:0;z-index:300;cursor:pointer;}
+.u-idcardpic .showpic{width:100%;height:100%;position:absolute;left:0;top:0;text-align:center;line-height:160px;}
+.u-idcardpic .showpic .pic{display:none;max-height:100%;max-width:100%;}
+
+.bgidentify{background:url(/public/images/product/product_detail_bg.jpg) no-repeat top center;}
+.m-identifysuccess{width:510px;margin:50px auto 0;background:#fff;border-radius:20px;overflow:hidden;}
+.m-identifysuccess .hd{position:relative;line-height:120px;border-bottom:1px solid #ddd;margin:0 10px;}
+.m-identifysuccess .hd .desc{padding-left:160px;font-size:18px;color:#000;}
+.m-identifysuccess .hd .sd{position:absolute;left:60px;top:0;width:68px;text-align:center;}
+.m-identifysuccess .hd .sd .icon-font{color:#66c33a;font-size:50px;}
+.m-identifysuccess .bd .infos{padding-top:40px;}
+.m-identifysuccess .bd .infos li{padding-left:170px;position:relative;line-height:30px;height:60px;padding-bottom:20px;}
+.m-identifysuccess .bd .infos li:last-child{padding-bottom:5px;}
+.m-identifysuccess .bd .infos li:after{display:block;content:'';background:#d2d2d2;width:20px;height:20px;border-radius:50%;position:absolute;left:94px;top:0;}
+.m-identifysuccess .bd .infos li.on:after{background:#ff6c00;}
+.m-identifysuccess .bd .infos li+li:before{display:block;content:'';background:#d2d2d2;width:6px;height:65px;position:absolute;left:101px;top:-60px;}
+.m-identifysuccess .bd .infos li+li.on:before{background:#ff6c00;}
+.m-identifysuccess .bd .infos .info{color:#333;font-weight:bold;font-size:16px;line-height:20px;}
+.m-identifysuccess .bd .infos .timer{color:#999;}
+.m-identifysuccess .ft{text-align:center;background:#f9f9f9;padding:25px;}
+.m-identifysuccess .ft .btn-go{display:inline-block;background:#fff;width:232px;line-height:58px;text-align:center;font-size:18px;color:#ff6c00;border-radius:10px;border:1px solid #bfbfbf;letter-spacing:1pt;fon}
+.m-identifysuccess .ft .btn-go:hover{background:#ff6c00;color:#fff;border-color:#ff6c00;}

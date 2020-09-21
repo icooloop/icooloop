@@ -1,0 +1,100 @@
+@import "~@/assets/style/config.less";
+.bgmain{background:#f0f2f6;}
+.m-user{position:relative;
+    .mu-right{float:right;width:985px;position: relative;
+        .tabs-more{position: absolute;right: 20px;top: 0;line-height: 60px;}
+    }
+    .mu-loading{background:#fff;text-align:center;line-height:200px;}
+    .u-wxtip{background:#d9f4f4 url(./../../assets/images/user/zpaytip.png) no-repeat 30px 10px;color:#333;padding:10px;padding-left:60px;line-height:25px;}
+    .mu-right-shrink{float:right;width:1120px;}
+    .mu-model{background:#fff;position: relative;}
+    .mu-rule{padding:20px;line-height:24px;}
+    .mu-title{line-height:60px;position:relative;border-bottom:1px solid #d2d2d2;background:#fff;
+        h4{padding-left:40px;line-height:60px;font-size:18px;color:#333;}
+        h6{padding-left:40px;line-height:60px;font-size:16px;color:#666;}
+        .more{position:absolute;right:20px;top:0;line-height:60px;}
+        .more .btn-info{border:1px solid @primary-color;color:@primary-color;background:none;line-height:24px;height:24px;padding:0 10px;min-width:60px;border-radius:5px;}
+    }
+    .mu-tip{background:#fff;
+        .hd{padding-left:40px;line-height:60px;font-size:16px;color:#666;position:relative;}
+        .bd{padding:0 40px 30px;}
+        .bd p{line-height:24px;padding-bottom:10px;}
+    }
+    .mu-tabs{position:relative;border-bottom:1px solid #d2d2d2;
+        .tabs2{background:#fff;
+            li{float:left;width:186px;line-height:60px;height:60px;text-align:center;position:relative;cursor:pointer;font-size:16px;display:block;}
+            li a{display:block;position:relative;font-size:16px;}
+            li:hover{color:#00479d;background:#f5f5f5;text-decoration:none;}
+            li.on,li.on a{color:#00479d;}
+            li.on:before{display:block;content:'';height:3px;width:100px;background:#3961cd;position:absolute;left:43px;bottom:-1px;z-index:1;}
+        }
+    }
+    .mu-tabs1{
+        position: relative;
+        .list li{float: left;cursor: pointer;width:170px;line-height:42px;border-radius:42px;font-size:18px;text-align:center;margin-right:10px;}
+        .list li.on{color:#00479d;background:#dcf4fd;border:1px solid #00479d;}
+        .list li:hover{color:@primary-color;}
+        .more{position: absolute;right:0;top:0;line-height:42px;}
+    }
+    .text-c th,.text-c td,.mu-table.text-c th,.mu-table.text-c td{text-align:center;}
+    .mu-table{
+        tbody tr{border-bottom:1px dashed #f3f3f3;}
+        th{background:#f7f7f7;line-height:50px;padding:0 5px;}
+        td{line-height:50px;padding:5px;}
+        td .line2{line-height:25px;}
+        td .line2 a:hover{text-decoration:underline;}
+    }
+    .mu-autobid-data{
+        li{float:left;line-height:32px;color:#888;padding-left:9%;width:49%;
+            em{color:#333;font-size:24px;padding-left:50px;} 
+        }
+        li+li{border-left:1px dashed #d2d2d2;padding-left:11.5%;width:49.5%;}
+    } 
+    .mu-account-total{background-color:#fff;padding:25px 0;position: relative;display: flex;
+        .item {flex:1;color:#333333;height:110px;text-align:center;position:relative;border:none;
+            .menu {position:absolute;top:110px;left:0;width:100%;padding:10px 0;background-color:#fff;display:none;text-align:left;transition:all .2s ease-in;z-index:99;
+                li {color:#000;margin:0 30px 10px;white-space: nowrap;
+                    span {float:right;color:#999;}
+                }
+            }
+            h4 {font-size:14px;padding-top:20px;color:#999;line-height:1;}
+            h1 {font-size:30px;padding-top:20px;line-height:1;
+                em {font-size:24px;position:relative}
+            }
+        }
+        .item+.item{border-left:1px dashed #d2d2d2;}
+        .item:hover .menu {display:block;box-shadow:0 3px 3px rgba(123,93,38,.2);}
+    }
+    .mu-icontip{position:relative;
+        .tag {position:absolute;padding:5px;min-width:100px;display:none;top:-40px;left:-14px;border:1px solid rgb(218,195,162);border-radius:4px;color:#666;text-align:center;white-space:nowrap;background-color:#fff;font-size:14px;line-height:1;}
+        i{color:rgb(218,195,162);}
+        .tag:before,.tag:after {content:"";display:block;border-width:10px;position:absolute;bottom:-20px;left:10px;border-style:solid dashed dashed;border-color:rgb(218,195,162) transparent transparent;font-size:0;line-height:0;}
+        .tag:after {bottom:-18px;border-color:#FFF transparent transparent;}
+        .tag.gray {width:160px;}
+        .tag.gray a {text-decoration:underline;}
+    }
+    .mu-icontip:hover .tag {display:block;}
+    .xinwangtip{text-align:right;color:#999;
+        .tip{display:inline-block;background:url(../../assets/images/user/xwbank.png) no-repeat right center;padding-left:20px;padding-right:110px;}
+    }
+    .mu-deal{
+        .btn-search{line-height:30px;height:30px;padding:0 15px;border-radius:5px;}
+        .select{line-height:32px;height:32px;border-radius:5px;width:100px;padding:0 10px;}
+    } 
+}
+.mu-security-username{
+    .input-text{line-height:32px;height:32px;padding:0 10px;width:300px;}
+    .btndiv{text-align:right;}
+    .btn{line-height:30px;height:30px;width:80px;}
+} 
+.mu-layer-netpay{border-radius:10px;overflow:hidden;
+    .hd{position:relative;line-height:54px;border-bottom:1px solid #ddd;padding:0 30px;font-size:16px;}
+    .ft{position:relative;line-height:54px;text-align:right;padding:0 30px;background:#f5f5f5;font-size:14px;}
+    .bd{padding:30px 40px;line-height:20px;}
+    .icon-font{font-size:20px;display:inline-block;line-height:1;}
+    .result{font-size:18px;padding-right:20px;border-right:1px solid #bbb;}
+    .icon-right{color:#009932;}
+    .icon-error,.icon-gth{color:#cd0000;}
+    .icon-gth{color:#FFC125;}
+}
+

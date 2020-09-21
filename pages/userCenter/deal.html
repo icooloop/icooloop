@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>交易流水-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+</head>
+<body class="bgmain">
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+    <div class="m-user">
+        <div class="wp clearfix pt-20">
+			<#include "/userCenter/include/userMenu_up.html" />
+            <div class="mu-right">
+            	<div class="mu-account-total clearfix total4 ">
+                    <div class="item br1">
+                        <h4>可用余额<#if accountVo.availableAmtUnitStr??><#else>(元)</#if></h4>
+                        <h1 id="availabelAmt"> ${(accountVo.availableAmtStr!0)}<#if accountVo.availableAmtUnitStr??>万</#if>
+                            <#if accountVo.availableAmtUnitStr??>
+                            <span class="u-what"><i class="icon-font icon-wenhao"></i><span class="notes">${(accountVo.availableAmt!0)?string(',##0.00')}元</span></span>
+                           </#if>
+                        </h1>
+                    </div> 
+                    <div class="item br1">
+                        <h4>冻结金额<#if accountVo.frozeAmtUnitStr??><#else>(元)</#if></h4>
+	                    <h1 id="frozeAmt">
+	                    	${(accountVo.frozeAmtStr!'0')}<#if accountVo.frozeAmtUnitStr??>万</#if>
+	                    	<#if accountVo.frozeAmtUnitStr??>
+	                    	   <span class="u-what"><i class="icon-font icon-wenhao"></i><span class="notes">${(accountVo.frozeAmt!0)?string(',##0.00')}元</span></span>
+	                        </#if>                         
+	                    </h1>
+                    </div>
+                    <div class="item br1">
+                    	<h4>累计充值金额(元)</h4>
+	                    <h1 id="recharge">${(recharge!0)?string(',##0.00')}</h1>
+                    </div>
+                    <div class="item">
+                    	<h4>累计提现金额(元)</h4>
+	                    <h1 id="cash">${(cash!0)?string(',##0.00')}</h1>
+                  	</div> 
+                </div>
+            	<div class="mu-model mu-deal  mt-20">
+	                <div class="hd clearfix">
+                    	<div class="r pl-10"><button class="btn btn-primary btn-search" type="button" id="submitBtn">查询</button></div>
+                    	<div class="r pl-10">
+                    		<select id="subjectType" class="select">
+	                   	         <option value="">全部</option>
+	                   	         <#list subjects as page>
+		                   	         <option value="${(page)!''}" <#if subjectType ?? && page== subjectType >selected="selected" </#if>>${(page.cnName)!''}</option>
+	                   	         </#list> 
+	                    	</select>
+                    	</div>
+                    	<div class="r pl-10">
+							<select id="queryTime" class="select">
+		                    	<option value='d-7'>一周内</option>
+			                    <option value='m-1' selected="selected">一个月内</option>
+			                    <option value='m-3'>三个月内</option>
+			                    <option value='m-6'>半年内</option>
+		                    </select>
+	                    </div>
+						<div class="r pl-10">
+							<input id="start" readonly="readonly" class="input-date laydate-icon" placeholder="开始日期">-<input
+							 id="end" readonly="readonly" class="input-date laydate-icon" placeholder="结束日期">
+						</div>
+	                </div>
+	                <div class="bd pd-20">
+	                    <table class="mu-table text-c" id="tableList">
+	                        <thead>
+	                        <tr><th>时间</th><th>类型</th><th>收支（元）</th><th>账户余额（元）</th><th>备注</th></tr>
+	                        </thead>
+	                        <tbody>
+	                        
+	                        </tbody>
+	                    </table>
+						<div id="pageLayer" class="page">
+							<input name="pageNo" type="hidden" id="pageNo" value="1" />
+							<input name="pageSize" type="hidden" id="pageSize" value="10" />
+							<div id="laypage" class="page pagination" ></div>
+	                    </div>
+	                </div>
+            	</div>
+            </div>
+        </div>
+   </div>
+</div>
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script type="text/javascript" src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script> 
+<script type="text/javascript" src="${tzp.getContextPath()}/public/js/plugins/laydate/laydate.js?v=eb332e0"></script> 
+<script type="text/javascript">
+
+var totalCount = 0;
+var pageSize = $.trim($('#pageSize').val());
+var fn = null;
+//分页
+function initPage(){
+	$("#laypage").pagination({
+		totalCount : totalCount,
+		pageSize : pageSize,
+		clickEvent : function(page_index, _this) {
+// 			console.log(page_index)
+			$("#pageNo").val(page_index + 1);
+			fn();
+		}
+	});
+}
+//
+var queryData={}
+function initData(){
+	queryData.pageNo=$('#pageNo').val();
+	queryData.pageSize=pageSize;
+	var _table=$('#tableList tbody');
+	_table.empty();
+	$.ajax({
+		url:'${tzp.getContextPath()}/member/deal/tradeList',
+		type:'post',
+		dataType:'json',
+		data:queryData,
+		cache:false,
+		async:false,
+		success:function(data){
+			var result = $.parseJSON(data);
+			var html=[];
+			if(result.count > 0){
+				$.each(result.data,function(i,o){
+					var str= formatCurrency(o.platRate);
+					var awardRate=o.awardRate;
+					if(awardRate>0&&o.showAward){
+						str=str+"+"+formatCurrency(o.awardRate);
+					}
+					html.push('<tr>');
+					html.push('<td>',formatDate(o.createTime,"yyyy-MM-dd HH:mm"),'</td>');
+					html.push('<td>',(o.subjectName),'</td>');
+					html.push('<td>',formatCurrency(o.occurAmt),'</td>');
+					html.push('<td>',formatCurrency(o.afterAmt),'</td>');
+					html.push('<td>',o.remark,'</td>');
+					html.push('</tr>');
+					
+				});
+			}else{
+                $("#pageLayer").hide();
+				html.push('<tr><td colspan="5"><img style="margin:15px 0" class="record" src="${tzp.getContextPath()}/public/images/user/record.png?v=9113ae7"></td></tr>')
+			}
+			_table.append(html.join(''));
+			totalCount = result.count;
+			if(totalCount>pageSize){
+				fn=initData;
+				$('#pageLayer').show();
+			}else{
+				$('#pageLayer').hide();
+			}
+			
+		}
+	});
+}
+
+
+function query(){
+	$('#pageNo').val(1);
+	 queryData={pageNo:$('#pageNo').val(),'pageSize':pageSize,startDate:$("#start").val(),endDate:$("#end").val(),subjectType:$("#subjectType").val()}
+	 initData();
+	 initPage();
+}
+function intQueryDate(){
+	var queryTime = $("#queryTime").val();
+// 	console.log(queryTime);
+	var str= queryTime.split('-');
+	type=str[0];
+	day=str[1];
+	var now = new Date();
+	var startDate = now.DateAdd(type,-day);
+	$("#start").val(formatsDate(startDate));
+	$("#end").val(formatsDate(now));
+}	
+Date.prototype.DateAdd = function(strInterval, Number) {   
+    var dtTmp = this;  
+    switch (strInterval) {   
+        case 's' :return new Date(Date.parse(dtTmp) + (1000 * Number));  
+        case 'n' :return new Date(Date.parse(dtTmp) + (60000 * Number));  
+        case 'h' :return new Date(Date.parse(dtTmp) + (3600000 * Number));  
+        case 'd' :return new Date(Date.parse(dtTmp) + (86400000 * Number));  
+        case 'w' :return new Date(Date.parse(dtTmp) + ((86400000 * 7) * Number));  
+        case 'q' :return new Date(dtTmp.getFullYear(), (dtTmp.getMonth()) + Number*3, dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds());  
+        case 'm' :return new Date(dtTmp.getFullYear(), (dtTmp.getMonth()) + Number, dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds());  
+        case 'y' :return new Date((dtTmp.getFullYear() + Number), dtTmp.getMonth(), dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds());  
+    }  
+} 
+function formatsDate(date){   
+    var str = "yyyy-MM-dd"; 
+    str=str.replace(/yyyy|YYYY/,date.getFullYear()); 
+    var month=date.getMonth()+1;		    
+    str=str.replace(/MM/,month>9?month.toString():'0' + month); 		  
+    str=str.replace(/dd|DD/,date.getDate()>9?date.getDate().toString():'0' + date.getDate());  
+    return str;   
+}   
+(function() {
+	intQueryDate();
+	query()
+    $("#nav_member").addClass("on");
+    var availabelAmt = $("#availabelAmt").html();
+    if(availabelAmt.indexOf('万')<0) {
+        $("#availabelAmt").html(formateDecimal(availabelAmt));
+    }
+    var frozeAmt = $("#frozeAmt").html();
+    if(frozeAmt.indexOf('万')<0) {
+        $("#frozeAmt").html(formateDecimal(frozeAmt));
+    }
+ 
+    $("#cash").html(formateDecimal( $("#cash").html()));
+    $("#recharge").html(formateDecimal( $("#recharge").html()));
+    
+    $('#start').on('click', function(e) {
+        laydate.render({
+            elem: '#start',
+            show: true,
+            max:  $("#end").val(),
+            done: function(value) {
+               // query();
+            }
+        })
+    });
+    $('#end').on('click', function(e) {
+        laydate.render({
+            elem: '#end',
+            show: true,
+            min: $("#start").val(),
+            max:Date.parse(new Date()),
+            done: function(value) {
+                //query();
+            }
+        })
+    });
+    $('#queryTime').click(function(e) {
+    	intQueryDate();
+    	//query();
+    });
+    $('#subjectType').change(function(e) {
+    });
+    $('#submitBtn').click(function(e){
+    	query();
+    });
+    
+})();
+
+function formateDecimal(data){
+	return data.substr(0, data.indexOf(".")) + "<em>" + data.substr(data.indexOf("."), data.length) + "</em>";
+}
+
+</script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

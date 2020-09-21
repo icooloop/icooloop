@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>申请借款-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+  <#include "/include/style_up.html" />
+  <!-- 页面样式 -->
+  <#include "/loan/include/style.html" />
+</head>
+<body class="bgmain">
+<!-- header -->
+<#include "/loan/include/header.html" />
+<div class="ml-apply pt-50 pb-30">
+	<div class="step step2">
+		<ul class="clearfix">
+			<li>个人信息</li>
+			<li>借款意向</li>
+			<li>申请成功，等待审核</li>
+		</ul>
+	</div>
+	<div class="m-form loanform mt-25">
+		<form class="forminfo"  id="loanform" method="post">
+			<div class="title">申请借款</div>
+			<div class="descline"><span class="red">*</span>借款金额</div>
+			<div class="formline">
+				<div class="forminput"><input class="input-text" id="loanAmt" name="loanAmt" maxlength="6" onkeyup="value=value.replace(/[^\d]/g,'')" value="${draf.loanAmt!''}" placeholder="请填写借款金额"></div>
+				<span class="icontip icon-font icon-error" for="loanAmt"></span>
+			</div>
+			<div class="descline"><span class="red">*</span>借款期限</div>
+			<div class="formline">
+				<div class="forminput"><select id="loanPeriod" name="loanPeriod" class="select" onchange="changeTerm()">
+					<option value="3">3个月</option>
+			        <option selected value="6">6个月</option>
+			        <option value="12">12个月</option>
+				</select></div>
+				<span class="icontip icon-font icon-error" for="loanPeriod"></span>
+			</div>
+			<div class="descline">借款利率</div>
+			<div class="formline">
+				<div class="forminput"><input class="input-text" id="rate" readonly  value="16%" placeholder="" disabled="disabled"></div>
+			</div>
+			<div class="descline">还款方式</div>
+			<div class="formline">
+				<div class="forminput"><select id="repayMode"  class="select">
+					<option value="">等额本息</option>
+				</select></div>
+				<span class="icontip icon-font icon-error" for="repaytype"></span>
+			</div>
+			<div class="descline">借款用途</div>
+			<div class="formline">
+				<div class="forminput"><select id="loanPurpose" name="loanPurpose" class="select">
+					<option value="购车消费" <#if draf?? && draf.loanPurpose == '购车消费' >selected = "selected"</#if>>购车消费</option>
+		          	<option value="家装建材" <#if draf?? && draf.loanPurpose == '家装建材' >selected = "selected"</#if>>家装建材</option>
+		          	<option value="旅游消费" <#if draf?? && draf.loanPurpose == '旅游消费' >selected = "selected"</#if>>旅游消费</option>
+		          	<option value="婚庆服务" <#if draf?? && draf.loanPurpose == '婚庆服务' >selected = "selected"</#if>>婚庆服务</option>
+		          	<option value="综合消费" <#if draf?? && draf.loanPurpose == '综合消费' >selected = "selected"</#if>>综合消费</option>
+				</select></div>
+				<span class="icontip icon-font icon-error" for="loanPurpose"></span>
+			</div>
+			<div class="descline">还款来源</div>
+			<div class="formline">
+				<div class="forminput"><input class="input-text" id="repaySource" name="repaySource" value="${draf.repaySource!''}" placeholder="请填写还款来源"></div>
+				<span class="icontip icon-font icon-error" for="repaySource"></span>
+			</div>
+			<div class="tipdiv mt-10" id="formtip1"></div>
+			<div class="formline mt-15">
+               <button type="submit" class="btn btn-submit">确认</button>
+            </div>
+            <input type="hidden" value="${draf.draftInfoId!''}" id="draftInfoId" name="draftInfoId">
+		</form>
+	</div>
+</div>
+<input type="hidden" value="${draf.loanPeriod!''}" id="loanPeriodHi">
+<#include "/include/login_footer.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.min.js?v=9fc6b5c"></script>
+<script src="${tzp.getContextPath()}/src/js/tools/validate_cn.js?v=10c4607"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/icheck/icheck.min.js?v=3144e54"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/loan/loan_apply2.js?v=a88ce60"></script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>		

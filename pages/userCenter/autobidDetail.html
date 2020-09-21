@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>易智投-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+    <style>
+    .mu-details-module .u-progress{width:80px;height:6px;margin:0 5px;transform:translateY(-3px);}
+	.mu-details-module .sr-only{background:#f29118;height:6px;}
+	.u-what .notes.ranknotes{padding:20px;}
+	.u-what .notes.ranknotes h2{text-align:center;font-weight:700;}
+	.u-what .notes.ranknotes h6{width:400px;line-height:22px;white-space:normal;padding-top:10px;}
+	.md-chooseQuit p{color:#666;}
+	.md-chooseQuit .btn{border-radius:5px;}
+	.md-chooseQuit .btn-cancel{border:1px solid #ddd;color:#666;}
+	.md-chooseQuit table{
+		border-collapse: collapse;
+		border:1px solid #dcdcdc;
+	}
+	.md-chooseQuit table td{
+		border:1px solid #dcdcdc;
+		height: 50px;
+		padding-left: 15px;
+	}
+	.btn.size-L{line-height:40px;height:40px;padding:0 40px;}
+	.advanceExit{line-height:40px;text-align:center;color:#062e79;background:#e4e4f0;}
+    </style>
+</head>
+<body class="bgmain">
+<!-- 页面开始 -->
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+	<div class="m-user">
+		<div class="wp clearfix pt-20">
+			<#include "/userCenter/include/userMenu_up.html" />
+			<div class="mu-right mu-details">
+				<div class="">
+					<div class="clearfix">
+						<div class="mu-details-headleft">
+							<div class="hd clearfix">
+								<div class="l">${(vo.prdName)!''} ${(vo.prdNo)!''}</div>
+								<div class="l ml-20"><span class="status">${(vo.investStatusCn)!''}</span></div>
+								
+								<em class="l ml-30">委托出借时间&nbsp;&nbsp;&nbsp;${(vo.investTime?string('yyyy-MM-dd HH:mm'))!'--'}</em>
+								<em class="l ml-40"><i class="icon-font icon-clock mr-5"></i>一次还本付息</em>
+							</div>
+							
+							<#if vo.quitStatus=='2'>
+							<div class="advanceExit">本次易智投服务已于${(vo.settleDate?string('yyyy-MM-dd'))!'--'}提前终止，易智投持有的未到期项目，已转为散标债权直接持有。</div>
+							</#if>
+							<div class="mu-account-total clearfix">
+								<div class="item">
+									<h4>委托出借本金（元）</h4>
+									<h1>${(vo.investAmount?string(',##0.00'))!0}</h1>
+								</div>
+								<#if investStatus !='4'>
+								<div class="item hand">
+									<h4>预期收益（元）<span class="u-what righttip"><i class="icon-font icon-wenhao"></i>
+										<span class="notes">1、预期收益 = 预期项目利息 + 预期平台奖励<br>
+										 2、预期项目利息为该项目本身的利息<br>
+										 3、预期平台奖励包括出借奖励、奖励券收益、红包收益</span></span></h4>
+									<h1>${(planIncome+planAllAward)?string(',##0.00')}</h1>
+									<ul class="menu">
+										<li>预期项目利息（元）<span>${(planIncome!0)?string(',##0.00')}</span></li>
+										<li>预期平台奖励（元）<span>${(planAllAward?string(',##0.00'))!0.00}</span></li>
+									</ul>
+								</div>
+								<#else>
+										<div class="item hand">
+									<h4>已收收益（元）<span class="u-what righttip"><i class="icon-font icon-wenhao"></i>
+										<span class="notes">1、已收收益 = 已收项目利息 + 已收平台奖励<br>
+										 2、已收项目利息为该项目本身的利息<br>
+										 3、已收平台奖励包括出借奖励、奖励券收益、红包收益<br>
+										<#if vo.quitStatus=='2'> 4、因为项目利息可能被复投到新的项目中，当易智投提前<br>
+										 终止时，该部分项目利息将以散标债权的形式支付</span></span></#if></h4>
+									<h1>${(planIncome+planAllAward)?string(',##0.00')}</h1>
+									<ul class="menu">
+										<li>已收项目利息（元）<span>${(planIncome!0)?string(',##0.00')}</span></li>
+										<li>已收平台奖励（元）<span>${(planAllAward?string(',##0.00'))!0.00}</span></li>
+									</ul>
+								</div>
+								</#if>
+								<div class="item">
+									<h4>委托期限</h4>
+									<h1>${(vo.prdPeriod)!''}<em>${(vo.getPeriodUnitStr2())!''}</em></h1>
+								</div> 
+								<div class="item">
+									<h4>协议约定年化利率</h4>
+									<h1 class="text-warning">${(vo.prdRate?string('#.##'))!0}<em>%</em><#if vo?? && vo.awardRate?? && vo.awardRate gt 0 >+${(vo.awardRate?string('#.##'))!0}<em>%</em></#if>
+									</h1>
+								</div>
+							</div>
+						</div>
+						<#if  investStatus !='1' || (couponAmt ?? && couponAmt gt 0) || award??>
+						<ul class="mu-details-headinfos clearfix">
+							<#if investStatus !='1'>
+							<li><em>起息时间</em>
+								<span>${(vo.interestDate?string('yyyy-MM-dd'))!'--'}</span></li>
+							<li><em>到期时间</em>
+								<span>${(vo.settleDate?string('yyyy-MM-dd'))!'--'}</span></li>
+							</#if>
+							<#if (investStatus =='6' ||investStatus =='4') && vo.quitStatus=='2'>
+							<li><em>已收本金回款</em>
+								<span>${(splitPrincipal?string(',##0.00'))!'0.00'}元</span></li>
+							<li><em>散标持有的债权价值</em>
+								<span>${(holdWorth?string(',##0.00'))!'0.00'}元</span></li>
+							</#if>
+							<#if (couponAmt ?? && couponAmt gt 0) || (award ??)>
+							<li class="text-r">
+								<#if couponAmt ?? && couponAmt gt 0 >
+									使用红包<span class="text-warning pl-10">${(couponAmt?string(',##0.00'))!'0.00'}</span> 元
+								</#if>
+								<#if award ?? >
+									使用奖励券<span class="text-warning pl-10">${(award.awardAmount?string(',##0.00'))!'0.00'}</span>%
+								</#if>
+							</li>
+							</#if>
+						</ul>
+						</#if>
+				</div>
+				<#if investStatus !='1'>
+				<div class="mu-details-module mt-20" id="invest-div-1">
+					<div class="hd"><em>持有项目</em>
+						
+						<#if investStatus =='2'|| investStatus =='3'>
+					<div class="more"></div>
+					
+					</#if>
+					</div>
+					<div class="bd">
+						<table class="table mu-table text-c">
+							<thead>
+								<tr>
+									<th>项目名称</th>
+									<th>剩余本金(元)</th>
+									<th>期限</th>
+									<th>出借日期</th>
+									<th>到期日期</th>
+									<th>状态</th>
+									<th>类型</th>
+									<th>协议</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+						<input name="pageSize" type="hidden" id="pageSize" value="5" />
+						<input name="pageNo1" type="hidden" id="pageNo1" value="1" />
+	                   	<div id="laypage1" class="page pagination" style="display: none;"></div>						
+						<div class="tip1 mt-20" style="display: none;">*已逾期或转让失败的借款项目请前往“我的资产-散标项目“中查看详情</div>
+					</div>
+				</div>
+				<div class="mu-details-module  mt-20" id="invest-div-2">
+					<div class="hd"><em>已结清项目</em>
+					</div>
+					<div class="bd">
+						<table class="table mu-table text-c">
+							<thead>
+								<tr>
+									<th>项目名称</th>
+									<th>出借总额(元)</th>
+									<th>期限</th>
+									<th>出借日期</th>
+									<th>到期/转让日期</th>
+									<th>状态</th>
+									<th>类型</th>
+									<th>协议</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+						<input name="pageNo2" type="hidden" id="pageNo2" value="1" />
+	                   	<div id="laypage2" class="page pagination" style="display: none;"></div>							
+					</div>
+				</div>
+				</#if>
+				<div class="mu-details-module mt-20">
+					<div class="hd"><em>相关协议</em></div>
+					<div class="bd">
+						<a target="_blank" href="${tzp.getContextPath()}/member/invest/view/${vo.investId!''}?contractType=9" class="text-warning">《委托出借协议》</a> <br/>
+						<a target="_blank" href="${tzp.getContextPath()}/member/invest/view/${vo.investId!''}?contractType=16" class="text-warning">《风险及禁止性行为提示书》</a><br/> 
+						<a target="_blank" href="${tzp.getContextPath()}/contract/show/liquidity" class="text-warning">《流动性风险提示书》</a><br/> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<input type="hidden" id="tabType" value="${tabType!''}">
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/icheck/icheck.min.js?v=3144e54"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script>
+<script type="text/javascript">
+var totalCount = 0;
+var pageSize = $.trim($('#pageSize').val());
+var investId = '${(vo.investId)!''}';
+var type = '${(vo.quitStatus)!''}';
+var initFlat = [false,false,false,false];
+$(function () {
+	$("#autobidMenu").addClass("on");
+	initInvestData(1);
+	initInvestData(2);
+})
+
+//投标项目
+function initInvestData(type){
+	
+	if(investId==""){
+		 console.log("-------------")
+		 return false;
+	};
+	$.ajax({
+		url:'${tzp.getContextPath()}/member/plan/invest-project',
+		type:'post',
+		dataType:'json',
+		data:{pageNo:$('#pageNo'+type).val(),'pageSize':pageSize,"investId":investId,'type':type},
+		cache:false,
+		async:false,
+		success:function(data){
+			var result = $.parseJSON(data);
+			var html=[];
+			if(result.count > 0){
+				$.each(result.data,function(i,o){
+					var ustr = "-";
+					var loanPeriodUnit = o.loanPeriodUnit;
+					if(loanPeriodUnit=='0'){
+						ustr = "天";
+					}else if(loanPeriodUnit=='1'){
+						ustr = "个月";
+					}else if(loanPeriodUnit=='2'){
+						ustr = "年";	
+					}
+			        var debtStatus = o.debtStatus;
+			        var sstr = "未知";
+			        var wenhao ='<span class="u-what"><i class="icon-font icon-wenhao"></i><span class="notes">该笔债权在易智投退出时尚未到期，已转为散标债权直接持有，<br>您可以到“我的出借-散标资产”中查看详情和进行转让</span></span>';
+					if(debtStatus=='1'){
+						if(type=='2'){
+							sstr = "散标持有"+wenhao;
+						}else{
+							sstr = "持有中";
+						}
+					}else if(debtStatus=='2'){
+						if(type=='2'){
+							sstr = "散标持有"+wenhao;
+						}else{
+							sstr = "转让中";
+						}
+					}else if(debtStatus=='3'){
+						sstr='已转让(<a class="blueline mingxi" href="javascript:;" onclick="mxDetail(\''+o.debtId+'\')">明细</a>)';
+					}else if(debtStatus=='4'){
+						sstr = "已结清";	
+					}else if(debtStatus==''){
+						sstr = "待满标";	
+					}
+					var debtSource = o.debtSource;
+					var loanId = o.loanId;
+					var transferApplyId = o.transferApplyId;
+					var contr = "";
+					var typesss = "";
+					
+					var currentApplyId = o.currentApplyId;
+					var beforApplyId = o.beforApplyId;
+					if(beforApplyId!=null && beforApplyId!='' && beforApplyId!=undefined){
+						contr =contr+'<div class="line2"><span><a href="${tzp.getContextPath()}/member/invest/view/'+beforApplyId+'?contractType=3" class="text-primary" target="_blank"  class="blueline">债权转让协议</a></span></div>';
+					}
+					if(currentApplyId!=null && currentApplyId!='' && currentApplyId!=undefined){
+						contr =contr+'<div class="line2"><span><a href="${tzp.getContextPath()}/member/invest/view/'+currentApplyId+'?contractType=3" class="text-primary" target="_blank"  class="blueline">债权转让协议</a></span></div>';
+					}
+					if(debtSource=="2"){
+						//contr =contr+'<span><a href="${tzp.getContextPath()}/member/invest/view/'+o.loanId+'?contractType=13" class="text-primary" target="_blank"   class="blueline">借款协议</a></span></div>';
+						typesss="债权受让";
+					}else if(debtSource=="3"){
+						if(debtStatus=='1'||debtStatus=='2'){
+							 contr="--"
+						}
+						typesss="债权拆分";
+					}else{
+						if(o.debtCode){
+							contr = contr+'<div class="line2"><span><a href="${tzp.getContextPath()}/member/invest/view/'+o.loanId+'?contractType=13" class="text-primary" target="_blank"   class="blueline">借款协议</a></span></div>';	
+						}else{
+							contr="--"
+						}
+						typesss="直接出借";
+					}
+					html.push('<tr>');
+					html.push('<td>',o.loanTitle,'</td>');
+					html.push('<td>',formatCurrency(('1'==type)?o.currentValue:o.buyPrice),'</td>');
+					html.push('<td>',o.loanPeriod+ustr,'</td>');
+					html.push('<td>', formartDate(o.dealTime, 'yyyy-MM-dd'), '</td>');
+					html.push('<td>',o.cashTime==null?'--':formartDate(o.cashTime, 'yyyy-MM-dd'), '</td>');
+					html.push('<td>',sstr,'</td>');
+					html.push('<td>',typesss,'</td>');
+					html.push('<td> ',contr,'</td>');
+					html.push('</tr>');
+				});
+			}else{
+				html.push('<tr><td colspan="7"><img style="margin:15px 0" class="record" src="/public/images/user/record.png?v=9113ae7"></td></tr>')
+			}
+			$("#invest-div-"+type).find("tbody").html(html.join(''));
+			totalCount = result.count;
+			if(totalCount>pageSize){
+            	if(!initFlat[type]){
+            		initPage(type);
+            		initFlat[type]=true;
+            	}				
+				$('#laypage'+type).show();
+			}else{
+				$('#laypage'+type).hide();
+			}	
+            if(!initFlat[type]){
+            	initFlat[type]=true;
+            }
+		}
+	});
+}
+
+//分页
+function initPage(type) {
+    $("#laypage"+type).pagination({
+        totalCount: totalCount,
+        pageSize: pageSize,
+        clickEvent: function (page_index, _this) {
+            $("#pageNo"+type).val(page_index + 1);
+            initInvestData(type);
+        }
+    });
+}
+
+
+$('input.icheck').iCheck({
+	checkboxClass:'icheckbox',
+	radioClass:'iradio' 
+}); //icheck
+function chooseQuit(){
+   	layer.open({
+   	  	type: 1,
+   	  	area: ['600px', 'auto'], //宽高
+   	  	title:'易智投申请转成散标',
+   	  	content: $('#chooseQuit')
+   	});
+}
+var flag = false;
+function confirmQuit(){
+	if(flag){
+		return;
+	}
+	var quitType=$('input[name="quitType"]:checked').val();
+
+	flag = true;
+	$.ajax({
+		url:'${tzp.getContextPath()}/member/plan/split',
+		type:'post',
+		dataType:'json',
+		data:{"investId":investId},
+		cache:false,
+		async:false,
+		success:function(data){
+			if(data.success){
+				layer.msg("操作成功！")
+				window.location.reload()
+			}else{
+				layer.msg(data.msg)
+			}
+			flag = false;
+		}
+
+	})
+}
+</script>
+</body>
+</html>

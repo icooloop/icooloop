@@ -1,0 +1,189 @@
+.main {
+    background: url(/public/images/activity/jinbohui/main.jpg) no-repeat center center;
+    height: 1653px;
+}
+
+.main div.info {
+    padding: 400px 0 0;
+    width: 900px;
+    margin: 0 auto 200px;
+}
+
+.main .info .reg {
+    width: 245px;
+    float: left;
+    margin: 0 40px 0 0;
+}
+
+.main .info .title {
+    color: #666;
+    width: 600px;
+    float: left;
+    padding: 30px 0 0;
+    text-align: center;
+}
+
+.main .info .title ul {
+    padding: 20px 0 0;
+}
+
+.main .info .title ul li {
+    float: left;
+    margin: 0 40px;
+    width: 220px;
+
+}
+
+.main .info .title ul li img {
+    height: 136px;
+    margin: 0 0 15px;
+}
+
+.main .info .title ul li h3 {
+    color: #ba001e;
+    margin: 0 0 10px;
+    font-size: 16px;
+}
+.main .answer{
+    width:500px;
+    padding:0 0 0 500px;
+    margin:0 auto;
+    text-align: center;
+}
+.main .answer p.title{
+    font-weight: bold;
+    font-size:16px;
+    margin:0 0 15px;
+}
+.main .answer table{
+    width: 424px;
+    margin: 0 auto;
+    text-align: center;
+    border-top: 1px solid #d1c0a5;
+    border-left: 1px solid #d1c0a5;
+    background-color: #fff;
+}
+.main .answer table td{
+    padding: 5px 0;
+    line-height: 2;
+    border-bottom: 1px solid #d1c0a5;
+    border-right: 1px solid #d1c0a5;
+}
+.main .answer table thead td{
+    color: #baa577;
+}
+.reg-btn {
+    display: block;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    margin: 20px auto 0;
+    background: #ba001e;
+    color: #e5be66;
+    border-radius: 54px;
+    text-align: center;
+}
+.progress-bar {
+    width: 100%;
+    color: #ccc;
+    height: 6px;
+    background-color: #ccc;
+    border-radius: 3px;
+    margin-bottom: 1.5em;
+    margin-top: 0.5em;
+}
+.progress-bar p{
+    text-align: left;
+}
+.progress-bar span {
+    display: block;
+    float: left;
+    height: 6px;
+    border-radius: 3px;
+    background-color: #ff8c2f;
+}
+.questions{
+    text-align: left;
+}
+.questions p{
+
+}
+.questions .ques{
+    font-size: 18px;
+    font-weight: bold;
+    margin:0 0 15px;
+}
+.questions .aws{
+    line-height: 30px;
+    margin:0 0 10px;
+    cursor: pointer;
+}
+.act{
+    display: none;
+}
+.act h3{
+    font-size:20px;
+    margin:10px 0;
+}
+.act-1{
+    margin:320px 0 0;
+}
+.act-2{
+    margin:260px 0 0;
+}
+.act-3{
+    margin:260px 0 0;
+}
+.act h2{
+    margin:10px 0;
+    font-size:18px;
+    font-weight: bold;
+}
+.act .info{
+    color: #d02219;
+    margin:100px 0 0;
+}
+.act-4{
+    margin:300px 0 0;
+}
+.coupon {
+    background: url(/public/images/activity/jinbohui/coupon.png) no-repeat;
+    background-size: cover;
+    width: 102px;
+    height: 51px;
+    line-height: 51px;
+    color: #d02219;
+    margin: 20px auto 15px;
+    text-align: center;
+    font-size: 12px;
+
+}
+.coupon span {
+    font-size: 20px;
+    margin: 0 2px 0 0;
+}
+.mobile {
+    background: #fff;
+    line-height: 40px;
+    height: 40px;
+    padding: 0 10px;
+    width:200px;
+    border: 1px solid #f4e8dc;
+}
+#registerForm{
+    padding:60px 0 0;
+    width:260px;
+    margin:0 auto;
+}
+#registerForm .reg-btn{
+    margin-top:50px;
+}
+#registerForm >p{
+    margin:0 0 10px;
+}
+#registerForm .mobile{
+    margin:0 0 10px;
+}
+.count-down-btn.gray{
+    color:#999;
+}

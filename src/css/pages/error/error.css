@@ -1,0 +1,11 @@
+body{background:#eee;}
+.md-error{width:240px;margin:60px auto 30px;padding-left:490px;min-height:425px;text-align:center;}
+.md-error.error404{background:url(/public/images/error/404.png) no-repeat left center;}
+.md-error.error500{background:url(/public/images/error/500.png) no-repeat left center;}
+.md-error .logo{padding-top:100px;}
+.md-error .btn-info{width:192px;line-height:46px;height:46px;font-size:18px;border-radius:46px;}
+.md-error p{line-height:26px;font-size:16px;color:#666;}
+
+.copyright{color:#666;padding:20px;}
+.copyright p{line-height:30px;}
+.text-center{text-align:center;}

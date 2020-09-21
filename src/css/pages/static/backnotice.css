@@ -1,0 +1,31 @@
+.md-banner{line-height:236px;height:236px;text-align:center;background:url(/public/images/static/backnotice/banner.jpg) no-repeat top center;font-size:60px;color:#fff;}
+.ma-about{background:#ebf2ff;}
+.ma-about .atitle{font-size:24px;text-align:center;line-height:30px;color:#1b3999;background:url(/public/images/about/main/atitle.png) no-repeat top center;padding-bottom:40px;}
+.ma-about .atitle h6{padding-top:20px;color:#666;}
+.md-mode1{padding:100px 0 50px;}
+.md-mode1 .bd{background:#fff;border-radius:10px;padding:20px 0 30px;}
+.md-mode1 p{font-size:16px;color:#9ba1c5;}
+.md-mode1 .list{display:flex;padding:0 35px;}
+.md-mode1 .list li{flex:1;text-align:center;position:relative;}
+.md-mode1 .list li .item{display:inline-block;text-align:left;}
+.md-mode1 .list li h2{font-size:24px;margin-top:15px;line-height:1;}
+.md-mode2{padding:50px 0 100px;}
+.md-mode1 .list li+li:before{display:block;content:'';position:absolute;lleft:0;top:50%;margin-top:-22px;height:44px;width:1px;background:#90a0cf;}
+.md-mode2 .total{border-radius:10px;padding:30px 0;color:#ebf2ff;background:#284db0 url(/public/images/static/backnotice/bg2.png) no-repeat top center;border-radius:10px;}
+.md-mode2 .total p{font-size:16px;}
+.md-mode2 .reamrk p{font-size:14px;color:#9ba1c5;}
+.md-mode2 .total .list{display:flex;padding:0 160px;}
+.md-mode2 .total .list li{flex:1;text-align:center;position:relative;}
+.md-mode2 .total .list li h2{font-size:24px;margin-top:10px;line-height:1;}
+.md-mode2 .total .list li+li:before{display:block;content:'';position:absolute;lleft:0;top:50%;margin-top:-22px;height:44px;width:1px;background:#90a0cf;}
+.md-mode2 .searchdiv{padding:5px 0;text-align:right;}
+.md-mode2 .input-search{line-height:34px;height:34px;padding:0 15px;border-radius:5px;}
+.md-mode2 .btn-search{line-height:34px;height:34px;padding:0 20px;border-radius:5px;}
+.md-mode2 .datatable{border-radius:10px 10px 0 0;overflow:hidden;}
+.md-mode2 .datatable th{background:#2b4ba0;text-align:center;line-height:50px;height:50px;padding:0 20px;font-size:16px;color:#fff;}
+.md-mode2 .datatable tbody tr td{text-align:center;line-height:50px;height:50px;padding:0 20px;font-size:14px;color:#666;}
+.md-mode2 .datatable tbody tr:nth-child(2n){background:#f7fbfe;}
+.md-mode2 .datatable tbody tr:nth-child(2n+1){background:#fff;}
+.md-mode2 .datatable tbody tr.hand:hover td{color:#3961cd;}
+.md-mode2 .datatable tbody tr:nth-child(2n) td{line-height:50px;height:50px;}
+.md-mode2 .datatable tbody tr.important td{color:#2b4ba0;font-weight:700;}

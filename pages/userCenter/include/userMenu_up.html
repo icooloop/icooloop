@@ -1,0 +1,52 @@
+			<div class="mu-left" id="userMenuDiv">
+				<ul class="mu-menu">
+					<li><a href="${tzp.getContextPath()}/spa/member/account/index"><i class="icon-font icon-account1"></i>账户总览</a></li>
+					<li><h2><i class="icon-font icon-save"></i>我的出借</h2></li>
+					<ul>
+						<li id="autobidMenu"><a href="${tzp.getContextPath()}/spa/member/invest/autobid">易智投</a></li>
+						<li id="investMenu"><a href="${tzp.getContextPath()}/spa/member/invest/holdlist">散标资产</a></li>
+						<li><a href="${tzp.getContextPath()}/spa/member/invest/backplan">回款计划</a></li>
+					</ul>
+					<li><h2><i class="icon-font icon-mymy"></i>我的资金</h2></li>
+					<ul>
+						<li id="rechargeMenu"><a href="${tzp.getContextPath()}/spa/member/account/recharge">账户充值</a></li>
+						<li id="cashMenu"><a href="${tzp.getContextPath()}/spa/member/account/cash">账户提现</a></li>
+						<li><a href="${tzp.getContextPath()}/spa/member/deal/index">交易流水</a></li>
+					</ul>
+					<li><h2><i class="icon-font icon-take"></i>我的奖励</h2></li>
+					<ul>
+						<li><a href="${tzp.getContextPath()}/spa/member/task">任务中心<span class="dot"></span></a></li>
+						<li><a href="${tzp.getContextPath()}/spa/member/voucher">优惠券<#if _member_user_voucher ??><span class="dot"></span></#if></a></li>
+						<li><a href="${tzp.getContextPath()}/spa/member/recommend">推荐奖励</a></li>
+					</ul>
+					<li><a href="${tzp.getContextPath()}/spa/member/secure/security"><i class="icon-font icon-save_"></i>账户设置</a></li>
+				</ul>
+			</div>
+<script>
+var uri = window.location.pathname;
+$("#userMenuDiv a").each(function(){
+	var _thisVal = $(this).attr("href");
+	if(_thisVal == uri){
+		$(this).parent("li").addClass("on");
+	}
+});
+//用户类型
+var userType = '${_p2p_member_user.userType}';
+//认证状态
+var auth = '${_p2p_member_user.authIdcard}';
+//刷新认证状态
+if(userType=='2' && auth == '0'){
+	$.post('${tzp.getContextPath()}/member/auth/fresh',"",function(data){
+	});
+}
+if($("#userPicUrl")){
+	//获取用户头像
+	$.post('${tzp.getContextPath()}/member/auth/user-pic',"",function(data){
+		var result = eval("(" + data + ")");
+		if(result.success){
+			$("#userPicUrl").attr('src',result.msg);
+		}
+	});
+}
+
+</script>

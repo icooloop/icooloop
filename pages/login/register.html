@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>注册-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <!-- 页面样式 -->
+    <#include "/include/style_access.html" />
+   <#if imgUrl??>
+       <style>
+           .register-bg{background: url(${imgUrl}) no-repeat top center;}
+       </style>
+   </#if>
+	<!-- 验证码此段必须要引入 t为小时级别的时间戳 -->
+	<link type="text/css" href="//g.alicdn.com/sd/ncpc/nc.css?t=2015052012" rel="stylesheet"/>
+	<script type="text/javascript" src="//g.alicdn.com/sd/ncpc/nc.js?t=2015052012"></script>
+	<!-- 引入结束 -->
+	<style type="text/css">
+	.nc-container .nc_scale .clickCaptcha{top:40px;}
+	.nc-container .nc_scale span{height:38px;line-height:38px;}
+	.nc_scale{width:320px;height:40px;}
+	.nc-container .nc_scale .btn_slide{font-size:20px;font-weight:700;color:#f68e56;}
+	.nc-container .nc_wrapper{width:320px}
+	.nc-container .nc_scale .nc_bg {background: #a1c1ee;}
+	.nc-container .nc_scale .btn_ok {color:#a1c1ee;}
+	.nc-container .nc_scale .scale_text{font-size:14px;line-height:40px;border-radius:10px;}
+	.scale_text i {color:red}
+	.m-sliderlayer .bd{text-align:center;padding:30px 50px;}
+	.m-sliderlayer .bd .close .icon-font{font-size:20px;line-height:1;}
+	</style>
+</head>
+<body class="bgmain">
+<!-- header -->
+<#include "/include/access_header_up.html" />
+<!-- 页面开始 -->
+<div class="m-access register-bg">
+	<div class="m-access-layer">
+		<div class="centerwp">
+			<!--注册第一步-->
+			<div class="m-access-form registerform" id="registerform1">
+				<#if code??>
+					<div class="invited">你的好友<span class="text-primary">${realName}</span>邀请你注册</div>
+				</#if>
+				<div class="hd">注册亿钱贷</div>
+				<div class="bd">
+					<form class="forminfo" action="" id="myform1">
+						<div class="formline mt-20">
+							<div class="formlabel">手机号</div>
+							<div class="forminput"><input class="input-text" id="userPhone" name="userPhone" maxlength="11" onkeyup="value=value.replace(/[^\d]/g,'')"  autocomplete="off"  value="${phone!}" placeholder="请输入手机号码" onblur="checkUserPhone()"></div>
+							<span class="icontip icon-font icon-error" for="userPhone"></span>
+						</div>
+						<div class="formline mt-20 mb-20">
+							<div class="formlabel">登录密码</div>
+							<div class="forminput"><input class="input-text" id="userPassword" name="userPassword" type="password" placeholder="6-20位字母、数字或字符组合" maxlength="20" autocomplete="new-password" onpaste="return false" onblur="checkUserPassword()"></div>
+							<span class="eyepwd" onclick="changePwdType()"><i class="icon-font icon-eye"></i></span>
+							<span class="icontip icon-font icon-error" for="userPassword" style="right:30px;"></span>
+						</div>
+						<div class="invitediv mt-10">
+							<a onclick="changeInvite()" class="invitedesc c-link" href="javascript:;" id="inviteDesc"><i class="icon-font icon-yousanjiao"></i>我有邀请人（选填）</a>
+						</div>
+						<div class="formline mt-10" id="invitediv" style="display:none;">
+							<div class="formlabel">邀请人</div>
+							<div class="forminput"><input autocomplete="off" class="input-text" id="inviteCode" name="inviteCode"  placeholder="请输入邀请人的推荐码或手机号" value="${code!''}" onblur="checkInviteCode()"></div>
+							<span class="icontip icon-font icon-error" for="inviteCode"></span>
+						</div>
+						<div class="agreementdiv mt-10">
+							<label>
+	                            <input class="icheck" type="checkbox" id="agreement" name="agreement" value="true">
+								<span class="vertical-middle agree-link">我已阅读并同意</span>
+	                            <a target="_blank" href="${tzp.getContextPath()}/contract/zhuce">《亿钱贷注册协议》</a>
+	                            <!-- <a target="_blank" href="${tzp.getContextPath()}/contract/template/service">《亿钱贷出借咨询与管理服务协议》</a> -->
+	                            <a target="_blank" href="${tzp.getContextPath()}/spa/about/risktip">《风险及禁止性行为提示书》</a>
+                            </label>
+						</div>
+						<div class="tipdiv mt-10" id="formtip1"></div>
+                        <div class="formline mt-10">
+                           <button type="button" class="btn btn-submit" onclick="registerNext()">注册领红包</button>
+                        </div>
+                        <div class="bottomlink mt-20">
+                            <a class="text-default" href="${tzp.getContextPath()}/secure/login">已有账号，去登录</a>
+                        </div>
+					</form>
+				</div>
+			</div>
+			<!--注册第二步-->
+			<div class="m-access-form registerform" id="registerform2" style="display:none;">
+				<div class="hd">手机号码验证</div>
+				<div class="infotip" id="infotip"></div>
+				<div class="bd">
+					<form class="forminfo" action="" id="myform2">
+						<!-- 验证码阿里云 -->
+						<input type='hidden' id='csessionid' name='csessionid'/>
+						<input type='hidden' id='sig' name='sig'/>
+						<input type='hidden' id='token' name='token'/>
+						<input type='hidden' id='scene' name='scene'/>
+						<input type="hidden" id="slidercode" name="slidercode" value="false"/>
+            			<input type="hidden" id="captchaCheck" name="captchaCheck" value="${captchaCheck!''}"/>
+
+						<!-- 阿里云 end -->
+						<!-- 数据风控阿里云 -->
+						<input type='hidden' id='afs_scene' name='afs_scene'/>
+						<input type='hidden' id='afs_token' name='afs_token'/>
+						<!-- 阿里云end -->
+						<input type="hidden" name="userPhone" id="userPhone2">
+						<input type="hidden" name="userPassword" id="userPassword2">
+						<input type="hidden" name="recommendCode" id="inviteCode2">
+						<div class="formline mt-20">
+							<div class="formlabel">您的手机号</div>
+							<div class="forminput"><input class="input-text readonly" id="userPhone3" readonly="readonly" ></div>
+						</div>
+						<div class="formline mt-20">
+							<div class="formlabel">手机验证码</div>
+							<div class="forminput"><input class="input-text input-code" onkeyup="value=value.replace(/[^\d]/g,'')" id="phoneCode" name="phoneCode" maxlength="6" placeholder="6位数字" onblur="checkPhoneCode()" onfocus="phoneCodeFocus()"></div>
+							<span class="icontip inputtip-code icon-font icon-error" for="phoneCode"></span>
+							<div class="codebtn" id="codebtn"><a href="javascript:;" class="c-link" onclick="sendPhoneCode()">获取验证码</a></div>
+							<div class="helptip" id="codehelp"></div>
+						</div>
+						<div class="voicediv l20 mt-10" id="voicediv"></div>
+						<div class="tipdiv mt-10" id="formtip2"></div>
+                        <div class="formline mt-10">
+                           <button type="button" class="btn btn-submit" onclick="registerSubmit()" id="submit2">立即验证</button>
+                        </div>
+                        <div class="bottomlink mt-20">
+                        	<a class="backlink text-primary" href="javascript:;" onclick="registerBack()"><i class="icon-font icon-xiangzuo"></i>返回上一步</a>
+                            <a class="text-default" href="${tzp.getContextPath()}/secure/login">已有账号，去登录</a>
+                        </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="m-layer m-sliderlayer" id="slidercodeLayer">
+	<div class="bd">
+		<div class="close" onclick="layer.closeAll();"><i class="icon-font icon-close"></i></div>
+		<div id="dom_id"></div>
+	</div>
+</div>
+<input type="hidden" id="sendTimes">
+<#include "/include/login_footer.html" />
+<#include "/include/script_up.html" />
+<!-- 页面js -->
+<script src="${tzp.getContextPath()}/public/js/plugins/icheck/icheck.min.js?v=3144e54"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/account/register_up.js?v=07a58e6"></script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+<!-- 验证码此段必须要引入 -->
+<script>
+	var nc = new noCaptcha();
+	var nc_appkey = 'FFFF0N00000000005F1A';  // 应用标识,不可更改
+    var nc_scene = 'nc_register';  //场景,不可更改
+	var nc_token = [nc_appkey, (new Date()).getTime(), Math.random()].join(':');
+	$("#slidercode").val('false');
+	var nc_option = {
+		renderTo: '#dom_id',//渲染到该DOM ID指定的Div位置
+		appkey: nc_appkey,
+        scene: nc_scene,
+		token: nc_token,
+       // trans: '{"name1":"code100"}',//测试用，特殊nc_appkey时才生效，正式上线时请务必要删除；code0:通过;code100:点击验证码;code200:图形验证码;code300:恶意请求拦截处理
+       
+		callback: function (data) {// 校验成功回调
+			$("#slidercode").val('true');
+			setTimeout(function(){
+				checkSlidercode();
+			},200);
+			document.getElementById('csessionid').value = data.csessionid;
+			document.getElementById('sig').value = data.sig;
+			document.getElementById('token').value = nc_token;
+            document.getElementById('scene').value = nc_scene;
+		}
+	};
+	nc.init(nc_option);
+	var regStart = '${regStart!1}';
+</script>
+<!-- 引入结束 -->
+</body>
+</html>

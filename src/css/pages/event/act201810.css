@@ -1,0 +1,67 @@
+.md-act{background:#391135 url(/public/images/event/act201810/bg0.jpg) no-repeat top center;position:relative;padding-top:320px;min-height:2200px;position:relative;}
+.md-act .maindesc1{position:absolute;left:50%;margin-left:-190px;top:165px;width:400px;text-align:center;font-size:24px;color:#a220a1;line-height:1;z-index:1;font-weight:700;}
+.md-act .maindesc2{position:absolute;left:50%;margin-left:-180px;top:295px;width:400px;text-align:center;font-size:16px;color:#a220a1;line-height:1;z-index:1;font-weight:700;}
+.md-act .maindesc3{position:absolute;left:50%;margin-left:-180px;top:335px;width:400px;text-align:center;font-size:16px;color:#fff;line-height:1;z-index:1;font-weight:700;}
+.md-footer{background:#252525;color:#fff;text-align:center;font-size:16px;line-height:80px;height:80px;position:absolute;left:0;bottom:0;width:100%;}
+
+.game-content{position:relative;width:100%;height:587px;background:url(/public/images/event/act201810/luckdraw1.png) no-repeat top center;}
+.game-content.gaming{background:url(/public/images/event/act201810/luckdraw2.png) no-repeat top center;}
+.game-goods-list{position:absolute;left:373px;top:180px;width:470px;height:192px;overflow:hidden;}
+.game-goods{position:absolute;left:0;top:0;height:100%;width:135px;}
+.game-goods.goods2{left:165px;}
+.game-goods.goods3{left:330px;}
+.game-goods-ul{position: relative;top:0;font-size: 0;z-index:10;}
+.game-goods-ul li{position:relative;width:100%;text-align:center;line-height:192px;}
+.game-goods-ul li img{max-height:114px;}
+.game-btn{position:absolute;left:510px;top:415px;background:url(/public/images/event/act201810/start.png) no-repeat;width:190px;height:94px;cursor:pointer;}
+.game-desc{position:absolute;left:400px;top:540px;width:400px;text-align:center;color:#fff5bf;font-size:18px;line-height:20px;}
+
+.md-bonus{padding-top:80px;}
+.md-bonus .hd{background:url(/public/images/event/act201810/bonustitle.png) no-repeat center;line-height:59px;height:59px;color:#400463;font-size:24px;text-align:center;}
+.md-bonus .bd{background:url(/public/images/event/act201810/bonusbg.png) no-repeat center 0;width:100%;position:relative;height:674px;padding-top:50px;}
+.md-bonus .bd .bonus1{background:url(/public/images/event/act201810/bonus1.png) no-repeat;width:105px;height:85px;position:absolute;left:572px;top:10px;}
+.md-bonus .bd .bonus1.disabled{background:url(/public/images/event/act201810/bonus1no.png) no-repeat;}
+.md-bonus .bd .bonus2{background:url(/public/images/event/act201810/bonus2.png) no-repeat;width:124px;height:99px;position:absolute;left:343px;top:113px;}
+.md-bonus .bd .bonus2.disabled{background:url(/public/images/event/act201810/bonus2no.png) no-repeat;}
+.md-bonus .bd .bonus3{background:url(/public/images/event/act201810/bonus3.png) no-repeat;width:152px;height:123px;position:absolute;left:765px;top:173px;}
+.md-bonus .bd .bonus3.disabled{background:url(/public/images/event/act201810/bonus3no.png) no-repeat;}
+.md-bonus .bd .bonus4{background:url(/public/images/event/act201810/bonus4.png) no-repeat;width:172px;height:138px;position:absolute;left:274px;top:375px;}
+.md-bonus .bd .bonus4.disabled{background:url(/public/images/event/act201810/bonus4no.png) no-repeat;}
+.md-bonus .bd .btn-sel{position:absolute;left:720px;top:620px;width:233px;line-height:55px;height:55px;text-align:center;color:#da1a00;font-size:18px;font-weight:700;}
+.md-bonus .bd .desc{color:#f7ddb7;font-size:16px;position:absolute;}
+.md-bonus .bd .desc1{left:600px;top:125px;}
+.md-bonus .bd .desc2{left:360px;top:250px;}
+.md-bonus .bd .desc3{left:820px;top:340px;}
+.md-bonus .bd .desc4{left:320px;top:550px;}
+.md-bonus .bd .step{background:url(/public/images/event/act201810/step.png) no-repeat;width:232px;height:158px;display:none;}
+.md-bonus .bd .step h6{position:absolute;left:0;top:0;width:234px;line-height:50px;text-align:center;color:#feda77;}
+.md-bonus .bd .step h6 em{color:#fff;}
+.md-bonus .bd .step.step1{display:block;position:absolute;left:350px;top:-90px;}
+.md-bonus .bd .step.step2{display:block;position:absolute;left:340px;top:10px;}
+.md-bonus .bd .step.step3{display:block;position:absolute;left:450px;top:110px;}
+.md-bonus .bd .step.step4{display:block;position:absolute;left:430px;top:250px;}
+.md-bonus .bd .step.step5{display:block;position:absolute;left:440px;top:380px;}
+
+.md-rule{padding-top:70px;width:900px;margin:0 auto;}
+.md-rule h2{font-size:24px;color:#ffd9a4;}
+.md-rule p{line-height:24px;color:#ffd9a4;}
+
+.layui-layer{}
+.md-bonustip{padding:0 26px 0;}
+.md-bonustip .bd{position:relative;padding:30px 0 50px;background:#fff;border-radius:10px;}
+.md-bonustip .icon-close{position:absolute;right:10px;top:10px;line-height:1;font-size:20px;display:inline-block;cursor:pointer;color:#999;}
+.md-bonustip .bonusdesc{line-height:60px;width:542px;margin-left:-26px;text-align:center;color:#3e035f;font-size:24px;letter-spacing:1pt;}
+.md-bonustip .bonusdesc.getbonus{background:url(/public/images/event/act201810/title2.png) no-repeat center center;}
+.md-bonustip .bonusdiv{padding:50px 20px;text-align:center;}
+.md-bonustip .bonusremark{line-height:20px;padding-bottom:15px;font-size:16px;color:#666;text-align:center;}
+.md-bonustip .gainbonus{display:inline-block;background:url(/public/images/event/act201810/p1.png) no-repeat;width:110px;height:62px;padding-top:80px;font-size:24px;line-height:1;color:#fcce2f;text-align:center;}
+.md-bonustip .gainbonus em{font-size:42px;}
+.md-bonustip .gainjiaxi{display:inline-block;background:url(/public/images/event/act201810/p5.png) no-repeat;width:98px;height:112px;padding-top:30px;font-size:24px;line-height:1;color:#333;text-align:center;}
+.md-bonustip .gainjiaxi em{font-size:42px;}
+.md-bonustip .bonusbtn{text-align:center;}
+.md-bonustip .disbonus{color:#cf1919;line-height:26px;font-size:16px;}
+.md-bonustip .btn-bonus{display:inline-block;background:url(/public/images/event/act201810/btn0.png) no-repeat;width:200px;line-height:57px;height:57px;color:#fdead3;font-size:18px;}
+.md-bonustip .recordtable{width:400px;margin-left:auto;margin-right:auto;}
+.md-bonustip .recordtable th,.md-bonustip .recordtable td{color:#666;font-size:16px;text-align:center;line-height:26px;padding:5px;border:1px solid #a67c52;}
+.md-bonustip .recordtable th{color:#c00;background:#fcf4ea;}
+.md-bonustip .norecord{color:#666;line-height:30px;text-align:center;font-size:18px;padding-top:40px;}

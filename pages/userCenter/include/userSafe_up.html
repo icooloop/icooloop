@@ -1,0 +1,79 @@
+				<div class="mu-account-safe">
+                   <div class="logo"><img src="${tzp.getContextPath()}/public/images/user/user.png?v=c18b7f1" id="userPicUrl"></div>
+                   <div class="welcome" ><span class="pr-15">${(_p2p_member_user.nickName)},欢迎您
+					<#if _p2p_member_user.isDefaultUsername?? && _p2p_member_user.isDefaultUsername=="1" >
+					<a class="text-primary f-12 ml-5" id="changeUserNameTxt" href="javascript:;">修改用户名</a>
+					</#if> 
+					</span>
+                       <#if _p2p_member_user.isDepositary =='1'> 
+                           <a href="${tzp.getContextPath()}/spa/member/secure/security" title="银行存管"><i class="icon-font text-primary icon-save_"></i></a>
+                            <a href="${tzp.getContextPath()}/spa/member/secure/security" title="交易密码"><i class="icon-font text-primary icon-lock2 "></i></a>
+                       <#else>
+                           <a href="${tzp.getContextPath()}/member/depository/form" title="银行存管"><i class="icon-font text-primary icon-save_ disabled"></i></a>
+                            <a href="${tzp.getContextPath()}/spa/member/secure/security" title="交易密码"><i class="icon-font text-primary icon-lock2 disabled"></i></a>
+                       </#if>	
+                      
+                       <a href="${tzp.getContextPath()}/spa/member/secure/security" title="短信设置"><i class="icon-font text-primary icon-email "></i></a>
+                   </div>
+                   <#if _p2p_member_user.riskAss ??>
+                   <div class="risk">风险评测：${_p2p_member_user.riskAss!''}<#if isValid??&&isValid=='0'><i> (已过期)</i>
+                   <span class="u-what"><i class="icon-font icon-wenhao"></i><span class="notes">您的风险承受能力测评结果已经过期，请重新测评</span></span>
+                   </#if>
+                   <a class="text-primary ml-15" href="${tzp.getContextPath()}/member/auth/risk-ass">重新评测</a></div>
+                   <#else>
+                   <div class="risk"><a class="text-primary" href="${tzp.getContextPath()}/member/auth/risk-ass">风险评测</a></div>
+                   </#if>	
+                   <div class="sd"><a href="${tzp.getContextPath()}/spa/member/voucher" class="bonus">
+                       <div class="pic"><img src="${tzp.getContextPath()}/public/images/user/coupon.png?v=3a292cf"></div>
+                       <p>我的优惠券：${(count!0)}</p>
+                   </a></div>
+               </div>
+<div class="m-layer mu-security-username" id="UpdateUsername">
+	<div class="pd-20">
+		<div><input type="text" id="userName" maxlength="18" class="input-text" placeholder="请输入新用户名" /></div>
+		<div class="l20 c-666 mt-10">* 用户名仅能修改一次</div>
+		<div class="l20 c-666">* 6-18位字符，可包含小写英文字母、数字</div>
+		<div class="btndiv mt-10">
+			<button type="button" class="btn btn-primary mr-15" onclick="UpdateUsername()">确定</button>
+			<button type="button" class="btn btn-close" onclick="layer.closeAll()">取消</button>
+		</div>
+	</div>
+</div>
+<script>
+	$("#changeUserNameTxt").on('click',function(){
+         layer.open({
+        	 title:'修改用户名',
+        	 content:$("#UpdateUsername"),
+        	 area: ['360px', 'auto'],
+        	 type:1
+         })
+    })
+    function UpdateUsername(){
+    	var userName=$("#userName").val();
+    	var usernameReg=/^([a-z0-9]{6,18})$/;
+    	if(userName.length<6){
+    		layer.msg('用户名长度应为6-18位');
+    		return false;
+    	}
+    	if(!usernameReg.test(userName)){
+    		layer.msg('用户名只支持小写英文字母、数字');
+    		return false;
+    	}
+    	$.ajax({
+            type: "post",
+            dataType: "json",
+            url: basePath +"/member/secure/username/update",
+            data: {"userName":userName},
+            success: function (data) {
+            	console.log(data)
+                if (data.success) {
+                	layer.msg('修改成功',{}, function(){
+                		window.location.href=basePath+"/spa/member/account/index";
+					});
+                } else {
+                    layer.msg(data.msg, {icon: 5});
+                }
+            }
+        });
+    }
+</script>

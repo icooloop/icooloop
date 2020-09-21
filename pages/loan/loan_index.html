@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>我要借款-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+	<#include "/loan/include/style.html" />
+</head>
+<body class="bgmain">
+<!-- 页面开始 -->
+<#include "/loan/include/header.html" />
+<div class="g-mainer">
+	<div class="ml-index">
+		<div class="ml-index-banner">
+			<div class="bd wp">
+				<h4>个人消费贷款</h4>
+				<h3 class="mt-15">趁现在，享未来</h3>
+				<div class="mt-20"><a href="javascript:;" class="btn-apply" onclick="javascript:applyLoan();">立即申请</a></div>
+				<div class="desc mt-10">额度高 期限长 利率低 放款快</div>
+			</div>
+		</div>
+		<div class="wp">
+			<div class="ml-index-detail">
+				<div class="title">什么是微花贷</div>
+				<div class="desc">微花贷是个人消费分期类产品，分期场景包括但不限于：车辆、3C、电商等各生活消费垂直领域。</div>
+				<ul class="infos clearfix">
+					<li><div class="pic"><img src="${tzp.getContextPath()}/public/images/loan/index_icon1.png?v=ec4c726" alt=""></div>
+						<p>利率优惠，手续简便</p></li>
+					<li><div class="pic"><img src="${tzp.getContextPath()}/public/images/loan/index_icon2.png?v=2d838a1" alt=""></div>
+						<p>放款时间快，最快当天放款</p></li>
+					<li><div class="pic"><img src="${tzp.getContextPath()}/public/images/loan/index_icon3.png?v=8e31b96" alt=""></div>
+						<p>还款灵活，可申请提前还款</p></li>
+				</ul>
+			</div>
+			<div class="clearfix">
+				<div class="ml-index-desc desc1">
+					<div class="bd">
+						<h2>申请条件</h2>
+						<p>1、具有完全民事行为能力的中华人民共和国公民（不含港澳台）；</p>
+						<p>2、年龄20～60周岁，借款人年龄在借款到期时不超过60周岁；</p>
+						<p>3、借款人有稳定的收入来源；</p>
+						<p>4、借款人具有良好的信用记录，</p>
+						<p>5、借款人名下无未结清诉讼、执行案件，无犯罪记录；</p>
+						<p>6、我司规定的其他条件。</p>
+					</div>
+				</div>
+				<div class="ml-index-desc desc2">
+					<div class="bd">
+						<h2 class="pt-30">申请资料</h2>
+						<p>1、有效的中华人民共和国居民身份证；</p>
+						<p>2、个人名下有效的I类银行卡；</p>
+						<p>3、与借款申请相关的其他资料。</p>
+					</div>
+				</div>
+			</div>
+			<div class="ml-index-apply text-c"><a href="javascript:;" class="btn-apply" onclick="javascript:applyLoan();">立即申请</a></div>
+		</div>
+	</div>
+</div>
+<!--页面js-->
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script type="text/javascript">
+ 	var isLogin = false
+    $(function(){
+        $("#nav_loan").addClass("on");
+    })
+    
+    $(function(){
+	<#if _p2p_member_user??>
+		isLogin=true;
+	</#if>
+	})
+	
+</script>
+<script type="text/javascript" src="${tzp.getContextPath()}/src/js/pages/loan/loan_index.js?v=523a14a"></script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

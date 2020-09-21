@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>提示信息-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_new.html" />
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="${tzp.getContextPath()}/src/css/pages/error/404.css?v=2646ade">
+</head>
+<body>
+<#include "/include/header_new.html" />
+<div class="container">
+    <div class="row content">
+        <div class="col-sm-2 col-sm-offset-2">
+            <img src="/public/images/error/error404.png?v=37ce43e">
+        </div>
+        <div class="col-sm-4s text-center">
+            <h2 class="text-default">抱歉！您访问的页面丢失了</h2>
+            <a class="btn btn-primary go-home" href="/">返回首页</a>
+            <p class="text-default"><span id="countDownTxt">5</span>秒之后自动返回首页...</p>
+        </div>
+    </div>
+</div>
+<#include "/include/bottom_script.html" />
+<script>
+    var $countDownTxt = $('#countDownTxt');
+    var time = 4;
+    function countDown() {
+        if (time > 0) {
+            $countDownTxt.text(time--);
+        } else {
+            window.location.href = '/';
+        }
+    }
+    setInterval(function(){countDown()}, 1000);
+</script>
+</body>
+</html>

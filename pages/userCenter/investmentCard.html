@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>优惠券-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+    <style>
+    .mu-bonus .mu-table tbody tr{border-bottom:1px dashed #ccc;}
+    .mu-bonus .mu-table td{line-height:60px;padding:10px 5px;}
+    </style>
+</head>
+<body class="bgmain">
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+    <div class="m-user">
+        <div class="wp clearfix pt-20">
+			<#include "/userCenter/include/userMenu_up.html" />
+            <div class="mu-right">
+            	<div class="">
+            		<div class="mu-tabs">
+						<ul class="tabs clearfix" id="bondTypeList">
+							<li class="on" data-type="noUsed"><a href="javascript:;">未使用</a></li>
+							<li data-type="used"><a href="javascript:;">已使用</a></li>
+							<li data-type="overdue"><a href="javascript:;">已过期</a></li>
+						</ul>
+                        <div class="more"><a href="javascript:showRule();" class="text-primary">使用规则</a></div>
+					</div>
+					<div class="mu-bonus">
+						<div id="noUsed">
+							<div class="f-16 c-666 l20 mb-15 ml-10">您共使用 <span class="text-danger">${useCount!'0'}</span> 个优惠券，已为您多赚取 <span class="text-danger">${(coupon!0)?string(',##0.00')}</span> 元收益</div>
+                            <table id="noUsedRedTable" class="mu-table">
+                                <thead class="text-c">
+                                <tr>
+                                    <th class="name" width="33%">名称</th>
+                                    <th class="time" width="33%">有效期</th>
+                                    <th class="rule" width="33%">使用规则</th>
+                                    <!-- <th class="origin">来源</th> -->
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                             <!-- <div class="investmenttip" id="redbox1-tip" style="display:none;padding:10px;">提示：奖励券的收益将随借款标每期回款一起发放</div> -->
+                             <div class="page"></div>
+		                </div>
+		                <div id="used" style="display:none;">
+                            <table id="usedRedTable" class="mu-table">
+                                <thead class="text-c">
+                                <tr>
+                                    <th class="name" width="33%">名称</th>
+                                    <th class="time" width="33%">有效期</th>
+                                    <th class="rule" width="33%">使用规则</th>
+                                    <!-- <th class="origin">来源</th> -->
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <!-- <div class="investmenttip" id="redbox2-tip" style="display:none;padding:10px;">提示：奖励券的收益将随借款标每期回款一起发放</div> -->
+                            <div class="page"></div>
+		                </div>
+		                <div id="overdue" style="display:none;">
+                            <table id="overdueRedTable" class="mu-table">
+                                <thead class="text-c">
+                                <tr>
+                                    <th class="name" width="33%">名称</th>
+                                    <th class="time" width="33%">有效期</th>
+                                    <th class="rule" width="33%">使用规则</th>
+                                    <!-- <th class="origin">来源</th> -->
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <!-- <div class="investmenttip" id="redbox3-tip" style="display:none;padding:10px;">提示：奖励券的收益将随借款标每期回款一起发放</div> -->
+                            <div class="page"></div>
+		                </div>
+					</div>
+            	</div>
+            </div>
+        </div>
+   </div>
+</div>
+<div class="m-layer mu-rule" id="investmentRule">
+	<p>1、出借时可自行选择符合使用条件的优惠券，满标放款后红包金额以现金形式发放至账户余额。</p>
+	<p class="pt-10">2、单笔出借金额达到多个红包合计的使用条件时，红包可叠加使用。</p>
+	<p class="pt-10">3、奖励券的收益将随借款标每期回款一起发放。</p>
+	<p class="pt-10">3、红包和奖励券不可叠加使用。</p>
+</div>
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<!--页面js-->
+<script>
+    $("#nav_member").addClass("on");
+</script>
+<script type="text/javascript" src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script> 
+<script src="${tzp.getContextPath()}/src/js/pages/user/investmentCard.js?v=853b856"></script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

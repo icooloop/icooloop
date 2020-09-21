@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>登录-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <!-- 页面样式 -->
+    <#include "/include/style_access.html" />
+   <#if imgUrl??>
+       <style>
+           .login-bg{background: url(${imgUrl}) no-repeat top center;}
+       </style>
+   </#if>
+</head>
+<body class="bgmain">
+<!-- header -->
+<#include "/include/access_header_up.html" />
+<!-- 页面开始 -->
+<div class="m-access login-bg">
+	<div class="m-access-layer">
+		<div class="centerwp">
+			<div class="m-access-form loginform" id="loginform">
+				<div class="hd">
+					<ul class="clearfix">
+						<li class="on">账户登录</li>
+						<li >扫码登录</li>
+					</ul>
+				</div>
+				<div class="bd">
+					<section class="formlogin">
+						<form class="form-horizontal company-form" id="companyForm" action="${tzp.getContextPath()}/secure/dologin${((!callbackUrl??)!false)?string("","?callbackUrl=${(callbackUrl)!''}")}" method="post">
+                    	<#if publicKeyMap??>
+								<input type="hidden" id="modulus" value="${publicKeyMap.modulus}" />
+								<input type="hidden" id="exponent" value="${publicKeyMap.exponent}" />
+	                            <input type="hidden" name="userType" value="2" />
+	                            <input type="hidden" id="userName" name="userMobile" value="" />
+	                        </#if>
+	                        <input type="password" autocomplete="off" class="passwordHide"><!-- 防止浏览器记住密码 -->
+							<div class="formline mt-20">
+								<div class="forminput"><input class="input-text" id="userMobile" value="" maxlength="18" placeholder="请输入手机号/用户名"></div>
+								<span class="icontip icon-font icon-error" for="userMobile"></span>
+							</div>
+							<div class="formline mt-15">
+								<div class="forminput"><input class="input-text" onpaste="return false" oncontextmenu="return false" value="" oncopy="return false" oncut="return false" autocomplete="new-password" type="password" maxlength="20" id="userPassword" name="userPassword" placeholder="登录密码"></div>
+								<span class="icontip icon-font icon-error" for="userPassword"></span>
+							</div>
+		                   	<#if captchaneed?? >
+								<div class="formline mt-15">
+									<div class="forminput"><input class="input-text input-code" id="captcha" name="captcha" placeholder="验证码"></div>
+									<div class="codebtn"><img src="${tzp.getContextPath()}/txjcaptcha.svl"  alt="验证码" onclick="this.src='${tzp.getContextPath()}/txjcaptcha.svl?'+Math.random()"></div>
+									<span class="icontip icon-font icon-error" for="captcha"></span>
+								</div>
+							</#if>
+	                        <div class="mt-15">
+	                            <label>
+	                                <input class="icheck" type="checkbox" id="saveUserName" name="saveUserName" value="true">
+	                                <span class="vertical-middle agree-link">记住用户名</span>
+	                            </label>
+	                            <a class="text-primary pull-right" href="${tzp.getContextPath()}/secure/findPwd">忘记密码</a>
+	                        </div>
+							<div class="tipdiv mt-10" id="formtip1"><#if errorInfo??><span class="errortip"><i class="icon-font icon-error"></i>${errorInfo!''}</span></#if></div>
+	                        <div class="formline mt-10">
+	                           <button type="submit" class="btn btn-submit">安全登录</button>
+	                        </div>
+						</form>
+					</section>
+					<section class="qrcodelogin"  style="display:none;">
+						<div id="scanBefore">
+							<div class="qrcodediv">
+								<img alt="" src="${tzp.getContextPath()}/secure/login/qrcode" id="qrcodeImg">
+								<div class="invalid" id="qrcodeInvalid">
+									<p>二维码已失效</p>
+									<a class="btn btn-primary mt-15" href="javascript:;" onclick="refreshQrcode()">刷新</a>
+								</div>
+							</div>
+							<div class="qrcodedesc mt-15">打开<a class="text-primary" href="${tzp.getContextPath()}/spa/static/downapp" target="_blank">亿钱贷APP</a> 扫描二维码</div>
+							<div class="qrcodetip mt-30"><img alt="" src="${tzp.getContextPath()}/public/images/access/qrcodetip.png?v=30b692a"></div>
+						</div>
+						<div id="scanAfter" style="display:none;">
+							<div class="pt-30"><i class="icon-font icon-right1"></i></div>
+							<h2 class="mt-25">扫描成功</h2>
+							<div class="qrcodedesc mt-20">请在手机上 确认登录</div>
+							<div class="qrcodetip mt-30"><img alt="" src="${tzp.getContextPath()}/public/images/access/qrcodetip.png?v=30b692a"></div>
+						</div>
+					</section>
+				</div>
+                <div class="otherlogin">
+                     <a class="text-primary" href="${tzp.getContextPath()}/spa/secure/register">注册新用户</a>
+                 </div>
+			</div>
+		</div>
+	</div>
+</div>
+<#include "/include/login_footer.html" />
+<#include "/include/security.html" />
+<#include "/include/script_up.html" />
+<!-- 页面js -->
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.min.js?v=9fc6b5c"></script>
+<script src="${tzp.getContextPath()}/src/js/tools/validate_cn.js?v=10c4607"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/icheck/icheck.min.js?v=3144e54"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/account/login_up.js?v=da99f7e"></script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

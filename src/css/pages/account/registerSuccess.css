@@ -1,0 +1,182 @@
+.reg-success-layer, .forget-success {
+    padding:70px 0 0;
+}
+.forget-success {
+    height: 560px;
+}
+.reg-success-container {
+    width: 746px;
+}
+
+.reg-success-layer .copyright, .forget-success .copyright {
+    color: #666;
+}
+
+.reg-success-container .content {
+    padding: 70px 48px 50px;
+    background-color: #fff;
+}
+
+.reg-success-container .content h1 {
+    margin: 0 0 20px;
+}
+
+.reg-success-container .content h1 i.icon-right1 {
+    font-size: 72px;
+}
+
+.reg-success-container .content h2 {
+    font-size: 24px;
+}
+
+.reg-success-container .content h2, .reg-success-container .content > p {
+    margin: 0 0 10px;
+}
+.reg-success-container .content .next{
+	margin:30px 0 15px;
+}
+.reg-success-container .content .next a{
+	margin:0 15px 0 0;
+}
+.reg-success-container .content .company-auto {
+    width: 470px;
+    margin: 15px auto 15px;
+    padding: 15px 0;
+    border: 1px solid #d8d8d7;
+    background-color: #fdfdfc;
+}
+.reg-success-container .content .company-auto .left-icon{
+    font-size: 36px;
+    margin:0 25px 0 0;
+    color:#999;
+}
+.reg-success-container .content .company-auto .col-sm-3{
+    width:22%;
+}
+.reg-success-container .content .company-auto .col-sm-6{
+    width:55%;
+}
+.reg-success-container .content .company-auto .col-sm-6 p{
+    margin:0;
+}
+.reg-success-container .content .company-auto h3 {
+    margin: 5px 0 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.reg-success-container .content .company-auto .btn-primary,.reg-success-container .content .company-auto .btn-disabled{
+    margin:8px 0 0;
+    border-radius:42px;
+    padding:6px 20px;
+}
+.reg-success-container .content .company-auto .layer-right p.success{
+    margin:15px 0 0;
+}
+.reg-success-container .content .company-auto .layer-right p.success i{
+    margin:0 2px 0 0;
+}
+.reg-success-layer-person{
+    padding:32px 0;
+}
+.reg-success-layer-person .content{
+    padding:20px 0;
+}
+
+.product-recommend {
+    margin: 12px 0 0;
+    padding: 2px;
+    clear: both;
+    background-color: #fff;
+}
+.product-recommend .title{
+    width:880px;
+    margin:15px auto;
+    font-size:24px;
+}
+.product-recommend ul {
+    padding: 0 0 25px;
+    width:880px;
+    margin:0 auto;
+}
+
+.product-recommend ul li {
+    position: relative;
+    border: 1px solid #d1d1d1;
+    padding: 28px 0 12px;
+    margin: 0 25px 0 0;
+    font-size: 16px;
+    width: 276px;
+    text-align: center;
+    color: #333;
+    float: left;
+    height: 200px;
+    overflow: hidden;
+}
+.product-recommend ul li i.jiaxi-icon,.product-recommend ul li i.new-hard-icon {
+    position: absolute;
+    width: 52px;
+    height: 51px;
+    left: 0;
+    top: 0;
+    background: url(/public/images/icon/add-m.png) no-repeat;
+}
+.product-recommend ul li i.new-hard-icon {
+    background: url(/public/images/icon/new-m.png) no-repeat;
+}
+.product-recommend ul li:hover{
+    box-shadow: 0 0 9px rgba(204, 204, 204, .7);
+}
+.product-recommend ul li:hover a.btn {
+    display: block;
+}
+
+.product-recommend ul li:last-child {
+    margin: 0;
+}
+
+.product-recommend ul li h4 {
+    font-size: 18px;
+}
+.product-recommend ul li h4 a{
+    color:#333;
+}
+.product-recommend ul li h4 a:hover{
+    text-decoration: underline;
+}
+.product-recommend ul li p, .product-recommend ul li h4 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.product-recommend ul li p.pay {
+    opacity: 1;
+    transition: all .2s ease-in;
+}
+
+.product-recommend ul li:hover p.pay {
+    opacity: 0;
+    transform: scale(0, 0);
+}
+
+.product-recommend ul li p.rate {
+    color: #3961cd;
+    font-size: 36px;
+}
+
+.product-recommend ul li a.btn {
+    width: 100%;
+    border-radius: 0;
+    margin: 21px 0 -12px;
+    font-weight: 400;
+    font-size: 16px;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    bottom: -10px;
+    transition: all .2s ease;
+}
+
+.product-recommend ul li:hover a.btn {
+    opacity: 1;
+    bottom: 12px;
+}

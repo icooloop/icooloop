@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>推荐奖励-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+	<link rel="stylesheet" type="text/css" href="${tzp.getContextPath()}/src/css/pages/event/recommend.css?v=0d91ef0">
+</head>
+<body class="bgmain">
+<!-- 页面开始 -->
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+	<div class="md-act">
+		<div class="acttime">活动时间：2018年10月01日-2019年6月30日</div>
+		<div class="wp">
+			<div class="md-mode" id="mode1">
+				<div class="title"><h2>一重好礼   最高200元现金</h2></div>
+				<div class="intro">推荐的单个好友注册后30个自然日内，累计出借达到相应的金额（出借期限≥3个月或90天），可获得相应的现金奖励</div>
+				<div class="text-c mt-25"><a href="javascript:;" class="rulelink" onclick="openlayer('#rule1')">规则详情&gt;&gt;</a></div>
+				<div class="total text-c mt-30"><h4>累计可获得奖励50+50+100=200元</h4></div>
+				<div class="bonuslist1 mt-50">
+					<ul class="clearfix">
+						<li><div class="amount">&nbsp;<em>50</em>元</div>
+							<div class="level">级别一</div>
+							<div class="desc">10,000元≤累计出借额＜30,000元</div>
+						</li>
+						<li><div class="amount">&nbsp;<em>50</em>元</div>
+							<div class="level">级别二</div>
+							<div class="desc">30,000元≤累计出借额＜50,000元</div>
+						</li>
+						<li><div class="amount">&nbsp;<em>100</em>元</div>
+							<div class="level">级别三</div>
+							<div class="desc">累计出借额≥50,000元</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="md-mode mt-title" id="mode2">
+				<div class="title"><h2>二重好礼   最高0.8%佣金</h2></div>
+				<div class="intro">推荐用户出借，可获得被推荐人待收本金年化x%的现金奖励</div>
+				<div class="text-c mt-25"><a href="javascript:;" class="rulelink" onclick="openlayer('#rule2')">规则详情&gt;&gt;</a></div>
+				<div class="bonuslist2 mt-50">
+					<ul class="clearfix">
+						<li><div class="desc">好友待收本金年化</div>
+							<div class="amount">奖励<span class="c-import"><em>0.4</em>%</span></div>
+							<div class="remark">被推荐人待收之和<50,000元</div>
+						</li>
+						<li><div class="desc">好友待收本金年化</div>
+							<div class="amount">奖励<span class="c-import"><em>0.6</em>%</span></div>
+							<div class="remark">50,000元≤被推荐人待收之和＜200,000元</div>
+						</li>
+						<li><div class="desc">好友待收本金年化</div>
+							<div class="amount">奖励<span class="c-import"><em>0.8</em>%</span></div>
+							<div class="remark">被推荐人待收之和≥200,000元</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="md-mode mt-title" id="mode3">
+				<div class="title title2"><h2>三重好礼   好友注册就送10元红包</h2></div>
+				<div class="intro">好友注册后，推荐人获得10元现金红包，数量上不封顶</div>
+				<div class="text-c mt-25"><a href="javascript:;" class="rulelink" onclick="openlayer('#rule3')">规则详情&gt;&gt;</a></div>
+				<div class="text-c mt-40">
+					<div class="ud-bonus3">
+						<h6>&nbsp;<em>10</em>元</h6>
+					</div>
+				</div>
+				<#if _p2p_member_user??>
+					<div class="text-c mt-50"><a href="${tzp.getContextPath()}/member/recom/list" target="_blank" class="btn-invest2">马上邀请</a></div>
+				<#else>
+					<div class="text-c mt-50"><a href="javascript:;" onclick="layerLogin()" class="btn-invest2">马上邀请</a></div>
+				</#if>
+				<div class="mu-rule2 mt-40">
+					<h2>推荐奖励补充细则：</h2>
+					<p>1、推荐人账户待收本金需≥5000元才可享受奖励一与奖励二，符合条件的用户可同时享有以上三项奖励。</p>
+					<p>2、被推荐人通过推荐人分享的页面注册，或在注册时填写推荐人的推荐码或手机号码，注册成功即建立推荐关系。</p>
+					<p>3、自2018年10月1日起，建立的推荐关系，推荐奖励有效期为180天，2018年10月1日之前建立的推荐关系，推荐奖励有效期保留原有规则的一年期。</p>
+					<p>4、推荐活动时间：2018年10月1日-2019年6月30日。</p>
+					<p>5、本活动最终解释权归亿钱贷所有，如有调整，将以公告形式通知。</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="md-footer">
+	<#include "/include/copyright_event.html" />
+</div>
+<div class="m-layer" id="rule1">
+	<div class="hd">规则详情<i class="icon-font icon-close" onclick="layer.closeAll()"></i></div>
+	<div class="bd">
+		<p>1、推荐的单个好友注册后30个自然日内，累计出借达到相应的金额（出借期限≥3个月或90天），可获得相应的现金奖励，具体如下：</p>
+		<table class="table datatable mt-10">
+			<tr><td>级别1</td><td>10,000元≤累计出借额＜30,000元</td><td>50元</td></tr>
+			<tr><td>级别2</td><td>30,000元≤累计出借额＜50,000元</td><td>50+50元</td></tr>
+			<tr><td>级别3</td><td>累计出借额≥50,000元</td><td>50+50+100元</td></tr>
+		</table>
+		<p class="mt-10">2、奖励发放：满足条件以出借时间为准，奖励在满足各级别的最后一个项目放款后次个自然日发放。推荐好友注册人数不限，符合条件即可获得奖励。举例：A推荐B，B在注册后30天内累计出借5万，则可获得50+50+100元现金奖励。</p>
+		<p class="mt-10">3、适用项目：散标、易智投。</p>
+		<p class="mt-10">4、活动时间节点说明：2018年10月1日起推荐注册的会员享受此项奖励。</p>
+	</div>
+</div>
+<div class="m-layer" id="rule2">
+	<div class="hd">规则详情<i class="icon-font icon-close" onclick="layer.closeAll()"></i></div>
+	<div class="bd">
+		<p>1，推荐用户出借，可获得被推荐人待收本金年化x%的现金奖励，奖励比例如下：</p>
+		<table class="table datatable mt-10">
+			<tr><td>被推荐人待收之和＜50,000元</td><td><span class="text-import">0.4%</span></td></tr>
+			<tr><td>50,000元≤被推荐人待收之和＜200,000元</td><td><span class="text-import">0.6%</span></td></tr>
+			<tr><td>被推荐人待收之和≥200,000元</td><td><span class="text-import">0.8%</span></td></tr>
+		</table>
+		<p class="mt-10">2，奖励发放时间：出借项目放款后（易智投起息后）计入待收本金，每日奖励金额=待收本金*x%/360天，次日发放。</p>
+		<p class="mt-10">3，适用项目：散标、易智投、债权转让。</p>
+		<p class="mt-10">4，活动时间节点说明：自2018年10月1日起，待收本金的奖励比例按照以上规则计算。因2018年8月1日0点之前起息的债权推荐奖励一次性发放，则该时间前的债权不计算此部分奖励。</p>
+	</div>
+</div>
+<div class="m-layer" id="rule3">
+	<div class="hd">规则详情<i class="icon-font icon-close" onclick="layer.closeAll()"></i></div>
+	<div class="bd">
+		<p>好友注册后，系统给推荐人自动发放10元红包，出借90天及以上项目金额满1000元可用。</p>
+	</div>
+</div>
+
+<div class="md-side">
+	<ul class="list">
+		<li><a href="#mode1" class="arctic_scroll desc">200元现金</a></li>
+		<li><a href="#mode2" class="arctic_scroll desc">0.8%佣金</a></li>
+		<li><a href="#mode3" class="arctic_scroll desc">10元红包</a></li>
+		<li><div class="btn-invest" onclick="showInvestHover()">马上邀请</div>
+			<div class="investhover" id="investHover">
+				<div class="hd">通过以下姿势邀请好友<i class="icon-font icon-close" onclick="hideInvestHover()"></i></div>
+				<div class="bd">
+					<div class="item"><em>姿势一</em>
+						<p>请好友注册时填写您的专属推荐码</p>
+						<h6 class="mt-5"><span class="text-import">${(recomCode!'')}</span>或<span class="text-import">${(_p2p_member_user.userMobile)!''}</span></h6>
+					</div>
+					<div class="item mt-15"><em>姿势二</em>
+						<p>复制链接发送给好友<a href="javascript:;" class="text-import ml-30" id="copyLinkBtn" data-clipboard-target="#foo">点击复制</a>
+						<input class="passwordhide" id="foo" type="text" value="https://www.yiqiandai.com/secure/land?code=${(recomCode!'')}"></p>
+					</div>
+				</div>
+			</div>
+		</li>
+		<#if _p2p_member_user??>
+		<li><a class="btn-link"  href="${tzp.getContextPath()}/member/recom/list" target="_blank">查看我的奖励</a></li>
+		<#else>
+		<li><a class="btn-link"  href="javascript:layerLogin();">查看我的奖励</a></li>
+		</#if>
+	</ul>
+</div>
+
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/clipboard/clipboard.min.js?v=cc0ee00"></script>
+<script>
+$(function(){
+	$(".arctic_scroll").arctic_scroll();
+	var clipboard = new Clipboard('#copyLinkBtn');
+    clipboard.on('success', function(e) {
+       layer.msg('复制成功~')
+    });
+})
+function openlayer(_id){
+	layer.open({
+		  type: 1,
+		  title: false, //不显示标题
+		  closeBtn:false,
+		  area:['660px','auto'],
+		  content: $(_id)
+		});
+}
+function showInvestHover(){
+	<#if _p2p_member_user??>
+		$("#investHover").show();
+	<#else>
+		layerLogin();
+	</#if>
+}
+function hideInvestHover(){
+	$("#investHover").hide();
+}
+</script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

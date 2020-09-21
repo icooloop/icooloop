@@ -1,0 +1,399 @@
+body{
+	overflow-x:hidden;
+}
+.main-content {
+    background: url(/public/images/activity/spring/main.png) no-repeat top center;
+    height: 3958px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.main-content .container {
+    position: relative;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+div.title {
+    position: absolute;
+    width: 479px;
+    height: 372px;
+    top: 110px;
+    left: 460px;
+    background: url("/public/images/activity/spring/title.png") no-repeat;
+    -webkit-animation: title 1.5s ease-in;
+    animation: title 1.5s ease-in;
+}
+
+@keyframes title {
+    from {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    60% {
+        transform: scale(.8);
+    }
+    70% {
+        transform: scale(1.1);
+    }
+    80% {
+        transform: scale(.9);
+    }
+    90% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@-webkit-keyframes title {
+    from {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    60% {
+        transform: scale(.8);
+    }
+    70% {
+        transform: scale(1.1);
+    }
+    80% {
+        transform: scale(.9);
+    }
+    90% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.icon1 {
+    position: absolute;
+    width: 386px;
+    height: 279px;
+    top: 200px;
+    left: -600px;
+    background: url("/public/images/activity/spring/icon1.png") no-repeat;
+    -webkit-animation: yun 12s ease-in infinite alternate;
+    animation: yun 12s ease-in infinite alternate;
+}
+
+@keyframes yun {
+    from {
+        opacity: 1;
+        left: -386px;
+    }
+    40% {
+        opacity: 0;
+        left: 200px;
+    }
+    80% {
+        opacity: 1;
+        left: -386px;
+    }
+}
+
+@-webkit-keyframes yun {
+    from {
+        opacity: 1;
+        left: -386px;
+    }
+    40% {
+        opacity: 0;
+        left: 200px;
+    }
+    80% {
+        opacity: 1;
+        left: -386px;
+    }
+}
+
+.icon2 {
+    position: absolute;
+    width: 208px;
+    height: 138px;
+    top: 300px;
+    right: -200px;
+    background: url("/public/images/activity/spring/icon2.png") no-repeat;
+    -webkit-animation: yun2 10s ease-in infinite alternate;
+    animation: yun2 10s ease-in infinite alternate;
+}
+
+.icon3 {
+    position: absolute;
+    width: 208px;
+    height: 138px;
+    top: 150px;
+    right: -208px;
+    background: url("/public/images/activity/spring/icon3.png") no-repeat;
+    -webkit-animation: yun2 12s ease-in 2s infinite alternate;
+    animation: yun2 12s ease-in 2s infinite alternate;
+}
+
+@keyframes yun2 {
+    from {
+        opacity: 1;
+        right: -208px;
+    }
+    40% {
+        opacity: 0;
+        right: 200px;
+    }
+    80% {
+        opacity: 1;
+        right: -208px;
+    }
+}
+
+@-webkit-keyframes yun2 {
+    from {
+        opacity: 1;
+        right: -208px;
+    }
+    40% {
+        opacity: 0;
+        right: 100px;
+    }
+    80% {
+        opacity: 1;
+        right: -208px;
+    }
+}
+
+.product-list {
+    position: absolute;
+    left: 0;
+    top: 1010px;
+}
+
+.product-list li {
+    float: left;
+    width: 250px;
+    text-align: center;
+}
+
+.product-list li h3 {
+    color: #edeba3;
+    font-size: 24px;
+    margin: 0 0 10px;
+}
+
+.product-list li p {
+    color: #fff;
+}
+
+.product-list li p span {
+    font-size: 26px;
+}
+
+.product-list li a {
+    display: inline-block;
+    width: 108px;
+    height: 28px;
+    line-height: 28px;
+    background-color: #e6b86b;
+    border-radius: 10px;
+    color: #e1363c;
+}
+
+.product-list li a:hover {
+    text-decoration: none;
+    box-shadow: 0 0 9px rgba(204, 204, 204, .7);
+}
+
+p.info {
+    position: absolute;
+    top: 1470px;
+    width: 900px;
+    left: 50px;
+    color: #fbc87e;
+}
+
+p.zhu {
+    position: absolute;
+    top: 1870px;
+    left: 340px;
+    color: #fbc87e;
+}
+
+div.explain {
+    position: absolute;
+    top: 2240px;
+    left: 90px;
+    color: #666;
+    width: 550px;
+}
+
+div.explain p.title {
+    margin: 0 0 30px;
+}
+
+div.explain table {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    border-top: 1px solid #d1c0a5;
+    border-left: 1px solid #d1c0a5;
+    background-color: #fff;
+}
+
+div.explain table td {
+    padding: 5px 0;
+    line-height: 2;
+    border-bottom: 1px solid #d1c0a5;
+    border-right: 1px solid #d1c0a5;
+}
+
+div.explain table thead td {
+    color: #baa577;
+}
+
+div.explain p.bottom {
+    margin: 30px 0 0;
+    text-align: center;
+}
+
+div.rule {
+    position: absolute;
+    top: 3400px;
+    left: 20px;
+    color: #fff;
+    width: 900px;
+}
+
+div.rule h3 {
+    margin: 0 0 30px;
+}
+
+div.rule ul li {
+    line-height: 1.6;
+    margin: 0 0 10px;
+}
+
+div.copy-right {
+    position: absolute;
+    top: 3800px;
+    left: 20px;
+    color: #fff;
+    width: 900px;
+    text-align: center;
+    color: #fbc87e;
+}
+.slide-item{
+    position: absolute;
+    top: 1550px;
+    left: 180px;
+}
+.slide-item .icon .front,
+.slide-item .icon .back {
+    position: absolute;
+    display: block;
+    height: 277px;
+    width: 278px;
+    border-radius: 50%;
+    -webkit-transition: all .5s ease-in-out;
+    /*淡入淡出效果*/
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    -webkit-backface-visibility: hidden;
+    /*元素背面不可见*/
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.slide-item .icon {
+    height: 277px;
+    width: 278px;
+    float: left;
+    margin:0 50px 0 0;
+}
+
+.slide-item .icon4 .front {
+    background: url("/public/images/activity/spring/icon4.png") no-repeat;
+}
+
+.slide-item .icon5 .front {
+    background: url("/public/images/activity/spring/icon5.png") no-repeat;
+}
+.slide-item .icon .back {
+    background: url("/public/images/activity/spring/cover.png") no-repeat;
+}
+.slide-item .back {
+    -webkit-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.slide-item .icon:hover .front {
+    -webkit-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.slide-item .icon:hover .back {
+    -webkit-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+@keyframes mysnow {
+    0% {
+        bottom: 100%;
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+        bottom: 50%;
+        transform: rotate(1080deg);
+    }
+    100% {
+        transform: rotate(0deg);
+        opacity: 0;
+        bottom: 0;
+    }
+}
+
+@-webkit-keyframes mysnow {
+    0% {
+        bottom: 100%;
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+        -webkit-transform: rotate(1080deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+        opacity: 0;
+        bottom: 0;
+    }
+}
+
+
+.roll {
+    position: absolute;
+    opacity: 0;
+    -webkit-animation: mysnow 5s;
+    -moz-animation: mysnow 5s;
+    -ms-animation: mysnow 5s;
+    -o-animation: mysnow 5s;
+    animation: mysnow 5s;
+}
+#snowzone{
+    position: absolute;
+    top:2000px;
+    width:100%;
+}
+#snowzone .div{
+    position: absolute;
+    width:100px;
+}

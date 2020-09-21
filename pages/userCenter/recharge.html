@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>账户充值-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+    <#if (_p2p_member_user??&&_p2p_member_user.userType=='5')  ||  (_p2p_member_user??&&_p2p_member_user.userType=='3')>
+		<#include "/loan/include/style.html" />
+	<#elseif (_p2p_member_user??&&_p2p_member_user.userType=='4')>
+		<#include "/org/include/style.html" />
+	</#if>
+</head>
+<body class="bgmain">
+<!-- 页面开始 -->
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+	<div class="m-user">
+		<div class="wp clearfix pt-20">
+			<#if (_p2p_member_user??&&_p2p_member_user.userType=='5')  ||  (_p2p_member_user??&&_p2p_member_user.userType=='3')>
+				<#include "/loan/include/userMenu.html" />
+			<#elseif (_p2p_member_user??&&_p2p_member_user.userType=='4')>
+				<#include "/org/include/userMenu.html" />
+			<#else>
+				<#include "/userCenter/include/userMenu_up.html" />
+			</#if>
+			<div class="mu-right">
+				<div class="mu-recharge ">
+					<div class="mu-title"><h4>账户充值</h4><div class="more xinwangtip"><div class="tip">资金已由新网银行存管</div><a href="${tzp.getContextPath()}/member/deal/recharge" class="btn btn-info ml-40">充值记录</a></div></div>
+					<form action="" class="m-form mu-recharge-form">
+						<div class="pd1">
+							<div class="formline mt-20">
+								<div class="formlabel">充值金额</div>
+								<div class="forminput">
+									<input type="text" class="input-text" placeholder="≥100" id="amount" name="amount" onkeyup="value=value.replace(/[^\d]/g,'')" value="${goRechageAmt!''}" onblur="amountCheck()" maxlength="8" onchange="amountChange()">
+									<span class="unit">元</span>
+								</div>
+								<div class="formafter pt-5">
+									<div class="cztip1">当前的账户余额： <em>${(accountVo.availableAmt!0)?string(',##0.00')}</em>元</div>
+									<div class="cztip1">充值后账户余额： <em class="text-warning" id="afterAmount"></em></div>
+								</div>
+								<!-- <div class="formafter text-muted pl-20" id="DXamount"></div> -->
+							</div>
+							<div class="formline mt-20">
+								<div class="formlabel">充值方式</div>
+								<ul class="rechargetype" id="rechargetypes">
+									<#assign _quick_flag = '0'>
+									<#if userType?? && userType=='1' && userBank?? > 
+										<#assign _quick_flag = '1'>
+									</#if>
+									
+									<#if _quick_flag = '1'>
+									<li type="q-pay">
+										<div class="pic"><img src="${tzp.getContextPath()}/public/images/user/qpay.png?v=3cbe5ba"></div>
+										<h6>资金同卡进出，安全快捷</h6>
+										<div class="sd"><img src="${tzp.getContextPath()}/public/images/bank/${(userBank.bankCode)!''}.png"> 尾号${(userBank.accountStar?substring(14))!''}</div>
+									</li>
+									</#if>
+									
+									<li type="net-pay">
+										<div class="pic"><img src="${tzp.getContextPath()}/public/images/user/netpay.png?v=ac7bd0a"></div>
+										<h4>网上银行</h4>
+										<h6>登录网上银行完成支付</h6>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="rechargebd">
+							<section title="快捷充值" type="q-pay" class="pd1"  style="display: none;">
+								<div class="pdleft formdesc mt-10" id="bindbankTip">充值限额：${(userBank.bankLimit)!''}</div>
+								<#if redirectMessage?? >
+									<div class="pdleft tipdiv mt-10" id="formtip1"><span class="errortip"><i class="icon-font icon-error"></i>${redirectMessage!''}</span></div>
+								<#else>
+									<div class="pdleft tipdiv mt-10" id="formtip1"></div>
+								</#if>
+								<div class="formline mt-15 pdleft">
+									<a class="btn btn-submit" target="_blank" data-loading-text="充值中..." id="qpaySubmitBtn">立即充值</a>
+								</div>
+							</section>
+							<section title="网银充值" type="net-pay" class="pd1" style="display:none;">
+								<div class="formline mt-30">
+									<div class="formlabel">开户银行</div>
+									<div class="bankdescs">
+										<ul class="banklist clearfix" id="banklist">
+				                          <#list bankTypes as item>
+				                              <li bankcode="${item.code!''}" bankname="${item.cnName!''}" onclick="selectBank(this)"><img src="${tzp.getContextPath()}/public/images/bank/${item.code!''}.png"></li>
+				                          </#list>								
+											<li class="more text-primary" id="banklistMore">选择其他银行<i class="icon-font">&#xe601;</i></li>
+										</ul>
+										<div class="bankinfoTable mt-20">
+											<table class="table"  id="bankinfoTable">
+											</table>
+										</div>
+										<div class="l30 mt-10" id="bankHotlineTip"></div>
+									</div>
+								</div>
+								
+								<div class="pdleft tipdiv mt-10" id="formtip2"><span class="errortip"></div>
+								<div class="formline mt-15 pdleft">
+									<a class="btn btn-submit" target="_blank" data-loading-text="充值中..." id="goRechargeBtn">立即充值</a>
+								</div>
+							</section>
+						</div>
+					</form>
+					<div class="wxtip" id="default_tips">
+						<h2>温馨提示：</h2>
+						<p>
+							1、充值后未用于出借的金额若申请提现，系统将收取每笔5元的提现费；<br>
+							2、每日充值限额以银行充值限额为准；<br>
+							3、严禁利用充值功能进行信用卡套现、转账、洗钱等行为；一旦发现，将关闭该 用户的充值端口；<br>
+							4、若存在操作问题，可进入<a class="text-primary" href="${tzp.getContextPath()}/spa/help/question?faqType=70d88c7b639346feac0aebe5c081c45f">帮助中心-充值提现</a>，查看相关细则；<br>
+							5、充值如遇任何疑问，请拨打亿钱贷客服热线<span class="text-primary">400-090-9968</span>进行咨询。</p>
+					</div>
+					<div class="wxtip" id="tranfer_tips" style="display: none;">
+						<h2>温馨提示：</h2>
+						<p>
+							1、请保证付款银行卡开户名与您在平台的实名信息一致；<br>
+							2、充值后未用于出借的金额若申请提现，系统将收取每笔5元的提现费；<br>
+							3、每日充值限额以银行充值限额为准；<br>
+							4、严禁利用充值功能进行信用卡套现、转账、洗钱等行为；一旦发现，将关闭该 用户的充值端口；<br>
+							5、若存在操作问题，可进入<a class="text-primary" href="${tzp.getContextPath()}/spa/help/question?faqType=70d88c7b639346feac0aebe5c081c45f">帮助中心-充值提现</a>，查看相关细则；<br>
+							6、充值如遇任何疑问，请拨打亿钱贷客服热线<span class="text-primary">400-090-9968</span>进行咨询。</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<input type="hidden" id="userBankId" value="${(userBank.bankId)!''}"/>
+<input type="hidden" id="availableAmt" value="${(accountVo.availableAmt!0)}"/>
+<input type="hidden" id="bankCode" value="${(userBank.bankCode)!''}"/>
+<input type="hidden" id="goRechageAmt" value="${(goRechageAmt)!''}"/>
+<input type="hidden" id="needDeposit" value="false"/>
+<input type="hidden" id="singleAmount" value="${(userBank.singleAmount)!'0'}"/>
+<input type="hidden" id="remainderDayAmount" value="${(userBank.remainderDayAmount)!'0'}"/>
+<input type="hidden" id="signleDayAmount" value="${(userBank.signleDayAmount)!'0'}"/>
+<input type="hidden" id="userType" value="${userType!''}"/>
+<input type="hidden" id="loanMaxLimit" name="loanMaxLimit" value="${(loanMaxLimit)!''}">
+<input type="hidden" id="defaultChannel" name="defaultChannel" value="${defaultChannel!'8'}">
+
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+
+<script src="${tzp.getContextPath()}/src/js/plugins/jquery.CountDown.js?v=0f45807"></script>
+<script src="${tzp.getContextPath()}/src/js/tools/bankinfo_zpay.js?v=ac5be83"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/icheck/icheck.min.js?v=3144e54"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/user/recharge.js?v=f2ff9cd"></script>
+<div class="m-layer mu-layer-netpay" id="netpayLayerTip">
+	<div class="hd">
+		<div id="netRechargeTitle">请在新打开的页面完成充值</div>
+		<a href="javascript:top.layer.closeAll();" class="close"><i class="icon-font icon-close"></i></a>
+	</div>
+	<div class="bd">
+		<div class="item">
+			<i class="icon-font icon-right mr-20"></i><span class="result mr-20">充值成功</span><span>您可以：</span><a href="${tzp.getContextPath()}/member/account/index" class="text-primary mr-20 ml-20">查看我的账户</a><a href="${tzp.getContextPath()}/spa/product/index" class="text-primary">浏览出借项目</a>
+		</div>
+		<div class="item mt-20">
+			<i class="icon-font icon-gth mr-20"></i><span class="result mr-20">充值失败</span><span>建议您：</span><a href="javascript:switchRecharge();" class="text-primary mr-20 ml-20">其他充值方式</a><a href="${tzp.getContextPath()}/spa/help/question?faqType=70d88c7b639346feac0aebe5c081c45f" class="text-primary">查看帮助中心</a>
+		</div>
+	</div>
+	<div class="ft">
+		<p>如仍有疑问，请致电：<span class="text-primary">400-090-9968</span></p>
+	</div>
+</div>
+</body>
+</html>

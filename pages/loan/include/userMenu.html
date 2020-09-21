@@ -1,0 +1,28 @@
+<div class="mu-left user-shadow" id="userMenuDiv">
+		<!-- 菜单 -->
+		<a href="${tzp.getContextPath()}/member/account/index"><i class="icon-font icon-account1"></i><span>账户总览</span></a>
+		<a href="${tzp.getContextPath()}/member/loan/list" ><i class="icon-font icon-mymy"></i><span>我的借款</span></a>
+		<!-- <a href="${tzp.getContextPath()}/member/loan/mediacy" ><i class="icon-font icon-fee"></i><span>服务费缴纳</span></a> -->
+		<a href="${tzp.getContextPath()}/member/account/recharge"><i class="icon-font icon-save"></i><span>账户充值</span></a>
+	<!-- 	<a href="${tzp.getContextPath()}/member/account/cash"><i class="icon-font icon-out"></i><span>账户提现</span></a> -->
+		<a href="${tzp.getContextPath()}/member/deal/index"><i class="icon-font icon-record"></i><span>交易流水</span></a>
+		<a href="${tzp.getContextPath()}/member/secure/security"><i class="icon-font icon-save_"></i><span>账户信息</span></a>
+	</div>
+<script>
+var uri = window.location.pathname;
+$("#userMenuDiv a").each(function(){
+	var _thisVal = $(this).attr("href");
+	if(_thisVal == uri){
+		$(this).addClass("on");
+	}
+});
+//用户类型
+var userType = '${_p2p_member_user.userType}';
+//认证状态
+var auth = '${_p2p_member_user.authIdcard}';
+//刷新认证状态
+if(userType=='2' && auth == '0'){
+	$.post('${tzp.getContextPath()}/member/auth/fresh',"",function(data){
+	});
+}
+</script>

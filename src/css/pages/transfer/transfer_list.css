@@ -1,0 +1,539 @@
+/* 产品列表页面 */
+body {
+    background-color: #efefef;
+}
+
+.transfer-list-banner{
+	position: relative;
+    padding-top:410px;
+    background: url('/public/images/product/transfer_list_banner.jpg?v5') no-repeat top center;
+}
+.transfer-list-banner .container{
+    position: relative;
+}
+.transfer-list-banner .banner{
+	position:absolute;
+	left:0;
+	top:0;
+	display:block;
+	width:100%;
+	height:459px;
+}
+.transfer-list-banner .tabs{
+    position: absolute;
+    left:0;
+    top:-82px;
+    height: 62px;
+    width:100%;
+    padding:17px 0 0 100px;
+    margin:0 0 20px;
+    background-color: rgba(255,255,255,.3);
+    border-bottom:1px solid #d2d2d2;
+}
+.transfer-list-banner .tabs li{
+    float:left;
+    width:122px;
+    height: 45px;
+    line-height: 45px;
+    margin:0 60px 0 0;
+}
+.transfer-list-banner .tabs li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    color:#fff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+.transfer-list-banner .tabs li a:hover,.transfer-list-banner .tabs li a.active{
+    text-decoration: none;
+    border-bottom:5px solid #fff;
+}
+.product-list-banner .banner-title{
+    margin: 0 auto 20px;
+    width: 760px;
+    padding: 20px 0;
+    border: 2px solid #cfa972;
+    color: #ffd497;
+    background-color: rgba(0,0,0,.2);
+    font-size: 40px;
+}
+.product-list-banner p.banner-info{
+    color:#cfa972;
+    font-size: 24px;
+}
+.product-list-banner .product-list {
+    position: relative;
+}
+
+.product-list-banner .product-list ul {
+    position: absolute;
+    left: 0;
+    top: 328px;
+    width: 100%;
+}
+
+.product-list-banner .product-list ul li {
+    position: relative;
+    width: 392px;
+    margin: 0 12px 0 0;
+    padding: 30px;
+    color: #666;
+    float: left;
+    font-size: 16px;
+    height: 190px;
+    box-shadow: 0 0 8px 1px rgba(177,234,255,.5);
+    background: #fff; /* 一些不支持背景渐变的浏览器 */
+    background: -moz-linear-gradient(top, #fff 80%, #f4f4f4);
+    background: -webkit-gradient(linear, 0 0, 80% bottom, from(#fff), to(#f4f4f4));
+    background: -o-linear-gradient(top, #fff 80%, #f4f4f4);
+    background: -prefix-linear-zgradient(top, #fff 80%, #f4f4f4);
+    background: -webkit-linear-gradient(top, #fff 80%, #f4f4f4);
+    background: linear-gradient(top, #fff 80%, #f4f4f4);
+}
+
+.product-list-banner .product-list ul li:hover {
+    box-shadow: 0 0 9px rgba(204, 204, 204, .7);
+}
+
+.product-list-banner .product-list ul li p.money {
+    opacity: 1;
+    transition: all .3s ease-in;
+}
+
+.product-list-banner .product-list ul li:hover p.money {
+    opacity: 0;
+    -webkit-transform: scale(0, 0);
+    transform: scale(0, 0);
+    visibility: hidden;
+}
+
+.product-list-banner .product-list ul li:last-child {
+    margin: 0;
+}
+
+.product-list-banner .product-list ul i.jiaxi-icon,i.new-hard-icon {
+    position: absolute;
+    width: 52px;
+    height: 51px;
+    left: 0;
+    top: 0;
+    background: url(/public/images/icon/add-m.png) no-repeat;
+}
+i.new-hard-icon{
+    background: url(/public/images/icon/new-m.png) no-repeat!important;
+}
+
+.product-list-banner .product-list ul li .progress {
+    position: relative;
+    margin: 30px auto;
+    border-radius: 0;
+    width: 110px;
+    height: 5px;
+    overflow: visible;
+}
+
+.product-list-banner .product-list ul li .progress .progress-bar {
+    width: 0;
+    transition: width .5s ease-in .2s;
+}
+
+.product-list-banner .product-list ul li .progress .progress-bar span {
+    position: absolute;
+    top: -7px;
+    right: -40px;
+    color: #000;
+}
+
+.product-list-banner .product-list ul li p {
+    margin: 0 0 18px;
+}
+.product-list-banner .product-list ul li p a{
+    color:#666;
+}
+.product-list-banner .product-list ul li p.title {
+    color:#000;
+    font-size: 16px;
+    line-height: 20px;
+}
+.product-list-banner .product-list ul li p.title .label{
+    margin:0;
+}
+.product-list-banner .product-list ul li p.title a b{
+    margin:0 3px;
+}
+.product-list-banner .product-list ul li p.title span{
+    margin:0 0 0 15px;
+}
+.product-list-banner .product-list ul li p.title span.pull-right{
+    margin:1px 0 0;
+}
+.product-list-banner .product-list ul li p.info {
+    color: #333;
+    margin:12px 0 0;
+}
+
+.product-list-banner .product-list ul li > a {
+    position: absolute;
+    bottom: 10px;
+    width: 122px;
+    left: 92px;
+    opacity: 0;
+    transition: all .15s ease-in;
+}
+
+.product-list-banner .product-list ul li:hover > a {
+    opacity: 1;
+    bottom: 30px;
+}
+
+.product-list-banner .product-list ul li h2 {
+    font-size: 48px;
+    margin:0;
+}
+
+.product-list-banner .product-list ul li h2 span {
+    font-size: 22px;
+}
+.product-list-banner .product-list ul li .buy-btn{
+    margin:8px 0 0;
+    width:140px;
+    font-size:18px;
+}
+.screen-list{
+    padding:30px 20px 10px;
+    margin:0 0 30px;
+    border-radius: 0;
+}
+.screen-list ul li{
+    margin:0 0 25px;
+}
+.screen-list ul li.opt{
+    line-height: 20px;
+}
+.screen-list ul li span.title{
+    color:#666;
+}
+.screen-list ul li span.title,.screen-list ul li a{
+    margin:0 20px 0 0;
+}
+.screen-list ul li a{
+    color:#333;
+}
+.screen-list ul li a,.screen-list ul li span{
+    vertical-align: middle;
+}
+.screen-list ul li a .label{
+    margin:0 5px 0 0;
+}
+.screen-list ul li a:first-child{
+    margin:0 25px 0 0;
+}
+.screen-list ul li span.title{
+    color:#666;
+}
+.screen-list ul li a.active{
+    color: #f29118;
+    font-weight: bold;
+}
+
+.product-list-content {
+    margin-bottom: 50px;
+}
+
+.product-list-content .month-choose {
+    margin: 5px 0 0;
+    font-size:14px;
+}
+
+.product-list-content .month-choose li {
+    float: left;
+    margin: 0 10px 0 0;
+    color: #999;
+}
+
+.product-list-content .month-choose li a {
+    margin: 0 10px 0 0;
+    color:#666;
+}
+.product-list-content .month-choose li a.active{
+    color:#fd714b;
+}
+.product-list-content .page-title {
+    border-left: 12px solid #fd714b;
+    margin: 20px 0 40px;
+    padding: 0 0 0 12px;
+    height: 24px;
+    line-height: 24px;
+}
+.product-list-content .page-title h2{
+    font-size: 24px;
+    margin:0 20px 0 0;
+}
+.product-list-content .page-title h2,.product-list-content .page-title ul{
+    float:left;
+}
+.product-list-content .list-table ul li {
+    float: left;
+    vertical-align: middle;
+}
+
+.product-list-content .list-table ul.head li {
+    color: #333;
+    height: 48px;
+    line-height: 48px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: none;
+    background-color: #dcdcdc;
+}
+.product-list-content .list-table ul.head li a{
+    position: relative;
+    color:#333;
+}
+.product-list-content .list-table ul.head li a.active{
+    color:#f29118;
+}
+.product-list-content .list-table ul.head li a.asc .icon-order-down{
+    color:#333;
+}
+.product-list-content .list-table ul.head li a:hover,.product-list-content .list-table ul.head li a:focus{
+    text-decoration: none;
+}
+.product-list-content .list-table ul.head li a i.icon-font{
+    font-size:12px;
+    position: absolute;
+    right:-18px;
+    line-height: 8px;
+    height: 8px;
+    color:#333;
+}
+.product-list-content .list-table ul.head li a .icon-order-down.active,.product-list-content .list-table ul.head li a .icon-order-up.active{
+    color:#f29118;
+}
+.product-list-content .list-table ul.head li a .icon-order-down{
+    top:12px;
+}
+.product-list-content .list-table ul.head li a .icon-order-up{
+    top:5px;
+}
+.product-list-content .list-table ul.head li.name,.product-list-content .list-table ul.head li.term{
+    text-align: left;
+    padding:0 0 0 20px;
+}
+.product-list-content .list-table ul.head li.rate {
+    
+}
+
+.product-list-content .list-table li.name {
+    width: 280px;
+    padding:0 0 0 35px;
+}
+.product-list-content .list-table li.type {
+    width: 140px;
+}
+.product-list-content .list-table li.rate {
+    width: 177px;
+}
+.product-list-content .list-table ul.head li.term,.product-list-content .list-table .group ul li.term {
+    width: 120px;
+    text-align: right;
+    padding:0 20px 0 0;
+}
+.product-list-content .list-table li.money {
+    width: 170px;
+}
+
+.product-list-content .list-table li.process {
+    width: 186px;
+}
+
+.product-list-content .list-table li.surplus {
+    width: 160px;
+}
+
+.product-list-content .list-table li.status {
+    width: 153px;
+}
+
+.product-list-content .list-table li.status.repay {
+    color: #7c674f;
+}
+
+.product-list-content .list-table .table-body {
+    padding-bottom: 20px;
+}
+
+.product-list-content .list-table .group {
+    position: relative;
+    cursor: pointer;
+}
+
+.product-list-content .list-table .group ul {
+    background-color: #fff;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #f6f6f6;
+    -webkit-transition: background-color .2s ease-in;
+    transition: background-color .2s ease-in;
+}
+
+.product-list-content .list-table .group ul li {
+    height: 84px;
+    line-height: 84px;
+    vertical-align: middle;
+}
+
+.product-list-content .list-table .group ul li.name{
+    text-align: left;
+}
+.product-list-content .list-table .group ul li.name .label{
+    margin:0 4px 0 0;
+}
+.product-list-content .list-table .group ul li.rate {
+   
+}
+
+.product-list-content .list-table .group ul li.name {
+    position: relative;
+    padding: 0 20px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.product-list-content .list-table .group ul li.name i.new-hard-icon {
+    position: absolute;
+    width: 52px;
+    height: 51px;
+    left: 0;
+    top: -1px;
+    background: url(/public/images/icon/add-m.png) no-repeat;
+}
+.product-list-content .list-table .group ul li.name2:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 30px solid red;
+    border-right: 30px solid transparent;
+}
+
+.product-list-content .list-table .group ul li.rate {
+    padding: 0;
+    font-size: 16px;
+    position: relative;
+}
+
+.product-list-content .list-table .group ul li.surplus {
+
+}
+
+.product-list-content .list-table .group ul li.money {
+    
+}
+
+.product-list-content .list-table .group ul:hover {
+    border-top-color: #eaeaea;
+    box-shadow: 0 10px 20px rgba(0,0,0,.1);
+}
+
+.product-list-content .list-table .group ul:hover li {
+
+}
+
+.product-list-content .list-table .group ul li span.rate {
+    font-size: 36px;
+    display: inline-block;
+    text-align: right;
+}
+.product-list-content .list-table .group ul li span.decimal{
+    display: inline-block;
+}
+.product-list-content .list-table .group ul li span.decimal .jiaxi-icon{
+    position: absolute;
+    width:28px;
+    height: 18px;
+    line-height: 18px;
+    top: 24px;
+    right: 28px;
+    font-style: normal;
+    font-size:10px;
+    color:#fff;
+    text-align: center;
+    background: #cca74f; /* 一些不支持背景渐变的浏览器 */
+    background: -moz-linear-gradient(left, #8b6815 30%, #cca74f);
+    background: -webkit-gradient(linear, 0 0, 30% right, from(#8b6815), to(#cca74f));
+    background: -o-linear-gradient(left, #8b6815 30%, #cca74f);
+    background: -prefix-linear-zgradient(left, #8b6815 30%, #cca74f);
+    background: -webkit-linear-gradient(left, #8b6815 30%, #cca74f);
+    background: linear-gradient(left, #8b6815 30%, #cca74f);
+    border-radius: 4px;
+    -webkit-transform: scale(.8);
+    transform: scale(.8);
+}
+.product-list-content .list-table .group ul li .progress {
+    position: relative;
+    margin: 40px 0 0 5px;
+    border-radius: 0;
+    width: 140px;
+    height: 5px;
+    overflow: visible;
+}
+
+.product-list-content .list-table .group ul li .progress .progress-bar {
+    width: 0;
+    transition: width .5s ease-in .2s;
+}
+
+.product-list-content .list-table .group ul li .progress .progress-bar span {
+    position: absolute;
+    top: -8px;
+    right: -36px;
+    color: #000;
+}
+
+.product-list-content .list-table .group ul li .btn-second {
+    border-radius: 4px;
+}
+
+.product-list-content .list-table .group.complete ul:hover {
+
+}
+
+.product-list-content .list-table .group.complete ul li.process .progress-bar {
+    background-color: #d8d8d8;
+}
+
+.product-list-content .list-table .group.complete ul li.surplus {
+    color: #999;
+}
+
+.product-list-content .list-table .group ul li.term, .product-list-content .list-table .group ul li.surplus, .product-list-content .list-table .group ul li.status, .product-list-content .list-table .group ul li.money {
+
+}
+
+/*分页 */
+.main-nav .nav li {
+    margin-left: 0px;
+}
+
+.pagination {
+    display: block;
+    padding-left: 0;
+    margin: 0;
+    border-radius: 0px;
+    padding-bottom: 0px !important;
+}	
+.u-what{display: inline-block;position:relative;width:0;height: 0;line-height:20px;margin-left:2px;margin-right:16px;}
+.u-what .icon-font{position: absolute; left: 3px; bottom: -5px; color: #666!important; cursor: pointer; display: inline-block; font-size: 14px!important;}
+.u-what .notes{display: none; position: absolute; left: 0; bottom: 23px; line-height:20px; padding:8px 10px; font-size: 14px; background: #fff; color: #666; border: 1px solid #ddd; border-radius:5px; white-space: nowrap; z-index: 100;font-weight:400;}
+.u-what:hover .notes{display: block;box-shadow:0 0 10px rgba(0,0,0,0.2);}
+.u-what .notes:before{content: ""; position: absolute; width: 0; height: 0; left: 10px; bottom: -8px; border: 8px solid transparent; border-left-color: #ddd;}
+.u-what .notes:after{content: ""; position: absolute; width: 0; height: 0; left: 10px; bottom: -7px; border: 8px solid transparent; border-left-color: #fff;}
+.list-table .u-what{transform:translateY(-5px);}

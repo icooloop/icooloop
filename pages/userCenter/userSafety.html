@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>账户设置-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+</head>
+<body class="bgmain">
+<#include "/include/header_up.html" />	
+<div class="g-mainer">
+    <div class="m-user">
+        <div class="wp clearfix pt-20">
+			<#include "/userCenter/include/userMenu_up.html" />
+            <div class="mu-right">
+                <div class="">
+                	<div class="mu-title"><h4>账户设置</h4><div class="more">注册时间：${(regTime?string('yyyy-MM-dd HH:mm'))!'无'} </div></div>
+	                <div class="mu-security">
+	                    <div class="item">
+	               	        <strong><i class="ideOn"></i>已设置</strong><em>用户名</em><span>可使用用户名或手机号登录亿钱贷</span><i>${_p2p_member_user.userCount!''}</i>
+	               	        <#if canUpdateUsername?? && canUpdateUsername=="1"><a id="changeUserNameBtn" href="javascript:;;">修改</a></#if>
+	                    </div>
+	                    <div class="item">
+	                        <strong><i class="ideOn"></i>已绑定</strong><em>绑定手机号</em><span>取现、重置登录密码等操作需手机验证码</span>
+	                        <i>${userSecurity.phone!''}</i>
+	                        <a href="${tzp.getContextPath()}/member/secure/phone/update" target="_blank">修改</a>
+	                    </div>
+	                    <div class="item">
+	                        <strong><i class="ideOn"></i>已设置</strong><em>登录密码 </em><span>登录亿钱贷账户密码 </span>
+	                        <i></i>
+	                        <a href="${tzp.getContextPath()}/member/secure/password/update" target="_blank">修改</a>
+	                    </div>
+	                    <#if _p2p_member_user??&&_p2p_member_user.isDepositary!='1'>
+	                    <div class="item">
+	                        <strong><i class=""></i>未开通</strong><em>存管账户 </em><span>与新网银行合作资金存管，保障用户资金</span>
+	                        <i>(${xwAuditStatus!''})</i>
+							<a href="${tzp.getContextPath()}/member/depository/form" target="_blank">开通存管</a>
+	                    </div>
+	                    <#else>
+		                    <div class="item">
+		                        <strong><i class="ideOn"></i>已开通</strong><em>存管账户 </em><span>与新网银行合作资金存管，保障用户资金</span>
+		                        <i>(${xwAuditStatus!''})</i>
+		                    </div>
+	                    </#if>
+	                    
+	                    <div class="item">
+	                    	<#if (userSecurity?? && userSecurity.checkName && _p2p_member_user??&&_p2p_member_user.isDepositary=='1')  >
+	                        	<strong><i class="ideOn"></i>已认证</strong><em>实名认证</em><span>保障账户安全，确认出借身份</span>
+	                        <#else>
+	                        	<strong><i></i>未认证</strong><em>实名认证</em><span>保障账户安全，确认出借身份</span>
+		                        <#if  userType??&&(userType=='5' || userType=='1')&&xwAuditStatus?? && ( xwAuditValue=='AUDIT' || xwAuditValue=='BACK') >
+	                        			<a href="${tzp.getContextPath()}/member/auth/identify" target="_blank">上传证件照</a>
+	                        	</#if>
+	                        </#if>
+	                        <#if (userSecurity?? && userSecurity.checkName &&  _p2p_member_user??&&_p2p_member_user.isDepositary=='1') >
+		                        <i>${userInfo.userNameStr!''}(${userInfo.userIdnoStr!''})</i>
+	                        <#else>
+		                        <i></i>
+	                        </#if> 
+	                    </div>
+	                    <div class="item">
+	                    <#if userType == '2'>
+		                    <#if (userSecurity.bindBank && _p2p_member_user??&&_p2p_member_user.isDepositary=='1') >
+		                        <strong><i class="ideOn"></i>已绑定</strong><em>绑定对公账户</em><span>保障资金安全，充值、取现资金同卡进出</span>
+		                        <i>${(bankName)!''} 尾号${(userBank.accountStar?substring(14))!''} </i>
+		                    <#else>
+		                        	<strong><i></i>未绑定</strong><em>绑定对公账户</em><span>保障资金安全，充值、取现资金同卡进出</span>
+			                        <i></i>
+		                    </#if>
+	                    <#else>
+	                    	<#if (userSecurity.bindBank && _p2p_member_user??&&_p2p_member_user.isDepositary=='1') >
+		                    	<strong><i class="ideOn"></i>已绑定</strong><em>绑定银行卡</em><span>用于快捷支付充值、提现</span>
+		                        <i id="bank_text_id">${(bankName)!''} 尾号${(userBank.accountStar?substring(14))!''}</i>
+		                        <#if userBank??&&userBank.changeStatus??&&userBank.changeStatus=='1'>
+		                        <a href="${tzp.getContextPath()}/member/secure/changeCard">更换</a> 
+		                        </#if>
+		                         <#if userBank??&&userBank.undoStatus??&&userBank.undoStatus=='1'>
+	                        		 <a href="${tzp.getContextPath()}/member/secure/bankcard/unbind?bankId='${(userBank.bankId)!''}'" >解绑</a>
+	                        	</#if>
+ 								<a href="${tzp.getContextPath()}/member/secure/updateExpandMobile">预留手机</a> 
+	                    	<#else>
+		                    	<strong><i></i>未绑定</strong><em>绑定银行卡</em><span>用于快捷支付充值、提现</span>
+		                        <i></i>
+		                        <#if _p2p_member_user??&&_p2p_member_user.isDepositary=='1'&&(!userSecurity.bindBank)>
+			                        	 <a href="${tzp.getContextPath()}/member/secure/entChangCard-form">重新绑定</a> 
+			                    </#if>
+	                    	</#if>
+	                    </#if>
+	                    </div>
+	                    <div class="item">
+	                        <strong>
+	                        <#if userSecurity.password && _p2p_member_user??&&_p2p_member_user.isDepositary=='1'><i class="ideOn"></i>已设置
+	                        <#else>
+	                        <i ></i>未设置
+	                        </#if>
+	                        </strong><em>交易密码 </em>
+	                        <span>充值、取现等资金相关操作时使用</span>
+	                        <i></i>
+	                         <#if userSecurity.password && _p2p_member_user??&&_p2p_member_user.isDepositary=='1'>
+	                         <a href="${tzp.getContextPath()}/member/secure/xwtrpwd" target="_blank">修改</a>
+	                         <a href="${tzp.getContextPath()}/member/secure/xwtrpwd?type=1" target="_blank">找回</a>
+	                        <#else>
+	                        </#if>
+	                    </div>
+	                    <div class="item">
+	                        <strong>
+	                        <#if userSecurity??&&userSecurity.authListStatus??&&userSecurity.authListStatus>
+	                        	<i class="ideOn"></i>已授权
+	                        <#else>
+	                        	<i></i>未授权
+	                        </#if>
+	                        </strong><em>授权业务</em><span>授权投标以及认购债权</span>
+	                      
+	                        <#if _p2p_member_user??&&_p2p_member_user.isDepositary=='1'>
+	                        <#if userSecurity??&&userSecurity.authListStatus??&&userSecurity.authListStatus>
+	                        	<a href="javascript:;" onclick="cancelEmpower()">取消授权</a>
+	                        <#else>
+	                          <i><img alt="" src="${tzp.getContextPath()}/public/images/user/warn.png?v=44e698f" class="mr-5">开通存管时同步完成</i>
+	                        	<a href="${tzp.getContextPath()}/member/secure/author" target="_blank">开启授权</a>
+	                        </#if>
+	                        </#if>
+	                    </div>
+	                    <div class="item">
+	                        <strong>
+	                        <#if assessType?? && (assessType=="1" || assessType?? && assessType=="2" || assessType?? && assessType=="3" || assessType?? && assessType=="4")>
+	                        	<i class="ideOn"></i>已评估
+	                        <#else>
+	                        	<i></i>未评估
+	                        </#if>
+	                        </strong><em>风险承受能力 </em>
+	                        <span>根据风险评估结果选择您适合的出借项目</span>
+	                        <i>
+		                        <#if assessType?? && assessType=="1">
+		                        	保守型
+		                        <#elseif assessType?? && assessType=="2">
+		                        	稳健型
+		                        <#elseif assessType?? && assessType=="3">
+		                        	积极型
+		                         <#elseif assessType?? && assessType=="4">
+		                        	平衡型
+		                        </#if>
+	                        </i>
+	                         <#if isValid??&&isValid=='0'><i> (已过期)</i></#if>
+	                        <#if assessType?? && (assessType=="1" || assessType?? && assessType=="2" || assessType?? && assessType=="3" || assessType?? && assessType=="4")>
+	                         	<a href="${tzp.getContextPath()}/member/auth/risk-ass" target="_blank">重新评估</a>
+	                        <#else>
+	                        	<a href="${tzp.getContextPath()}/member/auth/risk-ass" target="_blank">评估</a>
+	                        </#if>
+	                    </div>
+	                    <div class="item">
+	                        <strong><i class="ideOn"></i>已设置</strong><em>通知短信设置</em><span>通知类短信私人定制 </span>
+	                        <i></i>
+	                        <a href="javascript:layerSms();">修改</a>
+	                    </div>
+	                    <div class="item">
+	                    	<strong>
+	                    	<#if openId??>
+	                    		<i class="ideOn"></i>已绑定
+	                    	<#else>
+	                    		  <i></i>未绑定
+	                    	</#if>
+
+	                        	
+	                        </strong>
+	                        <em>绑定微信</em><span class="line2">可用于接受项目回款、提现到账等资金动态信息</span>
+	                        <i></i>
+	                        <#if openId??>
+	                        	<a href="javascript:unbindWechat();">解绑</a>
+	                        <#else>
+	                        <a href="javascript:bindWechat();">绑定</a>
+	                        </#if>
+	                    </div>
+                   </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="m-layer mu-security-sms" id="setsms">
+	<div class="bd">
+		<div class="item"><h4>短信类型：</h4><h6>出借通知短信</h6></div>
+		<div class="item"><h4>发送方式：</h4>
+			<ul class="types">
+				<li><label><input type="radio" name="investSendWay" value="1" <#if userSecurity??&&userSecurity.investSendWay == '1'>checked</#if>>&nbsp;逐条发送</label><span class="desc">每笔出借都发送一条通知短信</span></li>
+				<li><label><input type="radio" name="investSendWay" value="2" <#if userSecurity??&&userSecurity.investSendWay == '2'>checked</#if>>&nbsp;合并发送</label><span class="desc">每天21:00统计当日出借，发送通知短信</span></li>
+				<li><label><input type="radio" name="investSendWay" value="0" <#if userSecurity??&&userSecurity.investSendWay == '0'>checked</#if>>&nbsp;不发送</label><span class="desc">不发送出借通知短信</span></li>
+			</ul>
+		</div>
+		<div class="item mt-20"><h4>短信类型：</h4><h6>回款通知短信</h6></div>
+		<div class="item"><h4>发送方式：</h4>
+			<ul class="types">
+				<li><label><input type="radio" name="repayedSendWay" value="1" <#if userSecurity??&&userSecurity.repayedSendWay == '1'>checked</#if>>&nbsp;逐条发送</label><span class="desc">每笔回款都发送一条通知短信</span></li>
+				<li><label><input type="radio" name="repayedSendWay" value="2"<#if userSecurity??&&userSecurity.repayedSendWay == '2'>checked</#if>>&nbsp;合并发送</label><span class="desc">每天21:00统计当日回款，发送通知短信</span></li>
+				<li><label><input type="radio" name="repayedSendWay" value="0"<#if userSecurity??&&userSecurity.repayedSendWay == '0'>checked</#if>>&nbsp;不发送</label><span class="desc">不发送回款通知短信</span></li>
+			</ul>
+		</div>
+		<div class="btndiv">
+			<button type="button" class="btn btn-close" onclick="layer.closeAll()">取消</button>
+			<button type="button" class="btn btn-warning" onclick="setSMS()">确定</button>
+		</div>
+	</div>
+</div>
+<div class="m-layer mu-security-username" id="UpdateUsername">
+	<div class="pd-20">
+		<div><input type="text" id="userName" maxlength="18" class="input-text" placeholder="请输入新用户名" /></div>
+		<div class="l20 c-666 mt-10">* 用户名仅能修改一次</div>
+		<div class="l20 c-666">* 6-18位字符，可包含小写英文字母、数字</div>
+		<div class="btndiv mt-10">
+			<button type="button" class="btn btn-primary mr-15" onclick="UpdateUsername()">确定</button>
+			<button type="button" class="btn btn-close" onclick="layer.closeAll()">取消</button>
+		</div>
+	</div>
+</div>
+<div class="m-layer" id="bindWechat">
+	<div class="pd-30 pl-40">
+		<div class="text-c"><img src="/public/images/fwcode.png?v=fb64116"></div>
+		<div class="l20 text-second mt-20">1、扫描二维码关注并进入 “深南服务” 服务号<br>
+			2、点击底部菜单栏，选择 “绑定账号”<br>
+		3、登录平台账号后，即可成功绑定</div>
+	</div>
+</div>
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script type="text/javascript">
+    $(".safety-box i").click(function () {
+        $(".popup,.safety-box").hide();
+    });
+    $(function(){
+    	$("#nav_member").addClass("on");
+    });
+    $('#changeUserNameBtn').on('click',function(){
+         layer.open({
+        	 title:'修改用户名',
+        	 content:$("#UpdateUsername"),
+        	 area: ['360px', 'auto'],
+        	 type:1
+         })
+    })
+    function UpdateUsername(){
+    	var userName=$("#userName").val();
+    	var usernameReg=/^([a-z0-9]{6,18})$/;
+    	if(userName.length<6){
+    		layer.msg('用户名长度应为6-18位');
+    		return false;
+    	}
+    	if(!usernameReg.test(userName)){
+    		layer.msg('用户名只支持小写英文字母、数字');
+    		return false;
+    	}
+    	$.ajax({
+            type: "post",
+            dataType: "json",
+            url: basePath +"/member/secure/username/update",
+            data: {"userName":userName},
+            success: function (data) {
+            	console.log(data)
+                if (data.success) {
+                	layer.msg('修改成功',{}, function(){
+                		window.location.href=basePath+"/spa/member/secure/security";
+					});
+                } else {
+                    layer.msg(data.msg, {icon: 5});
+                }
+            }
+        });
+    }
+    function unbindSubmit(bankId){
+    	layer.confirm("确认解绑 "+$("#bank_text_id").html()+" 银行卡吗?",{},function(){
+            $.ajax({
+                type: "post",
+                dataType: "json",
+                url: basePath +"/member/secure/bankcard/unbind",
+                data: {"bankId":bankId},
+                success: function (data) {
+                    if (data.success) {
+                    	layer.msg("解绑成功!",{},function(){
+                    		window.location.reload();
+                    	});
+                
+                    } else {
+                        layer.msg(data.msg, {icon: 5});
+                    }                            
+                }
+            });
+    	});
+    }
+    function layerSms(){
+    	layer.open({
+    	  	type: 1,
+    	  	area: ['520px', 'auto'], //宽高
+    	  	title:'通知短信设置',
+    	  	content: $('#setsms')
+    	});
+    }
+    function setSMS(){
+    	$.ajax({
+            type: "post",
+            dataType: "json",
+            url: basePath +"/member/auth/updateSmsSendWay",
+            data: {"investSendWay":$("input[name='investSendWay']:checked").val(),"repayedSendWay":$("input[name='repayedSendWay']:checked").val()},
+            success: function (data) {
+                if (data.success) {
+                	layer.msg("设置成功");
+                } else {
+                    layer.msg("设置失败", {icon: 5});
+                }
+                setTimeout(function(){
+            		layer.closeAll();
+            	},1000);  
+            }
+        });
+    }
+    function cancelEmpower(){
+    	var count =parseInt("${couldCancelAuth!'0'}");
+    	if(count<=0){
+    		layer.confirm('<span class="text-danger">取消授权之后将无法投标！</span>', {title:'取消授权投标'}, function(index){
+    			
+    			
+    			$.ajax({
+    				url : basePath + "/member/secure/cancle-auth",
+    				type : "POST",
+    				dataType : "JSON",
+    				data : {},
+    				success : function(data) {
+    					var result = eval("("+data+")");
+    		        	if (result.success!=undefined&&!result.success) {
+    		        		layer.msg('取消授权投标成功');
+    		        	}else{
+    		        		layer.msg(result.msg);
+    		        	}
+    		        	setTimeout(function(){
+    	            		layer.closeAll();
+    	            		window.location.reload();
+    	            	},1500);
+    				}
+    			});
+        	});
+    	}else{
+    		layer.alert('<span class="text-danger">您有未到期的易智投，暂无法取消授权投标</span>',{title:"取消授权投标"});
+    	}
+    }
+    function bindWechat(){
+    	layer.open({
+       	 title:'绑定微信',
+       	 content:$("#bindWechat"),
+       	 area: ['360px', 'auto'],
+       	 type:1
+        })
+    }
+    function unbindWechat(){
+   		var load_index = layer.load(0, {shade: [0.3,'#3F3F3F']}); //0代表加载的风格，支持0-2
+   		setTimeout(function(){
+   		    $.ajax({
+   		        url:basePath+'/member/wechat/unbind',
+   		        type:'post',
+   		        dataType:'json',
+   		        cache:false,
+   		        success:function(data){
+   		        	layer.close(load_index);
+   		            var result = $.parseJSON(data);
+   		            if(result.success!=undefined && result.success){
+   		            	layer.alert("解绑成功",function(index){
+   		            			window.location.reload();
+   		            	});
+   		            }else{
+   		            	layer.alert(result.msg);
+   		            }
+   		        }
+   		    });
+   		}, 10);
+    }
+</script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

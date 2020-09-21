@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>债权转让-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+</head>
+<body class="bgmain">
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+    <div class="m-user">
+        <div class="wp clearfix pt-20">
+			<#include "/userCenter/include/userMenu_up.html" />
+            <div class="mu-right mu-transfer-detail ">
+            	<div class="mu-title"><h4>债权转让</h4></div>
+            	<div class="bd">
+	            	<div class="text-primary l20">${loanTitle!''}</div>
+	            	<table class="table datatable mt-10">
+	            		<tbody> 
+	                        <tr>
+	                            <td>出借本金</td>
+	                            <td>${debtDetailVo.buyPrice?string(',##0.00')}</td>
+	                            <td>原项目协议约定年化利率</td>
+	                            <td>${platRate!''}%</td>
+	                            <td>剩余期数/总期数</td>
+	                            <td>${remainPeriod!'0'}/${planPeriod!'0'}</td>
+	                        </tr>
+	                        <tr>
+	                            <td>还款方式</td>
+	                            <td>${vo.repayModeStr}</td>
+	                            <td>起息日</td>
+	                            <td>${calcPeroid!''}</td>
+	                            <td>到期日</td>
+	                            <td>${settleDate!''}</td>
+	                        </tr>
+	                        <tr>
+	                            <td>已收本金</td>
+	                            <td>${(receivedPrincipal!0)?string(',##0.00')}元</td>
+	                            <td>待收本金</td>
+	                            <td>${(planPrincipal!0)?string(',##0.00')}元</td>
+	                            <td>剩余期限</td>
+	                            <td>${endPlanDate!0}天</td>
+	                        </tr>
+	                        <tr>
+	                            <td>已收利息</td>
+	                            <td>${(debtDetailVo.receivedProInterAmt!0)?string(',##0.00')}元</td>
+	                            <td>待收利息</td>
+	                            <td>${(debtDetailVo.proInterAmt!0)?string(',##0.00')}元</td>
+	                            <td>本期未结利息<span class="u-what righttip"><i class="icon-font icon-wenhao"></i><span class="notes">上期还款日至今日的期限内，未结算的利息</span></span></td>
+	                            <td>${todayWorth?string(',##0.00')}</td>
+	                        </tr>
+	                    </tbody>
+	            	</table>
+	            	<div class="tip-warning mt-20">提醒：因“本期未结利息”每天动态结算，所以以下债权金额、手续费仅供参考，以转让成交当天结算为准。</div>
+	            	<ul class="infolist">
+	                	<li> 
+	                		<div class="desc">债权金额：</div>
+	                		<div class="amount"><span class="text-import">${transferAmt?string(',##0.00')}</span>&nbsp;元</div>
+	                		<div class="tips">债权金额=待收本金+本期未结利息</div>
+	                	</li>
+	                	<li>
+	                		<div class="desc">手&nbsp;&nbsp;续&nbsp;&nbsp;费：</div>
+	                		<div class="amount"><span>${transferFee?string(',##0.00')}</span>&nbsp;元</div>
+	                		<div class="tips">债权金额的0.5%，转让成功后收取；如债权持有大于等于90天，则免手续费；</div>
+	                	</li>
+	                	<li><label class="agreement">
+	                            <input class="icheck" type="checkbox" id="agreementBtn" name="agreement" value="false">
+	                            <span>&nbsp;我已阅读并同意<a href="${tzp.getContextPath()}/contract/debt?assetsId=${debtDetailVo.debtId!''}" target="_blank">《债权转让协议》</a></span>
+	                        </label>
+	                    </li>
+	                    <li>
+	                    	<input type="hidden" id="debtId" name="debtId" value="${debtDetailVo.debtId!''}">
+	                        <button id="confirmBtn" type="button" class="btn btn-primary disabled">确定</button>
+	                    </li>
+	                </ul>
+            	</div>
+            </div>
+        </div>
+   </div>
+</div>
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/icheck/icheck.min.js?v=3144e54"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/user/bondTransferDetail.js?v=ab2d579"></script>
+<!--页面js-->
+<script>
+	$(function(){
+		$("#investMenu").addClass("on");
+	})
+</script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>		

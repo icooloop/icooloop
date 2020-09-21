@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<#if isSuccess??&&isSuccess=='1'>
+    	<title>${opeType!'操作成功'}-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#else>
+     	<title>${opeType!'失败'}-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    </#if>
+    
+    <#include "/include/style_up.html" />
+    <!-- 页面样式 -->
+    <#include "/include/style_access.html" />
+</head>
+<body class="bgmain">
+<!-- header -->
+<#include "/include/header_up.html" />
+<div class="bgmain2 pt-60 pb-60">
+	<!-- 页面开始 -->
+	<div class="m-success pt-40 pb-40">
+		<div class="hd basehd">
+			<i class="icon-font <#if isSuccess??&&isSuccess=='1'> icon-right1 <#else> icon-error </#if> "></i>
+		 	<div class="info">
+			 	<h2>${result!''}</h2>
+			</div>
+		</div>
+		<div class="bd">
+		<div class="nextdiv">
+						<a href="${tzp.getContextPath()}/spa/member/account/index" class="btn btn-theme">查看我的账户</a>
+		</div>
+		</div>
+	</div>
+</div>
+<#include "/include/login_footer.html" />
+<#include "/include/script_up.html" />
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>		

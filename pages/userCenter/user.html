@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>账户中心-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+    <link rel="stylesheet" href="${tzp.getContextPath()}/src/js/plugins/calendar/fullcalendar.css?v=fc6e94b">
+</head>
+<body class="bgmain">
+<!-- 页面开始 -->
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+	<div class="m-user">
+		<div class="wp clearfix pt-20">
+			<#include "/userCenter/include/userMenu_up.html" />
+			<div class="mu-right mu-account">
+                <#include "/userCenter/include/userSafe_up.html" />
+				<div class="mu-account-tixing" id="tixings">
+					<ul class="bd">
+						<#if arrivingCoupon ??  >
+							<li><i class="icon-font icon-tixing"></i>您有在途的<em> ${arrivingCoupon?string(',###.##')}</em> 元红包现金，将在出借项目放款后发放到您的账户</li>
+						</#if>
+						<#if  cashingAmount ?? >
+							<li><i class="icon-font icon-tixing"></i>您有<em> ${cashingAmount?string(',###.##')}</em> 元提现资金正在处理中</li>
+						</#if>
+					</ul>	
+				</div>
+				<div class="mu-account-total clearfix usertotal">
+                    <div class="item hand">
+                        <h4>昨日收益(元)<span class="u-what"><i class="icon-font icon-wenhao"></i><span class="notes">根据持有中项目的预期收益估算出的昨日收益，<br/>数据仅供参考，实际收益以具体到账为准</span></span></h4>
+                        <h1 id="yesterdayIncome">${(accountVo.yesterdayIncome!0)?string(',##0.00')}</h1>
+                    </div>
+                    <div class="item hand">
+                        <h4>累计收益<#if accountVo.obtainIncomeUnitStr??><#else>(元)</#if></h4>
+                        <h1 id="frozeAmt">
+                            ${(accountVo.obtainIncomeStr!0)}<#if accountVo.obtainIncomeUnitStr??>万</#if>
+                                <#if accountVo.obtainIncomeUnitStr??>
+                                <em class="mu-icontip"><i class="icon-font icon-wenhao"></i><span class="tag">${(accountVo.obtainIncome!0)?string(',##0.00')}元</span></em> 
+                                </#if>
+                        </h1>
+                        <ul class="menu menu2">
+                            <li>易智投<span>${(receiveIncome!0)?string(',##0.00')}</span></li>
+                            <li>散标&债权<span>${(investInCome!0)?string(',##0.00')}</span></li>
+                            <li>红包收益<span>${(voucherInCome!0)?string(',##0.00')}</span></li>
+                            <li>奖励券收益<span>${(subsidyAward!0)?string(',##0.00')}</span></li>
+                            <li>出借奖励<span>${(penaltyaward!0)?string(',##0.00')}</span></li>
+                            <li>推荐奖励<span>${(promotionaward!0)?string(',##0.00')}</span></li>
+                            <li>活动奖励<span>${(actaward!0)?string(',##0.00')}</span></li>
+                        </ul>
+                    </div>
+                    <div class="item">
+                        <h4>可用余额(元)</h4>
+                        <h1 id="availableAmt">${(accountVo.availableAmt!0)?string(',##0.00')}</h1>
+                    </div> 
+                    <div class="link">
+                        <a href="${tzp.getContextPath()}/spa/member/account/cash" class="btn btn-info">提现</a> 
+                        <a href="${tzp.getContextPath()}/spa/member/account/recharge" class="btn">充值</a>
+                    </div>
+                </div>
+                <div class="mu-account-echart mt-20">
+                    <div class="more xinwangtip"><div class="tip">资金已由新网银行存管</div></div>
+                    <div class="echarts" id="totalEchart"></div>
+                    <div class="total">总资产(元)<span class="u-what"><i class="icon-font icon-wenhao"></i><span class="notes">总资产 = 易智投 + 散标&债权 + 冻结资金 + 可用余额</span></span>
+                        <span class="amount" id="totalAsset">${(accountVo.totalAsset!0)?string(',##0.00')}</span>
+                    </div>
+                    <a class="incomedetail text-primary" href="${tzp.getContextPath()}/spa/member/invest/backplan">待收明细 &gt;</a>
+                </div>
+                <div id="planList" class="mu-account-plan clearfix mt-20">
+                    <div class="hd mu-title">
+                   		<h4>回款日历</h4>
+                    </div>
+                    <div class="bd">
+                        <div class="calendarlist" id="calendarList"></div>
+                        <div id="monthRepayList"></div>
+	                   	<div class="calendardesc">
+                               <div class="date"><i class="icon-font icon-calendar mr-10"></i>${.now?string("MM月dd日")}</div>
+                               <ul class="list mt-10">
+                                   <li>今日待收金额：<em id="todayRepayAmt">0.00</em> 元</li>
+                                   <li>今日已收金额：<em id="todayPayedAmt">0.00</em> 元</li>
+                                   <li>今日回款笔数：<em id="todayPayedCount">0</em> 笔</li>
+                                   <li class="mt-30">本月待收金额：<em id="monthRepayAmt">0.00</em> 元</li>
+                                   <li>本月已收总额：<em id="monthPayedAmt">0.00</em> 元</li>
+                               </ul>
+                           </div>
+                   		<p class="c-999 mt-25" id="repayInfo">提示：易智投服务到期日并不代表实际回款时间，实际回款时间以全部债权退出完成时间为准。易智投的预期回款金额不代表最终收益，最终收益以实际结算金额为准。</p>
+                    </div>
+                </div>
+                <div class="mu-account-taskcenter mt-20">
+                    <div class="mu-title"><h4>任务中心</h4><a class="more" href="${tzp.getContextPath()}/spa/member/task">完成任务领奖励 &gt;</a></div>
+                    <ul class="tasklist clearfix">
+                  
+                        
+                        
+                   <#if act==1>
+                           <li><a href="${tzp.getContextPath()}/spa/activity/july">
+                        <img src="${tzp.getContextPath()}/public/images/user/task-coupon.png?v=c2bf0ea" alt="">
+                            <div class="desc">奖励券天天领</div>
+                            <div class="btndesc">立即领取</div>
+                        </a></li>
+                        <li><a href="${tzp.getContextPath()}/spa/activity/july">
+                            <img src="${tzp.getContextPath()}/public/images/user/task-reward.png?v=8cfd631" alt="">
+                             <div class="desc">出借抽奖</div>
+                            <div class="btndesc">立即参与</div>
+                        </a></li>
+                    <#else>
+                         <li><a href="${tzp.getContextPath()}/spa/activity/august">
+                        <img src="${tzp.getContextPath()}/public/images/user/task-coupon.png?v=c2bf0ea" alt="">
+                            <div class="desc">奖励券天天领</div>
+                            <div class="btndesc">立即领取</div>
+                        </a></li>
+                        <li><a href="${tzp.getContextPath()}/spa/activity/august">
+                            <img src="${tzp.getContextPath()}/public/images/user/task-reward.png?v=8cfd631" alt="">
+                            <div class="desc">出借抽奖</div>
+                            <div class="btndesc">立即参与</div>
+                        </a></li>
+                   </#if>
+                       <li><a href="${tzp.getContextPath()}/spa/member/task">
+                            <img src="${tzp.getContextPath()}/public/images/user/task-cash.png?v=79998e5" alt="">
+                            <div class="desc">免费快速提现</div>
+                            <div class="btndesc">立即领取</div>
+                        </a></li>
+                       <li><a href="${tzp.getContextPath()}/spa/event/recommend">
+                            <img src="${tzp.getContextPath()}/public/images/user/task-recommend.png?v=61a3644" alt="">
+                            <div class="desc">邀请有奖</div>
+                            <div class="btndesc">了解详情</div>
+                        </a></li>
+                    </ul>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+<input type="hidden" value="${isDepositary!''}" id="isDepositary">
+<input type="hidden" value="${isStock!''}" id="isStock">
+
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/jquery.SuperSlide.2.1.1.js?v=c85539b"></script>
+<script type="text/javascript">
+var now='${.now?string("yyyy-MM-dd HH:mm:ss")}';
+var today='${.now?string("yyyy-MM-dd")}';
+var curYearMonth='${.now?string("yyyy-MM")}';
+(function() {
+	$("#nav_member").addClass("on");
+	$("#tixings").slide({mainCell:".bd",effect:"top",autoPlay:true});
+    var yesterdayIncome = $("#yesterdayIncome").html();
+    $("#yesterdayIncome").html(formatValue(yesterdayIncome));
+    var frozeAmt = $("#frozeAmt").html();
+    $("#frozeAmt").html(formatValue(frozeAmt));
+    var availableAmt = $("#availableAmt").html();
+    $("#availableAmt").html(formatValue(availableAmt));
+    var totalAsset = $("#totalAsset").html();
+    $("#totalAsset").html(formatValue(totalAsset));
+    
+    var isShowOpenModal=<#if  !(_p2p_member_user??)|| (_p2p_member_user.isDepositary=='1' || _p2p_member_user.isDepositary=='3' || _p2p_member_user.isDepositary=='4') >false<#else>true</#if>
+    var user ="laalsrae${_p2p_member_user.nickName!''}tipsdate";
+    if(isShowOpenModal){
+    	var tips = localStorage.getItem(user);
+    	if(tips){
+        	var currentDate=new Date();
+        	var tipsDate=new Date(tips);
+        	tipsDate=tipsDate.getFullYear()+"-"+(tipsDate.getMonth()+1)+"-"+tipsDate.getDate();
+        	currentDate=currentDate.getFullYear()+"-"+(currentDate.getMonth()+1)+"-"+currentDate.getDate();
+        	if(tipsDate!=currentDate){
+        		localStorage.setItem(user,currentDate);
+       		 	layerDeposit();
+        	}
+        }else{
+        	localStorage.setItem(user,new Date());
+        	layerDeposit();
+        }
+    }
+})();
+<#if repayData??>
+var repayData=${repayData};
+<#else>
+var repayData={"count":0,"data":[]};
+</#if>
+var totalDatas=[{value:${(hplanPrin+hplanInter)!0}, name:'易智投　　'},
+				{value:${((duePrincipal+dueInterest)!0)}, name:'散标&债权'},
+				{value:${(accountVo.frozeAmt!0)}, name:'冻结资金　'},
+				{value:${(accountVo.availableAmt!0)}, name:'可用余额　'}];
+				
+function formatValue(amount){
+	return amount.substr(0, amount.indexOf(".")) + "<em>" + amount.substr(amount.indexOf("."), amount.length) + "</em>";
+}
+
+</script>
+<script src="${tzp.getContextPath()}/public/js/bootstrap.min.js?v=1d2c32c"></script>
+<script src="${tzp.getContextPath()}/public/js/moment.min.js?v=8a8f8ba"></script>
+<script src="${tzp.getContextPath()}/src/js/plugins/calendar/fullcalendar.js?v=6f757eb"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/echarts.min.js?v=64bb5b7"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/user/center.js?v=d1c4bd4"></script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

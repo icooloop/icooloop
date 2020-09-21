@@ -1,0 +1,37 @@
+.md-deposit{background:#f1efed url(/public/images/static/deposit/banner.jpg?v2) no-repeat top center;min-height:500px;padding-top:345px;}
+.md-good{background:#fff;border-radius:10px;text-align:center;}
+.md-good .hd{font-size:24px;line-height:30px;padding:40px;}
+.md-good .list{padding:40px 40px 70px;}
+.md-good .list li{float:left;width:33.33%;}
+.md-good .list li .pic{line-height:90px;}
+.md-good .list li h4{font-size:16px;font-weight:700;padding-top:30px;padding-bottom:15px;line-height:20px;}
+.md-good .list li p{line-height:24px;}
+.md-flow{padding:80px 0 130px;text-align:center;}
+
+.md-guide{background:url(/public/images/static/deposit/bg_guide.jpg) no-repeat bottom center;min-height:818px;text-align:center;}
+.md-guide .mn{position:relative;width:1000px;margin:0 auto;padding-bottom:130px;}
+.md-guide .title{font-size:30px;line-height:1;padding-top:70px;padding-bottom:50px;color:#fff;}
+.md-guide .hd li{display:inline-block;margin:0 10px;font-size:18px;padding:0 15px 10px;line-height:20px;border-bottom:3px solid transparent;color:#aaa;cursor:pointer;}
+.md-guide .hd li.on{border-bottom:3px solid #fff;color:#fff;}
+.md-guide .bd{margin-top:45px;position:relative;}
+.md-guide .bd img{height:426px;}
+.md-guide .pnBtn{position:absolute;height:55px;width:33px;top:50%;margin-top:-27px;cursor:pointer;}
+.md-guide .prev{left:0;background:url(/public/images/static/deposit/arrow1.png) no-repeat;}
+.md-guide .next{right:0;background:url(/public/images/static/deposit/arrow2.png) no-repeat;}
+
+.md-question{color:#71635b;padding-top:115px;font-size:16px;padding-bottom:120px;}
+.md-question .hd{font-size:24px;line-height:1;text-align:center;}
+.md-question .bd{padding:0 50px;}
+.md-question .bd h2{color:#3d312a;padding-left:25px;font-weight:700;margin-top:40px;background:url(/public/images/static/deposit/question.png) no-repeat left top;line-height:24px;padding-bottom:5px;}
+.md-question .bd p{padding-left:25px;line-height:32px;}
+.md-question .bd .btn-deposit{background:#5148a3;color:#fff;width:200px;line-height:50px;height:50px;font-size:20px;border-radius:5px;}
+
+
+
+
+
+
+
+
+
+

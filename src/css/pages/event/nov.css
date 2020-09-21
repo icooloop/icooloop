@@ -1,0 +1,51 @@
+@font-face {font-family:'Conv_GEORGIA';src: url('/public/font/GEORGIA/GEORGIA.eot');src: local('☺'), url('/public/font/GEORGIA/GEORGIA.woff') format('woff'), url('/public/font/GEORGIA/GEORGIA.ttf') format('truetype'), url('/public/font/GEORGIA/GEORGIA.svg') format('svg');font-weight: normal;font-style: normal;}
+
+.md-act{position:relative;background:#7e0419 url(/public/images/event/nov/bg.jpg) no-repeat top center;}
+.md-act .u-title1{padding-top:190px;text-align:center;}
+.md-act .u-title2{padding-top:60px;text-align:center;}
+.md-act .u-desc1{text-align:center;font-size:18px;color:#fff;background:url(/public/images/event/nov/desc1.png) no-repeat top center;line-height:47px;height:47px;}
+.md-act .u-desc1 em{color:#c00;}
+.md-act .u-desc2{text-align:center;font-size:18px;color:#fff;line-height:20px;height:20px;}
+.md-act .u-desc2 em{color:#f6ff00;}
+.btn-go,.btn-go:hover,.btn-go:focus{width:130px;line-height:40px;height:40px;text-align:center;color:#fff;border-radius:40px;font-size:16px;background:#b08048;background:-webkit-linear-gradient(left, #b08048, #c7933c, #b08048);background:-o-linear-gradient(left, #b08048, #c7933c, #b08048);background:linear-gradient(to right, #b08048, #c7933c, #b08048);}
+.btn-go.btn-bonus{background:#ab1119;}
+.btn-go.disabled{background:#b8b8b8;}
+
+.md-rank1{position:relative;width:914px;margin-left:auto;margin-right:auto;height:530px;}
+.md-rank1 .datatable{width:100%;border-radius:10px;overflow:hidden;}
+.md-rank1 .datatable thead tr{background:#eed9b3;background:-webkit-linear-gradient(left, #eed9b3, #fcf4ec, #eed9b3);background:-o-linear-gradient(left, #eed9b3, #fcf4ec, #eed9b3);background:linear-gradient(to right, #eed9b3, #fcf4ec, #eed9b3);}
+.md-rank1 .datatable th{line-height:73px;text-align:center;font-size:16px;}
+.md-rank1 .datatable td{line-height:75px;text-align:center;font-size:16px;color:#630;background:#fbf8f0;}
+.md-rank1 .datatable tbody tr:nth-child(2n) td{background:#fff;}
+.md-rank1 .datatable tbody tr+tr{border-top:1px solid #f3dcba;}
+.md-rank1 .remark{color:#fff;padding:25px 30px;line-height:27px;}
+.md-rank1 .datatable em{font-family:'Conv_GEORGIA';font-size:30px;line-height:1;display:inline-block;}
+
+.md-getbonus .bd{padding:50px 20px;text-align:center;position:relative;background:url(/public/images/event/nov/bg2.png) no-repeat 70px -8px;}
+.md-getbonus h2{font-size:20px;line-height:1;}
+.md-getbonus h6{color:#666;line-height:26px;margin-top:30px;font-size:16px;}
+.md-getbonus h6 em{color:#c00;}
+.md-getbonus .btn-go{width:170px;line-height:48px;height:48px;}
+
+.md-rank2{position:relative;width:617px;height:225px;background:url(/public/images/event/nov/rank2.png) no-repeat;margin:25px auto 0;}
+.md-rank2 .item{position:absolute;left:0;top:147px;width:189px;text-align:center;}
+.md-rank2 .item2{left:222px;}
+.md-rank2 .item3{left:430px;}
+.md-rank2 .item p{color:#666;line-height:20px;}
+.md-rank2 .item h4{color:#c00;font-size:16px;line-height:1;padding-top:5px;padding-left:10px;}
+.md-rank2 .item h4 em{font-size:36px;font-family:'Conv_GEORGIA';line-height:1;display:inline-block;}
+
+.md-rank3{width:914px;position:relative;margin:60px auto 0;height:950px;}
+.md-rank3 .bd{border-radius:10px;overflow:hidden;background:#bc2a2a;padding-bottom:15px;}
+.md-rank3 .datatable{width:100%;}
+.md-rank3 .datatable th{background:#bc2a2a;color:#fff;text-align:center;line-height:74px;font-size:16px;}
+.md-rank3 .datatable td{background:#fff6ee;color:#564833;text-align:center;line-height:74px;}
+.md-rank3 .datatable tbody tr+tr{border-top:1px solid #ffe1e1;}
+.md-rank3 .datatable .nobody{line-height:36px;border:1px dashed #9f9f9f;margin-right:80px;margin-left:30px;padding-right:80px;}
+.md-rank3 .remark{color:#666;padding:20px 20px;line-height:25px;}
+
+.md-rule{width:850px;margin:50px auto 30px;color:#eed9b3;}
+.md-rule h2{font-size:16px;line-height:20px;padding-bottom:15px;}
+.md-rule p{line-height:24px;}
+
+.md-footer{border-top:1px solid #aaa;color:#eed9b3;text-align:center;font-size:14px;line-height:90px;height:90px;}

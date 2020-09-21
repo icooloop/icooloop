@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>注册成功-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+	<#include "/include/style_new.html" />
+    <!-- 页面样式 -->
+	<link rel="stylesheet" href="${tzp.getContextPath()}/src/css/pages/account/login.css?v=2e0e651">
+	<link rel="stylesheet" href="${tzp.getContextPath()}/src/css/pages/account/registerSuccess.css?v=40623d3">
+</head>
+<body>
+<!-- header -->
+<#include "/include/login_header.html" />	
+<!-- 页面开始 -->
+<div class="reg-success-layer reg-success-layer-person">
+	<div class="center-block reg-success-container">
+		<!-- 注册成功内容开始 -->
+		<div class="content text-center">
+			<h1 class="title"><i class="icon-font icon-right1 text-info"></i></h1>
+			<h2 class="text-muted">恭喜您注册成功!</h2>
+			<!--<p>请继续完成企业会员认证</p>-->
+			<p class="text-muted" style="margin:0 0 30px;">建议尽快完成以下出借前的准备</p>
+			<#if userType??>
+				<#if userType=='2'>
+					<div class="company-auto row">
+						<div class="col-sm-3 text-right">
+							<i class="icon-font icon-company-verify left-icon text-primary"></i>
+						</div>
+						<div class="col-sm-6 text-left">
+							<h3>企业会员认证</h3>
+							<p class="text-danger">
+								<i class="icon-font icon-gth"></i>
+								<span class="vertical-middle">完成企业资质认证，才能开始出借</span>
+							</p>
+						</div>
+						<div class="col-sm-3 text-center layer-right">
+							<a href="${tzp.getContextPath()}/member/auth/form" class="btn btn-primary">去认证</a>
+						</div>
+					</div>
+				<#else>
+					<div class="company-auto row">
+						<div class="col-sm-3 text-right">
+							<i class="icon-font icon-real-name left-icon text-primary"></i>
+						</div>
+						<div class="col-sm-6 text-left">
+							<h3>实名认证</h3>
+							<p class="text-muted">
+								<span class="vertical-middle">保障账户安全、确认出借人身份</span>
+							</p>
+						</div>
+						<div class="col-sm-3 text-center layer-right">
+							<p class="success"><i class="icon-font icon-right text-success vertical-middle"></i><span class="vertical-middle">已认证</span></p>
+							<!--<a href="${tzp.getContextPath()}/member/auth/bankCard" target="_blank" class="btn btn-primary">去认证</a>-->
+						</div>
+					</div>
+					<div class="company-auto row">
+						<div class="col-sm-3 text-right">
+							<i class="icon-font icon-card-verifty left-icon text-primary"></i>
+						</div>
+						<div class="col-sm-6 text-left">
+							<h3>绑定银行卡(需先完成实名认证)</h3>
+							<p class="text-muted">
+								<span class="vertical-middle">用于快捷支付充值、提现</span>
+							</p>
+						</div>
+						<div class="col-sm-3 text-center layer-right">
+							<a href="javascript:;;" target="_blank" class="btn btn-disabled">去绑卡</a>
+							<!--<p class="success"><i class="icon-font icon-right text-success vertical-middle"></i><span class="vertical-middle">已绑定</span></p>-->
+						</div>
+					</div>
+					<div class="company-auto row">
+						<div class="col-sm-3 text-right">
+							<i class="icon-font icon-risk1 left-icon text-primary"></i>
+						</div>
+						<div class="col-sm-6 text-left">
+							<h3>风险评测</h3>
+							<p class="text-muted">
+								<span class="vertical-middle">根据风险评估结果选择适合您出借的项目</span>
+							</p>
+						</div>
+						<div class="col-sm-3 text-center layer-right">
+							<a href="${tzp.getContextPath()}/member/auth/bankCard" target="_blank" class="btn btn-primary">去评测</a>
+							<!--<p class="success"><i class="icon-font icon-right text-success vertical-middle"></i><span class="vertical-middle">已评测</span></p>-->
+						</div>
+					</div>
+					<div class="company-auto row">
+						<div class="col-sm-3 text-right">
+							<i class="icon-font icon-lock left-icon text-primary"></i>
+						</div>
+						<div class="col-sm-6 text-left">
+							<h3>设置交易密码</h3>
+							<p class="text-muted">
+								<span class="vertical-middle">保障资金安全，进行资金操作时使用</span>
+							</p>
+						</div>
+						<div class="col-sm-3 text-center layer-right">
+							<a href="${tzp.getContextPath()}/member/secure/tradePwd/set" target="_blank" class="btn btn-primary">去设置</a>
+							<!--<p class="success"><i class="icon-font icon-right text-success vertical-middle"></i><span class="vertical-middle">已设置</span></p>-->
+						</div>
+					</div>
+				</#if>
+			</#if>
+			<p><a class="text-primary" href="${tzp.getContextPath()}/">暂时跳过，返回首页</a></p>
+		</div>
+	</div>
+</div>
+<#include "/include/login_footer.html" />
+<#include "/include/bottom_script.html" />
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="baidu-site-verification" content="kRgG3K9bcT" />
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="robots" content="">
+    <title>设置交易密码-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+  <#include "/include/style.html" />
+    <link rel="stylesheet" type="text/css" href="${tzp.getContextPath()}/src/css/v2/attestation.css?v=487a982">
+</head>
+<body>
+<!-- header -->
+<#include "/include/header.html" />
+<div class="mainContent">
+    <div class="wp">
+        <div class="m-attestation">
+        <form  id="setPwdForm">
+            <div class="attestation-form sure m-pwd">
+                <h1>设置交易密码</h1>
+                <div ><em class="set-pwd">交易密码</em><input type="password" autocomplete="off" id="tradePwd" name ="tradePwd" placeholder="8-16位数字、下划线、英文字母至少2种组合" maxlength="16"></div>
+                <div ><em class="set-pwd">确认密码</em><input type="password" autocomplete="off" id="reTradePwd" name ="reTradePwd" placeholder="再次输入您的交易密码" maxlength="16"></div>
+                <div class="error-msg"  <#if redirectMessage??> style="display: block;" </#if> >
+					<i class="icon-font icon-error"></i><span class="vertical-middle" id="errorMsg">${redirectMessage!''}</span>
+				</div>
+                <button  type="submit"  class="attestation-Btn pwd-next">确定</button>
+            </div>
+            <ul class="attestation-list clearFix">
+                <li><i class="icon-font icon-bridge text-primary"></i><h1>上市背景</h1> <h2>A股上市公司控股<br/>信息公开透明</h2></li>
+                <li><i class="icon-font icon-socket text-primary"></i><h1>优质资产</h1> <h2>供应链及三农贷款<br/>支持实体经济</h2></li>
+                <li><i class="icon-font icon-prize text-primary"></i><h1>普惠金融</h1> <h2>合规运营稳健发展<br/>构筑金融桥梁</h2></li>
+            </ul>
+        </div>
+        </form>
+        <div class="attestation-footer pb-40 pt-40">
+            <#include "/include/copyright.html" />
+            <p><a href="http://www.miit.gov.cn/" target="_blank" rel="noopener noreferrer">粤ICP备14041671号-1</a></p>
+        </div>
+    </div>
+</div>
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.min.js?v=9fc6b5c"></script>
+<script src="${tzp.getContextPath()}/src/js/tools/validate_cn.js?v=10c4607"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/layer/layer.js?v=7804f70"></script>
+<script type="text/javascript">
+var isSubmit =false;
++function () {
+    var ForgetPwd = function () {//构造函数
+        this.$setPwdForm = $("#setPwdForm");
+        this.validateForm = null;//验证方法
+    }
+   
+    ForgetPwd.prototype = {
+        init: function () {
+            this.validate();//表单验证
+        },
+        validate: function () {
+            //找回密码手机验证
+            this.validateForm = this.$setPwdForm.validate({
+                // 验证规则
+                rules: {
+                	tradePwd: {
+                        required: true,
+                        isTraPwd:true
+                    },
+                    reTradePwd: {
+                        required: true,
+                        equalTo: '#tradePwd',
+                        isTraPwd:true
+                    }
+                },
+                // 设置错误信息
+                messages: {
+                	tradePwd: {
+                        required: '8-16位数字、下划线、英文字母至少2种组合',
+                        isTraPwd:'8-16位数字、下划线、英文字母至少2种组合'
+                    },
+                    reTradePwd: {
+                        required: '8-16位数字、下划线、英文字母至少2种组合',
+                        equalTo: '两次输入的密码必须一致',
+                        isTraPwd:'8-16位数字、下划线、英文字母至少2种组合'
+                    }
+                },
+                // 错误信息显示
+                errorPlacement: function (error, element) {
+                    var $element = $(element);
+                    var $parent = $element.parent();
+                    var $errorIcon = $.validator.setValidateIcon($parent);
+                    $errorIcon.addClass('icon-error').removeClass('icon-right');
+                    $parent.addClass('has-error has-feedback').removeClass('has-success');
+                    //$("#errorMsg").html(error);
+                    //$(".error-msg").show();//显示错误信息
+                },
+                //验证成功
+                success: function (error, element) {
+                    var $element = $(element);
+                    var $parent = $element.parent();
+                    var $errorIcon = $.validator.setValidateIcon($parent);
+                    $errorIcon.addClass('icon-right').removeClass('icon-error');
+                    $parent.removeClass('has-error').addClass('has-success has-feedback');
+                    $("#errorMsg").html('');
+                    $(".error-msg").hide();
+                },
+                invalidHandler: function (form, validator) { //错误提示
+                    var $errorMsg = $("#errorMsg");
+                    $errorMsg.hide();
+                    setTimeout(function () {
+                        $.each(validator.errorList, function (key, value) {
+                            $errorMsg.text(value.message);
+                            $(".error-msg").show();
+                            return false;
+                        });
+                        $errorMsg.show();
+                    }, 100)
+                },
+                submitHandler: function (form) { //验证通过提交表单
+                	if(isSubmit){
+                		return;
+                	}
+                	isSubmit = true;
+                	 $.ajax({
+                   		type : "post",
+                   		url : basePath+ '/member/secure/tradePwd/submit',
+                   		data : $(form).serialize(),
+                   		success : function(data) {
+                   				if (data.success) {
+                   					 window.location.href=basePath +"/member/secure/setTradePwd/success";
+                   				}else {
+                   					isSubmit =false;
+	                   				 $("#errorMsg").html(data.msg);
+	                                 $(".error-msg").show();
+                   				}
+                   			}
+                 	  });
+                }
+            });
+        },
+    }
+    new ForgetPwd().init();
+}();
+</script>
+</body>
+</html>

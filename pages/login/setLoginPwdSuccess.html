@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>重置登录密码成功-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+	<#include "/include/style_new.html" />
+	<!-- 页面样式 -->
+    <link rel="stylesheet" href="${tzp.getContextPath()}/src/css/pages/account/login.css?v=2e0e651">
+	<link rel="stylesheet" href="${tzp.getContextPath()}/src/css/pages/account/registerSuccess.css?v=40623d3">
+</head>
+<body>
+<!-- header -->
+<#include "/include/login_header.html" />	
+<!-- 页面开始 -->
+<div class="login-layer register-layer forget-success">
+	<div class="center-block login-container reg-success-container">
+		<!-- 重置登录密码 -->
+		<div class="content text-center">
+			<h1 class="title"><i class="icon-font icon-right1"></i></h1>
+			<h4 style="margin-bottom: 80px">您的登录密码已重置！</h4>
+			<#if userType??&&userType=='1'>
+			<a class="btn btn-lg btn-primary btn-block" href="${tzp.getContextPath()}/secure/login">立即登录</a>
+			<#elseif userType??&&userType=='4'>
+			<a class="btn btn-lg btn-primary btn-block" href="${tzp.getContextPath()}/secure/org/login">立即登录</a>
+			<#else>
+			<a class="btn btn-lg btn-primary btn-block" href="${tzp.getContextPath()}/secure/loan/login">立即登录</a>
+			</#if>
+		</div>
+		<!--公司介绍-->
+		<div class="company-introduce">
+			<ul class="text-center clearfix">
+				<li class="list-1">
+					<p><i class="icon-font icon-bridge text-primary"></i></p>
+					<h4>上市背景</h4>
+					<p>A股上市公司控股</p>
+					<p>信息公开透明</p>
+				</li>
+				<li class="list-2">
+					<p><i class="icon-font icon-socket text-primary"></i></p>
+					<h4>优质资产</h4>
+					<p>供应链及三农贷款</p>
+					<p>支持实体经济</p>
+				</li>
+				<li class="list-3">
+					<p><i class="icon-font icon-prize text-primary"></i></p>
+					<h4>普惠金融</h4>
+					<p>合规运营稳健发展</p>
+					<p>构筑金融桥梁</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<#include "/include/login_footer.html" />
+</div>
+<#include "/include/bottom_script.html" />
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

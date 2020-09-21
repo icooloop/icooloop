@@ -1,0 +1,60 @@
+.md-act{position:relative;background:#b42428 url(/public/images/event/mar/bg2.jpg) no-repeat top center;height:1920px;}
+.md-act .banner{text-align:center;position:relative;height:573px;}
+.md-act .wp{width:850px;}
+.btn-act,a.btn-act,a.btn-act:visited,a.btn-act:active{transition:all 0.2s;cursor:pointer;display:inline-block;background:#cf2e15;border:1px solid #cf1418;color:#fff;font-size:30px;width:444px;line-height:82px;height:82px;border-radius:82px;}
+.btn-act.act2{background:none;color:#cf2e15;}
+.btn-act:hover{background:#d00;border-color:#d00;color:#fff;}
+.btn-act.disabled{background:#acacac;border-color:#acacac;color:#fff;}
+
+.md-mode1{position:absolute;left:50%;top:570px;margin-left:-475px;width:950px;height:20px;background:url(/public/images/event/mar/box2.png) no-repeat top center;text-align:center;z-index:100;transition:height 1.5s;overflow:hidden;}
+.md-mode1.animated{height:951px;}
+.md-mode1 .desc1{color:#ffd785;line-height:80px;padding-top:14px;font-size:16px;}
+.md-mode1 .desc2{color:#db3d1a;line-height:60px;padding-top:10px;font-size:16px;font-weight:700;}
+.md-mode1 h2{color:#cf1418;font-size:50px;line-height:1;padding-bottom:12px;font-weight:700;}
+.md-mode1 h2 .extra{font-size:30px;}
+.md-mode1 h2 .extra em{font-size:16px;}
+.md-mode1 h2 .counter{display:inline-block;}
+.md-mode1 .desc3{color:#dc3e1b;line-height:70px;font-size:20px;}
+.md-mode1 .btndiv{line-height:82px;color:#b55514;font-size:30px;}
+.md-mode1 .bd{height:450px;}
+
+.md-getbonus .bd{position:fixed;top:50%;left:50%;width:508px;height:656px;margin-left:-254px;margin-top:-328px;
+		background:url(/public/images/event/mar/fxdj.png) no-repeat center;text-align:center;color:#cb6d2e;z-index:2000;}
+.md-getbonus.getsuccess .bd{background:url(/public/images/event/mar/fbcg.png) no-repeat center;}
+.md-getbonus .bd .result{padding:210px 80px 50px;line-height:30px;font-size:18px;}
+.md-getbonus.getsuccess .bd .result{line-height:40px;font-size:20px;}
+.md-getbonus .bd .result em{color:#c40000;}
+.md-getbonus .bd .result .num{font-size:36px;padding:0 3px;}
+.md-getbonus .bd .btn-act{line-height:60px;height:60px;width:280px;border-radius:60px;font-size:20px;}
+.md-getbonus .bd .close{right:-10px;top:-5px;}
+.md-getbonus .bd .close .icon-font{color:#fff;font-size:36px;}
+
+.md-rule{padding:0 100px;text-align:left;line-height:26px;}
+.md-rule h2{color:#fff;font-size:18px;padding-bottom:10px;}
+.md-rule p{color:#fff;font-size:16px;}
+
+.md-footer{color:#fff;text-align:center;font-size:14px;line-height:220px;height:220px;position:absolute;left:0;bottom:0;width:100%;}
+.md-footer a.keeplink{color:#fff;text-decoration:underline;}
+
+.win_state{	
+	position:fixed;top:50%;left:50%;	
+	margin:-50px 0 0 -50px;
+	text-align:center;line-height:1;	
+	z-index:1999;opacity:0;transform:translateY(300px);
+	animation: win_state_show 1.4s forwards 0.4s;
+}
+
+@keyframes win_state_show{   
+	30%{opacity:1;transform:translateY(-30px);}
+	40%{opacity:1;transform:translateY(0);transform:perspective(400px) translate3d(0,0,180px) rotate3d(0,1,0,-190deg);animation-timing-function:ease-out}
+	50%{transform:perspective(400px) translate3d(0,0,180px) rotate3d(0,1,0,-170deg);animation-timing-function:ease-in}
+	80%{opacity:1;transform:perspective(400px) scale3d(.95,.95,.95);animation-timing-function:ease-in}
+	100%{opacity:0;transform:perspective(400px);animation-timing-function:ease-in}
+}
+.pig{animation: pig 1s forwards 0.1s !important;}
+@keyframes pig{
+	40%{transform:scale(1.2,1);}
+	60%{transform:scale(1,.6);}
+	100%{transform:scale(1,1);}
+}
+@keyframes bounceinT{0%{opacity:0;transform:translateY(-2000px)} 60%{opacity:1;transform:translateY(30px)} 80%{transform:translateY(-10px)} 100%{opacity:1;transform:translateY(0)}}

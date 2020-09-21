@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="baidu-site-verification" content="kRgG3K9bcT"/>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="robots" content="">
+    <title>实名认证&绑定银行卡-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style.html" />
+    <link rel="stylesheet" type="text/css" href="${tzp.getContextPath()}/src/css/pages/safe/bankCard.css?v=02b39aa">
+    <link rel="stylesheet" type="text/css" href="${tzp.getContextPath()}/public/js/plugins/autocompleter/autocompleter.css?v=37a01f8"/>
+    <style>
+    	.m-attestation{
+    		margin:0;
+    	}
+    	.m-attestation .attestation-form h2{
+    		display: inline-block;
+    		width:60px;
+    	}
+    	.attestation-form > ul > li > input{
+   			width:200px;
+    	}
+    	.attestation-form > ul > li{
+    		min-height: 50px;
+    		margin:0 0 10px;
+    	}
+    	.attestation-form > ul > li .get-code-btn{
+   		    right: 90px;
+   		    top:4px;
+    	}
+    	.has-error .form-control-feedback{
+   			margin:15px 0 0;
+    	}
+    	.attestation-Btn{
+    		margin-top:10px;
+    	}
+    </style>
+</head>
+<body>
+<!-- header -->
+<div style="display: none;">
+<#include "/include/header.html" />
+</div>
+<div class="mainContent">
+    <div class="wp">
+        <div class="m-attestation">
+            <form id="bankCardForm" action="" method="post">
+                <div class="attestation-form">
+                
+                	<input type="hidden" id="bankId" name="bankId" value="${(userBank.bankId)!''}">  
+                    <h1>银行卡升级</h1>
+                    <ul class="clearFix">
+                        <li>
+                            <h2>银行卡</h2>
+					            <img src="${tzp.getContextPath()}/public/images/bank/${(userBank.bankCode)!''}.png"> 
+					            <i>尾号 ${(userBank.accountStar?substring(14))!''}</i> 
+                        </li>
+                        
+                        <li>
+                            <h2>手机号</h2>
+                              <#if (userBank.reserveMobile) ??>${(userBank.reserveMobileStr)!''}
+                              	<input   id="userMobile" name="userMobile" value="${userBank.reserveMobile!''}" type="hidden" >
+                              <#else>
+                              	<input placeholder="银行卡预留手机"  id="userMobile" name="userMobile" value="${userMobile!''}" maxlength="11">
+                              </#if>
+                        </li>
+                        <li class="has-error has-feedback">
+                            <h2>验证码</h2>
+                            <input placeholder="四到六位验证码" value="" id="verifyCode" name="verifyCode" maxlength="6">
+                            <button id="getCodeBtn" class="get-code-btn" style="cursor:pointer;" type="button">获取验证码</button>
+                            <span class="icon-font form-control-feedback icon-error" style="display: none">请输入正确的验证码</span>
+                        </li>
+                    </ul>
+                    <button class="attestation-Btn" type="submit">确定</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="${tzp.getContextPath()}/public/js/plugins/autocompleter/jquery.autocompleter.js?v=54d5a12"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.min.js?v=9fc6b5c"></script>
+<script src="${tzp.getContextPath()}/src/js/tools/validate_cn.js?v=10c4607"></script>
+<script src="${tzp.getContextPath()}/src/js/plugins/jquery.CountDown.js?v=0f45807"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/layer/layer.js?v=7804f70"></script>
+<script type="text/javascript">
+    $(function () {
+    	var redirectUrl = "${redirectUrl!''}";
+    	if(redirectUrl!=''){
+    		window.parent.location.href = basePath + redirectUrl;
+    	}
+    	
+        //绑定银行卡验证
+        $("#bankCardForm").validate({
+            ignore: "", //验证隐藏input
+            keyup:false,
+            rules: { // 验证规则
+            	verifyCode: {
+                    required: true,
+                    minlength: 4,
+                    maxlength: 6
+                },
+                userMobile: {
+                	 required: true,
+                	 isMobile: true
+                }
+            },
+            // 设置错误信息
+            messages: {
+            	verifyCode: {
+                    required: "请输入验证码",
+                    minlength: "验证码不正确",
+                    maxlength: "验证码不正确"
+                },
+                userMobile: {
+                    required: "请输入银行卡预留手机",
+                    isMobile: "手机号不正确"
+                }
+            },
+            // 错误信息显示
+            errorPlacement: function (error, element) {
+                var $element = $(element);
+                var $parent = $element.parent();
+                var $errorIcon = $.validator.setValidateIcon($parent);
+                $errorIcon.addClass('icon-error').removeClass('icon-right');
+                $parent.addClass('has-error has-feedback').removeClass('has-success');
+                var $msg = $parent.find('.form-control-feedback');
+                if (!$msg.length) {//如果没有提示过错误信息元素新建一个div
+                    $msg = $parent.append('<span class="icon-font form-control-feedback icon-error"></span>')
+                }
+                $msg.text(error.text()).show();
+            },
+            //验证成功
+            success: function (error, element) {
+                var $element = $(element);
+                var $parent = $element.parent();
+                var $errorIcon = $.validator.setValidateIcon($parent);
+                $errorIcon.addClass('icon-right').removeClass('icon-error');
+                $parent.removeClass('has-error').addClass('has-success has-feedback');
+                $parent.find(".form-control-feedback").hide();//隐藏错误信息
+            },
+            submitHandler: function (form) { //验证通过提交表单
+                if(validCode()){
+                    $.ajax({
+                        type: "post",
+                        url: basePath +"/member/auth/bindCard",
+                        data: $(form).serialize(),
+                        success: function (data) {
+                        	if(data.successed){
+                        		window.parent.location.href=basePath +"/spa/member/account/recharge";
+                        	}else{
+                        		layer.msg(data.message);
+                        	}
+                        }
+                    });
+                }
+            }
+        });
+        //发送验证码
+        $('#getCodeBtn').on('click', function () {//快捷发送短信
+               $(this).CountDown({
+                   data: $('#bankCardForm').serialize(),
+                   isMsg: true,
+                   isCallBack: 'message',//回调信息字段
+                   start: true,
+                   isSeed: true,
+                   isClick: false,
+                   isUpdateDate:"#bankCardForm",
+                   successName:'successed',
+                   successProp:true,
+                   url: basePath +"/member/auth/verifyCard"
+               });
+        })
+        //验证验证码
+        $("#verifyCode").on('blur',function(){
+            validCode();
+        })
+        function validCode() {
+            var code = $('#verifyCode').val();
+            if (!(/^\d{4,6}$/.test(code))) {
+                $('#getCodeBtn').next().show();
+                return false;
+            }
+            $('#getCodeBtn').next().hide();
+            return true;
+        }
+    });
+
+
+
+</script>
+</body>
+</html>

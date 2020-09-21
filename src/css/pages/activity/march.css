@@ -1,0 +1,136 @@
+body, html {
+    font-size: 14px;
+    margin: 0
+}
+body {
+    font-size: 12px;
+    font-family: Microsoft YaHei, sans-serif
+}
+.container {
+    width: 1000px;
+    margin: 0 auto;
+    position: relative
+}
+
+.main-content {
+    background: url(/public/images/activity/march/main.jpg) no-repeat;
+    background-position: top;
+    height: 1994px
+}
+
+.main-content .title {
+    top: 438px;
+    color: #f4d087;
+    font-size: 32px
+}
+
+.main-content .red-box, .main-content .title {
+    position: absolute;
+    text-align: center;
+    width: 100%
+}
+
+.main-content .red-box {
+    top: 800px;
+    font-size: 14px;
+    color: #666
+}
+
+.main-content .red-box .info {
+    color: #fff;
+    margin: 10px 0 0 140px;
+    text-align: left
+}
+
+.main-content .reward {
+    position: absolute;
+    top: 1400px;
+    text-align: center;
+    width: 100%
+}
+
+.main-content .reward .dep {
+    color: #f9f8d2;
+    margin: 0 0 20px
+}
+
+.main-content .reward .info {
+    color: #fff;
+    margin: 10px 0 0 140px;
+    text-align: left
+}
+
+.main-content table {
+    width: 724px;
+    margin: 0 auto;
+    text-align: center;
+    border-top: 1px solid #d1c0a5;
+    border-left: 1px solid #d1c0a5;
+    background-color: #fff;
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+.main-content table thead th {
+    color: #baa577;
+    width: 25%;
+    text-align: center;
+    background-color: #fff
+}
+
+.main-content table tr:nth-child(2n) {
+    background-color: #ffe4eb
+}
+
+.main-content table td, .main-content table th {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #d1c0a5;
+    border-right: 1px solid #d1c0a5
+}
+
+.main-content .msg, .main-content .rule {
+    position: absolute;
+    text-align: left;
+    width: 100%;
+    color: #fff
+}
+
+.main-content .msg {
+    top: 1785px;
+    padding:15px 0 0 140px;
+}
+.main-content .msg p{
+	margin:0 0 5px;
+}
+.copy-right, .rule {
+    background-color: #a7002f;
+    color: #fff
+}
+
+.rule {
+    padding: 30px 0
+}
+
+.rule ul {
+    list-style: none;
+    padding: 0
+}
+
+.rule ul li {
+    margin: 0 0 10px
+}
+
+.copy-right {
+    padding: 20px 0 30px;
+    text-align: center
+}
+
+.copy-right .container {
+    padding: 20px 0 0;
+    border-top: 1px solid #fff
+}
+
+.copy-right p {
+    margin: 0 0 5px
+}

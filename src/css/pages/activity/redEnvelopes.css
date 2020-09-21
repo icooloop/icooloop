@@ -1,0 +1,294 @@
+body {
+    font-family: "Conv_HelveticaNeueLTStd-Lt", "Microsoft Yahei", "Hiragino Sans GB", "Helvetica Neue", Helvetica, tahoma, arial, Verdana, sans-serif, "WenQuanYi Micro Hei";
+}
+.main-content {
+    background: url(/public/images/activity/redEnvelopes/main.jpg) no-repeat top center;
+    height: 1977px;
+    padding: 0 20px 0 0;
+}
+
+.main-content .container {
+    position: relative;
+    width: 960px;
+    margin: 0 auto;
+    padding: 390px 0 0;
+}
+.main-content .title{
+    font-size:24px;
+    color:#ae0011;
+    text-align: center;
+    padding: 0 16px 0 0;
+}
+.main-content div.coin {
+    position: absolute;
+    top: 400px;
+    left: -99px;
+    width: 1216px;
+    height: 594px;
+    background: url(/public/images/activity/redEnvelopes/coin.png) no-repeat;
+    -webkit-animation: icon-center .8s ease forwards;
+    animation: icon-center .8s ease forwards;
+    z-index: 0;
+}
+
+.main-content div.info {
+    width: 802px;
+    margin: 0 auto;
+    text-align: right;
+}
+
+.main-content div.info p.first {
+    font-size: 24px;
+    color: #fff;
+    margin: 0 0 5px;
+}
+
+.main-content div.info p.info-link a {
+    color: #ffe84f;
+}
+
+.main-content .rule {
+    position: relative;
+    width: 524px;
+    margin: 100px auto 50px;
+}
+
+.main-content .rule .layer {
+    width: 524px;
+    height: 483px;
+    background: url(/public/images/activity/redEnvelopes/boxer.png) no-repeat;
+}
+
+.main-content .rule .layer .boxer .no-login {
+    padding: 60px 100px;
+}
+
+.main-content .rule .layer .boxer .no-register {
+    display: none;
+    position: relative;
+    padding: 15px 100px;
+}
+.main-content .rule .layer .boxer .no-register .form-control{
+    line-height: 40px;
+    height: 40px;
+}
+.main-content .rule .layer .boxer .no-register .title{
+    font-size:20px;
+    margin:0 0 15px;
+}
+.main-content .rule .layer .boxer .no-register a{
+    color:#956f49;
+}
+.main-content .rule .layer .boxer .no-register .code-btn {
+    position: absolute;
+    top: 174px;
+    left: 314px;
+    width: 120px;
+    text-align: right;
+    font-size: 16px;
+}
+.main-content .rule .layer .boxer .no-register .btn{
+    margin-top:2px;
+}
+.main-content .rule .layer .boxer .no-register .btn[disabled] {
+    opacity: .5;
+}
+
+.main-content .rule .layer .boxer .no-register label input {
+    vertical-align: middle;
+}
+
+.main-content .rule .layer .boxer .no-register p.coin {
+    margin: 0 0 15px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.main-content .rule .layer .boxer .login-pwd {
+    display: none;
+    padding: 60px 100px;
+}
+
+.main-content .rule .layer .boxer .login-pwd p {
+    text-align: center;
+    font-size: 18px;
+}
+
+.main-content .rule .layer .boxer .login-pwd p.mobile {
+    margin: 0 0 20px;
+}
+.main-content .rule .layer .boxer .login-pwd .btn{
+    margin-top:45px;
+}
+.main-content .rule .layer .boxer .success {
+    display: none;
+    padding: 30px 60px;
+}
+
+.main-content .rule .layer .boxer .success p {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 16px;
+}
+.main-content .rule .layer .boxer .success p.title{
+    margin:40px auto;
+    font-size:20px;
+    padding:0;
+}
+.main-content .rule .layer .boxer .success p.link{
+    padding:8px 22px;
+    background-color: #f8f3eb;
+    width: 250px;
+    margin:0 auto;
+    border-radius: 10px;
+    font-size:18px;
+}
+.main-content .rule .layer .boxer .success p.link a{
+    color:#cc0000;
+    margin:0 3px;
+}
+.main-content .rule .layer .boxer .form-control {
+    border: 1px solid #bfbfbf;
+    background-color: #fff;
+    border-radius: 8px;
+    margin: 0 0 10px;
+    padding: 0 10px;
+    width: 320px;
+    line-height: 50px;
+    height: 50px;
+}
+
+.main-content .rule .layer .boxer .btn {
+    display: block;
+    width: 126px;
+    height: 126px;
+    line-height: 126px;
+    border-radius: 50%;
+    color: #fff;
+    border: none;
+    text-align: center;
+    margin: 90px 0 0 92px;
+    text-indent: -9999px;
+    background: none;
+    cursor: pointer;
+}
+.main-content .rule .layer .boxer .btn:active{
+    background: none;
+    box-shadow: none;
+}
+.main-content .rule .right {
+    float: right;
+    width: 430px;
+}
+
+.main-content .rule .right .layer {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 70px 32px 42px;
+}
+
+.main-content .rule .right .layer img {
+    position: absolute;
+    left: 24px;
+    top: -38px;
+}
+
+.main-content .rule .right .layer h4 {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.main-content .rule .right .layer p {
+    margin: 0 0 20px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.main-content .detail {
+    background-color: #fff;
+    border-spacing: 0;
+    border-collapse: collapse;
+    border:1px solid #d7c9b3;
+    width: 724px;
+    margin:76px auto 50px;
+    text-align: center;
+}
+
+.main-content .detail tr td {
+    padding: 10px;
+    border-bottom: 1px solid #d7c9b3;
+    border-left: 1px solid #d7c9b3;
+}
+.main-content .detail tr:nth-child(2n) td{
+    background-color: #f3f3f3;
+}
+.main-content .detail tr:first-child td {
+    color:#baa577;
+}
+
+.main-content .detail tr td:first-child {
+    border-left: none;
+}
+.main-content .reg{
+    margin:85px auto 90px;
+    width:724px;
+}
+.main-content .reg li{
+    font-size:16px;
+    margin:0 0 10px;
+    color:#666;
+}
+.copy-right{
+    text-align: center;
+    color:#666;
+}
+.copy-right p{
+    margin:0 0 5px;
+}
+.copy-right a{
+    color:#666;
+}
+.clearfix:after {
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+.layui-layer-content {
+    color: #fff;
+}
+
+@keyframes icon-center {
+    from {
+        transform: scale(.1);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@-webkit-keyframes icon-center {
+    from {
+        transform: scale(.1);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+input::-webkit-input-placeholder { /* WebKit browsers*/
+    font-size: 14px;
+}
+
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18*/
+    font-size: 14px;
+}
+
+input::-moz-placeholder { /* Mozilla Firefox 19+*/
+    font-size: 14px;
+}
+
+input:-ms-input-placeholder { /* Internet Explorer 10+*/
+    font-size: 14px;
+}

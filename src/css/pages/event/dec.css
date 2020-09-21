@@ -1,0 +1,55 @@
+.md-act{position:relative;background:#331e82 url(/public/images/event/dec/bg.jpg) no-repeat top center;}
+.md-act .wp{width:946px;}
+.md-act .acttime{background:url(/public/images/event/dec/acttime.png) no-repeat center;line-height:100px;height:100px;text-align:center;color:#e6c898;font-size:24px;}
+.md-act .maintitle{display:block;background:url(/public/images/event/dec/title.png) no-repeat center;line-height:118px;height:118px;text-align:center;color:#f6d59b;font-size:24px;margin-top:100px;}
+.md-act .maintitle .btn-link{display:inline-block;width:540px;line-height:118px;height:118px;text-align:center;color:#f6d59b;font-size:24px;}
+.md-act .maintitle .btn-link:hover{opacity:0.9;}
+.md-act .maintitle.mt-70{margin-top:70px;}
+
+.md-mode1 .desc1{line-height:80px;color:#fff;font-size:22px;text-align:center;}
+.md-mode1 ul{width:1000px;margin-left:-27px;margin-top:60px;}
+.md-mode1 li{float:left;width:250px;text-align:center;}
+.md-mode1 li .bonus{background:url(/public/images/event/dec/p11.png) no-repeat center;width:150px;height:118px;position:relative;margin:0 auto;text-align:center;}
+.md-mode1 li .bonus h4{font-size:30px;line-height:70px;}
+.md-mode1 li .bonus p{line-height:48px;font-size:18px;color:#6c4c22;}
+.md-mode1 li .term{line-height:60px;font-size:16px;color:#fff;}
+.md-mode1 li .btn-act{width:169px;line-height:50px;height:50px;font-size:16px;text-align:center;background:#e3c383;color:#222;border-radius:50px;transition:all 0.2s;}
+.md-mode1 li .btn-act:hover{background:#cea868;}
+.md-mode1 li .btn-act.disabled{background:#acacac;color:#fff;}
+
+.md-mode2{width:966px;height:289px;background:url(/public/images/event/dec/p21.png) no-repeat center;margin-left:-10px;margin-top:90px;position:relative;}
+.md-mode2 .desc3{position:absolute;left:20%;top:230px;text-align:center;color:#630;font-size:18px;line-height:1;width:60%;}
+.md-mode2 .amt1,.md-mode2 .amt2{position:absolute;right:50%;top:90px;width:220px;text-align:center;font-size:30px;line-height:1;color:#d20000;}
+.md-mode2 .amt1 em{font-size:24px;}
+.md-mode2 .amt2{right:auto;left:50%;color:#8c6a49;}
+.md-mode2 .desc1,.md-mode2 .desc2{position:absolute;left:50%;top:140px;width:220px;text-align:center;font-size:20px;color:#87571d;}
+.md-mode2 .desc1{left:auto;right:50%;}
+
+.md-mode3 .tablediv{margin-top:60px;position:relative;padding-bottom:28px;background:url(/public/images/event/dec/p31.png) no-repeat bottom center;border-radius:10px;}
+.md-mode3 .datatable thead{}
+.md-mode3 .datatable th{line-height:77px;height:77px;padding:0 10px;text-align:center;color:#630;font-size:16px;}
+.md-mode3 .datatable td{background:#fff6ed;line-height:77px;height:77px;padding:0 10px;text-align:center;color:#564833;font-size:18px;}
+.md-mode3 .datatable tr+tr{border-top:1px solid #e8cfa5;}
+.md-mode3 .datatable .rank{color:#c7933c;position:relative;}
+.md-mode3 .datatable .rank em{-webkit-transform:translateY(-5px);transform:translateY(-5px);display:inline-block;font-size:12px;line-height:1;}
+.md-mode3 .datatable tr.on td{color:#fff;background:#bc9156;}
+.md-mode3 .datatable tr.on .rank:after{display:block;content:'您在这里';position:absolute;right:0;top:-16px;width:100px;line-height:32px;height:32px;text-align:center;font-size:18px;color:#fff;background:#9e0b0f;border-radius:10px;}
+.md-mode3 .remark{color:#f6d59b;line-height:38px;padding:30px 30px;}
+
+.md-mode4{margin-top:80px;text-align:center;}
+
+.md-rule{margin-top:100px;color:#f6d59b;padding:0 20px 70px;}
+.md-rule h2{font-size:24px;text-align:center;line-height:1;padding-bottom:30px;}
+.md-rule p{line-height:35px;}
+
+.md-footer{border-top:1px solid #aaa;color:#eed9b3;text-align:center;font-size:14px;line-height:90px;height:90px;}
+
+
+.md-getbonus .bd{position:fixed;top:50%;left:50%;width:580px;height:640px;padding-top:38px;margin-left:-290px;margin-top:-358px;
+		transform:translateY(-300px);transition:all 0.4s;background:url(/public/images/event/dec/getbonus.png) no-repeat;text-align:center;color:#fff;z-index:2000;}
+.md-getbonus.getbonus .bd{transform:translateY(0);}
+.md-getbonus .btndiv{position:absolute;bottom:42px;right:0;width:580px;text-align:center;}
+.md-getbonus .btn-act{width:440px;line-height:70px;height:70px;text-align:center;background:#e3c383;color:#222;font-size:24px;border-radius:70px;}
+.md-getbonus .desc1{padding-top:64px;font-size:36px;line-height:1;}
+.md-getbonus .desc2 p{font-size:24px;line-height:1;padding-bottom:15px;}
+.md-getbonus .desc2 em{color:#ffde00;font-size:36px;}

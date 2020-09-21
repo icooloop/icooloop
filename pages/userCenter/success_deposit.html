@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>成功开通存管账户-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <!-- 页面样式 -->
+    <#include "/include/style_access.html" />
+</head>
+<body class="bgmain">
+<!-- header -->
+<#include "/include/access_header_up.html" />
+<div class="bgmain2 pt-30 pb-30">
+	<!-- 页面开始 -->
+	<div class="m-success pt-50 pb-60">
+		<div class="hd basehd">
+			<i class="icon-font icon-right1"></i>
+		 	<div class="info">
+			 	<h2>${result!''}</h2>
+			</div>
+		</div>
+		<div class="bd mt-10">
+			<div class="nextdiv">
+				<a class="btn btn-warning" href="${tzp.getContextPath()}/spa/product/index">浏览出借项目</a>
+				<a class="btn btn-default" href="${tzp.getContextPath()}/spa/member/account/index">查看我的帐户</a>
+			</div>
+		</div>
+	</div>
+</div>
+<#include "/include/login_footer.html" />
+<#include "/include/script_up.html" />
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

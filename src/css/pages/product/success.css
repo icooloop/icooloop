@@ -1,0 +1,15 @@
+.subscription-success{position: relative; width: 620px; background-color: #fff; margin: 0 auto;  border-radius: 20px;padding:20px;}
+.subscription-success .hd{color: #666;padding:30px 60px 20px;text-align:center;}
+.subscription-success .hd .layer{padding-left:60px;}
+.subscription-success .hd .next{margin:40px 0 0;}
+.subscription-success .hd .icon-font{font-size:60px;line-height:1;}
+.subscription-success .hd  h2{font-size:18px;margin-top:15px;margin-bottom:5px;color:#333;font-weight:700;}
+.subscription-success .hd p{line-height:24px;}
+.subscription-success .bd{padding:30px 50px;}
+.subscription-success .bd .process{padding-left:190px; background: url(/public/images/product/bar.png) no-repeat 105px 0;}
+.subscription-success .bd .process2{background: url(/public/images/product/bar2.png) no-repeat 105px 0;}
+.subscription-success .bd .process li{text-align: left;position: relative;}
+.subscription-success .bd .process li h4{font-size: 16px;font-weight:700;}
+.subscription-success .bd .process li span{color: #999;}
+.subscription-success .bd .process li+li{margin-top:55px;}
+.subscription-success .ft .btn{width:160px;}

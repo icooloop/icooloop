@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>账户提现-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+    <#if (_p2p_member_user??&&_p2p_member_user.userType=='5')  ||  (_p2p_member_user??&&_p2p_member_user.userType=='3')>
+		<#include "/loan/include/style.html" />
+	<#elseif (_p2p_member_user??&&_p2p_member_user.userType=='4')>
+		<#include "/org/include/style.html" />
+	</#if>
+</head>
+<body class="bgmain">
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+	<div class="m-user">
+		<div class="wp clearfix pt-20">
+			<#if (_p2p_member_user??&&_p2p_member_user.userType=='5')  ||  (_p2p_member_user??&&_p2p_member_user.userType=='3')>
+				<#include "/loan/include/userMenu.html" />
+			<#elseif (_p2p_member_user??&&_p2p_member_user.userType=='4')>
+				<#include "/org/include/userMenu.html" />
+			<#else>
+				<#include "/userCenter/include/userMenu_up.html" />
+			</#if>
+			<div class="mu-right mu-cash">
+				<div class="mu-recharge ">
+					<div class="mu-title"><h4>账户提现</h4><div class="more xinwangtip"><div class="tip">资金已由新网银行存管</div><a href="${tzp.getContextPath()}/member/deal/cash" class="btn btn-info ml-40">提现记录</a></div></div>
+					<form action="" class="m-form mu-cash-form">
+						<div class="pd1">
+							<input type="hidden" id="bankId" value="${(userBank.bankId)!''}">
+		                    <input type="hidden" id="availableAmt" value="${(accountVo.availableAmt)!0}">
+		                    <input type="hidden" id="bankCode" value="${(userBank.bankCode)!''}" />
+		                    <input type="hidden" id="cityCode" name="cityCode" value="">
+							<div class="formline mt-20">
+								<div class="formlabel">提现账户</div>
+								<div class="forminput">
+									<div class="bankinfo">
+				                    	<span class="pic"><img src="${tzp.getContextPath()}/public/images/bank/${(userBank.bankCode)!''}.png"></span>
+				                    	<em>尾号 ${(userBank.accountStar?substring(14))!''}</em>
+				                    </div>
+								</div>
+							</div>
+							<div class="formline mt-20">
+								<div class="formlabel">提现金额</div>
+								<div class="forminput">
+									<input type="text" class="input-text" placeholder="" id="amount" name="amount" onkeyup="keyupAmount()" value="" onblur="checkAmount()" maxlength="9">
+									<span class="unit">元</span>
+								</div>
+								<div class="formafter">
+									<div class="cztip1">账户余额： <em>${((accountVo.availableAmt)!0)?string(',##0.00')}</em>元</div>
+									<div class="cztip1"><a class="text-primary" href="javascript:;" onclick="cashAll()">全部提现</a></div>
+								</div>
+							</div>
+							<div class="formline mt-20">
+								<div class="formlabel">提现方式</div>
+								<ul class="cashtype" id="cashtypes">
+									<li id = "base" type="base" class="on">
+										<h6>普通提现（下一工作日到账，节假日顺延 T+1）</h6>
+									</li>
+									<li id = "quik" type="quik" class="<#if !t0Switch>disabled</#if>" >
+										
+										<h6>快速提现（当天到账 T+0）
+											<em class="text-danger" id="quikTip"></em>
+											<#if rechargeClose?? ><em class="text-danger">新注册用户当日充值的金额，在当日仅支持普通提现</em></#if>
+										</h6>
+										<#if !rechargeClose?? ><i class="icon-font icon-wenhao quicktip"></i></#if>
+									</li>
+								</ul>
+							</div>
+							<div class="formline mt-15">
+								<div class="formlabel">手续费</div>
+								<div class="forminput">
+									<span id="fee">0.00</span> 元 <span class="u-what"><i class="icon-font icon-wenhao"></i>
+									<#assign remainCount = (withdrawlCount!3) - (hasT1Count!0) >
+									<#assign remainCount = (remainCount>0)?string(remainCount,"0") >
+									
+									<span class="notes">今天剩余<span>${remainCount}</span>次免费提现次数，<br> 超过次数将收取${singleCashFee!2}元/笔费用</span></span>
+									<div id="quikCashFee" class="quikfeedesc text-muted"  style="display: none;" >
+										<#if t0ReceiveCount gt 0 >
+											<label class="mr-10 c-333"><input class="icheck" type="checkbox" id="deductFee" name="deductFee" value="true" disabled> 抵扣手续费</label>
+											<span id="quikCashFeeTip">本月免费快速提现次数尚未领取，<a href="${tzp.getContextPath()}/spa/member/task"  class="text-primary underline">立即领取</a></span>
+										<#elseif t0Count gt 0 >
+											<label class="mr-10 c-333"><input class="icheck" type="checkbox" id="deductFee" name="deductFee" value="true" onclick="calateAmt()" <#if hasT0Count lt 3 >checked="checked"</#if>>抵扣手续费</label>
+											<span id="quikCashFeeTip">本月剩余 1 次免费快速提现次数</span>
+										<#else>
+											<label class="mr-10 text-muted"><input class="icheck" type="checkbox" id="deductFee" name="deductFee" value="true" disabled> 抵扣手续费</label>
+											<span id="quikCashFeeTip">本月剩余 0 次免费快速提现次数</span>
+										</#if>
+										
+									</div>
+								</div>
+							</div>
+							<div class="formline">
+								<div class="formlabel">实际到账</div>
+								<div class="forminput"><span id="relAccount">0.00</span> 元</div>
+							</div>
+							<div class="pdleft tipdiv" id="formtip1">${redirectMessage!''}</div>
+							<div class="formline mt-15 pdleft">
+								<a class="btn btn-submit" target="_blank" data-loading-text="提现中..." id="cashSubmitBtn">立即提现</a>
+							</div>
+							<div class="formline mt-15 pdleft text-c" style="width:285px;">
+								<a href="javascript:;" onclick="layerFrozenTip()" class="text-primary">提现冻结资金说明</a>
+							</div>
+						</div>
+					</form>
+					<div class="wxtip" id="default_tips">
+						<h2>提现手续费说明</h2>
+						<table class="remarktable mt-10">
+							<tr>
+								<th>提现方式</th><th>手续费</th><th>预计到账时间</th>
+							</tr>
+							<tr>
+								<td>普通提现</td><td>免费</td><td>下一工作日到账，节假日顺延 T+1</td>
+							</tr>
+							<tr>
+								<td>快速提现</td><td>提现金额 × ${(feeRate*100)!0.05}%</td><td>当天到账 T+0</td>
+							</tr>
+						</table>
+						<p class="mt-10">
+						注：在提现额度之内，出借人如果选择普通提现，有${withdrawlCount!3}次/日免费提现次数，超过免费次数后收取${singleCashFee!2}元/笔手续费；出借人如果选择快速提现，超过${withdrawlCount!3}次/日提现次数后加收${singleCashFee!2}元/笔手续费。超出提现额度，出借人的提现手续费按照${withdrawlCount!3}次/日后手续费标准收费。</p>
+						<h2 class="mt-20">提现须知</h2>
+						<p class="mt-10">
+						1. 提现限额：单笔提现金额限额为${minCashAmt!100}~${(maxCashAmt?string(',##0'))!0}元；提现额度=充值金额 + 出借回款总额 + 奖励总额 -已出借金额 - 已提现金额 - 冻结中金额；<br>
+						2. 提现审核：单笔提现金额≤${(auditAmount!5000)?string(',###.##')}元，系统自动审核；单笔提现金额>${(auditAmount!5000)?string(',###.##')}元，需人工审核，审核时间为自然日9:00-22:00，法定节假日提现受理根据公司公告安排为准；<br>
+						3. 到账时间：上述到账时间仅供参考，实际到账时间会因收款账户开户行不同而有所差异。</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="m-layer mu-layer-netpay" id="netpayLayerTip">
+	<div class="hd">
+		<div id="netRechargeTitle">请在新打开的页面完成提现</div>
+		<a href="javascript:top.layer.closeAll();" class="close"><i class="icon-font icon-close"></i></a>
+	</div>
+	<div class="bd">
+		<div class="item">
+			<i class="icon-font icon-right mr-20"></i><span class="result mr-20">提现成功</span><span>您可以：</span><a href="${tzp.getContextPath()}/spa/member/account/index" class="text-primary mr-20 ml-20">查看我的账户</a>
+		</div>
+		<div class="item mt-20">
+			<i class="icon-font icon-gth mr-20"></i><span class="result mr-20">提现失败</span><span>建议您：</span><a href="${tzp.getContextPath()}/spa/help/question?faqType=70d88c7b639346feac0aebe5c081c45f" class="text-primary mr-20 ml-20">查看帮助中心</a>
+		</div>
+	</div>
+	<div class="ft">
+		<p>如仍有疑问，请致电：<span class="text-primary">400-090-9968</span></p>
+	</div>
+</div>
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/icheck/icheck.min.js?v=3144e54"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/user/cash.js?v=6651de0"></script>
+<script>
+	var currentHour ='${.now?string("HH")}',
+	minQuikHour = 22,
+	availableAmt = Number('${(accountVo.availableAmt)!0}'),
+	t0LimitAmount = Number('${(t0LimitAmount)!0}'),
+ 	maxCashAmt = Number("${(maxCashAmt?string('##0'))!0}"), 
+ 	minCashAmt = Number('${minCashAmt!100}'),
+ 	freeAmt = Number("${(accountVo.freeAmt)!0}"),
+    feeRate = Number('${feeRate!0}'),
+    hasT1Count = Number('${hasT1Count!0}'),
+    hasT0Count = Number('${hasT0Count!0}'),
+    withdrawlCount = Number('${withdrawlCount!3}'),
+    remainT1Count = withdrawlCount<hasT1Count?0:(withdrawlCount-hasT1Count),
+    remainT0Count = withdrawlCount<hasT0Count?0:(withdrawlCount-hasT0Count),
+    singleCashFee = Number('${singleCashFee!2}'),
+ 	tempAmt = "${(maxCashAmt?string(',##0'))!0}",
+ 	t0Switch = "${t0Switch?string('true','false')}",
+ 	redirectCode = "${redirectCode!'0'}",
+ 	t0Quota =  Number('${t0Quota!0}');
+ 	
+ 	
+var isUser = true;
+<#if (_p2p_member_user??&&_p2p_member_user.userType !='1') >
+	isUser = false;
+</#if>
+
+var initHtml = $(".notes").html();
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+.md-act{background:#a82a2d url(/public/images/event/recommend01/bg0.jpg) no-repeat top center;position:relative;padding-top:510px;padding-bottom:30px;}
+.md-act .acttime{position:absolute;left:50%;top:205px;margin-left:-360px;color:#fff;line-height:1;width:380px;text-align:center;font-size:18px;}
+.md-act .btn-act{display:inline-block;line-height:60px;height:60px;width:269px;text-align:center;font-size:24px;color:#87009f;background:url(/public/images/event/recommend01/btn0.png) no-repeat;}
+
+.md-mode1 .bonuslist li{float:left;position:relative;text-align:center;width:33.33%;height:231px;background:url(/public/images/event/recommend01/bonus1.png) no-repeat top center;}
+.md-mode1 .bonuslist li.item2{background:url(/public/images/event/recommend01/bonus2.png) no-repeat top center;}
+.md-mode1 .bonuslist li .desc{font-size:18px;color:#ab7634;line-height:20px;padding-top:50px;}
+.md-mode1 .bonuslist li .reward{font-size:24px;line-height:1;padding-top:10px;}
+.md-mode1 .bonuslist li .reward .rate{color:#fc4d4f;}
+.md-mode1 .bonuslist li .reward em{font-size:48px;}
+.md-mode1 .bonuslist li .condition{line-height:31px;color:#fffaf4;position:absolute;left:0;bottom:15px;width:100%;text-align:center;}
+
+.md-mode2{text-align:center;padding-top:80px;}
+
+.md-rule{width:1000px;color:#ffe6be;margin-left:auto;margin-right:auto;padding-top:90px;padding-bottom:80px;}
+.md-rule h2{line-height:1;font-size:24px;padding-top:40px;background:url(/public/images/event/recommend01/crown.png) no-repeat top center;text-align:center;}
+.md-rule p{line-height:20px;padding-top:10px;}
+.md-rule .datatable{width:auto;margin-left:20px;margin-top:15px;margin-bottom:5px;}
+.md-rule .datatable td{border:1px solid #ffe6be;line-height:30px;padding:5px 30px;color:#ffe6be;text-align:center;}
+
+.md-end{position:relative;text-align:center;padding-bottom:236px;background:url(/public/images/event/recommend01/gift.png) no-repeat bottom center;}
+.md-footer{background:#171719;color:#fff;text-align:center;font-size:16px;line-height:60px;}
+.md-footer a.keeplink{color:#fff;text-decoration:underline;}

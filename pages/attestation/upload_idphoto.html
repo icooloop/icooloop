@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>上传证件照片-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <!-- 页面样式 -->
+    <#include "/include/style_access.html" />
+     <style>
+    .u-idcardpic{display:block;border:1px solid #d2d2d2;border-radius:10px;height:160px;text-align:center;position:relative;cursor:pointer;overflow:hidden;}
+	.u-idcardpic .tip{width:100%;position:absolute;left:0;top:50%;z-index:200;height:60px;margin-top:-30px;color:#ccc;}
+	.u-idcardpic .input-file{opacity:0;filter: alpha(opacity=0);width:100%;height:100%;position:absolute;left:0;top:0;z-index:300;cursor:pointer;}
+	.u-idcardpic .showpic{width:100%;height:100%;position:absolute;left:0;top:0;text-align:center;line-height:160px;}
+	.u-idcardpic .showpic .pic{display:none;max-height:100%;max-width:100%;}
+    .warntip2{display:inline-block;position:relative;}
+	.warntip2 .tip{display:none;position:absolute;left:0;top:30px;background:#ebebeb;white-space:nowrap;font-size:12px;line-height:24px;padding:0 10px;border-radius:3px;}
+	.warntip2 .icon-font{cursor:pointer;}
+	.warntip2:hover .tip{display:block;}
+	.warntip2:hover .tip:before{display:block;content:"";width:0;height:0;border:8px solid transparent;border-left-color:#ebebeb;position:absolute;left:10px;top:-8px;}
+    </style>
+</head>
+<body class="bgmain">
+<!-- header -->
+<#include "/include/header_up.html" />
+<div class="bgmain2 pt-60 pb-60">
+	<div class="m-access-form identifylayer" id="identifyLayer">
+		<div class="hd">上传证件照片</div>
+		<div class="bd">
+			<form class="forminfo" action="" method="post" enctype="multipart/form-data" id="gatForm">
+                <input type="hidden" name="name" id="name" value="${userInfo.realName!''}">
+                <input type="hidden" name="idnoType" id="idnoType" value="${userInfo.userInfoType!''}">
+                <input type="hidden" name="idNo" id="idNo" value="${userInfo.userIdno!''}">
+				<div class="formdesc mt-30">姓名　　　　<span class="text-muted">${userInfo.realName!''}</span></div>
+				<div class="formdesc mt-15">证件类型　　<span class="text-muted">${userInfoTypeStr!''}</span></div>
+				<div class="formdesc mt-15">证件号码　　<span class="text-muted">${userInfo.userIdno!''}</span></div>
+				<div class="formdesc mt-20">证件照片上传</div>
+				<div class="formline mt-5">
+                       <div class="u-idcardpic">
+                      		<div class="tip"><img src="${tzp.getContextPath()}/public/images/user/idcard1.png?v=e9b0300"><div class="mt-5">照片正面</div></div>
+                      		<div class="showpic"><img src="" class="pic"></div>
+                       	<input type="file" value="证件正面" name="ShenFenZheng1" id="ShenFenZheng1" accept="image/*" onchange="changepic(this)" class="input-file">                          	
+						<span class="icontip icon-font icon-error" for="ShenFenZheng1"></span>
+                       </div>
+					<div class="linetip mt-5" for="ShenFenZheng1"></div>
+                       <div class="u-idcardpic mt-20">
+                      		<div class="tip"><img src="${tzp.getContextPath()}/public/images/user/idcard2.png?v=c263d09"><div class="mt-5">照片反面</div></div>
+                      		<div class="showpic"><img src="" class="pic"></div>
+                       	<input type="file" value="证件正面" name="ShenFenZheng2" id="ShenFenZheng2" accept="image/*" onchange="changepic(this)" class="input-file">                          	
+                       	<span class="icontip icon-font icon-error" for="ShenFenZheng2"></span>
+                       </div>
+					<div class="linetip mt-5" for="ShenFenZheng2"></div>
+					<div class="u-idcardpic mt-20">
+                      		<div class="tip"><img src="${tzp.getContextPath()}/public/images/user/idcard3.png?v=34b9200"><div class="mt-5">手持证件照</div></div>
+                      		<div class="showpic"><img src="" class="pic"></div>
+                       	<input type="file" value="手持证件照" name="ShenFenZheng3" id="ShenFenZheng3" accept="image/*" onchange="changepic(this)" class="input-file">                          	
+						<span class="icontip icon-font icon-error" for="ShenFenZheng3"></span>
+                    </div>
+					<div class="linetip mt-5" for="ShenFenZheng3"></div>
+				</div>
+				<div class="mt-20"><div class="warntip2"><i class="icon-font icon-wenhao text-primary"></i>
+                       		<div class="tip">有疑问？请联系客服<span class="text-primary">400-090-9968</span></div>
+                       	</div> 请确保证照上五官、姓名及证件号码清晰可见</div>
+				<div class="tipdiv mt-10" id="formtip2"></div>
+                <div class="formline mt-10">
+                   <button type="button" class="btn btn-submit" id="subbt2" onclick="onGatSubmit()">提交</button>
+                </div>
+			</form>
+		</div>
+	</div>
+</div>
+<#include "/include/login_footer.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.form.min.js?v=b8e22b6"></script>
+<script>
+function changepic(obj) {
+    //console.log(obj.files[0]);//这里可以获取上传文件的name
+    var idcarddiv=$(obj).parent();
+    var idcardpic=idcarddiv.find(".pic");
+    if(typeof(obj.files[0])=="undefined"){
+        idcarddiv.find(".tip").show();
+        idcardpic.show().attr("src","");
+    }else{
+    	var newsrc=getObjectURL(obj.files[0]);
+        idcarddiv.find(".tip").hide();
+        idcardpic.show().attr("src",newsrc);
+    }
+    if($(obj).attr("id")=="ShenFenZheng1"){
+    	checkShenFenZheng1();
+    }else if($(obj).attr("id")=="ShenFenZheng2"){
+    	checkShenFenZheng2();
+    }else{
+    	checkShenFenZheng3();
+    }
+}
+//建立一個可存取到該file的url
+function getObjectURL(file) {
+    var url = null ;
+    // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
+    if (window.createObjectURL!=undefined) { // basic
+        url = window.createObjectURL(file) ;
+    } else if (window.URL!=undefined) { // mozilla(firefox)
+        url = window.URL.createObjectURL(file) ;
+    } else if (window.webkitURL!=undefined) { // webkit or chrome
+        url = window.webkitURL.createObjectURL(file) ;
+    }
+    return url ;
+}
+//2.2 验证港澳台证件号码
+function checkGatIdNo(){
+	var icontip=$(".icontip[for='idNo']");
+	var p = $(".linetip[for='idNo']");
+	var th=$("#idNo");
+	var v=$.trim(th.val());
+    p.html('');
+	icontip.hide();
+	th.removeClass("Validform_error").removeClass("Validform_right");
+	
+  	if(v==""){
+	  	th.addClass("Validform_error");
+      	p.html('<span class="errortip"><i class="icon-font icon-error"></i>证件号码不能为空</span>');
+      	icontip.attr("class","icontip icon-font icon-error").show();
+   	  	return false;
+  	}
+  	var gatReg =/^[0-9a-zA-Z()（）]*$/g;
+	if((!gatReg.test(v))||(v<6)||(v>20)){
+		th.addClass("Validform_error");
+	    p.html('<span class="errortip"><i class="icon-font icon-error"></i>请输入正确的证件号码</span>');
+	    icontip.attr("class","icontip icon-font icon-error").show();
+		return false;
+	}
+	p.html('');
+ 	th.addClass("Validform_right");
+ 	icontip.attr("class","icontip icon-font icon-right").show();
+  	return true;
+}
+//2.3 验证港证件照正面
+function checkShenFenZheng1(){
+	var icontip=$(".icontip[for='ShenFenZheng1']");
+	var p = $(".linetip[for='ShenFenZheng1']");
+	var th=$("#ShenFenZheng1");
+	var v=$.trim(th.val());
+    p.html('');
+	icontip.hide();
+	th.removeClass("Validform_error").removeClass("Validform_right");
+	
+  	if(v==""){
+	  	th.addClass("Validform_error");
+      	p.html('<span class="errortip"><i class="icon-font icon-error"></i>照片正面不能为空</span>');
+      	icontip.attr("class","icontip icon-font icon-error").show();
+   	  	return false;
+  	}
+	p.html('');
+ 	th.addClass("Validform_right");
+ 	icontip.attr("class","icontip icon-font icon-right").show();
+  	return true;
+}
+//2.4 验证港证件照反面
+function checkShenFenZheng2(){
+	var icontip=$(".icontip[for='ShenFenZheng2']");
+	var p = $(".linetip[for='ShenFenZheng2']");
+	var th=$("#ShenFenZheng2");
+	var v=$.trim(th.val());
+    p.html('');
+	icontip.hide();
+	th.removeClass("Validform_error").removeClass("Validform_right");
+	
+  	if(v==""){
+	  	th.addClass("Validform_error");
+      	p.html('<span class="errortip"><i class="icon-font icon-error"></i>照片反面不能为空</span>');
+      	icontip.attr("class","icontip icon-font icon-error").show();
+   	  	return false;
+  	}
+	p.html('');
+ 	th.addClass("Validform_right");
+ 	icontip.attr("class","icontip icon-font icon-right").show();
+  	return true;
+}
+//2.5 验证手持证件照
+function checkShenFenZheng3(){
+	var icontip=$(".icontip[for='ShenFenZheng3']");
+	var p = $(".linetip[for='ShenFenZheng3']");
+	var th=$("#ShenFenZheng3");
+	var v=$.trim(th.val());
+    p.html('');
+	icontip.hide();
+	th.removeClass("Validform_error").removeClass("Validform_right");
+	
+  	if(v==""){
+	  	th.addClass("Validform_error");
+      	p.html('<span class="errortip"><i class="icon-font icon-error"></i>手持证件照不能为空</span>');
+      	icontip.attr("class","icontip icon-font icon-error").show();
+   	  	return false;
+  	}
+	p.html('');
+ 	th.addClass("Validform_right");
+ 	icontip.attr("class","icontip icon-font icon-right").show();
+  	return true;
+}
+//2.6 港澳台认证提交
+function onGatSubmit(){
+	if(!checkShenFenZheng1()||!checkShenFenZheng2()||!checkShenFenZheng3()){
+		return false;
+	}
+	$("#formtip2").html("");
+	$("#subbt2").html('<img src="${tzp.getContextPath()}/public/images/other/loading.gif?v=9804a03" class="mr-5" height="20">验证中...').addClass("disabled").attr("disabled",true);
+	var options = {
+		  	url: basePath + "/member/auth/gat-submit",
+			type: 'post',
+			dataType : 'json',
+			cache: false,
+			async: false,
+			success: function (data) {
+				var result = eval("("+data+")");
+		    	$("#subbt2").html("认证").attr("disabled",false).removeClass("disabled");
+				if (result.success!=undefined&&!result.success) {
+					$("#formtip2").html('<span class="errortip"><i class="icon-font icon-error"></i>'+result.msg+'</span>');
+	        		 layer.msg(result.msg);
+				}else{
+	 				layer.msg('申请成功');
+	            	setTimeout(function(){
+	                	top.location.reload();
+	            	},700);
+				}
+			}
+	};
+	$("#gatForm").ajaxSubmit(options);
+}
+</script>
+<!-- 统计 -->
+<#include "/include/count.html" /> 
+</body>
+</html>		

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>提示信息-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="${tzp.getContextPath()}/src/css/pages/error/error.css?v=b2b0f70">
+</head>
+<body>
+<#include "/include/header_up.html" />
+<div class="md-error error500">
+	<div class="bd ">
+		<div class="logo"><img src="${tzp.getContextPath()}/public/images/logo.png?v=5ebb42b"></div>
+		<p class="mt-40">抱歉，无法找到您访问的页面<br>请检查您输入的链接地址是否正确</p>
+		<p class="mt-30"><a class="btn btn-info" href="${tzp.getContextPath()}/index">返回首页</a></p>
+		<p class="mt-20"><span id="countDownTxt">5</span>秒之后自动返回首页...</p>
+	</div>
+</div>
+<#include "/include/login_footer.html" />
+<#include "/include/script_up.html" />
+<script>
+    var $countDownTxt = $('#countDownTxt');
+    var time = 4;
+    var Tid=0;
+    function countDown() {
+        if (time > 0) {
+            $countDownTxt.text(time--);
+        } else {
+        	 clearInterval(Tid);
+        	 window.location.href = '${tzp.getContextPath()}/index';
+        }
+    }
+    Tid=setInterval(function(){countDown()}, 1000);
+</script>
+</body>
+</html>

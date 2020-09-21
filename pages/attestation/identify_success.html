@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="baidu-site-verification" content="kRgG3K9bcT"/>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="robots" content="">
+    <title>实名认证&绑定银行卡-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style.html" />
+    <link rel="stylesheet" type="text/css" href="${tzp.getContextPath()}/src/css/pages/safe/bankCard.css?v=02b39aa">
+</head>
+<body style="background:#efefef;">
+<!-- header -->
+<#include "/include/header.html" />
+<div class="mainContent bgidentify">
+    <div class="wp">
+    	<div class="m-identifysuccess">
+    		<div class="hd">
+    			<div class="sd"><i class="icon-font icon-right1"></i></div>
+    			<div class="desc">您已成功提交实名认证审核</div>
+    		</div>
+    		<div class="bd">
+    			<ul class="infos">
+    				<li class="on"><div class="info">成功提交</div>
+    					<div class="timer">${(apply.applyTime?string('yyyy-MM-dd HH:mm'))!'-'}</div></li>
+    				<li class="on"><div class="info">审核中</div>
+    					<div class="timer">
+    						<#if  apply.auditStatus !="audit" >
+    							${(apply.auditTime?string('yyyy-MM-dd HH:mm'))!'-'}
+    						<#else>
+    							${(apply.applyTime?string('yyyy-MM-dd HH:mm'))!'-'}
+    						</#if>
+    					</div></li>
+    				<li  <#if apply.auditStatus !="audit" > class="on" </#if> >
+    					<#if apply.auditStatus=="audit" >
+    						<!-- 审核中 -->
+    						<div class="info">审核成功</div>
+    					<#elseif apply.auditStatus=="audit_success">
+    						<div class="info">审核通过</div>
+    					<#elseif apply.auditStatus=="audit_refuse">
+    						<div class="info">审核拒绝</div>
+    					</#if>
+    				</li>
+    			</ul>
+    		</div>
+    		<div class="ft"><a class="btn-go" href="${tzp.getContextPath()}/spa/member/account/index">我的账户</a></div>
+    	</div>
+        <div class="attestation-footer pb-40 pt-40">
+            <#include "/include/copyright.html" />
+            <p><a href="http://www.miit.gov.cn/" target="_blank" rel="noopener noreferrer">粤ICP备14041671号-1</a></p>
+        </div>
+    </div>
+</div>
+<script src="${tzp.getContextPath()}/public/js/plugins/layer/layer.js?v=7804f70"></script>
+<script type="text/javascript">
+</script>
+</body>
+</html>

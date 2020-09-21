@@ -11,5 +11,5 @@ git add -A
 git commit -m 'deploy'
 
 # if you are deploying to https://<USERNAME>.github.io
-git push -f https://github.com/icooloop/icooloop.git master
+git push -f https://github.com/icooloop/yqdweb.git master
 

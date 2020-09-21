@@ -1,0 +1,41 @@
+.mainarea{background:#fff;padding-bottom:20px;}
+.bond-transfer-detail{
+
+}
+.bond-transfer-detail .product-name{
+    color:#0056ba;
+    line-height:30px;
+    padding:0 10px 10px;
+}
+.bond-transfer-detail .table{
+    text-align: center;
+}
+.bond-transfer-detail .table tr th{
+    background-color: #8d9192;
+    color:#fff;
+    height: 46px;
+    vertical-align: middle;
+    text-align: center;
+    border-bottom:none;
+}
+.bond-transfer-detail .table tr td,.bond-transfer-detail .table tr th{
+    border-color: #e8e8e8;
+}
+.bond-transfer-detail .table tr td{
+    color:#666;
+    height: 46px;
+    vertical-align: middle;
+}
+.bond-transfer-detail .table tr td:nth-child(2n-1){
+	background-color: #fafafa;
+}
+.bond-transfer-detail ul.infolist{background:#f8f8f8;padding:20px 25px;margin-top:20px;}
+.bond-transfer-detail ul.infolist li{line-height:30px;overflow:hidden;}
+.bond-transfer-detail ul.infolist .desc{float:left;width:90px;padding-bottom:10px;}
+.bond-transfer-detail ul.infolist .amount{float:left;width:160px;padding-bottom:10px;text-align:right;}
+.bond-transfer-detail ul.infolist .amount span{font-size:16px;}
+.bond-transfer-detail ul.infolist .amount span.text-import{color:#ff8c00;font-size:24px;}
+.bond-transfer-detail ul.infolist .tips{float:left;color:#666;padding-bottom:10px;padding-left:50px;}
+.bond-transfer-detail ul.infolist .agreement{color:#999;}
+.bond-transfer-detail ul.infolist .btn{width:170px;margin:10px 25px 0;line-height:26px;}
+.tip-warning{background:#fff0cd;color:#a26400;line-height:25px;padding:10px 20px;}

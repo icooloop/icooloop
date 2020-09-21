@@ -1,0 +1,37 @@
+<!-- header -->
+<div class="navbar nav-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 navbar-left">
+                <img class="vertical-middle" style="padding:0 5px 0 0" src="${tzp.getContextPath()}/public/images/other/topPhone.png?v=4b0f54c">
+                <span class="tel vertical-middle">客服热线 400-090-9968 （工作日 09:00-18:00）</span>
+            </div>
+            <div class="col-lg-6 navbar-right">
+                <div class="pull-right">
+                    <#if _p2p_member_user??>
+                        <a class="name" href="${tzp.getContextPath()}/spa/member/account/index">您好，${(_p2p_member_user.nickName)}</a>
+                        <a href="${tzp.getContextPath()}/spa/shop/index" class="text-default"><i class="icon-font icon-shopcart"></i> 购物车<#if buy_cart_item_count?? && buy_cart_item_count gt 0> ${buy_cart_item_count}</#if></a>
+	                 	<a href="${tzp.getContextPath()}/spa/help/index" class="text-default">帮助中心</a>
+                        <a href="${tzp.getContextPath()}/logout" class="text-default">安全退出</a>
+                        <#else>
+                            <a class="text-default" href="${tzp.getContextPath()}/spa/secure/login">登录</a>
+                            <a class="text-default" href="${tzp.getContextPath()}/spa/secure/register">注册</a>
+                            <a class="text-default" href="${tzp.getContextPath()}/spa/shop/index"><i class="icon-font icon-shopcart"></i> 购物车</a>
+                            <a class="text-default" href="${tzp.getContextPath()}/spa/help/index">帮助中心</a>
+                        </#if>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="header-logo">
+                    <a class="pull-left" href="${tzp.getContextPath()}/"><img src="${tzp.getContextPath()}/public/images/logo.png?v=5ebb42b"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

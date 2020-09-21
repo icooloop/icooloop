@@ -1,0 +1,28 @@
+<div class="m-toper bgtop">
+	<div class="wp">
+		<div class="hotline">
+			<img class="mr-5" src="${tzp.getContextPath()}/public/images/other/topPhone.png?v=4b0f54c">
+            <span>客服热线 400-090-9968 （工作日 09:00-18:00）</span>
+		</div>
+		<div class="nav">
+			<#if _p2p_member_user??>
+                 <a class="name" href="${tzp.getContextPath()}/spa/member/account/index">您好，${(_p2p_member_user.nickName)}</a>
+                 <a href="${tzp.getContextPath()}/spa/shop/index" class="text-default"><i class="icon-font icon-shopcart text-warning"></i> 购物车<#if buy_cart_item_count?? && buy_cart_item_count gt 0> ${buy_cart_item_count}</#if></a>
+	             <a href="${tzp.getContextPath()}/spa/help/index" class="text-default">帮助中心</a>
+                 <a href="${tzp.getContextPath()}/logout" class="text-default">安全退出</a>
+            <#else>
+                 <a class="text-default" href="${tzp.getContextPath()}/secure/login">登录</a>
+                 <a class="text-default" href="${tzp.getContextPath()}/spa/secure/register">注册</a>
+                 <a class="text-default" href="${tzp.getContextPath()}/spa/shop/index"><i class="icon-font icon-shopcart text-warning"></i> 购物车</a>
+	             <a class="text-default" href="${tzp.getContextPath()}/spa/help/index">帮助中心</a>
+            </#if>
+		</div>
+	</div>
+</div>
+<div class="m-nav">
+	<div class="wp">
+	     <div class="logo">
+	          <a class="" href="${tzp.getContextPath()}/"><img src="${tzp.getContextPath()}/public/images/logo2019.png?v=33680fa"></a>
+	     </div>
+    </div>
+</div>

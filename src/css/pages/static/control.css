@@ -1,0 +1,15 @@
+.md-control{background:url(/public/images/event/control/bg.jpg) no-repeat top center;min-height:1156px;}
+.md-control .wp{width:1154px;}
+.md-control .mtitle{padding:130px 50px 90px;}
+.md-control .bd{background:#fff;border-radius:10px;padding:35px 0 100px;}
+.md-control .bd>p{padding:0 55px;line-height:30px;font-size:16px;color:#666;}
+.md-control .bd>h2{padding:0 55px;line-height:40px;font-size:18px;color:#666;font-weight:700;}
+.md-control .bd .data{background:url(/public/images/event/control/bg2.png) no-repeat top center;padding:59px 0;}
+.md-control .bd .data1{float:left;width:605px;}
+.md-control .bd .data2{float:left;width:440px;}
+.md-control .bd .data .item{float:left;text-align:center;position:relative;}
+.md-control .bd .data .item1,.md-control .bd .data .item2{width:330px;}
+.md-control .bd .data .item3,.md-control .bd .data .item4{width:225px;}
+.md-control .bd .data .item1:after,.md-control .bd .data .item3:after{display:block;content:"";width:4px;height:60px;background:url(/public/images/event/control/border.png) no-repeat;position:absolute;right:0;top:0;}
+.md-control .bd .data .item h4{line-height:30px;font-size:30px;}
+.md-control .bd .data .item h6{line-height:25px;font-size:16px;padding-top:5px;}

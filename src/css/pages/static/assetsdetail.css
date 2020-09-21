@@ -1,0 +1,24 @@
+.bgmain{background:#f0f2f6;}
+.maintitle{font-size:24px;text-align:center;position:relative;}
+.maintitle .btn-load{width:100px;line-height:30px;border-radius:5px;position:absolute;right:0;top:4px;}
+.title1{font-size:18px;text-align:center;line-height:30px;padding-bottom:10px;}
+
+.md-assetsdetail{width:960px;margin:0 auto;padding:40px 0 100px;}
+.md-assetsdetail .bd{background:#fff;padding:35px 50px;}
+.md-assetsdetail .ft{margin-top:100px;line-height:30px;color:#666;text-align:right;font-size:16px;}
+
+.md-baseinfo{border:1px dashed #c5c5c5;padding:5px 30px;}
+.md-baseinfo li{float:left;width:50%;line-height:50px;box-sizing:border-box;font-size:16px;}
+.md-baseinfo li em{color:#666;padding-right:15px;}
+.title2{background:#697ca2;color:#fff;line-height:50px;position:relative;padding:0 35px;font-size:16px;}
+.title2 .detail{position:absolute;right:35px;top:0;}
+
+.datatable td,.datatable th{line-height:46px;padding:0 35px;}
+.datatable th{background:#f6f6f6;font-size:16px;font-weight:700;}
+.datatable tbody tr:nth-child(2n){background:#f7fbfe;}
+
+.account-detail li{float:left;width:415px;line-height:50px;box-sizing:border-box;padding:0 35px;color:#666;position:relative;}
+.account-detail li em{position:absolute;right:35px;top:0;color:#333;}
+.account-detail li:nth-child(2n){margin-left:30px;}
+.account-detail li:nth-child(4n+3),.account-detail li:nth-child(4n){background:#f7fbfe;}
+

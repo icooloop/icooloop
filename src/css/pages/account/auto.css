@@ -1,0 +1,189 @@
+
+.auto-layer{
+    padding:70px 0 100px;
+    background-color: #efefef;
+}
+.auto-layer .auto-container{
+    width:415px;
+    margin:0 auto;
+    padding:60px;
+    background-color: #fff;
+}
+.auto-title{
+    margin:0 0 30px;
+    color:#222;
+}
+.auto-layer .auto-container .progress-info{
+    margin:0;
+}
+.auto-layer .auto-container .hl-info{
+    margin:12px 0 0 33px;
+
+}
+.auto-layer .auto-container .hl-info li{
+    color:#999;
+    margin:0 0 4px;
+}
+.auto-layer .auto-container .hl-info li span{
+    color:#444;
+    margin:0 6px 0 0;
+}
+.auto-layer .auto-container hr.split{
+    margin:20px 0;
+}
+.auto-layer .auto-container .yqd-info{
+    width:290px;
+    margin:15px auto 24px;
+    padding:12px;
+    border:1px solid #cacaca;
+    border-radius: 8px;
+    background-color: #fff;
+}
+.auto-layer .auto-container .yqd-info li{
+    margin:0 0 4px;
+}
+.auto-layer .auto-container .yqd-info li span{
+    color:#444;
+    margin: 0 6px 0 0;
+}
+.no-real-layer .no-real-container{
+    width:880px;
+    margin:0 auto;
+    padding:55px 0 0;
+    background-color: #fff;
+}
+.no-real-layer .no-real-container .no-real-boxer{
+    width:600px;
+    margin:0 auto;
+}
+.no-real-layer .info-layer{
+    margin:20px auto 30px;
+}
+.no-real-layer .info-layer img{
+    height: 35px;
+}
+.no-real-layer .info-layer .info{
+    text-align: left;
+    background-color: #fafafa;
+    border:1px solid #ddd;
+    border-radius: 8px;
+    padding:12px 18px;
+    margin:15px 0 0;
+    height: 92px;
+}
+.no-real-layer .info-layer .split{
+    position: relative;
+}
+.no-real-layer .info-layer .split i{
+    position: absolute;
+    top: 60px;
+    left: 36px;
+    font-size: 26px;
+}
+.no-real-layer .info-layer .info li{
+    margin:0 0 5px;
+    white-space: nowrap;
+}
+.no-real-layer .info-layer .info li span{
+    color:#666;
+}
+.no-real-layer .auto-layer{
+    background-color: #fbfbfb;
+    padding:30px 0;
+}
+.no-real-layer .auto-layer .boxer{
+    width:566px;
+    margin:0 auto;
+    line-height: 42px;
+}
+.no-real-layer .vertical{
+    width:600px;
+}
+.no-real-layer .vertical img{
+    margin:0 0 15px;
+}
+.no-real-layer .vertical .info{
+    display: table-cell;
+    width: 250px;
+    vertical-align: middle;
+}
+.no-real-layer .vertical .info .icon-font{
+    margin: 0 4px 0 0;
+}
+.no-real-layer .vertical .split i{
+    top: 79px;
+    left: 40px;
+}
+.set-user-name-layer .set-user-name-container{
+    width:415px;
+    margin:0 auto;
+    padding:50px 0;
+    background-color: #fff;
+}
+.set-user-name-layer .set-user-name-container .repeat{
+    line-height: 50px;
+    height: 50px;
+    background-color: #fff0e5;
+}
+.set-user-name-layer .set-user-name-container .progress-info{
+    margin:20px 0;
+}
+.set-user-name-layer .set-user-name-container .set-user-name-boxer{
+    position: relative;
+    width:318px;
+    margin:0 auto;
+}
+.set-user-name-layer .set-user-name-container .set-user-name-boxer label{
+    position: absolute;
+    top: 13px;
+    left: 14px;
+}
+.set-user-name-layer .set-user-name-container .set-user-name-boxer .form-control{
+    padding-left:66px;
+    margin:0 0 25px;
+}
+.set-login-pwd-layer .set-user-name-container .set-user-name-boxer .form-control{
+    padding-left: 80px;
+}
+.set-login-pwd-layer .auto-title{
+    margin:0;
+    padding:0 0 25px;
+    border-bottom:1px dotted #e5e5e5;
+}
+.success-layer .success-layer-boxer{
+    width:310px;
+    margin:20px auto;
+}
+.success-layer .success-layer-container{
+    padding:20px 0;
+}
+.success-layer .success-layer-boxer .info{
+    width:240px;
+    margin:0 auto 20px;
+    padding:20px;
+    background-color: #fafafa;
+    border:1px solid #ddd;
+    border-radius: 6px;
+}
+.success-layer .success-layer-boxer .info li{
+    margin:0 0 8px;
+}
+.success-layer .success-layer-boxer .info li:last-child{
+    margin:0;
+}
+.bind-success-layer .bind-success-container .auto-title{
+    font-size: 22px;
+}
+.bind-success-layer .bind-success-container .auto-title i{
+    font-size:64px;
+    margin:0 15px 0 0;
+}
+.bind-success-layer .bind-success-container .bind-success-boxer{
+    margin-bottom:25px;
+}
+.syn-success-layer .bind-success-boxer .table .info li span{
+    display: inline-block;
+    width:70px;
+}
+.m-perfectuser-form .formline{line-height:30px;}
+.m-perfectuser-form .formline .input-text{display:inline-block;line-height:28px;border:1px solid #aaa;padding:0 10px;width:180px;border-radius:3px;}

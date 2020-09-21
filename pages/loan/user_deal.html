@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>交易流水-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+    <#include "/loan/include/style.html" />
+</head>
+<body class="bgmain">
+<!-- 页面开始 -->
+<#include "/loan/include/header.html" />
+<div class="g-mainer">
+	<div class="m-user">
+		<div class="wp clearfix">
+			<div class="breadcrumb"><span><a href="${tzp.getContextPath()}/">亿钱贷首页</a></span>&gt;<span><a href="${tzp.getContextPath()}/member/account/index">我的账户</a></span>&gt;<span>账户总览</span></div>
+			<#include "/loan/include/userMenu.html" />
+			<div class="mu-right">
+				<div class="mu-model mu-deal user-shadow">
+	                <div class="hd clearfix">
+						<div class="l pl-20">时间：<input id="start" readonly="readonly" class="input-date laydate-icon">至：<input id="end" readonly="readonly" class="input-date laydate-icon"></div>
+                    	<div class="l pl-20">快速筛选：<select id="queryTime" class="select">
+	                    	<option value='d-7'>一周内</option>
+		                    <option value='m-1' selected="selected">一个月内</option>
+		                    <option value='m-3'>三个月内</option>
+		                    <option value='m-6'>半年内</option>
+	                    </select></div>
+                    	<div class="l pl-20">类型：<select id="subjectType" class="select">
+                   	         <option value="">全部</option>
+                   	         <option value="RECHARGE">充值</option>
+                   	         <option value="WITHDRAW_CASH">提现</option>
+                   	         <option value="BID">出借</option>
+                   	         <option value="CAPITAL">本金</option>
+                   	         <option value="INTEREST">收益</option>
+                   	         <option value="COMPENSATION">补偿金</option>
+                   	         <option value="ACT">活动奖励</option>
+                    	</select></div>
+                    	<div class="r"><button class="btn btn-warning btn-search" type="button" id="submitBtn">查询</button></div>
+	                </div>
+	                <div class="bd pd-10">
+	                    <table class="mu-table text-c" id="tableList">
+	                        <thead>
+	                        <tr><th>时间</th><th>类型</th><th>收支（元）</th><th>账户余额（元）</th><th>备注</th></tr>
+	                        </thead>
+	                        <tbody>
+	                        
+	                        </tbody>
+	                    </table>
+						<div id="pageLayer" class="page">
+							<input name="pageNo" type="hidden" id="pageNo" value="1" />
+							<input name="pageSize" type="hidden" id="pageSize" value="10" />
+							<div id="laypage" class="page pagination" ></div>
+	                    </div>
+	                </div>
+            	</div>
+			</div>
+		</div>
+	</div>
+</div>
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script> 
+<script src="${tzp.getContextPath()}/public/js/plugins/laydate/laydate.js?v=eb332e0"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/loan/user_deal.js?v=94cc7b1"></script> 
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

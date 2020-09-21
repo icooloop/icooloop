@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>充值成功-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+	<#include "/include/style_new.html" />
+	<!-- 页面样式 -->
+	<link rel="stylesheet" type="text/css" href="${tzp.getContextPath()}/src/css/pages/product/subscriptionSuccess.css?v=31be487">
+	<style type="text/css">
+	.text-success{color:#52c41a;}
+	</style>
+</head>
+<body>
+<#include "/include/header_new.html" />	
+<!--页面开始-->
+<div class="product-list-banner"></div>
+<!--出借成功信息-->
+<div class="subscription-success">
+	<div class="content text-center">
+	
+		<#if failMessage ?? >
+			<div class="clearfix">
+				<p><i class="icon-font icon-cat-fail text-danger" style="margin: 0;font-size:60px;"><!--图标--></i></p>
+				<h2>充值失败！</h2>
+				<p class="text-danger" >${failMessage}</p>
+			</div>
+		<#else>
+			<div class="clearfix">
+				<p><i class="icon-font icon-cat-success text-success" style="margin: 0;font-size:60px;"><!--图标--></i></p>
+				<h2>充值成功！</h2>
+				<p class="text-default" style="margin:0 0 30px">预计1分钟内到账，以实际到账时间为准</p>
+			</div>
+			<#if availableAmt??>
+			<p class="text-primary text-center">本次充值${(rechargeAmt?string(',###.##'))!'0.00'}元</p>
+			<p class="text-default text-center">充值后账户余额${(availableAmt?string(',###.##'))!'0.00'}元</p>
+			</#if>
+		</#if>
+		<div class="next">
+			<a class="btn btn-default btn-lg" href="${tzp.getContextPath()}/spa/member/account/index">查看我的账户</a>
+			<a class="btn btn-warning btn-lg" href="${tzp.getContextPath()}/spa/product/index">我要出借</a>
+		</div>
+		<div class="text-c mt-20"><a class="text-primary" href="${tzp.getContextPath()}/spa/member/account/recharge" style="font-size:14px;">继续充值&gt;</a></div>
+	</div>
+</div>
+ <#if recomList??>
+<div class="product-recommend">
+	<h2 class="title">项目推荐</h2>
+	<ul class="clearfix">
+		<#list recomList as shortLoan>
+				 <li>
+				
+<!-- 				   <i class="new-hard-icon"></i> -->
+				
+			 			<#if shortLoan.awardRate?? && shortLoan.awardRate gt 0>
+			 			<#if shortLoan.awardType=='2'>
+                           	<i class="new-hard-icon"></i>
+			 			<#else>
+                           	<i class="jiaxi-icon"></i>
+			 			</#if>
+                           </#if>
+                            <h4><a href="${tzp.getContextPath()}/spa/product/detail/${shortLoan.loanId!''}" target="_blank">${shortLoan.loanTitle!''}</a></h4>
+                            <p class="rate">${shortLoan.platRate}%<#if shortLoan.awardRate?? && shortLoan.awardRate gt 0>+${(shortLoan.awardRate)!0}%</#if></p>
+                            <p>${(shortLoan.minAmt!0)?string(',##0')}元起投 | ${shortLoan.loanPeriod!''}${shortLoan.periodStr}</p>
+                            
+                            	
+                           
+                            <#if shortLoan.loanStatus=='2'>
+                             	<p class="pay">可出借金额<b>${(shortLoan.remainAmount!0)?string(',##0')}</b>元</p>
+	                            <#if shortLoan.awardType=='2' >
+		                            <#if isNew??&&isNew=='1'>
+		                           	 <a  href="${tzp.getContextPath()}/spa/product/detail/${shortLoan.loanId!''}" target="_blank" class="btn btn-primary">立即出借</a>
+		                            <#else>
+		                              <a  href="${tzp.getContextPath()}/spa/product/detail/${shortLoan.loanId!''}" target="_blank" class="btn btn-disabled">立即出借</a>
+		                            </#if>
+	                            <#else>
+	                             <a  href="${tzp.getContextPath()}/spa/product/detail/${shortLoan.loanId!''}" target="_blank" class="btn btn-primary">立即出借</a>
+	                            </#if>
+                            <#else>
+                            <p class="pay">出借完成</p>
+                            <a  href="${tzp.getContextPath()}/spa/product/detail/${shortLoan.loanId!''}" target="_blank" class="btn btn-disabled">立即出借</a>
+                            </#if>
+                        </li>
+                </#list>
+	</ul>
+</div></#if>
+<#include "/include/bottom_script.html" />
+<#include "/include/footer_new.html" />
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

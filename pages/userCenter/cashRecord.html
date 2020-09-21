@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>提现记录-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+    <style>
+	.btn-disabled,.btn-disabled:hover,.btn-disabled:focus,.btn-disabled:active {color:#999!important;background:none!important;}
+	.btn-cancel,.btn-cancel:hover{color:#3961cd;border:1px solid #3961cd;background:none;min-width:40px;padding:0 10px;line-height:22px;height:22px;font-size:12px;text-decoration:none!important;border-radius:22px;}
+	</style>
+</head>
+<body class="bgmain">
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+    <div class="m-user">
+        <div class="wp clearfix pt-20">
+			<#include "/userCenter/include/userMenu_up.html" />
+            <div class="mu-right">
+            	<div class="mu-title"><h4>提现记录</h4><div class="more"><a class="btn btn-info" href="${tzp.getContextPath()}/spa/member/account/cash">返 回</a></div></div>
+            	<div class="mu-model mu-deal rechargedeal">
+	                <div class="hd clearfix">
+	                	<div class="l"><span class="f-12 text-muted">提现总金额(元)：</span><span>${((cashAmtSum)?string(',##0.00'))!'0.00'}</span></div>
+                    	<div class="r pl-10"><button class="btn btn-primary btn-search" type="button" id="submitBtn">查询</button></div>
+                    	<div class="r pl-10">
+							<select id="queryTime" class="select">
+		                    	<option value='all'>全部</option>
+		                    	<option value='d-7'>一周内</option>
+			                    <option value='m-1'>一个月内</option>
+			                    <option value='m-3'>三个月内</option>
+			                    <option value='m-6'>半年内</option>
+		                    </select>
+	                    </div>
+						<div class="r pl-10" id="customTime0">
+							<input id="start" readonly="readonly" class="input-date laydate-icon" placeholder="开始日期">-<input
+							 id="end" readonly="readonly" class="input-date laydate-icon" placeholder="结束日期">
+						</div>
+	                </div>
+	                <div class="bd pd-20">
+	                    <table class="mu-table text-c" id="tableList">
+	                        <thead>
+	                        <tr><th>提现时间</th><th>提现金额（元）</th><th>提现方式</th><th>提现手续费（元）</th><th>实际到账金额（元）</th><th>提现状态</th></tr>
+	                        </thead>
+	                        <tbody>
+	                        
+	                        </tbody>
+	                    </table>
+						<div id="pageLayer" class="page">
+							<input name="pageNo" type="hidden" id="pageNo" value="1" />
+							<input name="pageSize" type="hidden" id="pageSize" value="10" />
+							<div id="laypage" class="page pagination" ></div>
+	                    </div>
+	                </div>
+            	</div>
+            </div>
+        </div>
+   </div>
+</div>
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script type="text/javascript" src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script> 
+<script type="text/javascript" src="${tzp.getContextPath()}/public/js/plugins/laydate/laydate.js?v=eb332e0"></script> 
+<script type="text/javascript">
+
+var totalCount = 0;
+var pageSize = $.trim($('#pageSize').val());
+var fn = null;
+//分页
+function initPage(){
+	$("#laypage").pagination({
+		totalCount : totalCount,
+		pageSize : pageSize,
+		clickEvent : function(page_index, _this) {
+// 			console.log(page_index)
+			$("#pageNo").val(page_index + 1);
+			fn();
+		}
+	});
+}
+//
+var queryData={}
+function initData(){
+	queryData.pageNo=$('#pageNo').val();
+	queryData.pageSize=pageSize;
+	var _table=$('#tableList tbody');
+	_table.empty();
+	$.ajax({
+		url:'${tzp.getContextPath()}/member/deal/cash',
+		type:'post',
+		dataType:'json',
+		data:queryData,
+		cache:false,
+		async:false,
+		success:function(data){
+			var result = $.parseJSON(data);
+			var html=[];
+			if(result.count > 0){
+				$.each(result.data,function(i,o){
+					var finalAmt=o.amt;
+					if(o.feeAmt!=null){
+						finalAmt=finalAmt-o.feeAmt;
+					}
+					html.push('<tr>');
+					html.push('<td>',formatDate(o.createTime,"yyyy-MM-dd HH:mm"),'</td>');
+					html.push('<td>',formatCurrency(o.amt),'</td>');
+					html.push('<td>',o.withdrawTypeCnCH,'</td>');
+					html.push('<td>',formatCurrency(o.feeAmt),'</td>');
+					html.push('<td>',formatCurrency(finalAmt),'</td>');
+					var onClass='text-primary';
+					if(o.orderStatusCn=='成功'){
+						onClass='text-warning';
+					}else if(o.orderStatusCn=='失败'){
+						onClass='text-second';
+					}
+					
+					if(o.canCancelCash){
+						html.push('<td ><div class="line2"><span class="',onClass,'">',o.orderStatusCn,'</span>');
+						html.push('<br><a class="btn btn-cancel cashcancel" href="javascript:;;" data-id="', o.withdrawalId, '">取消提现</a></div></td>'); 
+					}else{
+						html.push('<td ><span class="',onClass,'">',o.orderStatusCn,'</span>');
+						html.push('</td>'); 
+					}
+	                  
+					html.push('</tr>');
+					
+				});
+			}else{
+                $("#pageLayer").hide();
+				html.push('<tr><td colspan="5"><img style="margin:15px 0" class="record" src="${tzp.getContextPath()}/public/images/user/record.png?v=9113ae7"></td></tr>')
+			}
+			_table.append(html.join(''));
+			totalCount = result.count;
+			if(totalCount>pageSize){
+				fn=initData;
+				$('#pageLayer').show();
+			}else{
+				$('#pageLayer').hide();
+			}
+			
+		}
+	});
+}
+
+
+function query(){
+	$('#pageNo').val(1);
+	 queryData={pageNo:$('#pageNo').val(),'pageSize':pageSize,startTime:$("#start").val(),endTime:$("#end").val()}
+	 initData();
+	 initPage();
+}
+function intQueryDate(){
+	var queryTime = $("#queryTime").val();
+	if(queryTime=='all'){
+		$("#start").val('');
+		$("#end").val('');	
+	}else{
+		var str= queryTime.split('-');
+		type=str[0];
+		day=str[1];
+		var now = new Date();
+		var startDate = now.DateAdd(type,-day);
+		$("#start").val(formatsDate(startDate));
+		$("#end").val(formatsDate(now));	
+	}
+}	
+Date.prototype.DateAdd = function(strInterval, Number) {   
+    var dtTmp = this;  
+    switch (strInterval) {   
+        case 's' :return new Date(Date.parse(dtTmp) + (1000 * Number));  
+        case 'n' :return new Date(Date.parse(dtTmp) + (60000 * Number));  
+        case 'h' :return new Date(Date.parse(dtTmp) + (3600000 * Number));  
+        case 'd' :return new Date(Date.parse(dtTmp) + (86400000 * Number));  
+        case 'w' :return new Date(Date.parse(dtTmp) + ((86400000 * 7) * Number));  
+        case 'q' :return new Date(dtTmp.getFullYear(), (dtTmp.getMonth()) + Number*3, dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds());  
+        case 'm' :return new Date(dtTmp.getFullYear(), (dtTmp.getMonth()) + Number, dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds());  
+        case 'y' :return new Date((dtTmp.getFullYear() + Number), dtTmp.getMonth(), dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds());  
+    }  
+} 
+function formatsDate(date){   
+    var str = "yyyy-MM-dd"; 
+    str=str.replace(/yyyy|YYYY/,date.getFullYear()); 
+    var month=date.getMonth()+1;		    
+    str=str.replace(/MM/,month>9?month.toString():'0' + month); 		  
+    str=str.replace(/dd|DD/,date.getDate()>9?date.getDate().toString():'0' + date.getDate());  
+    return str;   
+}   
+function cancelCash(id){
+	
+	
+}
+var ifRender=[false,false];
+var cancelFlag = false;
+var today='${.now?string("yyyy-MM-dd")}';
+(function() {
+	intQueryDate();
+	query();
+    $("#nav_member").addClass("on");
+	$("#cashMenu").addClass("on");
+    
+    $("#tableList").on("click",'.cashcancel',function(){
+    	if(cancelFlag){
+    		return;
+    	}
+    	cancelFlag = true;
+    	var cashId=$(this).data("id");
+    	layer.confirm("您确定要取消这笔提现申请吗？",{},function(){
+            $.ajax({
+                type: "post",
+                dataType: "json",
+                url: basePath +"/member/account/cashCancel",
+                data: {"cashId":cashId},
+                success: function (data) {
+                	cancelFlag = false;
+                    if (data.success) {
+                    	layer.msg("取消成功!",{},function(){
+                    		window.location.reload();
+                    	});
+                
+                    } else {
+                        layer.msg(data.msg, {icon: 5});
+                    }                            
+                }
+            });
+    	});
+    })
+    
+    $('#start').on('click', function(e) {
+    	if(!ifRender[0]){
+    		ifRender[0]=true;
+    		laydate.render({
+                elem: '#start',
+                show: true,
+                max: today,
+                done: function(value) {
+                	if($('#end').val()<value){
+    					$('#end').val('');
+    				}
+                }
+            })
+    	}
+    });
+    $('#end').on('click', function(e) {
+    	if(!ifRender[1]){
+    		ifRender[1]=true;
+	        laydate.render({
+	            elem: '#end',
+	            show: true,
+	            max: today,
+	            done: function(value) {
+	            	if(value<$('#start').val()){
+						$('#start').val('');
+					}
+	            }
+	        })
+    	}
+    });
+    $('#queryTime').click(function(e) {
+    	intQueryDate();
+    });
+    $('#submitBtn').click(function(e){
+    	query();
+    });
+    
+})();
+</script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

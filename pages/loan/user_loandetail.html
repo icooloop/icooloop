@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>借款详情-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+    <#if (_p2p_member_user??&&_p2p_member_user.userType=='4')>
+		<#include "/org/include/style.html" />
+	<#else>
+		<#include "/loan/include/style.html" />
+	</#if>
+</head>
+<body class="bgmain">
+<!-- 页面开始 -->
+<#include "/loan/include/header.html" />
+<div class="g-mainer">
+	<div class="m-user">
+		<div class="wp clearfix">
+			<div class="breadcrumb"><span><a href="${tzp.getContextPath()}/">亿钱贷首页</a></span>&gt;<span><a href="${tzp.getContextPath()}/member/account/index">我的账户</a></span>&gt;<span><a href="${tzp.getContextPath()}/member/loan/list">我的借款</a></span>&gt;<span>借款详情</span></div>
+			<div class="userLeft userLeft-shrink user-shadow">
+				<a title="账户总览" href="${tzp.getContextPath()}/member/account/index"><i class="icon-font icon-account1"></i></a>
+				<a title="我的借款" href="${tzp.getContextPath()}/member/loan/list" ><i class="icon-font icon-mymy"></i></a>
+				<a title="账户充值" href="${tzp.getContextPath()}/member/account/recharge"><i class="icon-font icon-save"></i></a>
+		<!-- 		<a title="账户提现" href="${tzp.getContextPath()}/member/account/cash"><i class="icon-font icon-out"></i></a> -->
+				<a title="交易流水" href="${tzp.getContextPath()}/member/deal/index"><i class="icon-font icon-record"></i></a>
+				<a title="账户信息" href="${tzp.getContextPath()}/member/secure/security"><i class="icon-font icon-save_"></i></a>
+            </div>
+			<div class="mu-right-shrink mu-details">
+				<div class="user-shadow">
+					<div class="clearfix">
+						<div class="mu-details-headleft">
+							<div class="hd">${vo.loanTitle!''}<em>${vo.loanStatusStr!''}</em></div>
+							<ul class="bd clearfix">
+								<li><h4>借款金额（元）</h4><h1 class="text-warning">${(vo.loanAmt!0)?string(',##0')}</h1></li>
+								<li class="head-list1-li"><h4>借款期限</h4><h1>${vo.loanPeriod!''}<em>${vo.periodStr!''}</em></h1></li>
+								<li><h4>借款利率</h4>
+									<h1 class="text-warning">${(vo.orgRate!0)?string(',##0.00')}<em>%</em>
+									</h1>
+								</li>
+							</ul>
+						</div>
+						<div class="mu-details-headright">
+							<p class=""><em>还款方式</em><span>${vo.repayModeStr}</span></p> 
+							<p class="mt-10"><em>起息日</em><span>${(vo.interestDate?string('yyyy-MM-dd'))!''}</span></p>
+							<p class="mt-10"><em>到期日</em><span>${(vo.periodEndTime?string('yyyy-MM-dd'))!''}</span></p>
+							<p class="mt-10"><em>协议</em><span><a target="_blank" href="${tzp.getContextPath()}/member/invest/view/${vo.loanId!''}?contractType=13" class="text-primary">《借款协议》</a> </span></p>
+						</div>
+					</div>
+					<!--  TODO  -->
+				</div>
+				<div class="mu-details-module user-shadow mt-20" >
+					<div class="hd"><em>还款计划</em></div>
+					<div class="bd">
+						<table class="table mu-table text-c">
+							<thead>
+								<tr>
+									<th>期数</th>
+									<th>还款日</th>
+									<th>本金</th>
+									<th>利息</th>
+									<th>状态</th>
+									<!-- <th>操作</th> -->
+								</tr>
+							</thead>
+							<tbody>
+							<#if (loanRepaymentPlans)?? && loanRepaymentPlans?size gt 0>
+								 <#list loanRepaymentPlans as lrps>
+									<tr>
+									<td>${lrps.planPeriod!''}</td>
+									<td>${(lrps.periodEndTime?string('yyyy-MM-dd'))!''}</td>
+									<td>${(((lrps.planPayPrincipal)!0)?string("#,##0.00"))!'0.00'}</td>
+									<td>${(((lrps.planPayInterest)!0)?string("#,##0.00"))!'0.00'}</td>
+									<td>${(lrps.repaymentStatusStr)!''}</td>
+									<!-- <td></td> -->
+									</tr>
+								</#list>
+							<#else>
+								<tr><td colspan="7"><img style="margin:15px 0" class="record" src="/public/images/user/record.png?v=9113ae7"></td></tr>
+							</#if>
+							</tbody>
+						</table>
+						<input name="pageSize" type="hidden" id="pageSize" value="5" />
+						<input name="pageNo" type="hidden" id="pageNo" value="1" />
+	                   	<div id="laypage" class="page pagination" style="display: none;"></div>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="m-layer mu-loan-layer" id="advanceRepayLayer">
+	<div class="hd">确认提前还款？</div>
+	<ul class="infolist mt-20" id="aheadRepaytips">
+		<li><em>还款总额</em>5,000.00</li>
+		<li><em>本期应还本金</em>5,000.00</li>
+		<li><em>本期应还利息</em>5,000.00</li>
+		<li><em>剩余期数未还本金</em>5,000.00</li>
+		<li><em>提前还款违约金</em>5,000.00</li>
+	</ul>
+	<div class="text-muted mt-20">注：提前还款违约金 = 剩余期数未还本金 x 0.4%</div>
+	<div class="btndiv mt-20"><a href="javascript:;" class="btn btn-cancel" onclick="layer.closeAll()">取消</a>
+		<a href="javascript:;" class="btn btn-info btn-subscription disabled" id="submitSubscriptionBtn" data-loading-text="还款中..." onclick="advanceRepay()">确认</a>
+		</div>
+</div>
+<div class="m-layer mu-loan-layer" id="repayConfirmLayer">
+	<div class="hd">确认执行以下还款操作吗？</div>
+	<div class="desc mt-20" id="repayConfirmDesc"></div>
+	<div class="btndiv mt-20"><a href="javascript:;" class="btn btn-cancel" onclick="layer.closeAll()">取消</a>
+		<a href="javascript:;" class="btn btn-info btn-subscription disabled" id="submitSubscriptionBtn" data-loading-text="还款中..." onclick="confirmRepay()">确认</a></div>
+</div>
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script>
+<script type="text/javascript">
+var totalCount = 0;
+var pageSize = $.trim($('#pageSize').val());
+var investId = '${(vo.investId)!''}';
+var initFlat = [false,false,false,false];
+$(function () {
+	initInvestData();
+})
+
+//分页
+function initPage() {
+    $("#laypage").pagination({
+        totalCount: totalCount,
+        pageSize: pageSize,
+        clickEvent: function (page_index, _this) {
+            $("#pageNo").val(page_index + 1);
+            initInvestData();
+        }
+    });
+}
+function advanceRepayLayer(){
+	$.ajax({
+		url: basePath + '/member/loan/aarp',
+	    type: 'post',
+	    dataType: 'json',
+	    data: {loanId:"${vo.loanId!''}"},
+		cache:false,
+		async:false,
+		success:function(data){
+			var result = $.parseJSON(data); 
+			var html=[];
+			if(result.success){
+				$("#aheadRepaytips").empty();
+				html.push('<li><em>还款总额</em>',formatCurrency(result.data[0].aheadTotalAmt),'元</li>');
+				html.push('<li><em>本期应还本金</em>',formatCurrency(result.data[0].curPrincipal),'元</li>');
+				html.push('<li><em>本期应还利息</em>',formatCurrency(result.data[0].currPayInterest),'元</li>');
+				html.push('<li><em>剩余期数未还本金</em>',formatCurrency(result.data[0].remainTotalPrincipal),'元</li>');
+				html.push('<li><em>提前还款违约金</em>',formatCurrency(result.data[0].penaltyAmt),'元</li>');
+				$("#aheadRepaytips").html(html.join(''));
+				layer.open({
+				  type: 1,
+				  area: ['420px', 'auto'], //宽高
+				  title:false,
+				  closeBtn:false,
+				  content:$("#advanceRepayLayer")
+				});
+			}
+	 	}
+	}); 
+	
+	
+
+}
+function advanceRepay(){
+	$.ajax({
+        url: basePath + '/member/loan/confirmRepay',
+        type: 'post',
+        dataType: 'json',
+        data: {loanId:"${vo.loanId!''}",repayWay:"1"},
+        cache: false,
+        async: false,
+        success: function (data) {
+            var result = $.parseJSON(data);
+            layer.msg(result.msg);
+            layer.closeAll();
+            location.replace(location.href)
+        }
+        
+    });
+}
+function repayConfirmLayer(desc){
+	$("#repayConfirmDesc").html(desc);
+	layer.open({
+		  type: 1,
+		  area: ['420px', 'auto'], //宽高
+		  title:false,
+		  closeBtn:false,
+		  content:$("#repayConfirmLayer")
+		});
+}
+//还款
+function confirmRepay(){
+	if(1==2){//余额不足 //TODO
+		window.location=basePath+'loan/user_recharge';
+	}else{
+		//TODO
+		layer.closeAll();
+		layer.msg("还款成功");
+	}
+}
+</script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

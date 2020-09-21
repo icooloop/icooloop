@@ -1,0 +1,66 @@
+body {
+    font-family: "Conv_HelveticaNeueLTStd-Lt", "Microsoft Yahei", "Hiragino Sans GB", "Helvetica Neue", Helvetica, tahoma, arial, Verdana, sans-serif, "WenQuanYi Micro Hei";
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+}
+
+.main-content {
+    position: relative;
+    background: url(../../../../public/images/activity/9year/hlkg.jpg) no-repeat top center;
+    height: 1504px;
+}
+
+.main-content .layer {
+    position: absolute;
+    width: 100%;
+    top: 600px;
+    left: 0;
+}
+
+.main-content .layer .container {
+    width: 960px;
+    margin: 0 auto;
+
+}
+
+.main-content .layer p.info {
+    color: #ffd9ba;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.main-content .layer table {
+    background: #ffeedb;
+    border-collapse: collapse;
+    border-spacing: 0;
+    color: #c80606;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    margin: 0 0 70px;
+}
+.main-content .layer table tr:nth-child(2n+1) td{
+    background: #ffd4a4;
+}
+.main-content .layer table tr td {
+    border: 1px solid #ec1a14;
+    line-height: 62px;
+}
+
+.main-content .layer .explain {
+    color: #fff3d8;
+}
+
+.main-content .layer .explain h3 {
+    margin: 0 0 25px;
+}
+
+.main-content .layer .explain ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.main-content .layer .explain ul li{
+    margin:0 0 10px;
+}

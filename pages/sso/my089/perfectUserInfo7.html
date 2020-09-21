@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<title>账户信息同步-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+<#include "/include/style_new.html" />
+<!-- 页面样式 -->
+<link rel="stylesheet"
+	href="${tzp.getContextPath()}/src/css/pages/account/auto.css?v=aa18bac">
+</head>
+<body>
+	<!-- header -->
+	<#include "/include/login_header.html" />
+	<!-- 页面开始 -->
+	<div class="auto-layer">
+			<form  class="form-horizontal company-form" id="modalForm" method="post">
+			<input type="hidden" id="type" name="type" value="7"> <input
+				type="hidden" id="userId" name="userId"
+				value="${(userInfo.userId)!''}">
+			<input
+				type="hidden" id="hluserDES" name="hluserDES"
+				value="${(hluserDES)!''}">		
+			<input
+				type="hidden" id="my089Uuid" name="my089Uuid"
+				value="${(my089Uuid)!''}">				
+			<div class="center-block auto-container">
+
+				<h3 class="auto-title text-center">账户信息同步</h3>
+				<p class="text-primary text-center progress-info">您的身份信息已在亿钱贷注册</p>
+				<ul class="yqd-info">
+					<li class="text-info"><span>手机号码：</span>${(userRegister.userPhone)!''}</li>
+					<li class="text-info"><span>证件号码：</span>${(userInfo.userIdno)!''}(${(userInfo.realName)!''})</li>
+				</ul> 
+				<hr class="split" />
+				<p class="text-info text-center">验证以下亿钱贷账户的登录密码，即可将红岭账户与亿钱贷账户绑定授权登录</p>
+				 <ul class="yqd-info">
+		            <li class="text-info"><span>用户账号：</span>${(userRegister.userLoginName)!''}</li>
+		            <li class="text-info"><span>手机号码：</span>${(userRegister.userPhone)!''}</li>
+		            <li class="text-info"><span>登录密码：</span><input class="form-control" id="loginPassword" type="password" autocomplete="off" name="loginPassword"
+											placeholder="请输入亿钱贷登录密码" /></li>
+		        </ul>
+				<a href="#" id="login" class="btn btn-primary btn-block btn-lg">立即登录</a>
+			</div>
+		</form>
+	</div>
+	<#include "/include/bottom_script.html" />
+	<!-- 页面js -->
+	<script type="text/javascript">
+	$("#login").click(function(){
+		$("form").submit();
+		return false;
+	});
+	</script>
+	<script src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.js?v=eb7ebdc"></script>
+	<script src="${tzp.getContextPath()}/src/js/tools/validate_cn.js?v=10c4607"></script>
+	<script src="${tzp.getContextPath()}/src/js/plugins/jquery.CountDown.js?v=0f45807"></script>
+	<!-- 页面js -->
+	<script>
+	var validateModalForm=$('#modalForm').validate({
+		 keyup:false, 
+		invalidHandler: function (form, validator) { // 错误提示
+	            $.each(validator.errorList, function (key, value) {
+	                $("#errorMsg").text(value.message).parent().parent()
+	                    .css('visibility', 'visible');
+	                return false;
+	            });
+	        },
+	        // 设置错误信息
+	        messages: {
+	        	loginPassword: {
+	                required: "请输入亿钱贷登录密码" 
+	               
+	            },
+	            
+	        },
+		 submitHandler: function (form) { //验证通过提交表单
+	            $("#submit").addClass("disabled").attr("disabled", true);
+	            $.ajax({
+	                type : "post",
+	                dataType : "text",
+	                url : basePath + '/sso/my089-perfect',
+	                data : $(form).serialize(),
+	                success : function(data) {
+	                	if(data.indexOf("sso") != -1){
+	                		//跳转路径
+	                		window.location.href =basePath+"/"+data; 
+	                	}else{
+	                		 layer.msg(data);
+	                	}
+	                   
+	                   
+	                    $("#submit").addClass("disabled").attr("disabled", false);
+	                }
+	            });
+	        }
+		
+	});
+	</script>
+	<!-- 统计 -->
+	<#include "/include/count.html" />
+</body>
+</html>

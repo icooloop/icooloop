@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>推荐奖励-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+</head>
+<body class="bgmain">
+<!-- 页面开始 -->
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+	<div class="m-user">
+		<div class="wp clearfix pt-20">
+			<#include "/userCenter/include/userMenu_up.html" />
+			<div class="mu-right mu-recommend">
+				<div class="">
+					<div class="mu-tabs">
+						<ul class="tabs clearfix" id="recommendTabs">
+							<li class="on" data-type="1"><a href="javascript:changeTab(1);">推荐活动</a></li>
+							<li data-type="2"><a href="javascript:changeTab(2);">奖励明细</a></li>
+						</ul>
+						<div class="more"><a href="${tzp.getContextPath()}/spa/event/recommend" class="text-primary">奖励规则&gt;</a></div>
+					</div>
+					<div class="mu-recommend-total">
+						<ul class="clearfix">
+							<li><h4>${(todayAmt!0)?string(',##0.00')}</h4>
+	        					<p>昨日奖励（元）</p>
+	        				</li>
+							<li><h4>${(allAmt!0)?string(',##0.00')}</h4>
+	        					<p>累计奖励（元）</p>
+	        				</li>
+							<li><h4><em>已出借</em>${(investCount!0)}<em class="ml-30">已注册</em>${(recomCount!0)}</h4>
+	        					<p>成功推荐（人）</p>
+	        				</li>
+						</ul>
+                        <div class="more" id="moreDetail"><a href="javascript:changeTab(2);" class="text-primary">查看更多&gt;&gt;</a></div>
+					</div>
+				</div>
+				
+				<#if isMax??>
+					<#if isMax=='0'>
+						<div class="text-c l20 c-666 f-16 mt-20">当前被推荐人待收本金之和为<span class="text-warning">${(planAmt!0)?string(',##0.00')}</span>元，
+						还差<span class="text-warning">${(diff!0)?string(',##0.00')}</span>元即可享受年化<span class="text-warning">${awardRate!0}%</span>现金奖励</div>
+					<#else>
+						<div class="text-c l20 c-666 f-16 mt-20">
+						您当前已享受年化<span class="text-warning">${awardRate!0}%</span>现金奖励，达到最高等级
+						</div>
+	                </#if>
+	             <#else>
+	             <#if  noaward??>
+	             	<div class="text-c l20 c-666 f-16 mt-20">
+						您当前账户待收不足<span class="text-warning">5,000.00</span>元，暂时无法领取推荐奖励，请速速充值~
+						</div>
+	             </#if>
+                </#if>
+                <section class="recommendContent" id="recommendContent1">
+                    <div class=" mt-20">
+                        <div class="mu-title"><h6>立即邀请得奖励</h6> 
+                          <#if userType?? && userType=='1'>
+			        <div class="employee-btn"><img alt="" src="${tzp.getContextPath()}/public/images/user/heart.svg">内部员工推荐活动</div>
+			        </#if>
+                        </div>
+                        <div class="mu-recommend-invest">
+                            <div class="step">将您的专属邀请链接 / 微信二维码分享给好友<em>＞</em>好友通过链接注册并成功出借<em>＞</em>获取推荐奖励</div>
+                            <h2>推广码邀请</h2>
+                            <p class="mt-10">这是您的专属推荐码：<span class="text-import">${(recomCode!'')}</span> 或<span class="text-import">${_p2p_member_user.userMobile!''}</span></p>
+                            <h2>邀请链接</h2>
+                            <div class="investdesc mt-10">您的专属邀请链接: https://www.yiqiandai.com/secure/land?code=${(recomCode!'')}<a href="javascript:;" class="text-primary ml-40" id="copyLinkBtn" data-clipboard-target="#foo"><i class="icon-font icon-lianjie pr-10"></i>复制链接发送好友</a></div>
+                            <h2>社交应用邀请</h2>
+                            <ul class="sharelist clearfix">
+                                <li><a href="javascript:shareWeixin();" id="share_weixin"><i class="icon-font icon-weixin"></i>
+                                    <p>分享至微信</p></a></li>
+                                <li><a href="javascript:shareQQ();" id="share_qq"><i class="icon-font icon-qq"></i>
+                                    <p>分享至qq</p></a></li>
+                                <li><a href="javascript:shareQZone();" id="share_qqzone"><i class="icon-font icon-qqkongjian"></i>
+                                    <p>分享至qq空间</p></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section class="recommendContent" id="recommendContent2" style="display:none;">
+                    <div class="mu-recommend-details  mt-20">
+                        <div class="hd mu-tabs" id="">
+                            <ul class="tabs clearfix">
+                                <li class="on" type="1">我的推荐奖励</li>
+                                <li type="0">我的邀请好友</li>
+                            </ul>
+                          
+                            
+                      <#if userType?? && userType=='1'>
+			        <div class="employee-btn"><img alt="" src="${tzp.getContextPath()}/public/images/user/heart.svg">内部员工推荐活动</div>
+			        </#if>
+                        </div>
+                        <div class="bd">
+                            <section style="display:none;">
+                               <table class="mu-table text-c">
+                                    <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>被推荐人账号</th>
+                                            <th>姓名</th>
+                                            <th>注册日期</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="userData">
+                                        
+                                    </tbody>
+                                </table>
+                                    <div class="page text-center">
+                                        <input name="pageNo" type="hidden" id="pageNo" value="1" />
+                                        <input name="pageSize" type="hidden" id="pageSize" value="5" />
+                                        <div id="laypage" class="pagination" ></div>
+                                    </div>
+                            </section>
+                            <section>
+                                 <div class="desc1"><input type="text" readonly id="recommenddate" name="recommenddate" class="input-date laydate-icon" value="${.now?string('yyyy-MM')}">本月合计奖励金额：<span class="text-info" id="monthTotal">0.00</span>元</div>
+                                <table class="mu-table text-c mt-20">
+                                    <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                         <th>奖励金额</th>
+                                        <th>日期</th>
+                                        <th id="planAmt_th">类型</th>
+                                     
+                                    </tr>
+                                    </thead>
+                                    <tbody id="awardData">
+                                   
+                                    </tbody>
+                                </table>
+                                <div class="page2 text-center">
+                                    <div id="laypage2" class="pagination" ></div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+                <div class="mu-tip  mt-20">
+                    <div class="hd">温馨提示</div>
+                    <div class="bd">
+                        <p>1、被推荐人出借时，推荐人账户待收需≥5000元才可享受奖励一和奖励二，符合条件的用户可同时享有以上三项奖励。</p>
+						<p>2、被推荐人通过推荐人分享的页面注册，或在注册时填写推荐人的推荐码或手机号码，注册成功即建立推荐关系。</p>
+						<p>3、自2018年10月1日起，建立的推荐关系，推荐奖励有效期为180天，2018年10月1日之前建立的推荐关系，推荐奖励有效期保留原有规则的一年期。</p>
+						<p>4、推荐活动时间：2018年10月1日-2019年6月30日。</p>
+						<p>5、本活动最终解释权归亿钱贷所有，如有调整，将以公告形式通知。</p>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="m-layer mu-recommend-wxshare" id="shareWeixin">
+    <div class="bd">
+        <div class="close" onclick="layer.closeAll()"><i class="icon-font icon-close"></i></div>
+        <div class="desc">邀请好友扫描以下二维码</div>
+        <div class="pic"><img src="${tzp.getContextPath()}/qrcode/recom?v=3b47618" alt="" height="150"></div>
+    </div>
+</div>
+<input type="text" class="passwordhide" id="foo" value="https://www.yiqiandai.com/secure/land?code=${(recomCode!'')}">
+<input type="hidden" id="recomCode" value="${(recomCode!'')}">
+
+<!--页面js-->
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/clipboard/clipboard.min.js?v=cc0ee00"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/laydate/laydate.js?v=eb332e0"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/user/recommend_up.js?v=0c86610"></script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

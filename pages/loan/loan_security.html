@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>账户信息-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+    
+   	<#if (_p2p_member_user??&&_p2p_member_user.userType=='5')  ||  (_p2p_member_user??&&_p2p_member_user.userType=='3')>
+		<#include "/loan/include/style.html" />
+	<#elseif (_p2p_member_user??&&_p2p_member_user.userType=='4')>
+		<#include "/org/include/style.html" />
+	</#if>
+</head>
+<body class="bgmain">
+<!-- 页面开始 -->
+<#include "/loan/include/header.html" />
+<div class="g-mainer">
+	<div class="m-user">
+		<div class="wp clearfix">
+			<div class="breadcrumb"><span><a href="${tzp.getContextPath()}/">亿钱贷首页</a></span>&gt;<span><a href="${tzp.getContextPath()}/member/account/index">我的账户</a></span>&gt;<span>账户总览</span></div>
+		 <#if (_p2p_member_user??&&_p2p_member_user.userType=='5')  ||  (_p2p_member_user??&&_p2p_member_user.userType=='3')>
+		 <#include "/loan/include/userMenu.html" />
+		<#elseif (_p2p_member_user??&&_p2p_member_user.userType=='4')>
+		<#include "/org/include/userMenu.html" />
+		</#if>
+			
+			<div class="mu-right">
+                <div class="user-shadow">
+                	<div class="mu-title"><h4>账户信息</h4><div class="more">注册时间：${(regTime?string('yyyy-MM-dd HH:mm'))!'无'} </div></div>
+	                <div class="mu-security">
+	                	<div class="item">
+	               	        <strong><i class="ideOn"></i>已设置</strong><em>用户名</em><span>可使用用户名或手机号登录亿钱贷</span><i>${_p2p_member_user.nickName!''}</i>
+	               	        <#if canUpdateUsername?? && canUpdateUsername=="1"><a id="changeUserNameBtn" href="javascript:;;">修改</a></#if>
+	                    </div>
+	                    <div class="item">
+	                        <strong><i class="ideOn"></i>已绑定</strong><em>绑定手机号</em><span>取现、重置登录密码等操作需手机验证码</span>
+	                        <i>${userSecurity.phone!''}</i>
+	                        <a href="${tzp.getContextPath()}/member/secure/phone/update" target="_blank">修改</a>
+	                    </div>
+	                    
+	                    <div class="item">
+		                        <strong><i class="ideOn"></i>已设置</strong><em>登录密码 </em><span>登录亿钱贷账户密码 </span>
+		                        <i></i>
+		                        <a href="${tzp.getContextPath()}/member/secure/password/update" target="_blank">修改</a>
+		               </div>
+	                    <#if _p2p_member_user??&&_p2p_member_user.isDepositary!='1'>
+	                       <div class="item">
+	                        <strong><i></i>未开通</strong><em>存管账户 </em><span>与新网银行合作资金存管，保障用户资金</span>
+	                        <i>(${xwAuditStatus!''})</i>
+	                    	<a href="${tzp.getContextPath()}/member/depository/form" target="_blank">开通存管</a>
+	                    	</div>
+	                    <#else>
+		                    <div class="item">
+		                        <strong><i class="ideOn"></i>已开通</strong><em>存管账户 </em><span>与新网银行合作资金存管，保障用户资金</span>
+		                        <i>(${xwAuditStatus!''})</i>
+		                    </div>
+	                    </#if>
+	                    
+	                    <div class="item">
+	                    	<#if (userSecurity?? && userSecurity.checkName) >
+	                        	<strong><i class="ideOn"></i>已认证</strong><em>实名认证</em><span>保障账户安全，确认出借身份</span>
+	                        <#else>
+	                        	<#if _p2p_member_user??&&(_p2p_member_user.isDepositary=='3' || _p2p_member_user.isDepositary=='4')>
+	                        		<strong><i class="waiting"></i>审核中</strong><em>实名认证</em><span>保障账户安全，确认借款人身份</span>
+	                        	<#else>
+	                        		<strong><i></i>未认证</strong><em>实名认证</em><span>保障账户安全，确认借款人身份</span>
+								</#if>
+		                        <#if  userType??&&(userType=='5' || userType=='1')&&xwAuditValue?? && ( xwAuditValue=='AUDIT' || xwAuditValue=='BACK') >
+	                        			<a href="${tzp.getContextPath()}/member/auth/identify" target="_blank">上传证件照</a>
+	                        	</#if>
+	                        </#if>
+	                        
+	                        
+	                        <#if (userSecurity?? && userSecurity.checkName) >
+		                       	 <i class="line2">${companyName!''}<br>(${businessLicense!''})</i>
+		                       	   <a href="${tzp.getContextPath()}/member/secure/updateEntinfo" target="_blank">修改</a>
+	                        <#else>
+		                        <i></i>
+		                        	开通存管时同步完成
+	                        </#if> 
+	                    </div>
+	                    <div class="item">
+	                        <strong>
+	                        <#if userSecurity??&&userSecurity.authListStatus??&&userSecurity.authListStatus>
+	                        	<i class="ideOn"></i>已授权
+	                        <#else>
+	                        	<i></i>未授权
+	                        </#if>
+	                        </strong><em>授权业务</em><span>授权投标以及认购债权</span>
+	                      
+	                        <#if _p2p_member_user??&&_p2p_member_user.isDepositary=='1'>
+	                        <#if userSecurity??&&userSecurity.authListStatus??&&userSecurity.authListStatus>
+	                        	<a href="${tzp.getContextPath()}/member/secure/author" target="_blank">开启授权</a>
+	                        <#else>
+	                          <i><img alt="" src="${tzp.getContextPath()}/public/images/user/warn.png?v=44e698f" class="mr-5">开通存管时同步完成</i>
+	                        	<a href="${tzp.getContextPath()}/member/secure/author" target="_blank">开启授权</a>
+	                        </#if>
+	                        </#if>
+	                    </div>
+	                    
+	                    <div class="item">
+                    	<#if (userSecurity.bindBank ) >
+	                    	<strong><i class="ideOn"></i>已绑定</strong><em>绑定银行卡</em><span>用于快捷支付充值、提现</span></strong>
+	                        <i id="bank_text_id">${(bankName)!''} 尾号${(userBank.accountStar?substring(14))!''}</i>
+	                 <!--        <#if unbindFlag?? >
+	                        <a href="javascript:void(0)" onclick="unbindSubmit('${(userBank.bankId)!''}')">解绑</a> 
+	                        </#if> -->
+	                        <#if userBank??&&userBank.undoStatus??&&userBank.undoStatus=='1'>
+	                        	 <a href="${tzp.getContextPath()}/member/secure/bankcard/unbind?bankId='${(userBank.bankId)!''}'" >解绑</a>
+	                        </#if>
+	                        <#if (userType??&&userType=='5') && (xwAuditValue?? && xwAuditValue =='PASSED') && (authSign?? && authSign =='0')>
+	                        	<a href="javascript:;" onclick="layerPayback()">代扣签约</a>
+	                        </#if>
+	                        <#if userType??&&userType=='5'>
+	                        	<#if userBank??&&userBank.changeStatus??&&userBank.changeStatus=='1'>
+		                          <a href="${tzp.getContextPath()}/member/secure/changeCard">更换</a>
+		                        </#if>	
+	                        <#else>
+	                        	<#if userBank??&&userBank.changeStatus??&&userBank.changeStatus=='1'>
+		                          <a href="${tzp.getContextPath()}/member/secure/entChangCard-form">更换</a> 
+		                        </#if>
+	                        </#if>
+                    	<#else>
+                    	
+                    		<#if _p2p_member_user??&&(_p2p_member_user.isDepositary=='3' || _p2p_member_user.isDepositary=='4')>
+	                        		<strong><i class="waiting"></i>审核中</strong><em>绑定银行卡</em><span>用于快捷支付充值、提现</span>
+			                        <i></i>
+			                        <#if _p2p_member_user??&&_p2p_member_user.isDepositary=='1'&&(!userSecurity.bindBank)>
+			                        	 <a href="${tzp.getContextPath()}/member/secure/entChangCard-form">重新绑定</a> 
+			                        <#else>
+			                        	 开通存管时同步完成
+			                        </#if>
+			                     		
+	                        <#else>
+	                        		<strong><i></i>未绑定</strong><em>绑定银行卡</em><span>用于快捷支付充值、提现</span>
+			                        <i></i>
+			                     	<#if _p2p_member_user??&&_p2p_member_user.isDepositary=='1'&&(!userSecurity.bindBank)>
+			                        	 <a href="${tzp.getContextPath()}/member/secure/entChangCard-form">重新绑定</a> 
+			                        <#else>
+			                        	 开通存管时同步完成
+			                        </#if>
+							</#if>
+	                    	
+                    	</#if>
+	                    </div>
+	                    <div class="item">
+	                        <strong>
+	                        <#if userSecurity.password><i class="ideOn"></i>已设置
+	                        <#else>
+		                        <#if _p2p_member_user??&&(_p2p_member_user.isDepositary=='3' || _p2p_member_user.isDepositary=='4')>
+		                        	<i class="waiting"></i>审核中
+		                        <#else>
+		                        	<i></i>未设置
+								</#if>
+	                        </#if>
+	                        </strong><em>交易密码 </em>
+	                        <span>提现时验证，保护账户资金安全</span>
+	                        <i></i>
+	                        
+	                         <#if userSecurity.password>
+	                         <a href="${tzp.getContextPath()}/member/secure/xwtrpwd" target="_blank">修改</a>
+	                         <a href="${tzp.getContextPath()}/member/secure/xwtrpwd?type=1" target="_blank">找回</a>
+	                        <#else>
+	                        	  开通存管时同步完成
+	                        </#if>
+	                    </div>
+                   </div> 
+                </div>
+            </div>
+		</div>
+	</div>
+</div>
+<div class="m-layer" id="payback">
+	<form class="m-form m-form-payback" action="">
+		<div class="infotip" id="infotip"></div>
+		<div class="bd">
+			<div class="formline mt-15">
+				<div class="formlabel">银行卡</div>
+				<div class="forminput"><input type="text" class="input-text readonly" value="${(bankName)!''} 尾号${(userBank.accountStar?substring(14))!''}" readonly="readonly"></div>
+			</div>
+			<div class="formline mt-15">
+				<div class="formlabel">手机号</div>
+				<div class="forminput"><input type="text" class="input-text readonly" value="${userSecurity.phone!''}" readonly="readonly"></div>
+			</div>
+			<div class="formline mt-15">
+				<div class="formlabel">验证码</div>
+				<div class="forminput"><input type="text" class="input-text" placeholder="6位数字" id="phoneCode" name="phoneCode" maxlength="6" onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" onblur="checkPhoneCode()"></div>
+				<span class="icontip inputtip-code icon-font icon-error" for="phoneCode"></span>
+				<div class="codebtn" id="codebtn"><a href="javascript:;" class="c-link" onclick="sendPaybackCode()">获取验证码</a></div>
+			</div>
+			<div class="tipdiv mt-10" id="formtip1"></div>
+			<div class="formline mt-10">
+				<button type="button" class="btn btn-submit" id="submitpayback" onclick="submitPayback()">确定</button>
+			</div>
+		</div>
+	</form>
+</div>
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script type="text/javascript">
+    $(function(){
+    	$("#nav_member").addClass("on");
+    });
+    function layerPayback(){
+    	layer.open({
+   		  type: 1,
+   		  title:'签约银行卡代扣还款',
+   		  area: ['420px', '390px'], 
+   		  content:$("#payback")
+   		});
+    }
+    function sendPaybackCode(){
+    	 $.ajax({
+            type: "post",
+            url: basePath + '/member/secure/sign/verify-codevoice',
+            data: {},
+            success: function (data) { 
+            	console.log(data);
+                if (data.success) {
+                    disableButtonByClock(60);
+                    $("#infotip").html('验证码已发送到您的手机，5分钟内输入有效，请勿泄露');
+                } else {
+                	$("#formtip1").html('<span class="errortip"><i class="icon-font icon-error"></i>'+data.msg+'</span>');
+                }
+            }
+         });
+    }
+    
+    function disableButtonByClock(seconds) {
+   		$("#codebtn").html("还剩"+seconds+"秒");
+   	    var time = parseInt(seconds);                   //将传入的参数转为整型数字
+   	    if (time === 0) {
+   	        $("#codebtn").html('<a  class="c-link" onclick="sendPaybackCode()" href="javascript:;">重新获取</a>');
+   	    } else {
+   	        setTimeout("disableButtonByClock(" + (time - 1) + ")", 1000);  //1秒以后 再次调用本身这个方法
+   	    }
+    }
+    function checkPhoneCode() {
+    	var icontip=$(".icontip[for='phoneCode']");
+        var th = $("input[name='phoneCode']");
+        var p = $("#formtip1");
+        var v = $.trim(th.val());
+       	p.html('');
+       	icontip.hide();
+       	th.removeClass("Validform_error").removeClass("Validform_right");
+        var codeReg = /^[0-9]{6}$/;
+        var isNullReg = /^[\s]{0,}$/;
+        if (isNullReg.test(v)) {
+        	th.addClass("Validform_error");
+            p.html('<span class="errortip"><i class="icon-font icon-error"></i>请输入手机验证码</span>');
+            icontip.attr("class","icontip inputtip-code icon-font icon-error").show();
+            return false;
+        } else if (!codeReg.test(v)) {
+        	th.addClass("Validform_error");
+            p.html('<span class="errortip"><i class="icon-font icon-error"></i>请输入6位手机验证码</span>');
+            icontip.attr("class","icontip inputtip-code icon-font icon-error").show();
+            return false;
+        }
+        th.addClass("Validform_right");
+       	icontip.attr("class","icontip inputtip-code icon-font icon-right").show();
+        p.html('');
+        return true;
+    }
+    
+    function submitPayback(){
+    	if(checkPhoneCode()){
+    		$("#submitpayback").addClass("disabled").attr('disabled',true);
+    		$.ajax({
+            type: "post",
+            url: basePath + '/member/secure/sign/verify-confirm',
+            data: {phoneCode:$("#phoneCode").val()},
+            success: function (data) { 
+        		$("#submitpayback").removeClass("disabled").attr('disabled',false);
+        		console.log(data);
+                if (data.success) {
+                	layer.closeAll();
+                	layer.msg("代扣还款签约成功");
+                	setTimeout(function(){
+                		window.location.reload();
+                	},1500)
+                } else {
+                	$("#formtip1").html('<span class="errortip"><i class="icon-font icon-error"></i>'+data.msg+'</span>');
+                }
+           }
+         });
+    	}
+    }
+    
+    $('#changeUserNameBtn').on('click',function(){
+    	 layer.prompt({title: '修改用户名',content:'<input type="text" class="layui-layer-input" style="margin:0 0 8px;" placeholder="请输入新的用户名" /><p class="text-danger" style="font-size: 12px">*用户名仅能修改一次</p>', formType: 0,minlength:6,maxlength: 18}, function(userName, index){
+             $.ajax({
+                 type: "post",
+                 dataType: "json",
+                 url: basePath +"/member/secure/username/update",
+                 data: {"userName":userName},
+                 success: function (data) {
+                 	console.log(data);
+                     if (data.success) {
+                     	layer.msg('修改成功',{}, function(){
+                     		window.location.href=basePath+"/member/secure/security";
+     					});
+                     	
+                     } else {
+                         layer.msg(data.msg, {icon: 5});
+                     }
+                 }
+             });
+
+         });
+    })
+    function unbindSubmit(bankId){
+    	layer.confirm("确认解绑 "+$("#bank_text_id").html()+" 银行卡吗?",{},function(){
+            $.ajax({
+                type: "post",
+                dataType: "json",
+                url: basePath +"/member/secure/bankcard/unbind",
+                data: {"bankId":bankId},
+                success: function (data) {
+                    if (data.success) {
+                    	layer.msg("解绑成功!",{},function(){
+                    		window.location.reload();
+                    	});
+                
+                    } else {
+                        layer.msg(data.msg, {icon: 5});
+                    }                            
+                }
+            });
+    	});
+    }
+    
+    
+    
+</script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

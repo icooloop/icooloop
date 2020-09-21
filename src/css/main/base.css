@@ -1,0 +1,191 @@
+@charset "utf-8"; 
+/*1 重定义浏览器默认样式*/
+*{word-wrap:break-word}
+html,body,h1,h2,h3,h4,h5,h6,hr,p,iframe,dl,dt,dd,ul,ol,li,pre,form,button,input,textarea,th,td,fieldset{margin:0;padding:0}
+ul,ol,dl{list-style-type:none}
+html,body{*position:static}
+html{font-family: sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
+address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal}
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit}
+input,button{overflow: visible;vertical-align:middle;outline:none}
+body,th,td,button,input,select,textarea{font-family:"Conv_Helvetica",Microsoft Yahei,PingFang SC,Helvetica Neue,Helvetica,Hiragino Sans GB,tahoma,arial,Verdana,sans-serif,WenQuanYi Micro Hei,"\5B8B\4F53";font-size:14px;color: #333;-webkit-font-smoothing:antialiased;-moz-font-smoothing:antialiased}
+input,select,textarea{color:#555;background-color:#fff; border:solid 1px #ddd;}
+body{line-height:1.6}
+h1,h2,h3,h4,h5,h6{font-size:100%}
+a,area{outline:none;blr:expression(this.onFocus=this.blur())}
+a{text-decoration:none;cursor: pointer}
+a:hover{text-decoration:underline;outline:none}
+a.ie6:hover{zoom:1}
+a:focus{outline:none}
+a:hover,a:active{outline:none}:focus{outline:none}
+sub,sup{vertical-align:baseline}
+/*img*/
+img{border:0;vertical-align:middle}
+a img,img{-ms-interpolation-mode:bicubic}
+.img-responsive{max-width: 100%;height: auto}
+.passwordhide{opacity:0;position:absolute;left:-1000px;top:-10000px;z-index:-100;}
+/*IE下a:hover 背景闪烁*/
+*html{overflow:-moz-scrollbars-vertical;zoom:expression(function(ele){ele.style.zoom = "1";document.execCommand("BackgroundImageCache",false,true)}(this))}
+
+header,footer,section,aside,details,menu,article,section,nav,address,hgroup,figure,figcaption,legend{display:block;margin:0;padding:0}time{display:inline}
+audio,canvas,video{display:inline-block;*display:inline;*zoom:1}
+/*清除浮动
+*/
+.cl:after,.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}.cl,.clearfix{zoom:1}
+
+/*2.3 布局(固定)
+*/
+.container,.wp,.wp2{margin-left:auto; margin-right:auto;text-align:left}
+.wp{width:1080px}
+.wp2{width:1000px}
+.w-980{width:980px}
+.col-1{width:8.33333%}.col-2{width:16.66667%}.col-3{width:25%}.col-4{width:33.33333%}.col-5{width:41.66667%}.col-6{width:50%}.col-7{width:58.33333%}.col-8{width:66.66667%}.col-9{width:75%}.col-10{width:83.33333%}.col-11{width:91.66667%}.col-12{width:100%}
+/*3.1 排版*/
+@font-face {font-family: 'Conv_Helvetica';src: url('/public/font/Helvetica/Helvetica.eot');src: local('☺'), url('/public/font/Helvetica/Helvetica.woff') format('woff'), url('/public/font/Helvetica/Helvetica.ttf') format('truetype'), url('/public/font/Helvetica/Helvetica.svg') format('svg');font-weight: normal;font-style: normal;}
+/*3.1.1 标题
+*/
+h1,h2,h3,h4,h5,h6{font-weight:500;line-height:1;color:inherit}
+h1 small,h2 small,h3 small,h4 small,h5 small,h6 small,h1 .small,h2 .small,h3 .small,h4 .small,h5 .small,h6 .small{font-weight:400;line-height:1;color:#999}
+/*3.1 排版*/
+.uppercase{text-transform:uppercase} /*文字大写*/
+.lowercase{text-transform:lowercase} /*文字小写*/
+.capitalize{text-transform:capitalize} /*首字母大写*/
+/*3.1.3 对齐*/
+.text-l{text-align:left}.text-r{text-align:right}.text-c{text-align:center}
+.va-t{vertical-align:top!important}.va-m{vertical-align:middle!important}.va-b{vertical-align:bottom!important}
+/*3.1.4 定位*/
+.pos-r{position:relative}.pos-a{position:absolute}.pos-f{position:fixed}
+/*3.1.5 浮动
+*/
+.pull-left,.l{float:left!important;_display:inline}.pull-right,.r{float:right!important;_display:inline}
+[class*="span"].r,.row-fluid [class*="span"].r{float:right}
+/*3.1.6 文字单行溢出省略号
+*/
+.text-overflow{overflow: hidden;text-overflow: ellipsis;white-space: nowrap}
+/*3.1.7 线条
+*/
+.line{font-size: 0px; line-height: 0px; border-top: solid 1px #ddd; float: none}
+/*3.1.8 外边距*/
+.mt-0{margin-top:0}.mt-5{margin-top:5px}.mt-10{margin-top:10px}.mt-15{margin-top:15px}.mt-20{margin-top:20px}.mt-25{margin-top:25px}.mt-30{margin-top:30px}.mt-40{margin-top:40px}.mt-50{margin-top:50px}.mt-60{margin-top:60px}.mt-70{margin-top:70px}
+.mb-0{margin-bottom:0}.mb-5{margin-bottom:5px}.mb-10{margin-bottom:10px}.mb-15{margin-bottom:15px}.mb-20{margin-bottom:20px}.mb-25{margin-bottom:25px}.mb-30{margin-bottom:30px}.mb-35{margin-bottom:35px}.mb-40{margin-bottom:40px}.mb-50{margin-bottom:50px}.mb-60{margin-bottom:60px}
+.ml-0{margin-left:0}.ml-5{margin-left:5px}.ml-10{margin-left:10px}.ml-15{margin-left:15px}.ml-20{margin-left:20px}.ml-25{margin-left:25px}.ml-30{margin-left:30px}.ml-40{margin-left:40px}.ml-50{margin-left:50px}.mr-60{margin-right:60px}
+.mr-0{margin-right:0}.mr-5{margin-right:5px}.mr-10{margin-right:10px}.mr-15{margin-right:15px}.mr-20{margin-right:20px}.mr-25{margin-right:25px}.mr-30{margin-right:30px}.mr-40{margin-right:40px}.mr-50{margin-right:50px}.mr-60{margin-right:60px}
+/*3.1.9 内填充*/
+.pd-5{padding:5px}.pd-10{padding:10px}.pd-15{padding:15px}.pd-20{padding:20px}.pd-25{padding:25px}.pd-30{padding:30px}.pd-40{padding:40px}.pd-50{padding:50px}
+.pt-0{padding-top:0}.pt-5{padding-top:5px}.pt-10{padding-top:10px}.pt-15{padding-top:15px}.pt-20{padding-top:20px}.pt-25{padding-top:25px}.pt-30{padding-top:30px}.pt-40{padding-top:40px}.pt-50{padding-top:50px}.pt-60{padding-top:60px}
+.pb-5{padding-bottom:5px}.pb-10{padding-bottom:10px}.pb-15{padding-bottom:15px}.pb-20{padding-bottom:20px}.pb-25{padding-bottom:25px}.pb-30{padding-bottom:30px}.pb-40{padding-bottom:40px}.pb-50{padding-bottom:50px}.pb-60{padding-bottom:60px}.pb-150{padding-bottom:150px}
+.pl-5{padding-left:5px}.pl-10{padding-left:10px}.pl-15{padding-left:15px}.pl-20{padding-left:20px}.pl-25{padding-left:25px}.pl-30{padding-left:30px}.pl-40{padding-left:40px}.pl-50{padding-left:50px}
+.pr-5{padding-right:5px}.pr-10{padding-right:10px}.pr-15{padding-right:15px}.pr-20{padding-right:20px}.pr-25{padding-right:25px}.pr-30{padding-right:30px}.pr-40{padding-right:40px}.pr-50{padding-right:50px}
+.plr-5{padding-left:5px;padding-right:5px;}.plr-10{padding-left:10px;padding-right:10px;}.plr-15{padding-left:15px;padding-right:15px;}.plr-20{padding-left:20px;padding-right:20px;}.plr-25{padding-left:25px;padding-right:25px;}.plr-30{padding-left:30px;padding-right:30px;}.plr-40{padding-left:40px;padding-right:40px;}.plr-50{padding-left:50px;padding-right:50px;}
+/*3.1.10 边框，css3圆角*/
+.bk-gray{border:solid 1px #ddd}
+.radius{border-radius:4px}
+/*3.1.11 css3阴影*/
+.box-shadow{background-color:#fff;border:solid 1px #ddd\9;box-shadow:1px 1px 2px 2px #ddd;}
+.text-shadow{text-shadow:1px 1px 2px 2px #ddd;}
+/*3.1.12 行内分割竖线*/
+.pipe{margin:0 5px;color:#CCC;font-size:10px!important}
+/*3.1.13 文字尺寸*/
+.f-12{font-size:12px}.f-14{font-size:14px}.f-16{font-size:16px}.f-18{font-size:18px}.f-20{font-size:20px}.f-24{font-size:24px}.f-30{font-size:30px}.f-36{font-size:36px}
+/*3.1.14 文字行距*/
+.l16{line-height:16px}.l18{line-height:18px}.l20{line-height:20px}.l22{line-height:22px}.l24{line-height:24px}.l26{line-height:26px}.l28{line-height:28px}.l30{line-height:30px}.l40{line-height:40px}.l50{line-height:50px}.l60{line-height:60px}
+/*3.1.17 固定高度*/
+.h10{height:10px}.h20{height:20px}.h30{height:30px}.h40{height:40px}.h50{height:50px}.h60{height:60px}
+/*3.1.18 文字颜色*/
+.c-red,.c-red a,a.c-red{color:red}
+.c-green,.c-green a,a.c-green{color:green}
+.c-blue,.c-blue a,a.c-blue{color:#2e89de}
+.c-white,.c-white a,a.c-white{color:white}
+.c-black,.c-black a{color:black}
+.c-gray,.c-gray a,a.c-gray{color:gray}
+.c-orange,.c-orange a,a.c-orange{color:#ff7610;}
+/*3.1.19 文字颜色强调*/
+.text-muted{color:#999}a.text-muted:hover{color:#808080}
+.text-primary{color:#3961cd}a.text-primary:hover{color:#2b4da8}
+.text-warning{color:#f29118}a.text-warning:hover{color:#ff7610}
+.text-error{color:#f33}a.text-error:hover{color:#f03}
+.text-danger{color:#c00}a.text-danger:hover{color:#900}
+.text-success{color:#52c41a}a.text-success:hover{color:#0c0}
+.text-info{color:#f29118}a.text-info:hover{color:#ff7610}
+.text-price{color:#f60}a.text-price:hover{color:#f60}
+.text-import{color:#960}a.text-price:hover{color:#960}
+.text-second{color:#666;}a.text-second:hover{color:#666}
+/*3.1.20 缩略语*/
+abbr[title],abbr[data-original-title]{cursor:help;border-bottom:1px dotted #999}
+abbr.initialism{font-size:90%;text-transform:uppercase}
+/*3.1.21 z-index*/
+.zindex1{z-index:100;}.zindex2{z-index:100;}.zindex3{z-index:300;}.zindex4{z-index:400;}.zindex5{z-index:500;}.zindex6{z-index:600;}.zindex7{z-index:700;}.zindex8{z-index:800;}.zindex9{z-index:900;}.zindex10{z-index:1000;}.zindex11{z-index:1100;}.zindex12{z-index:1200;}
+/*3.1.24 隐藏 显示*/
+.hide{display:none}[hidden]{display: none}
+.hidden{display:none!important;visibility:hidden!important}
+.f-hide{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0}
+[class*="span"].hide,.row-fluid [class*="span"].hide{display:none}
+.show{display:block}
+.invisible{visibility:hidden}
+/*
+3.1.25遮罩
+*/
+.mask{position:fixed;top:0;left:0;z-index:1999;width:100%;height:100%;background:url(/public/images/main/backdrop.png) repeat 0 0;transition:all 0.3s ease-in}
+* html .mask{position:absolute;left:expression(documentElement.scrollLeft + documentElement.clientWidth - this.offsetWidth);top:expression(documentElement.scrollTop + documentElement.clientHeight - this.offsetHeight)}
+/*3.3 表格*/
+/*默认table*/
+table{width:100%;empty-cells:show;background-color:transparent;border-collapse:collapse;border-spacing:0}
+table th{text-align:left; font-weight:normal}
+/*带水平线*/
+.table th{font-weight:bold}
+.table th,.table td{padding:8px;line-height:20px}
+.table td{text-align:left}
+.table .table{background-color:#fff}
+/*带横向分割线*/
+.table-border{border-top:1px solid #ddd}
+.table-border th,.table-border td{border-bottom:1px solid #ddd}
+/*th带背景*/
+.table-bg thead th{background-color:#F5FAFE}
+/*带外边框*/
+.table-bordered{border:1px solid #ddd;border-collapse:separate;*border-collapse:collapse;border-left:0}
+.table-bordered th,.table-bordered td{border-left:1px solid #ddd}
+.table-border.table-bordered{border-bottom:0}
+/*奇数行背景设为浅灰色*/
+.table-striped tbody > tr:nth-child(odd) > td,.table-striped tbody > tr:nth-child(odd) > th{background-color:#f9f9f9}
+/*竖直方向padding缩减一半*/
+.table-condensed th,.table-condensed td{padding:4px 5px}
+/*鼠标悬停样式*/
+.table-hover tbody tr:hover td,.table-hover tbody tr:hover th{background-color: #f5f5f5}
+/*表格文字对齐方式，默认是居左对齐*/
+.table .text-c th,.table .text-c td{text-align:center}/*整行居中*/
+.table .text-r th,.table .text-r td{text-align:right}/*整行居右*/
+.table th.text-l,.table td.text-l{text-align:left!important}/*单独列居左*/
+.table th.text-c,.table td.text-c{text-align:center!important}/*单独列居中*/
+.table th.text-r,.table td.text-r{text-align:right!important}/*单独列居右*/
+/*设置placeholder颜色*/
+::-webkit-input-placeholder {color:#b3b3b3;font-size:13px;}/* WebKit browsers */
+:-moz-placeholder {color:#b3b3b3;font-size:13px;}/* Mozilla Firefox 4 to 18 */
+::-moz-placeholder {color:#b3b3b3;font-size:13px;}/* Mozilla Firefox 19+ */
+:-ms-input-placeholder {color:#b3b3b3;font-size:13px;}/* Internet Explorer 10+ */
+:-o-input-placeholder {color:#b3b3b3;font-size:13px;}
+.placeholder{color:#adb0be; position:absolute; z-index:9}/*不兼容placeholder属性的浏览器，可使用<span class="placeholder">表单默认值</span>*/
+/*默认表单状态*/
+.input-text,.textarea{border:solid 1px #ddd;padding:4px;line-height:20px;height:20px;width:200px;transition:all 0.2s linear 0s}
+.textarea{height:100px}/*默认高度，自己可以设置*/
+.input-text:hover,.textarea:hover{border: solid 1px #b3b3b3}
+.input-text.focus,textarea.focus{border:solid 1px #33aaff \9;border-color:rgba(82,168,236,0.8);box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(82,168,236,0.6)}
+.input-text.disabled,.textarea.disabled,.input-text.disabled.focus,.textarea.disabled.focus{background-color:#ededed; cursor:default;border-color: #ddd;box-shadow:inset 0 2px 2px #e8e7e7}
+.input-text.disabled,.textarea.disabled{background-color:#e6e6e6; cursor:default}
+.Validform_error{border-color:#fa5555;}
+.Validform_right{border-color:#67c23a;}
+/*按钮*/
+.btn{position:relative;display:inline-block;cursor:pointer;text-align:center; font-weight:400;white-space:nowrap;vertical-align: middle;*zoom:1;transition:background-color .1s linear;border:1px solid transparent;outline:none;color:#333;}
+.btn.size-M{line-height:30px;height:30px;padding:0 12px;}
+.btn.size-L{line-height:20px;font-size:16px;padding:10px 14px;}
+.btn.size-X{line-height:25px;font-size:18px;padding:10px 16px;}
+a.btn:hover,a.btn:focus,a.btn:active,a.btn.active,a.btn.disabled,a.btn[disabled]{text-decoration:none}
+.btn-primary {color: #fff;background-color: #3961cd;border-color: #3961cd;}
+.btn-primary:hover,.btn-primary:focus,.btn-primary:active{color: #fff;background-color: #2b4da8;border-color: #23408c;}
+.btn-info,.btn-theme {color: #fff;background-color: #f29118;border-color: #f29118;}
+.btn-info:hover,.btn-info:focus,.btn-info:active,.btn-theme:hover,.btn-theme:focus,.btn-theme:active {color: #fff;background-color: #ff7610;border-color: #ff7610;}
+.btn-warning {color: #fff;background-color: #f29118;border-color: #f29118;}
+.btn-warning:hover,.btn-warning:focus,.btn-warning:active {color: #fff;background-color: #ff7610;border-color: #ff7610;}
+.btn-default {color: #333;background-color: #fff;border-color: #ccc;}
+.btn-default:hover,.btn-default:focus,.btn-default:active {color: #333;background-color: #e6e6e6;border-color: #adadad;}
+.btn.active,.btn:active{box-shadow:0 1px 8px rgba(0, 0, 0, 0.125) inset;}
+.btn-disabled, .btn-disabled:hover, .btn-disabled:focus, .btn-disabled:active {color: #fff!important;background-color: #ccc!important;border-color: #ccc!important; cursor: not-allowed;}

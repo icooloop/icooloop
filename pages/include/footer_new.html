@@ -1,0 +1,97 @@
+
+
+<!--footer-->
+<div class="footer">
+   <div class="m-footer">
+		<div class="bd wp">
+			<div class="linklist clearfix">
+				<ul class="item">
+					<li><h4>关于我们</h4></li>
+					<li><a href="${tzp.getContextPath()}/spa/about/operate/data">平台数据</a></li>
+					<li><a href="${tzp.getContextPath()}/spa/about/operate/report">运营报告</a></li>
+					<li><a href="${tzp.getContextPath()}/spa/about/info/intro">公司简介</a></li>
+				</ul>
+				<ul class="item">
+					<li><h4>新手帮助</h4></li>
+					<li><a href="${tzp.getContextPath()}/spa/event/novice">新手指引</a></li>
+					<li><a href="${tzp.getContextPath()}/spa/help/index">帮助中心</a></li>
+					<li><a href="${tzp.getContextPath()}/spa/about/project1">项目介绍</a></li>
+				</ul>
+				<ul class="item">
+					<li><h4>信息披露</h4></li>
+					<li><a href="${tzp.getContextPath()}/spa/about/hegui">合规进程</a></li>
+					<li><a href="${tzp.getContextPath()}/spa/about/riskmanage">风险管理</a></li>
+					<li><a href="${tzp.getContextPath()}/spa/about/law">出借人教育</a></li>
+				</ul>
+			</div>
+			<ul class="qrcode clearfix">
+                <li>
+					<img src="${tzp.getContextPath()}/public/images/fwcode.png?v=fb64116">
+					<p>亿钱贷服务号</p>
+                </li>
+                <li>
+					<img src="${tzp.getContextPath()}/public/images/code.png?v=8376b63">
+					<p>亿钱贷订阅号</p>
+                </li>
+                <li>
+					<img src="${tzp.getContextPath()}/public/images/appcode.png?v=3b47618">
+					<p>亿钱贷APP</p>
+                </li>
+			</ul>
+			<div class="phone">
+				<h2>400-090-9968</h2>
+				<h6>咨询时间：周一至周五 09:00-18:00</h6>
+				<h6>邮箱：kefu@yiqiandai.com</h6>
+			</div>
+		</div>
+	</div>
+	<div class="m-copyright">
+		<div class="verification icongray">
+			<a id='___szfw_logo___' href='https://search.szfw.org/cert/l/CX20150626010503010627' target='_blank'><img src="${tzp.getContextPath()}/public/images/auth/cecdc.png?v=f1f30c8" width="124px" height="47px"></a>
+			<script type='text/javascript'>(function(){document.getElementById('___szfw_logo___').oncontextmenu = function(){return false;}})();</script>
+			<script src="https://kxlogo.knet.cn/seallogo.dll?sn=e15070744030059379xmdx000000&size=0"></script>
+			<a href="https://v.yunaq.com/certificate?domain=www.yiqiandai.com" target="_blank" rel="noopener noreferrer"><img src="${tzp.getContextPath()}/public/images/auth/anquan.png?v=23d2146"></a>
+			<a href="http://szcert.ebs.org.cn/71a0114a-59d9-4a57-9770-74edc3e0dcf4" target="_blank" rel="noopener noreferrer"><img src="${tzp.getContextPath()}/public/images/auth/newGovIcon.gif?v=ae536a2" width="124px" height="47px"></a>
+		</div>
+		<div class="bd wp">
+			<p>© 2019 All Rights Reserved　|　深圳市亿钱贷电子商务有限公司   <a href="http://www.miit.gov.cn/" class="keeplink" target="_blank" rel="noopener noreferrer">粤ICP备14041671号-1</a></p>
+			<p>亿钱贷温馨提示：市场有风险，出借需谨慎；平台协议约定年化利率仅供参考，不代表未来实际收益</p>
+		</div>
+	</div>
+</div>
+<!--左侧工具栏-->
+<div class="m-elevator">
+    <a href="${tzp.getContextPath()}/spa/shop/index" class="elevator shop">
+       <i class="icon-font icon-shopcart"></i><img class="cat" src="${tzp.getContextPath()}/public/images/main/cat.png?v=7c26cf7" alt="">
+       <#if buy_cart_item_count?? && buy_cart_item_count gt 0> <span class="itemcount">${buy_cart_item_count}</span></#if>
+    </a>
+    <a class="elevator contact" href="javascript:;" onclick="common.contactCustomer()" target="_blank">
+        <i class="icon-font icon-qq2"></i>
+    </a>
+    <a href="${tzp.getContextPath()}/spa/static/downapp" target="_blank" class="elevator app">
+    	<i class="icon-font icon-phone"></i>
+        <div class="app_hover"></div>
+    </a>
+    <div class="elevator calculator" onclick="common.feedbackMessage()">
+        <i class="icon-font icon-feedback"></i>
+    </div>
+    <div class="elevator" id="top" style="display: none">
+        <i class="icon-font icon-top"></i>
+        <em>返回<br/>顶部</em>
+    </div>
+</div>
+<!--意见反馈灯箱-->
+<div class="calculator_hover" id="layeryijian" style="display: none;">
+    <h1>您的反馈对我们至关重要</h1>
+    <form>
+        <div>
+            <textarea placeholder="请留下您的宝贵建议，以便我们改正" id="feedMsg"></textarea>
+        </div>
+        <div>
+            <input type="text" maxlength="11" placeholder="请输入您的手机号码" id="feedPhone">
+        </div>
+        <span><input type="button" class="input-text" value="提交" id="submitFeedBack"><input type="reset" value="取消"
+                                                                                            onclick="layer.closeAll()"></span>
+    </form>
+</div>
+

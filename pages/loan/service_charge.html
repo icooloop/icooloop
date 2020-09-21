@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>服务费缴纳-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+    <#include "/org/include/style.html" />
+</head>
+<body class="bgmain">
+<!-- 页面开始 -->
+<#include "/loan/include/header.html" />
+<div class="g-mainer">
+	<div class="m-user">
+		<div class="wp clearfix">
+			<div class="breadcrumb"><span><a href="${tzp.getContextPath()}/">亿钱贷首页</a></span>&gt;<span><a href="${tzp.getContextPath()}/member/account/index">我的账户</a></span>&gt;<span>服务费缴纳</span></div>
+			<#include "/org/include/userMenu.html" />
+			<div class="mu-right">
+				<div class="mu-account-total clearfix user-shadow">
+                    <div class="item br1">
+                        <h4>代缴纳服务费总额(元)</h4>
+                        <h1>${(result.totalAmt!0)?string(',##0.00')}</h1>
+                    </div>
+                    <div class="item"><h4>代缴纳服务费笔数</h4>
+                    	<h1>${result.count!'0'}</h1>
+                  	</div> 
+                </div>
+                <div class="mu-model user-shadow mt-20">
+                	<div class="mu-tabs">
+						<ul class="tabs clearfix" id="bondTypeList">
+							<li data-type="1"><a href="javascript:;">未缴纳</a></li>
+							<li data-type="2"><a href="javascript:;">已缴纳</a></li>
+						</ul>
+					</div>
+					<div class="bd" id="tableList">
+						<section>
+							<div class="clearfix pd-10">
+								<div class="l pl-20"><button type="button" class="btn btn-theme" onclick="allCharge()">全部缴纳</button>
+									<button type="button" class="btn btn-theme ml-10" onclick="batchCharge()">批量缴纳</button></div>
+								<div class="r">
+									<input id="start" readonly="readonly" class="input-date laydate-icon">
+									 - <input id="end" readonly="readonly" class="input-date laydate-icon">
+									 <input type="text" class="input-text ml-10" placeholder="搜索项目名称、借款人" value="" id="keyword">
+									<button type="button" class="btn btn-theme ml-10" id="submitBtn" onclick="query()">查询</button></div>
+							</div>
+							<table class="table mu-table text-c" id="table1">
+								<thead>
+									<tr>
+										<th width="60"><input type="checkbox" id="allItem"></th>
+										<th>项目名称</th>
+										<th>借款人</th>
+										<th>借款金额（元）</th>
+										<th>借款期限 </th>
+										<th>放款时间</th>
+										<th>服务费</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+							<input name="pageNo1" type="hidden" id="pageNo1" value="1" />
+		                   	<div id="laypage1" class="page pagination" style="display: none;"></div>	
+						</section>
+						<section>
+							<div class="text-r pd-10">
+								<input id="start" readonly="readonly" class="input-date laydate-icon">
+								 - <input id="end" readonly="readonly" class="input-date laydate-icon">
+								 <input type="text" class="input-text ml-10" placeholder="搜索项目名称、借款人" value="" id="keyword">
+								<button type="button" class="btn btn-theme ml-10" id="submitBtn" onclick="query()">查询</button>
+							</div>
+							<table class="table mu-table text-c" >
+								<thead>
+									<tr>
+										<th>项目名称</th>
+										<th>借款人</th>
+										<th>借款金额（元）</th>
+										<th>借款期限 </th>
+										<th>放款时间</th>
+										<th>服务费</th>
+										<th>缴纳时间</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+							<input name="pageNo2" type="hidden" id="pageNo2" value="1" />
+		                   	<div id="laypage2" class="page pagination" style="display: none;"></div>	
+						</section>
+					</div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+<input name="pageSize" type="hidden" id="pageSize" value="30" />
+<input name="seletedIds" type="hidden" id="seletedIds" value="" />
+<div class="m-layer mu-loan-layer" id="serviceChargeLayer">
+	<div class="hd">确认缴纳服务费？</div>
+	<ul class="infolist mt-20">
+		<li><em>服务费总额</em><span id="serviceAmt">5,000.00</span></li>
+		<li id="serviceInfo"></li>
+	</ul>
+	<div class="btndiv mt-20"><a href="javascript:;" class="btn btn-cancel" onclick="layer.closeAll()">取消</a>
+		<a href="javascript:;" class="btn btn-theme" onclick="chargeService()">确认</a></div>
+</div>
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/icheck/icheck.min.js?v=3144e54"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/laydate/laydate.js?v=eb332e0"></script> 
+<script src="${tzp.getContextPath()}/src/js/pages/org/service_charge.js?v=1d0d0ae"></script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

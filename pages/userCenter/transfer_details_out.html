@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>出借详情-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+</head>
+<body class="bgmain">
+<!-- 页面开始 -->
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+	<div class="m-user">
+		<div class="wp clearfix pt-20">
+			<#include "/userCenter/include/userMenu_easy.html" />
+			<div class="mu-right mu-details">
+				<div class="">
+					<div class="clearfix">
+						<div class="mu-details-headleft">
+							<div class="hd">${vo.loanTitle!''}<em>
+									<#if debtDetailVo??>
+										<#if debtDetailVo.debtStatus=='1'>
+											持有中
+										<#elseif debtDetailVo.debtStatus=='2'>
+											<#if transferApply??>
+												<#if transferApply.applyStatus=='1'>
+														转让审核中
+													<#else>
+														转让中
+												</#if>
+												
+											</#if>	
+										<#elseif debtDetailVo.debtStatus=='3'>
+											已转让
+										<#else>
+											已结清
+										</#if>
+									</#if>
+								</em>
+								<#if  debtDetailVo??&&debtDetailVo.debtStatus=='1'>
+									<#if canTransfer>
+										<a class="btn btn-info"   href="${tzp.getContextPath()}/spa/member/transfer/apply/${debtId}">转让</a>
+									</#if>
+								</#if>
+							</div>
+							<ul class="bd clearfix">
+								<#if isFirstTransfer??>
+									<li><h4>出借本金（元）</h4><h1>${(debtDetailVo.buyPrice!0)?string(',##0.00')}</h1></li>
+								<#else>
+									<li><h4>受让债权金额（元）</h4><h1>${(transferPrice!0)?string(',##0.00')}</h1></li>
+								</#if>
+								<li class="head-list1-li"><h4>持有期限</h4><h1>${holdDays!''}<em>天</em></h1></li>
+								<li><h4>原项目协议约定年化利率</h4><h1 class="head-list1-li-h1">${(prdRate!0)?string(',##0.00')}<em>%
+								</em></h1></li>
+							</ul>
+						</div>
+						<div class="mu-details-headright">
+							<#if debtDetailVo??>
+								<#if debtDetailVo.debtStatus=='1' ||debtDetailVo.debtStatus=='3'>
+									<p class="mt-5"><em>还款方式</em><span>${vo.repayModeStr}</span></p> 
+									<p class="mt-10"><em>起息日</em><span>${calcPeroid!''}</span></p>
+									<p class="mt-10"><em>到期日</em><span>${settleDate!''}</span></p>
+									<#if (couponAmt)?? && (couponAmt) gt 0>
+										<p class="mt-10"><em>使用红包</em><span>${(couponAmt!0)?string(',##0.00')}元</span><#if couponDay gt 0><span>&nbsp;&nbsp;需持有满${couponDay}天方可转让</span></#if></p>
+									</#if>
+								</#if>
+							</#if>
+						</div>
+					</div>
+					<ul class="mu-details-headinfos clearfix">
+						<li><em>预期项目利息（元）</em>
+							<span>${(planIncome!0)?string(',##0.00')}</span></li>
+						<li><em>预期平台奖励（元）</em>
+							<span>${(planAllAward?string(',##0.00'))!0.00}</span></li>
+						<li><em>预期收益（元）<span class="u-what righttip"><i class="icon-font icon-wenhao"></i>
+								<span class="notes">1、预期收益 = 预期项目利息 + 预期平台奖励<br>
+								 2、预期项目利息为该项目本身的利息<br>
+								 3、预期平台奖励包括出借奖励、奖励券收益、红包收益</span></span>
+							</em>
+							<span>${(planSum!0)?string(',##0.00')}</span></li>
+					</ul>
+				</div>
+				
+				<div class="mu-details-module  clearfix mt-20"  >
+                    <div class="hd"><em>债权转让信息</em></div>
+                    <div class="details-info-box2 clearfix">
+                        <p><em>转让时间</em><span>${(dealTime?string('yyyy-MM-dd HH:mm:ss'))!''}</span></p>
+                        <p><em>债权金额</em><span>${(transferPrice!0)?string(',##0.00')}元</span></p>
+                        <p><em>转让金额</em><span>${(dealPrice!0)?string(',##0.00')}元</span></p>
+                        <p><em>手续费</em><span>${(transferFee!0)?string(',##0.00')}元</span></p>
+                    </div>
+                </div>
+				
+				<#if investStatus!='1'>
+					<div class="mu-details-module mu-details-infos2  mt-20">
+						<div class="hd"><em>收款信息</em></div>
+						<ul class="infolist clearfix">
+							<li>
+								<div class="totaldesc">已收总额(元)</div>
+								<div class="totalamount">${((debtDetailVo.receivedProInterAmt+receivedPrincipal+debtDetailVo.receivedTicketAward)!0)?string(',##0.00')}</div>
+								<div class="item">本金<em>${(receivedPrincipal!0)?string(',##0.00')}元</em></div>
+								<div class="item">收益<em>${(debtDetailVo.receivedProInterAmt!0)?string(',##0.00')}元</em></div>
+								<div class="item">垫付利息<em>${(advanceAmt!0)?string(',##0.00')}元</em></div>
+							</li>
+							<li>
+								<div class="totaldesc">待收总额(元)</div>
+								<div class="totalamount">${((planPrincipal+debtDetailVo.proInterAmt+debtDetailVo.ticketAward)!0)?string(',##0.00')}</div>
+								<div class="item">本金<em>${(planPrincipal!0)?string(',##0.00')}元</em></div>
+								<div class="item">收益<em>${(debtDetailVo.proInterAmt!0)?string(',##0.00')}元</em></div>
+							</li>
+						</ul>
+					</div>
+				</#if>
+				
+				<div class="mu-details-module  mt-20" <#if investStatus=='1'> style="display:none" </#if>>
+					<div class="hd"><em>持有项目</em>
+					</div>
+					<div class="bd">
+						<table class="table mu-table text-c">
+							<thead>
+								<tr>
+									<th>期数</th>
+									<th>回款日</th>
+									<th>本金(元)</th>
+									<th>利息(元)</th>
+									<th>状态</th>
+								</tr>
+							</thead>
+							<tbody>
+								<#if (repaylist)??>
+									<#list repaylist as page>
+										<tr>
+											<td>${(page_index+1)!''}</td>
+											<td>${(page.planDate?string('yyyy-MM-dd'))!''}</td>
+											<#if page.repayStatus=='3'>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+											<#else>
+												<td>${(page.planPrincipal!0)?string(',##0.00')}</td>
+												<td>${((page.planInterest + page.ticketAward+ page.planPlatReward + page.planSubsidyAmt)!0)?string(',##0.00')}</td>
+												<td>${page.repayStatusStr!''}</td>
+											</#if>
+										</tr>
+									</#list>
+									<#else>
+										<tr>
+											<td class="text-c" colspan="5"><img style="margin:15px 0" class="record" src="/public/images/user/record.png?v=9113ae7"></td>
+										</tr>
+								</#if>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<#if investStatus=='2'>
+					<div class="pos-r mt-20">
+						<div class="mu-details-module mu-details-agreement ">
+							<div class="hd"><em>相关协议</em></div>
+							<div class="bd">
+								<#if  debtDetailVo?? && debtDetailVo.originalDebtId??>
+								<#else>
+									<a target="_blank" href="${tzp.getContextPath()}/member/invest/view/${vo.loanId!''}?contractType=13" class="text-warning">《${subscribeName!''}》</a>
+									<#if agreement??>
+										<br/><a target="_blank" href="${tzp.getContextPath()}/member/invest/view/${debtDetailVo.debtId!''}?contractType=17" class="text-warning">《风险及禁止性行为提示书》</a> 
+									</#if>
+								</#if>
+								<#if beforApplyId??>
+									<a target="_blank" href="${tzp.getContextPath()}/member/invest/view/${beforApplyId!''}?contractType=3" class="text-warning">《债权转让协议》</a>
+									<a target="_blank" href="${tzp.getContextPath()}/member/invest/view/${beforApplyId!''}?contractType=15" class="text-warning">《风险及禁止性行为提示书》</a>
+								</#if>
+								<#if currentApplyId??>
+									<a target="_blank" href="${tzp.getContextPath()}/member/invest/view/${currentApplyId!''}?contractType=3" class="text-warning">《债权转让协议》</a>
+								</#if>
+							</div>
+						</div>
+						<div class="mu-details-module mu-details-record ">
+							<div class="hd"><em>投标记录</em></div>
+							<div class="bd">
+								<#if (dealRecord)??>
+									<#list dealRecord as page>
+										<div class="record">
+											<span class="text-muted pr-30"> ${(page.dealTime?string('yyyy-MM-dd HH:mm:ss'))!''}</span>
+											受让债权金额<span class="text-warning pl-10">${(page.totalDealPrice!0)?string(',##0.00')}</span>&nbsp;元
+										</div>
+									</#list>
+								</#if>
+							</div>
+						</div>
+					</div>
+				</#if>
+			</div>
+		</div>
+	</div>
+</div>
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script>
+$(function(){
+	$("#investMenu").addClass("on");
+})
+</script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

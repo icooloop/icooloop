@@ -1,0 +1,310 @@
+
+@wp-width:1322px;
+.md-act{
+    background:#ee466f url(./../../images/event/2019/jun/bg0.jpg) no-repeat top center;
+    position:relative;
+    padding-top:178px;
+    position:relative;
+    .acttime{
+        text-align:center;
+        color:#fff;
+        line-height:40px;
+        font-size:20px;
+    }
+    .maintitle{
+        background:url(./../../images/event/2019/jun/titlebg.png) no-repeat center;
+        line-height:43px;
+        height:43px;
+        text-align:center;
+        font-size:28px;
+        color:#9d0211;
+    }
+    .maindesc{
+        font-size:18px;
+        color:#fff;
+        text-align:center;
+        line-height:30px;
+        a.link{color:#fff;text-decoration:underline;}
+    }
+    .wp{width:@wp-width;}
+}
+.md-bonus{
+    margin-top:170px;
+    position:relative;
+    background:url(./../../images/event/2019/jun/bg1.png) no-repeat bottom center;
+    .list{
+        display:flex;
+        width:1040px;
+        margin-left:auto;
+        margin-right:auto;
+        height:286px;
+        li{
+            position:relative;
+            flex:1;
+            text-align:center;
+            padding-top:20px;
+            background:url(./../../images/event/2019/jun/coupon.png) no-repeat top center;
+            .rate{
+                font-size:64px;
+                color:#fff;
+                line-height:1;
+                em{font-size:32px;}
+            }
+            .btn-act{
+                margin-top:15px;
+                width:142px;
+                line-height:34px;
+                height:34px;
+                background:#fff100;
+                color:#fff;
+                border-radius:34px;
+                font-size:16px;
+                color:#ff5d73;
+            }
+            .btn-act:hover{opacity:0.9;}
+            .btn-act.disabled{background:#acacac;color:#fff;}
+            .limit{
+                color:#fff;
+                font-size:12px;
+                margin-top:40px;
+            }
+        }
+    }
+}
+
+.md-rule{
+    background:url(./../../images/event/2019/jun/bg1.png) no-repeat bottom center;
+    padding-bottom:120px;
+    .bd{
+        position:relative;
+        margin:50px auto 0;
+        width:1110px;
+        padding:60px 80px;
+        background:#fefbfb;
+        border-radius:20px;
+        box-shadow:0 0 130px rgba(182,39,0,.6) inset;
+        p{
+            line-height:26px;
+            color:#333;
+        }
+    }
+}
+.game-content{
+    position:relative;
+    width:100%;
+    height:621px;
+    background:url(./../../images/event/2019/jun/luckdraw1.png) no-repeat top center;
+    margin-left:auto;
+    margin-right:auto;
+    .game-goods-list{
+        position:absolute;
+        left: 424px;
+        top: 52px;
+        width: 510px;
+        height: 220px;
+        overflow:hidden;
+    }
+    .game-goods{position:absolute;left:0;top:0;height:100%;width:148px;}
+    .game-goods.goods2{left:181px;}
+    .game-goods.goods3{left:361px;}
+    .game-goods-ul{
+        position: relative;
+        font-size: 0;
+        z-index:10;
+        li{
+            position:relative;
+            width:100%;
+            text-align:center;
+            line-height:220px;
+            img{max-height:114px;}
+        }
+    }
+    .game-btn{position:absolute;left:586px;top:318px;background:url(./../../images/event/2019/jun/start.png) no-repeat;width:190px;height:94px;cursor:pointer;}
+    .game-desc{position:absolute;left:258px;top:425px;width:830px;text-align:center;color:#681614;font-size:20px;line-height:72px;
+        a.link{display: inline-block;color:#681614;text-decoration: underline;cursor: pointer;}
+    }
+    .game-record{position:absolute;left:950px;top:450px;text-align:center;line-height:20px;
+        a.link{color:#fff;font-size:18px;}
+    }
+}
+.game-content.gaming{background:url(./../../images/event/2019/jun/luckdraw2.png) no-repeat top center;}
+
+.md-getbonus{
+    position: relative;
+    width:504px;
+    height:576px;
+    background:url(../../images/event/2019/jun/getbonus.png) no-repeat;
+    text-align:center;
+    .desc2{
+        padding-top:375px;
+        line-height:30px;
+        font-size:20px;
+        padding-right:10px;
+        color:#ec8148;
+        em{
+            font-size:24px;
+            color:#fe1e43;
+        }
+    }
+    .btndiv{
+        position:absolute;
+        bottom:43px;
+        left:0;
+        width:490px;
+        .btn-act{
+            width:232px;
+            height:60px;
+            line-height:60px;
+            border-radius:50px;
+            color:#fff;
+            font-size:20px;
+            padding-bottom:2px;
+        }
+    }
+    .close{
+        position:absolute;
+        right:20px;
+        top:20px;
+        cursor: pointer;
+        .icon-font{
+            color:#fff;
+            font-size:30px;
+        }
+    }
+}
+.md-luck{
+    background:url(../../images/event/2019/jun/fireworks.png) no-repeat top center;padding-top:30px;padding-bottom:50px;
+    .list{
+        display:flex;padding-top:50px; 
+        .container{ perspective:1000;width:330px;height:480px;transition:transform .6s;transform-style: preserve-3d;position: relative;
+            .front{transition:all .6s;opacity:1;}
+            .back{transform: rotateY(180deg);}
+        }
+        .container.getback{transform:rotateY(180deg);
+            .front{opacity:0;}
+        }
+        .item{
+            background:url(../../images/event/2019/jun/luck2.png) no-repeat top center;
+            width:330px;height:480px;text-align:center;padding-top:30px;position: absolute;top:0;left:0;backface-visibility:hidden;
+            .result{line-height:30px;font-size:20px;color:#b36321;}
+            .number{font-size:72px;line-height:1;font-weight:700;color:#b36321;}
+            .luckval{font-size:16px;line-height:30px;color:#db391e;}
+            .btndiv{position: absolute;left:0;top:215px;width:100%;
+                .btn-share{position: relative;background:url(../../images/event/2019/jun/btn1.png) repeat-x;line-height:41px;height:41px;border-radius:41px;padding:0 20px;min-width:146px;font-size:16px;
+                    .sharelayer{
+                        display:none;position: absolute;left:50%;top:51px;background:#fff;width:190px;height:210px;border-radius:20px;margin-left:-95px;z-index: 100;
+                        h4{position: relative;line-height:41px;margin:5px;padding-left:10px;}
+                        img{height:135px;}
+                    }
+                    .sharelayer:before{display: block;content:'';width:0;height:0;border:10px solid transparent;border-bottom-color:#fff;position: absolute;left:90px;top:-20px;}
+                }
+                .btn-share.hasicon:hover{opacity:1;}
+                .btn-share.hasicon:hover .sharelayer{display:block;}
+                .btn-share.hasicon{padding-left:45px;}
+                .btn-sel{background:#f0d18b;}
+                .icon-weixin2{color:#86c610;margin-right:10px;font-size:22px;position: absolute;left:20px;top:0;line-height:41px;}
+            }
+            .noshare{color:#888;font-size:20px;line-height:130px;}
+            .hasshare{
+                font-size:15px;color:#7e3c06;line-height:24px;padding-top:10px;
+                em{color:#900;}
+            }
+            .date{position: absolute;left:0;top:270px;width:100%;color:#fff;line-height:20px;}
+            .btn-more{position: absolute;left:50%;top:315px;width:124px;line-height:33px;height:33px;border-radius:33px;background:url(../../images/event/2019/jun/btn2.png) no-repeat;color:#f5c87b;margin-left:-62px;}            
+        }
+        .container.status0 .item{ background:url(../../images/event/2019/jun/luck0.png) no-repeat top center;}
+        .container.status1 .item{ background:url(../../images/event/2019/jun/luck1.png) no-repeat top center;}
+        .container.status2 .item{ background:url(../../images/event/2019/jun/luck2.png) no-repeat top center;
+            .result,.number,.luckval{color:#888;}
+        }
+        .container.status3 .item{ background:url(../../images/event/2019/jun/luck3.png) no-repeat top center;}
+        .container.status2 .item.back{ background:url(../../images/event/2019/jun/luck4.png) no-repeat top center;}
+        .prev{width:57px;height:57px;position: absolute;left:auto;right:50%;top:430px;background:url(../../images/event/2019/jun/prev.png) no-repeat;margin-right:10px;margin-top:0;}
+        .next{width:57px;height:57px;position: absolute;left:50%;top:430px;background:url(../../images/event/2019/jun/next.png) no-repeat;margin-left:10px;margin-top:0;}
+    }
+    .notices{
+        position: relative;
+        .bd{
+            height:70px;border-radius:5px;background:#fbd3d3;width:1260px;margin:30px auto 0;
+            .item{line-height:70px;position: relative;padding-left:55px;font-size:18px;
+                h6{position: absolute;right:180px;top:0;color:#666;}
+                em{color:#900;}
+            }
+        }
+        .more{color:#c33;position: absolute;right:55px;top:25px;line-height:20px;z-index:100;font-size:16px;}
+    }
+}
+.md-bonustip{
+    width:504px;height:576px;background:url(./../../images/event/2019/jun/popbg.png) no-repeat;
+    .bd{position:relative;padding:30px 0 50px;border-radius:10px;}
+    .bonusdesc{line-height:60px;width:542px;margin-left:-26px;text-align:center;color:#eb8147;font-size:24px;letter-spacing:1pt;}
+    .bonusdesc.getbonus{background:url(./../../images/event/2019/jun/title2.png) no-repeat center center;}
+    .bonusdiv{padding:10px 20px;text-align:center;}
+    .bonusremark{line-height:20px;padding-bottom:15px;font-size:16px;color:#666;text-align:center;}
+    .gainbonus{display:inline-block;background:url(./../../images/event/2019/jun/p2.png) no-repeat;width:118px;height:201px;padding-top:111px;font-size:24px;line-height:1;color:#fcce2f;text-align:center;}
+    .gainbonus em{font-size:40px;}
+    .gaincash{display:inline-block;background:url(./../../images/event/2019/jun/p0.png) no-repeat;width:118px;height:201px;padding-top:86px;font-size:24px;line-height:1;color:#fcce2f;text-align:center;}
+    .gaincash em{font-size:40px;}
+    .gainjiaxi{display:inline-block;background:url(./../../images/event/2019/jun/p32.png) no-repeat;width:80px;height:116px;padding-top:30px;font-size:24px;line-height:1;color:#fff;text-align:center;}
+    .bonusbtn{text-align:center;}
+    .disbonus{color:#cf1919;line-height:26px;font-size:16px;}
+    .btn-bonus{display:inline-block;background:url(./../../images/event/2019/jun/btn0.png) no-repeat;width:231px;line-height:60px;height:60px;color:#fff;font-size:18px;}
+    .recordtable{width:400px;margin-left:auto;margin-right:auto;
+        th,td{color:#666;font-size:16px;text-align:center;line-height:26px;padding:5px;border:1px solid #a67c52;}
+        th{color:#c00;background:#fcf4ea;}
+    }
+    .nobonus{padding-top:140px;}
+    .norecord{color:#666;line-height:30px;text-align:center;font-size:18px;padding-top:40px;}
+    .close{
+        position:absolute;
+        right:20px;
+        top:20px;
+        cursor: pointer;
+        .icon-font{
+            color:#fff;
+            font-size:30px;
+        }
+    }
+}
+.md-bonusrecord{
+    padding:90px 35px 30px;
+    .title{height:115px;line-height:50px;text-align:center;font-size:24px;color:#fff;position: absolute;left:0;top:-50px;width:100%;}
+    .title1{background:url(../../images/event/2019/jun/title3.png) no-repeat top center;}
+    .title2{background:url(../../images/event/2019/jun/title4.png) no-repeat top center;}
+    .norecord{color: #666;line-height: 30px;text-align: center;font-size: 20px;padding-top:30px;padding-bottom:10px;}
+    .recordtable{
+        th,td{font-size:16px;text-align: center;line-height:52px;border:1px solid #a67c52;}
+        th{background:#fcf4ea;line-height:48px;}
+    }
+    .tip{color:#f6617a;}
+    .desc{font-size:16px;line-height:30px;color:#666;
+        p{margin-top:20px;}
+    }
+}
+.win_state{	
+	position:fixed;top:50%;left:50%;	
+	margin:-50px 0 0 -50px;
+	text-align:center;line-height:1;	
+	z-index:1999;opacity:0;transform:translateY(300px);
+	animation: win_state_show 1.4s forwards 0.4s;
+}
+@keyframes win_state_show{   
+	30%{opacity:1;transform:translateY(-30px);}
+	40%{opacity:1;transform:translateY(0);transform:perspective(400px) translate3d(0,0,180px) rotate3d(0,1,0,-190deg);animation-timing-function:ease-out}
+	50%{transform:perspective(400px) translate3d(0,0,180px) rotate3d(0,1,0,-170deg);animation-timing-function:ease-in}
+	80%{opacity:1;transform:perspective(400px) scale3d(.95,.95,.95);animation-timing-function:ease-in}
+	100%{opacity:0;transform:perspective(400px);animation-timing-function:ease-in}
+}
+
+.fx-roll{
+    animation: fx-roll 0.5s 0s infinite linear
+}
+
+@keyframes fx-roll {
+    0% {
+        transform: translate3d(0, 0, 0)
+    }
+    100% {
+        transform: translate3d(0, -100%, 0)
+    }
+}

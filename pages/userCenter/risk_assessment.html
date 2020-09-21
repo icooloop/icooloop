@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>风险评估-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_new.html" />
+    <link rel="stylesheet" href="${tzp.getContextPath()}/src/css/pages/safe/riskAssessment.css?v=2b55701">
+</head>
+<body>
+<#include "/include/header_new.html" />
+<div class="container risk-assessment">
+    <div class="tips text-default">
+        风险评估旨在了解您对风险的承受能力，帮助您降低风险。为了能给您提供更好的资产选择，请认真作答，感谢您的配合。
+    </div>
+    <div class="panel">
+        <div class="panel-heading">风险承受能力评估</div>
+        <div class="panel-body">
+            <ul class="qlist" id="qlist">
+            	<#assign number = ((Quelist?size)!0) />
+            	<#if (Quelist)?? && Quelist?size gt 0>
+            		<#list Quelist?sort_by("questionOrder") as que>
+	                <li>
+	                    <h3>${que_index+1}. ${que.questionContent}</h3>
+	                    <div class="radio-list">
+		                    <#if (que.userAssessAnslist)?? && (que.userAssessAnslist)?size gt 0>
+		                    	<#list que.userAssessAnslist?sort_by("ansOrder") as ans>
+			                        <p>
+			                            <input type="radio" name="answer${que_index+1}"  id="answer${que_index+1}-${ans_index+1}" value="${ans.assessAnsId}">
+			                            <label for="answer${que_index+1}-${ans_index+1}">${ans.ansContent}</label>
+			                        </p>
+		                        </#list>
+		                     </#if>   
+	                    </div>
+	                </li>
+	                </#list>
+                <#else>
+                	<li><div class="question">暂无问题</div></li>
+                </#if>
+            </ul>
+            <a class="btn btn-primary btn-submit" id="submitBtn">提交</a>
+        </div>
+    </div>
+</div>
+<div id="riskModal" style="display: none">
+	<input type="hidden"  id="assType" value="${assessType!''}">
+    <div class="risk-modal">
+        <h2 class="text-center" id="assessType"> 
+        	<#if assessType?? && assessType=="1">
+	    	 	您是保守型出借人
+             <#elseif assessType?? && assessType=="2">
+	    	 	您是稳健型出借人
+             <#elseif assessType?? && assessType=="3">
+	    	 	您是积极型出借人
+             <#elseif assessType?? && assessType=="4">
+             	您是平衡型出借人
+             <#else>
+             	您尚未评估
+        	 </#if></h2>
+        <div class="content" id="spandiv">
+             <#if assessType?? && assessType=="1">
+	    	 	以降低风险承受度为前提，希望出借收益极度稳定的项目。
+             <#elseif assessType?? && assessType=="2">
+	    	 	谨慎考量出借中面临的风险，追求较低的风险，对出借回报的要求不高。
+             <#elseif assessType?? && assessType=="3">
+				具有较强的主观风险承受意愿。并试图尝试较高收益的出借，乐意承担一定的风险，希望获得更高的收益
+    	 	<#elseif assessType?? && assessType=="4">
+	    	 	在风险较小的情况下获得一定收益，会仔细地对将要面临的风险进行认真的分析。
+             <#else>
+	    	 	 尊敬的用户:<br/>您还未进行过风险评估，为保障您的合法权益，准确了解您的风险偏好，请于出借前务必进行自我风险评估。
+        	 </#if>
+        </div>
+        <div class="text-c">
+            <a class="btn btn-second" href="javascript:layer.closeAll()" id="againdiv">重新评测</a>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="isValid" value="${isValid!''}">
+<#include "/include/footer_new.html" />
+<#include "/include/bottom_script.html" />
+<!--页面js-->
+<script src="${tzp.getContextPath()}/public/js/plugins/icheck/icheck.min.js?v=3144e54"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/safe/riskAssessment.js?v=6620943"></script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

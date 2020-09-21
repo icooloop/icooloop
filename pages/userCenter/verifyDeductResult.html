@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>扣费成功-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+	<#include "/include/style_new.html" />
+	<!-- 页面样式 -->
+	<link rel="stylesheet" type="text/css" href="${tzp.getContextPath()}/src/css/pages/product/subscriptionSuccess.css?v=31be487">
+	<style type="text/css">
+	.text-success{color:#52c41a;}
+	</style>
+</head>
+<body>
+<#include "/include/header_new.html" />	
+<!--页面开始-->
+<div class="product-list-banner"></div>
+<!--出借成功信息-->
+<div class="subscription-success">
+	<div class="content text-center">
+	
+		<#if failMessage ?? >
+			<div class="clearfix">
+				<p><i class="icon-font icon-cat-fail text-danger" style="margin: 0;font-size:60px;"><!--图标--></i></p>
+				<h2>扣费失败！</h2>
+				<p class="text-danger" >${failMessage}</p>
+			</div>
+		<#else>
+			<div class="clearfix">
+				<p><i class="icon-font icon-cat-success text-success" style="margin: 0;font-size:60px;"><!--图标--></i></p>
+				<h2>扣费成功！</h2>
+				<p class="text-default" style="margin:0 0 30px">  </p>
+			</div>
+		</#if>
+	</div>
+</div>
+<#include "/include/bottom_script.html" />
+<#include "/include/footer_new.html" />
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

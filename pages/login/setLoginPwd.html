@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>设置登录密码-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+	<#include "/include/style_new.html" />
+	<!-- 页面样式 -->
+    <link rel="stylesheet" href="${tzp.getContextPath()}/src/css/pages/account/login.css?v=2e0e651">
+    <link rel="stylesheet" href="${tzp.getContextPath()}/src/css/pages/account/register.css?v=cb37da5">
+</head>
+<body>
+<!-- header -->
+<#include "/include/login_header.html" />	
+<!-- 页面开始 -->
+<div class="login-layer register-layer">
+	<div class="center-block login-container">
+		<!-- 找回密码form -->
+		<div class="login-form register-form forget-pwd">
+			<h3 class="login-title">找回密码</h3>
+			<p class="text-primary text-center progress-info">设置登录密码</p>
+			<form class="form-horizontal company-form forget-pwd-form" id="setLoginPwdForm">
+				<input type="hidden" value="${userMobile!''}" name="userMobile">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<div class="list-group">
+							<span class="list-group-addon">登录密码</span>
+							<input type="password" autocomplete="off" style="opacity:0;position:absolute;left:-1000px;top:-10000px;z-index:-100;">
+							<input class="form-control" id="loginPwd" name="loginPwd" type="password" autocomplete="off" maxlength="20" placeholder="请输入您的新登录密码">
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<div class="list-group">
+							<span class="list-group-addon">确认密码</span>
+							<input class="form-control" id="reLoginPwd" name="reLoginPwd" type="password" autocomplete="off" maxlength="20" placeholder="再次输入您的新登录密码">
+						</div>
+					</div>
+				</div>
+				<div class="form-group text-danger msg">
+					<div class="col-sm-12">
+						<i class="icon-font icon-error"></i><span class="vertical-middle" id="errorMsg"></span>
+					</div>
+				</div>
+				<div class="form-group submit">
+					<div class="col-sm-12">
+						<button type="submit" class="btn btn-lg btn-primary btn-block">完成</button>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-6 col-sm-6">
+						<a class="pull-right text-default" href="${tzp.getContextPath()}/secure/login">返回登录</a>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!--公司介绍-->
+		<div class="company-introduce">
+			<ul class="text-center clearfix">
+				<li class="list-1">
+					<p><i class="icon-font icon-bridge text-primary"></i></p>
+					<h4>上市背景</h4>
+					<p>A股上市公司控股</p>
+					<p>信息公开透明</p>
+				</li>
+				<li class="list-2">
+					<p><i class="icon-font icon-socket text-primary"></i></p>
+					<h4>优质资产</h4>
+					<p>供应链及三农贷款</p>
+					<p>支持实体经济</p>
+				</li>
+				<li class="list-3">
+					<p><i class="icon-font icon-prize text-primary"></i></p>
+					<h4>普惠金融</h4>
+					<p>合规运营稳健发展</p>
+					<p>构筑金融桥梁</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<#include "/include/login_footer.html" />
+</div>
+<#include "/include/bottom_script.html" />
+<!-- 页面js -->
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.min.js?v=9fc6b5c"></script>
+<script src="${tzp.getContextPath()}/src/js/tools/validate_cn.js?v=10c4607"></script>
+<script src="${tzp.getContextPath()}/src/js/plugins/jquery.CountDown.js?v=0f45807"></script>
+<script src="${tzp.getContextPath()}/src/js/pages/account/setLoginPwd.js?v=5c348d7"></script>
+<!-- 统计 -->
+<#include "/include/count.html" />
+</body>
+</html>

@@ -1,0 +1,55 @@
+.md-act{background:#ee466f url(/public/images/event/jun/bg0.jpg) no-repeat top center;position:relative;padding-top:239px;position:relative;}
+.md-act .acttime{text-align:center;color:#fff;line-height:40px;font-size:24px;}
+.md-act .maintitle{background:url(/public/images/event/jun/titlebg.png) no-repeat center;line-height:43px;height:43px;text-align:center;font-size:28px;color:#9d0211;}
+.md-act .maindesc{font-size:18px;color:#fff;text-align:center;line-height:30px;}
+.md-act .wp{width:1322px;}
+
+.md-mode1{position:relative;background:url(/public/images/event/jun/bg1.png) no-repeat bottom center;}
+.md-mode1 .bd{display:flex;width:1040px;margin-left:auto;margin-right:auto;height:286px;}
+.md-mode1 .bd li{position:relative;flex:1;text-align:center;padding-top:20px;text-align:center;background:url(/public/images/event/jun/coupon.png) no-repeat top center;}
+.md-mode1 .bd li .rate{font-size:64px;color:#fff;line-height:1;}
+.md-mode1 .bd li .rate em{font-size:32px;}
+.md-mode1 .bd li .btn-act{margin-top:15px;width:142px;line-height:34px;height:34px;background:#fff100;color:#fff;border-radius:34px;font-size:16px;color:#ff5d73;}
+.md-mode1 .bd li .btn-act:hover{opacity:0.9;}
+.md-mode1 .bd li .btn-act.disabled{background:#acacac;color:#fff;}
+.md-mode1 .bd li h6{color:#fff;font-size:12px;margin-top:40px;}
+
+.md-rule{background:url(/public/images/event/jun/rulebg.png) no-repeat bottom center;}
+.md-rule .bd{position:relative;margin:70px auto 50px;height:577px;width:950px;padding-top:60px;}
+.md-rule .bd p{line-height:26px;color:#fff;}
+
+.game-content{position:relative;width:100%;height:621px;background:url(/public/images/event/jun/luckdraw1.png) no-repeat top center;margin-left:auto;margin-right:auto;}
+.game-content.gaming{background:url(/public/images/event/jun/luckdraw2.png) no-repeat top center;}
+.game-goods-list{position:absolute;left: 424px;top: 52px;width: 510px;height: 220px;overflow:hidden;}
+.game-goods{position:absolute;left:0;top:0;height:100%;width:148px;}
+.game-goods.goods2{left:181px;}
+.game-goods.goods3{left:361px;}
+.game-goods-ul{position: relative;top:0;font-size: 0;z-index:10;}
+.game-goods-ul li{position:relative;width:100%;text-align:center;line-height:220px;}
+.game-goods-ul li img{max-height:114px;}
+.game-content .game-btn{position:absolute;left:586px;top:318px;background:url(/public/images/event/jun/start.png) no-repeat;width:190px;height:94px;cursor:pointer;}
+.game-content .game-desc{position:absolute;left:258px;top:425px;width:830px;text-align:center;color:#681614;font-size:20px;line-height:72px;}
+
+.md-bonustip{padding:0 26px 0;}
+.md-bonustip .bd{position:relative;padding:30px 0 50px;background:#fff;border-radius:10px;}
+.md-bonustip .icon-close{position:absolute;right:10px;top:10px;line-height:1;font-size:20px;display:inline-block;cursor:pointer;color:#999;}
+.md-bonustip .bonusdesc{line-height:60px;width:542px;margin-left:-26px;text-align:center;color:#3e035f;font-size:24px;letter-spacing:1pt;}
+.md-bonustip .bonusdesc.getbonus{background:url(/public/images/event/jun/title2.png) no-repeat center center;}
+.md-bonustip .bonusdiv{padding:50px 20px;text-align:center;}
+.md-bonustip .bonusremark{line-height:20px;padding-bottom:15px;font-size:16px;color:#666;text-align:center;}
+.md-bonustip .gainbonus{display:inline-block;background:url(/public/images/event/jun/p1.png) no-repeat;width:118px;height:90px;padding-top:111px;font-size:24px;line-height:1;color:#fcce2f;text-align:center;}
+.md-bonustip .gainbonus em{font-size:40px;}
+.md-bonustip .gaincash{display:inline-block;background:url(/public/images/event/jun/p2.png) no-repeat;width:118px;height:115px;padding-top:86px;font-size:24px;line-height:1;color:#fcce2f;text-align:center;}
+.md-bonustip .gaincash em{font-size:40px;}
+.md-bonustip .gainjiaxi{display:inline-block;background:url(/public/images/event/jun/p5.png) no-repeat;width:98px;height:112px;padding-top:30px;font-size:24px;line-height:1;color:#333;text-align:center;}
+.md-bonustip .gainjiaxi em{font-size:40px;}
+.md-bonustip .bonusbtn{text-align:center;}
+.md-bonustip .disbonus{color:#cf1919;line-height:26px;font-size:16px;}
+.md-bonustip .btn-bonus{display:inline-block;background:url(/public/images/event/jun/btn0.png) no-repeat;width:200px;line-height:57px;height:57px;color:#fdead3;font-size:18px;}
+.md-bonustip .recordtable{width:400px;margin-left:auto;margin-right:auto;}
+.md-bonustip .recordtable th,.md-bonustip .recordtable td{color:#666;font-size:16px;text-align:center;line-height:26px;padding:5px;border:1px solid #a67c52;}
+.md-bonustip .recordtable th{color:#c00;background:#fcf4ea;}
+.md-bonustip .norecord{color:#666;line-height:30px;text-align:center;font-size:18px;padding-top:40px;}
+
+.md-footer{color:#fff;background:#ad2f50;text-align:center;font-size:14px;line-height:90px;height:90px;}
+.md-footer a.keeplink{color:#fff;text-decoration:underline;}

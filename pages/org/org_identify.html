@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>开通存管账户-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <!-- 页面样式 -->
+    <#include "/include/style_access.html" />
+    <#include "/org/include/style.html" />
+</head>
+<body class="bgdesc">
+<!-- header -->
+<#include "/org/include/header.html" />
+<div class="m-access-form deposit_identify2 mt-30">
+	<div class="hd">机构开通存管账户</div>
+	<div class="bd">
+		<form class="forminfo" action="${tzp.getContextPath()}/member/org/depository/reg" method="post" id="identifyForm" target="_blank">
+			<div class="margin-clear clearfix">
+				<div class="formline mt-15">
+					<div class="formlabel">企业名称</div>
+					<div class="forminput"><input class="input-text" value="${companyInfo.organizeName!''}" readonly="readonly" name="enterpriseName" id="enterpriseName" placeholder="请输入企业名称"></div>
+					<span class="icontip icon-font icon-error" for="enterpriseName"></span>
+				</div>
+				<div class="formline mt-15">
+					<div class="formlabel">开户银行许可证</div>
+					<div class="forminput"><input  class="input-text" value="${companyInfo.bankApprovalNumber!''}" readonly="readonly" name="bankLicense" id="bankLicense" placeholder="请输入开户银行许可证核准号"></div>
+					<span class="icontip icon-font icon-error" for="bankLicense"></span>
+				</div>
+				<div class="formline mt-15">
+					<div class="formlabel">统一社会信用代码</div>
+					<div class="forminput"><input  class="input-text" value="${companyInfo.businessLicense!''}" readonly="readonly" name="unifiedCode" id="unifiedCode" placeholder="请输入统一社会信用代码"></div>
+					<span class="icontip icon-font icon-error" for="unifiedCode"></span>
+				</div>
+				<div class="formline mt-15">
+					<div class="formlabel">法人姓名</div>
+					<div class="forminput"><input  class="input-text" value="${companyInfo.legalPerson!''}" readonly="readonly" name="legal" id="legal" placeholder="请输入营法人姓名"></div>
+					<span class="icontip icon-font icon-error" for="legal"></span>
+				</div>
+				<div class="formline mt-15">
+					<div class="formlabel">证件类型</div>
+					<select class="select" name="idCardType" id="idCardType">
+						<#list XwIdCardType as rm>
+							<option value="${rm.value}"   <#if  idCardType??&&(idCardType==rm.value)>selected="selected"</#if>>${rm.cnName}</option>
+						</#list>
+					</select>
+					<span class="icontip icon-font icon-error" for="idCardType"></span>
+				</div>
+				<div class="formline mt-15">
+					<div class="formlabel">法人证件号</div>
+					<div class="forminput"><input class="input-text" value="${legalPersonIdno!''}" readonly="readonly" name="legalIdCardNo" id="legalIdCardNo" placeholder="请输入法人证件号"></div>
+					<span class="icontip icon-font icon-error" for="legalIdCardNo"></span>
+				</div>
+				<div class="formline mt-15">
+					<div class="formlabel">企业联系人</div>
+					<div class="forminput"><input  class="input-text" value="${companyInfo.contactsPerson!''}" readonly="readonly" name="contact" id="contact" placeholder="请输入企业联系人"></div>
+					<span class="icontip icon-font icon-error" for="contactPhone"></span>
+				</div>
+				<div class="formline mt-15">
+					<div class="formlabel">联系人手机号</div>
+					<div class="forminput"><input  class="input-text" value="${contactsTelphone!''}" readonly="readonly" name="contactPhone" id="contactPhone" placeholder="请输入联系人手机号"></div>
+					<span class="icontip icon-font icon-error" for="contactPhone"></span>
+				</div>
+				<div class="formline mt-15">
+					<div class="formlabel">企业对公账户</div>
+					<div class="forminput"><input  class="input-text" value="${bankNo!''}" readonly="readonly" name="bankcardNo" id="bankcardNo" placeholder="请输入企业对公账户"></div>
+					<span class="icontip icon-font icon-error" for="bankcardNo"></span>
+				</div>
+				<div class="formline mt-15">
+					<div class="formlabel">银行名称</div>
+					<select class="select" name="bankcode" id="bankcode" disabled="disabled">
+						<#list XWBankType as rm>
+							<option value="${rm.xwCode}"  <#if companyInfo?? && companyInfo.bankCode == rm.bankType.code >selected = "selected"</#if>>${rm.bankType.cnName}</option>
+						</#list>
+					</select>
+					<span class="icontip icon-font icon-error" for="bankcode"></span>
+				</div>
+			</div>
+			<div class="tipdiv mt-15" id="formtip1"></div>
+            <div class="text-c mt-15">
+               <button type="submit" class="btn btn-theme btn-submit" id="subbt">开通银行存管</button>
+            </div>
+		</form>
+	</div>
+</div>
+<#include "/include/login_footer.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.js?v=eb7ebdc"></script>
+<script src="${tzp.getContextPath()}/src/js/tools/validate_cn.js?v=10c4607"></script>
+<script type="text/javascript">
+$(function(){
+	var validator= $("#identifyForm").validate({
+        ignore: "", //验证隐藏input
+        keyup:false,
+        rules: { // 验证规则
+        	enterpriseName:{
+        		required: true
+        	},
+        	bankLicense:{
+        		required: true
+        	},
+        	unifiedCode:{
+        		required: true
+        	},
+        	idCardType:{
+        		required: true
+        	},
+        	legal:{
+        		required: true
+        	},
+        	legalIdCardNo:{
+        		required: true
+        	},
+        	contact:{
+        		required: true
+        	},
+        	contactPhone:{
+        		required: true
+        	},
+        	bankcardNo:{
+        		required: true
+        	},
+        	bankcode:{
+        		required: true
+        	}
+        },
+        // 设置错误信息
+        messages: {
+        	enterpriseName:{
+        		required: "请输入法人证件号"
+        	},
+        	bankLicense:{
+        		required: "请输入开户银行许可证核准号"
+        	},
+        	unifiedCode:{
+        		required: "请输入统一社会信用代码"
+        	},
+        	legal:{
+        		required: "请输入营法人姓名"
+        	},
+        	legalIdCardNo:{
+        		required: "请输入法人证件号"
+        	},
+        	contact:{
+        		required: "请输入企业联系人"
+        	},
+        	contactPhone:{
+        		required: "请输入联系人手机号"
+        	},
+        	bankcardNo:{
+        		required: "请输入企业对公账户"
+        	}
+        },
+        // 错误信息显示
+        errorPlacement: function (error, element) {
+        	var $element = $(element);
+            var $id=$element.attr('id');
+            var $icontip=$('.icontip[for="'+$id+'"]');
+            $icontip.attr("class","icontip icon-font icon-error").show();
+            $element.addClass("Validform_error");
+        },
+        // 验证成功
+        success: function (error, element) {
+            var $element = $(element);
+            var $id=$element.attr('id');
+            var $icontip=$('.icontip[for="'+$id+'"]');
+            $icontip.attr("class","icontip icon-font icon-right").show();
+            $element.addClass("Validform_right");
+        },
+        invalidHandler: function (form, validator) { // 错误提示
+            $.each(validator.errorList, function (key, value) {
+            	if(value.message){
+            		 $("#formtip1").html('<span class="errortip"><i class="icon-font icon-error"></i>'+value.message+'</span>');
+                     return false;
+            	}
+            });
+        },
+        submitHandler: function (form) { //验证通过提交表单
+        	$("#formtip1").html('');
+        	$(".select").attr("disabled",false);
+        	$(form)[0].submit();
+        	$(".select").attr("disabled",true);
+        }
+    });
+})
+
+</script>
+</body>
+</html>		

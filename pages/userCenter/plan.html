@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>回款计划-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+      <#include "/include/style_up.html" />
+    <#include "/include/style_user.html" />
+    <style>
+    	.mu-deal .select{line-height:32px;height:32px;width:110px;border-radius:5px;padding-left:10px; }
+    </style>
+</head>
+<body class="bgmain">
+<!-- 页面开始 -->
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+	<div class="m-user">
+		<div class="wp clearfix pt-20">
+			<#include "/userCenter/include/userMenu_up.html" />
+			<div class="mu-right mu-deal">
+				<div id="planList">
+					<div class="mu-tabs">
+						<ul class="tabs clearfix" id="tabs1">
+							<li data-type="1"><a href="javascript:;" onclick="initPrd(0)">待回款</a></li>
+							<li data-type="2"><a href="javascript:;" onclick="initPrd(2)">已回款</a></li>
+						</ul>
+					</div>
+					<div class="bd" id="tableList">
+						<section>
+							<div class="pt-40 pb-40 mu-model">
+								<ul class="mu-autobid-data clearfix">
+									<li>
+										<span>总待收本金(元)</span>
+										<em class="txtInvestAmt">${(planAmt!0)?string(',##0.00')}</em>
+									</li>
+									<li>
+										<span>总待收收益(元)</span>
+										<em class="txtIncomeAmt">${(planIncome!0)?string(',##0.00')}</em>
+									</li>
+								</ul>
+							</div>
+							<div class="mu-model mt-20" id="autobidTables">
+								<div class="mu-tabs">
+									<ul class="tabs2 clearfix" id="tabs2">
+										<li data-type="3"><a href="javascript:;"  onclick="initPrd(0)">易智投</a></li>
+										<li data-type="4"><a href="javascript:;" onclick="initPrd(1)">散标资产</a></li>
+									</ul>
+								</div>
+								<div class="tables">
+									<section class="pd-10 pb-30">
+										<div class="pd-20 clearfix">
+											<div class="l l30 c-666" id="queryTotal0" style="display:none;">查询结果统计：待收本金<span id="principalTotal0">0.00</span>元；待收收益<span id="incomeTotal0">0.00</span>元</div>
+					                    	<div class="r pl-10"><button class="btn btn-primary btn-search" type="button" id="submitBtn0" onclick="initData(0)">查询</button></div>
+					                    	<div class="r pl-10">
+					                    		<select id="queryTime0" class="select" onchange="changeQueryTime(0)">
+			                                        <option value='all' selected="selected">全部</option>
+			                                        <option value='30'>未来一个月</option>
+			                                        <option value='90'>未来三个月</option>
+			                                        <option value='180'>未来半年</option>
+			                                        <option value='0'>自定义</option>
+			                                    </select>
+						                    </div>
+											<div class="r pl-10" id="customTime0" style="display:none;">
+												<input id="start0" readonly="readonly" class="input-date laydate-icon" placeholder="开始日期">-<input
+												 id="end0" readonly="readonly" class="input-date laydate-icon" placeholder="结束日期">
+											</div>
+						                </div>
+										<table class="mu-table text-c" >
+											<thead>
+												<tr>
+													<th>回款日期<span class="u-what"><i class="icon-font icon-wenhao"></i><span class="notes">易智投服务到期日并不代表实际回款时间，<br>实际回款时间以全部债权退出完成时间为准。</span></span></th>
+													<th>易智投服务编号</th>
+													<th>待收本金(元)</th>
+													<th>待收收益(元)</th>
+												</tr>
+											</thead>
+											<tbody id="dataList0">
+											</tbody>
+										</table>
+										<input name="pageNo0" type="hidden" id="pageNo0" value="1" />
+										<div id="laypage0" class="page pagination" style="display: none;"></div>
+				                   	</section>
+									<section class="pd-10 pb-30"  style="display:none;">
+										<div class="pd-20 clearfix">
+											<div class="l l30 c-666" id="queryTotal1" style="display:none;">查询结果统计：待收本金<span id="principalTotal1">0.00</span>元；待收收益<span id="incomeTotal1">0.00</span>元</div>
+					                    	<div class="r pl-10"><button class="btn btn-primary btn-search" type="button" id="submitBtn1" onclick="initData(1)">查询</button></div>
+					                    	<div class="r pl-10">
+					                    		<select id="queryTime1" class="select" onchange="changeQueryTime(1)">
+			                                        <option value='all' selected="selected">全部</option>
+			                                        <option value='30'>未来一个月</option>
+			                                        <option value='90'>未来三个月</option>
+			                                        <option value='180'>未来半年</option>
+			                                        <option value='0'>自定义</option>
+			                                    </select>
+						                    </div>
+						                    <div class="r pl-10" id="customTime1" style="display:none;">
+												<input id="start1" readonly="readonly" class="input-date laydate-icon" placeholder="开始日期">-<input
+												 id="end1" readonly="readonly" class="input-date laydate-icon" placeholder="结束日期">
+											</div>
+						                </div>
+										<table class="mu-table text-c" >
+											<thead>
+												<tr>
+													<th>回款日期</th>
+													<th>项目名称</th>
+													<th>期数</th>
+													<th>待收本金(元)</th>
+													<th>待收收益(元)</th>
+													
+												</tr>
+											</thead>
+											<tbody id="dataList1">
+											</tbody>
+										</table>
+										<input name="pageNo1" type="hidden" id="pageNo1" value="1" />
+										<div id="laypage1" class="page pagination" style="display: none;"></div>
+				                   	</section>
+								</div>
+							</div>
+						</section>
+						<section style="display:none;">
+							<div class="pt-40 pb-40 mu-model">
+								<ul class="mu-autobid-data clearfix">
+									<li>
+										<span>已回本金总额(元)</span>
+										<em class="txtInvestAmt">${(receiveAmt!0)?string(',##0.00')}</em>
+									</li>
+									<li>
+										<span>已收收益总额(元)</span>
+										<em class="txtIncomeAmt">${(receiveIncome!0)?string(',##0.00')}</em>
+									</li>
+								</ul>
+							</div>
+							<div class="mu-model mt-20" id="investTables">
+								<div class="mu-tabs">
+									<ul class="tabs2 clearfix" id="tabs2">
+										<li data-type="3"><a href="javascript:;"  onclick="initPrd(2)">易智投</a></li>
+										<li data-type="4"><a href="javascript:;" onclick="initPrd(3)">散标资产</a></li>
+									</ul>
+								</div>
+								<div class="tables">
+									<section class="pd-10 pb-30">
+										<div class="pd-20 clearfix">
+					                    	<div class="l l30 c-666" id="queryTotal2" style="display:none;">查询结果统计：已回本金<span id="principalTotal2">0.00</span>元；已收收益<span id="incomeTotal2">0.00</span>元</div>
+					                    	<div class="r pl-10"><button class="btn btn-primary btn-search" type="button" id="submitBtn2" onclick="initData(2)">查询</button></div>
+					                    	<div class="r pl-10">
+												<select id="queryTime2" class="select" onchange="changeQueryTime(2)">
+			                                        <option value='all' selected="selected">全部</option>
+			                                        <option value='30'>过去一个月</option>
+			                                        <option value='90'>过去三个月</option>
+			                                        <option value='180'>过去半年</option>
+			                                        <option value='0'>自定义</option>
+			                                    </select>
+						                    </div>
+											<div class="r pl-10" id="customTime2" style="display:none;">
+												<input id="start2" readonly="readonly" class="input-date laydate-icon" placeholder="开始日期">-<input
+												 id="end2" readonly="readonly" class="input-date laydate-icon" placeholder="结束日期">
+											</div>
+						                </div>
+										<table class="mu-table text-c" >
+											<thead>
+												<tr>
+													<th>回款日期</th>
+													<th>易智投服务编号</th>
+													<th>已回本金(元)</th>
+													<th>已收收益(元)</th>
+												</tr>
+											</thead>
+											<tbody id="dataList2">
+											</tbody>
+										</table>
+										<input name="pageNo2" type="hidden" id="pageNo2" value="1" />
+										<div id="laypage2" class="page pagination" style="display: none;"></div>
+				                   	</section>
+									<section class="pd-10 pb-30">
+										<div class="pd-20 clearfix">
+					                    	<div class="l l30 c-666" id="queryTotal3" style="display:none;">查询结果统计：已回本金<span id="principalTotal3">0.00</span>元；已收收益<span id="incomeTotal3">0.00</span>元</div>
+					                    	<div class="r pl-10"><button class="btn btn-primary btn-search" type="button" id="submitBtn3" onclick="initData(3)">查询</button></div>
+					                    	<div class="r pl-10">
+					                    		<select id="queryTime3" class="select" onchange="changeQueryTime(3)">
+			                                        <option value='all' selected="selected">全部</option>
+			                                        <option value='30'>过去一个月</option>
+			                                        <option value='90'>过去三个月</option>
+			                                        <option value='180'>过去半年</option>
+			                                        <option value='0'>自定义</option>
+			                                    </select>
+						                    </div>
+						                    <div class="r pl-10" id="customTime3" style="display:none;">
+												<input id="start3" readonly="readonly" class="input-date laydate-icon" placeholder="开始日期">-<input
+												 id="end3" readonly="readonly" class="input-date laydate-icon" placeholder="结束日期">
+											</div>
+						                </div>
+										<table class="mu-table text-c" >
+											<thead>
+												<tr>
+													<th>回款日期</th>
+													<th>项目名称</th>
+													<th>期数</th>
+													<th>已回本金(元)</th>
+													<th>已收收益(元)</th>
+												</tr>
+											</thead>
+											<tbody id="dataList3">
+											</tbody>
+										</table>
+										<input name="pageNo3" type="hidden" id="pageNo3" value="1" />
+										<div id="laypage3" class="page pagination" style="display: none;"></div>
+				                   	</section>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+</div>
+<input name="pageSize" type="hidden" id="pageSize" value="10" />
+<input type="hidden" id="tabType" value="${tabType!''}">
+<#include "/include/footer_up.html" />
+<#include "/include/script_up.html" />
+<script src="${tzp.getContextPath()}/public/js/plugins/pagination/page.js?v=8bdd406"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/laydate/laydate.js?v=eb332e0"></script> 
+<script src="${tzp.getContextPath()}/public/js/jquery.SuperSlide.2.1.1.js?v=c85539b"></script>
+<script type="text/javascript">
+var today='${.now?string("yyyy-MM-dd")}';
+var initFlat = [false,false,false,false];
+var types=[{'investType':3,'status':1},{'investType':1,'status':1},{'investType':3,'status':2},{'investType':1,'status':2}];
+var totalCount = 0;
+var isAll = '0';
+var pageSize = $.trim($('#pageSize').val());
+//分页
+function initPage(type){
+	$("#laypage"+type).pagination({
+		totalCount : totalCount,
+		pageSize : pageSize,
+		clickEvent : function(pagetype, _this) {
+			$("#pageNo"+type).val(pagetype + 1);
+			initData(type);
+		}
+	});
+}
+function initPrd(type){
+	$("#start"+type).val('');
+	$("#end"+type).val('');
+	$("#queryTime"+type).val('all');
+	initData(type);
+}
+$(function(){
+	initData(0);
+	$("#planList").slide({titCell:"#tabs1 li",mainCell:".bd",trigger:"click"});
+	$("#autobidTables").slide({titCell:".tabs2 li",mainCell:".tables",trigger:"click"});
+	$("#investTables").slide({titCell:".tabs2 li",mainCell:".tables",trigger:"click"});
+})
+function initData(type){
+	var _html='';
+	var startDate=$("#start"+type).val();
+	var endDate=$("#end"+type).val();
+	var queryTime=$("#queryTime"+type).val();
+	var investType=types[type].investType;
+	var status=types[type].status;
+	(queryTime=='all')?$("#queryTotal"+type).hide():$("#queryTotal"+type).show();
+	$.ajax({
+		url:'${tzp.getContextPath()}/spa/member/invest/backplan',
+		type:'post',
+		dataType:'json',
+		data:{pageNo:$('#pageNo'+type).val(),
+			'pageSize':pageSize,
+			'investType':investType,
+			'status':status,
+			'startDate':startDate,
+			'endDate':endDate,
+			'queryTime':queryTime},
+		cache:false,
+		async:false,
+		success:function(res){
+			var result = res.data;
+			var html=[];
+			totalCount=result.page.totalCount;
+			if(totalCount > 0){
+				$.each(result.record,function(i,o){
+					
+					_html+='<tr><td>'+formatDate(o.settleDate,'yyyy-MM-dd')+'</td>';
+					_html+='<td>'+o.prdName+'</td>';
+					if(investType=='1'){
+						_html+='<td>'+o.period+'</td>';
+					}
+					_html+='<td>'+formatCurrency(o.principal)+'</td>';
+					_html+='<td>'+formatCurrency(o.allIncome)+'</td></tr>'
+				});
+			}else{
+				var colspan=(investType==3)?4:5;
+				_html='<tr><td colspan="'+colspan+'"><img style="margin:15px 0" class="record" src="/public/images/user/record.png?v=9113ae7"></td></tr>';
+			}
+			$("#principalTotal"+type).html(formatCurrency(result.principal));
+			$("#incomeTotal"+type).html(formatCurrency(result.income));
+			$("#dataList"+type).html(_html);
+		    if (totalCount > pageSize) {
+		    	$('#laypage'+type).show();
+		    	if(!initFlat[type]){
+            		initPage(type);
+            		initFlat[type]=true;
+            	}
+		    }else{
+		    	$('#laypage'+type).hide();
+		    }
+		}
+	});		
+}
+
+function changeQueryTime(type){
+	var queryTime=$("#queryTime"+type).val();
+	if(queryTime==0){
+		$("#customTime"+type).show();
+		var maxdate=(type>=2)?today:'2039-12-31';
+		laydate.render({
+			elem: '#start'+type,
+			show: true,
+			max: maxdate,
+			done: function(value) {
+				if($('#end'+type).val()<value){
+					$('#end'+type).val('');
+				}
+			}
+		})
+		laydate.render({
+			elem: '#end'+type,
+			show: true,
+			max: maxdate,
+			done: function(value) {
+				if(value<$('#start'+type).val()){
+					$('#start'+type).val('');
+				}
+			}
+		})
+		return;
+	}else{
+		$("#customTime"+type).hide();
+	}
+	
+}
+</script>
+</body>
+</html>

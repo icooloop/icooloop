@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="baidu-site-verification" content="kRgG3K9bcT"/>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="robots" content="">
+    <title>实名认证&绑定银行卡-亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style.html" />
+    <link rel="stylesheet" type="text/css" href="${tzp.getContextPath()}/src/css/pages/safe/bankCard.css?v=02b39aa">
+    <link rel="stylesheet" type="text/css" href="${tzp.getContextPath()}/public/js/plugins/autocompleter/autocompleter.css?v=37a01f8"/>
+    <style>
+        .bank-card-tabs li{
+            float:left;
+            padding:25px 25px 20px;
+            text-align: center;
+            background-color: #f8f8f8;
+            width:214px;
+            cursor: pointer;
+            border-right: 1px solid #efefef;
+            border-bottom:6px solid #ededed;
+        }
+        .bank-card-tabs li:last-child{
+            border-left: 1px solid #efefef;
+            border-right:none;
+        }
+        .bank-card-tabs li.active{
+            background-color: #fff;
+            border-bottom-color:#1c59ad;
+        }
+        .bank-card-tabs li h2{
+            font-size:24px;
+            color:#666;
+            margin:0 0 5px;
+        }
+        .bank-card-tabs li.active h2{
+            color:#333;
+        }
+        .bank-card-tabs li p{
+            color:#999;
+            font-size:12px;
+        }
+        .bank-card-tabs li.only{width:100%;padding:25px 0 20px;background:#fff;border-bottom:1px solid #ddd;}
+        .bank-card-tabs li.only h2{ color:#333;}
+        #bankCardNum .text-primary{
+            cursor: pointer;
+        }
+        #supportBankModal{
+            padding:20px;
+        }
+        #supportBankModal h2{
+            text-align: center;
+            font-size:20px;
+            font-weight: bold;
+            margin:20px 0 30px;
+        }
+        #supportBankModal img{
+            width:160px;
+        }
+        #supportBankModal table tr th{
+        	font-size:16px;
+        	font-weight: bold;
+        }
+         #supportBankModal table tr td{
+         	padding:10px 0;
+         }
+         #supportBankModal table tr td p{
+         	color:#999;
+         	margin:5px 0 0;
+         }
+        #supportBankModal table tr td,#supportBankModal table tr th{
+        	text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!-- header -->
+<#include "/include/header.html" />
+<div class="mainContent">
+    <div class="wp">
+        <div class="m-attestation" id="attestationLayer">
+<!--             实名and绑卡tabs -->
+            <ul id="tabList" class="bank-card-tabs clearfix">
+                <li class="active">
+                    <h2>实名认证</h2>
+                    <p>确认出借人身份</p>
+                </li>
+                <li>
+                    <h2>认证并绑卡</h2>
+                    <p>实名认证、绑定银行卡一步完成</p>
+                </li>
+            </ul>
+            <form class="tab-list" id="userIDForm" action="" method="post">
+                <div class="attestation-form">
+                    <!-- <h1>实名认证</h1> -->
+                    <ul class="clearFix">
+                        <li>
+                            <h2>姓名</h2>
+                            <input type="text" placeholder="真实姓名" name="realname" id="userNameTxt">
+                        </li>
+                        <li>
+                            <h2>身份证</h2>
+                            <input type="text" placeholder="身份证号"  name="idcard" id="userIDTxt">
+                        </li>
+                    </ul>
+                    <button type="submit" class="attestation-Btn">认证</button>
+                    <div class="text-c l20"><a class="text-primary" href="javascript:showGatRz();">港澳台用户认证&gt;&gt;</a></div>
+                </div>
+            </form>       
+            
+           <form class="tab-list" id="bankCardForm" action="" method="post" style="display: none">
+           		<#if redirectMessage??>
+           		 	<div class="warntip1" id="errorMsg">${redirectMessage!''}</div>
+                <#else>
+                    <div class="warntip1">绑定银行卡将用于快捷充值提现<br>使用网银充值不限银行卡</div>
+                </#if>
+                <div class="attestation-form">
+                    <#if (userInfo.userIdno) ?? >
+                        <#assign tempUserIdno = userInfo.userIdnoStr >
+                            <#assign tempUserRealName = userInfo.userNameStr>
+                    </#if>
+
+                    <!-- <h1>实名认证&绑定银行卡</h1> -->
+                    <ul class="clearFix">
+                        <li id="bankCardNum">
+                            <h2>银行卡号</h2>
+                            <input placeholder="请输入银行卡号" value="" id="bankId" name="bankNo">
+							<p id="limitMoneyTips" style="display:none;text-align: right;margin-bottom:10px;" class="text-muted"></p>
+                        </li>
+
+                        <li>
+                            <h2>姓名</h2>
+                            <input placeholder="持卡人姓名"  value="${tempUserRealName!''}" id="userName" name="realName"    <#if tempUserRealName??> readonly="readonly"</#if>>
+                        </li>
+
+                        <li id="bankCodeList" style="display: none">
+                            <h2>开户行</h2>
+                            <select class="select-comm select-1" id="bankCodeSel">
+                                <#list payQuotas as item>
+                                    <option value="${item.bankCode!''}" single-amount=${item.singleAmount!''} limit-str=${item.remark!''}>${item.bankCodeCn}</option>
+                                </#list>
+                            </select>
+                            <input type="hidden" id="bankCode" name="bankCode" />
+                        </li>
+                        <li>
+                            <h2>身份证</h2>
+                            <input placeholder="持卡人证件号" value="${tempUserIdno!''}" id="userID" name="idNo"   <#if tempUserIdno??> readonly="readonly"<#else>maxlength="18" </#if>>
+                        </li>
+                        <li>
+                            <h2>手机号</h2>
+                            <input placeholder="银行预留手机号" value="" id="userMobile" name="userMobile" maxlength="11">
+                        </li>
+                        <li class="has-error has-feedback">
+                            <h2>验证码</h2>
+                            <input placeholder="六位验证码" value="" id="verifyCode" name="verifyCode" maxlength="6">
+                            <button id="getCodeBtn" class="get-code-btn" style="cursor:pointer;" type="button">获取验证码</button>
+                            <span class="icon-font form-control-feedback icon-error" style="display: none">请输入正确的验证码</span>
+                        </li>
+                    </ul>
+                    <button class="attestation-Btn" type="submit">立即绑定</button>
+                    <div class="text-c l20"><a class="text-primary" href="javascript:showGatRz();">港澳台用户认证&gt;&gt;</a></div>
+                </div>
+            </form>
+            
+        </div>
+        <div class="m-attestation" id="attestationLayer2" style="display: none">
+            <ul id="tabList2" class="bank-card-tabs clearfix">
+                <li class="only">
+                    <h2>实名认证</h2>
+                    <p>港澳台用户</p>
+                </li>
+            </ul>
+        	<form class="tab-list" action="" method="post" enctype="multipart/form-data" id="gatForm">
+                <div class="attestation-form">
+                    <ul class="clearFix">
+                        <li>
+                            <h2>姓名</h2>
+                            <input type="text" placeholder="真实姓名" name="name" id="userNameTxt">
+                        </li>
+                        <li>
+                            <h2>证件类型</h2>
+                              <select class="select" name="idnoType">
+                              	<#if idTypes ??>
+                            	<#list idTypes as item>
+                            		<option value="${item.code}">${item.cnName}</option>
+                            	</#list>
+                            	</#if>
+                            </select>
+                        </li>
+                        <li>
+                            <h2>证件号码</h2>
+                            <input type="text" placeholder="证件号码"  name="idNo" id="idNo">
+                        </li>
+                        <li>
+                            <h2>证件上传</h2>
+                            <div class="u-idcardpic">
+                           		<div class="tip"><img src="${tzp.getContextPath()}/public/images/user/idcard1.png?v=e9b0300"><div class="mt-5">照片正面</div></div>
+                           		<div class="showpic"><img src="" class="pic"></div>
+                            	<input type="file" value="证件正面" name="ShenFenZheng1" id="ShenFenZheng1" accept="image/*" onchange="changepic(this)" class="input-file">                          	
+                            </div>
+                            <div class="u-idcardpic mt-20">
+                           		<div class="tip"><img src="${tzp.getContextPath()}/public/images/user/idcard2.png?v=c263d09"><div class="mt-5">照片反面</div></div>
+                           		<div class="showpic"><img src="" class="pic"></div>
+                            	<input type="file" value="证件正面" name="ShenFenZheng2" id="ShenFenZheng2" accept="image/*" onchange="changepic(this)" class="input-file">                          	
+                            </div>
+                        </li> 
+                        <li><div class="warntip2"><i class="icon-font icon-wenhao text-primary"></i>
+                        		<div class="tip">有疑问？请联系客服<span class="text-primary">400-090-9968</span></div>
+                        	</div>
+                         	请确保证照上五官、姓名及证件号码清晰可见</li>                       
+                    </ul>
+                    <button class="attestation-Btn" type="submit" id="gatFormSubmit">认证</button>
+                    <!-- <button type="button" class="attestation-Btn"  onclick="gatSubmit()">认证</button> -->
+                    <div class="text-c l20"><a class="text-primary" href="javascript:showDlRz();">&lt;&lt;返回至大陆用户认证</a></div>
+                </div>
+            </form>
+        </div>
+        <div class="attestation-footer pb-40 pt-40">
+            <#include "/include/copyright.html" />
+            <p><a href="http://www.miit.gov.cn/" target="_blank" rel="noopener noreferrer">粤ICP备14041671号-1</a></p>
+        </div>
+    </div>
+</div>
+<!--支持的银行modal-->
+<div id="supportBankModal" style="display: none">
+    <h2>目前支持的银行</h2>
+    <ul id="supportBankList">
+    	<table>
+   			 <#list payQuotas as item>
+   			 	<tr>
+   			 		<#if item_index % 3 == 0>
+   			 			<#list [0,1,2] as indexValue>
+   			 				<#if payQuotas[item_index+indexValue] ??>
+   			 					<#assign current=payQuotas[item_index+indexValue]>
+   			 				<#else>
+   			 					<#assign current=''>
+   			 				</#if>
+		   			 		<td>
+		   			 			<#if current !='' >
+		   			 			<img src="${tzp.getContextPath()}/public/images/bank/${current.bankCode!''}.png"/> 
+		   			 			<p style="">${current.remark!''}</p>
+		   			 			</#if>
+		   			 		</td>
+	   			 		</#list>   
+   			 		</#if>
+   			 	</tr>
+      		</#list>   
+    	</table>
+    </ul>
+</div>
+<script type="text/javascript" src="${tzp.getContextPath()}/public/js/plugins/autocompleter/jquery.autocompleter.js?v=54d5a12"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.validate.min.js?v=9fc6b5c"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/jquery.form.min.js?v=b8e22b6"></script>
+<script src="${tzp.getContextPath()}/src/js/tools/validate_cn.js?v=10c4607"></script>
+<script src="${tzp.getContextPath()}/src/js/plugins/jquery.CountDown.js?v=0f45807"></script>
+<script src="${tzp.getContextPath()}/public/js/plugins/layer/layer.js?v=7804f70"></script>
+<script type="text/javascript">
+    $(function () {
+    	jQuery.validator.addMethod("isGat", function(value, element) {
+	    	    var gat =/^[0-9a-zA-Z()（）]*$/g;
+	    	    return this.optional(element) || (gat.test(value));
+	    	}, "请输入正确的证件号码");
+        //绑定银行卡验证
+        $("#bankCardForm").validate({
+            ignore: "", //验证隐藏input
+            keyup:false,
+            rules: { // 验证规则
+                bankId: {
+                    required: true,
+                    number: true,
+                    minlength:16,
+                    maxlength:24,
+                    remote: {
+                        type: "POST",
+                        dataType: "json",
+                        url: basePath +"/member/auth/checkBankno",
+                        data: {
+                        	bankNo: function () {
+                                return $("#bankId").val();
+                            }
+                        },
+                        complete:function(event,xhr,options){
+                        	var data=event.responseJSON;
+                        	if(data.successed){
+                        		$("#bankCode").val(data.message);
+                        		$("#bankCodeSel").val(data.message);
+                        		if(data.message){
+                        			$("#bankCodeList").hide();
+                        		}else{
+                        			$("#bankCodeList").show();
+                        		}
+                        		if(data.errorCode){
+                        			$("#limitMoneyTips").html(data.errorCode).show();
+                        		}else{
+                        			$("#limitMoneyTips").hide();
+                        		}                        		
+                            }
+                        }
+                    }
+                },
+                userName: {
+                    required: true,
+                    minlength:2,
+                    isZhName:true,
+                    maxlength:10
+                },
+                userID: {
+                	<#if !(tempUserIdno??)>
+                	 isID:true,
+                	</#if>
+                    required: true
+                },
+                userMobile: {
+                    required: true,
+                    isMobile:true
+                },
+                verifyCode: {
+                    required: true,
+                    minlength: 4,
+                    maxlength: 6
+                }
+            },
+            // 设置错误信息
+            messages: {
+                bankId: {
+                    required: '请输入银行卡号',
+                    number: '请输入正确的银行卡号',
+                    minlength:'请输入正确的银行卡号',
+                    maxlength:'请输入正确的银行卡号',
+                    remote:'银行卡号不正确'
+                },
+                userName: {
+                    required: '请输入持卡人姓名',
+                    minlength:'姓名不正确',
+                    maxlength:'姓名不正确',
+                    isZhName:'请输入正确姓名'
+                },
+                userID: {
+                    required: "请输入身份证号",
+                    isID:'身份证号码不正确'
+                },
+                userMobile: {
+                    required: '请输入手机号号码',
+                    isMobile:'手机号码不正确'
+                },
+                verifyCode: {
+                    required: "请输入验证码",
+                    minlength: "验证码不正确",
+                    maxlength: "验证码不正确"
+                }
+            },
+            // 错误信息显示
+            errorPlacement: function (error, element) {
+                var $element = $(element);
+                var $parent = $element.parent();
+                var $errorIcon = $.validator.setValidateIcon($parent);
+                $errorIcon.addClass('icon-error').removeClass('icon-right');
+                $parent.addClass('has-error has-feedback').removeClass('has-success');
+                var $msg = $parent.find('.form-control-feedback');
+                if (!$msg.length) {//如果没有提示过错误信息元素新建一个div
+                    $msg = $parent.append('<span class="icon-font form-control-feedback icon-error"></span>')
+                }
+                $msg.html(error.html()).show();
+            },
+            //验证成功
+            success: function (error, element) {
+                var $element = $(element);
+                var $parent = $element.parent();
+                var $errorIcon = $.validator.setValidateIcon($parent);
+                $errorIcon.addClass('icon-right').removeClass('icon-error');
+                $parent.removeClass('has-error').addClass('has-success has-feedback');
+                $parent.find(".form-control-feedback").hide();//隐藏错误信息
+            },
+            submitHandler: function (form) { //验证通过提交表单
+            	$.ajax({
+                    type: "post",
+                    url: basePath +"/member/auth/bindCard",
+                    data: $(form).serialize(),
+                    success: function (data) {
+                    	if(data.successed){
+                    		window.location.href=basePath +"/member/secure/identifyCard/success";
+                    	}else{
+                    		layer.msg(data.message,{});
+                    	}
+						
+                    }
+                });
+            }
+        });
+        //实名认证
+        $("#userIDForm").validate({
+            ignore: "", //验证隐藏input
+            rules: { // 验证规则
+                userNameTxt: {
+                    required: true,
+                    noEmpty:true,
+                    minlength:2,
+                    maxlength:10,
+                    isZhName:true
+                },
+                id: {
+                    isID:true,
+                    required: true
+                }
+        },
+        // 设置错误信息
+        messages: {
+            userNameTxt: {
+                required: '请输入您的姓名',
+                noEmpty:'请输入您的姓名',
+                minlength:'姓名不正确',
+                maxlength:'姓名不正确',
+                isZhName:'请输入正确姓名'
+            },
+            userIDTxt: {
+                required: "请输入身份证号",
+                isID:'身份证号码不正确'
+            }
+        },
+        // 错误信息显示
+        errorPlacement: function (error, element) {
+            var $element = $(element);
+            var $parent = $element.parent();
+            var $errorIcon = $.validator.setValidateIcon($parent);
+            $errorIcon.addClass('icon-error').removeClass('icon-right');
+            $parent.addClass('has-error has-feedback').removeClass('has-success');
+            var $msg = $parent.find('.form-control-feedback');
+            if (!$msg.length) {//如果没有提示过错误信息元素新建一个div
+                $msg = $parent.append('<span class="icon-font form-control-feedback icon-error"></span>')
+            }
+            $msg.text(error.text()).show();
+        },
+        //验证成功
+        success: function (error, element) {
+            var $element = $(element);
+            var $parent = $element.parent();
+            var $errorIcon = $.validator.setValidateIcon($parent);
+            $errorIcon.addClass('icon-right').removeClass('icon-error');
+            $parent.removeClass('has-error').addClass('has-success has-feedback');
+            $parent.find(".form-control-feedback").hide();//隐藏错误信息
+        },
+        submitHandler: function (form) { //验证通过提交表单
+            $.ajax({
+                type: "post",
+                url: basePath +"/member/auth/identify/ajax",
+                data: $(form).serialize(),
+                success: function (data) {
+                	data=$.parseJSON(data);
+                	console.log(data)
+                    if(data.success){
+                    		  window.location.href=basePath +"/member/secure/identify/success";
+                    	
+                    }else{
+                    	console.log(data.msg);
+                        layer.msg(data.msg);
+                    }
+
+                }
+            });
+        }
+    });
+      //港澳台认证
+        $("#gatForm").validate({
+            ignore: "", //验证隐藏input
+            rules: { // 验证规则
+            	userNameTxt: {
+                    required: true,
+                    noEmpty:true,
+                    minlength:2,
+                    maxlength:10,
+                    isZhName:true
+                },
+                idNo: {
+                    required: true,
+                    minlength:6,
+                    maxlength:20,
+                    isGat:true
+                },
+                ShenFenZheng1:{
+                	required: true
+                },
+                ShenFenZheng2:{
+                	required: true
+               }
+        },
+        // 设置错误信息
+        messages: {
+            userNameTxt: {
+                required: '请输入您的姓名',
+                noEmpty:'请输入您的姓名',
+                minlength:'姓名不正确',
+                maxlength:'姓名不正确',
+                isZhName:'请输入正确姓名'
+            },
+            idNo: {
+                required: "请输入证件号码",
+                minlength:"请输入正确的证件号码",
+                maxlength:"请输入正确的证件号码",
+                isGat:"请输入正确的证件号码"
+            },
+            ShenFenZheng1:{
+           	 	required: "请上传证件照片正面"
+            },
+            ShenFenZheng2:{
+          	 	required: "请上传证件照片反面"
+           }
+        },
+        // 错误信息显示
+        errorPlacement: function (error, element) {
+            var $element = $(element);
+            var $parent = $element.parent();
+            var $errorIcon = $.validator.setValidateIcon($parent);
+            $errorIcon.addClass('icon-error').removeClass('icon-right');
+            $parent.addClass('has-error has-feedback').removeClass('has-success');
+            var $msg = $parent.find('.form-control-feedback');
+            if (!$msg.length) {//如果没有提示过错误信息元素新建一个div
+                $msg = $parent.append('<span class="icon-font form-control-feedback icon-error"></span>')
+            }
+            $msg.text(error.text()).show();
+        },
+        //验证成功
+        success: function (error, element) {
+            var $element = $(element);
+            var $parent = $element.parent();
+            var $errorIcon = $.validator.setValidateIcon($parent);
+            $errorIcon.addClass('icon-right').removeClass('icon-error');
+            $parent.removeClass('has-error').addClass('has-success has-feedback');
+            $parent.find(".form-control-feedback").hide();//隐藏错误信息
+        },
+        submitHandler: function (form) { //验证通过提交表单
+        	gatSubmit();
+        }
+    });
+        //发送验证码
+        $('#getCodeBtn').on('click', function () {//快捷发送短信
+        	$("#verifyCode").rules('remove');
+            if ($('#bankCardForm').valid()) {
+                $(this).CountDown({
+                    data: $('#bankCardForm').serialize(),
+                    isMsg: true,
+                    isCallBack: 'message',//回调信息字段
+                    start: true,
+                    isSeed: true,
+                    isClick: false,
+                    isUpdateDate:"#bankCardForm",
+                    successName:'successed',
+                    successProp:true,
+                    url: basePath +"/member/auth/verifyCard"
+                });
+            }
+        })
+        //提交验证验证码
+        $('.attestation-Btn').on('click',function(){
+		    $("#verifyCode").rules('add',{
+		    	 required: true,
+                 minlength: 4,
+                 maxlength: 6
+		    });
+		})
+        //设置开户行
+        $("#bankCodeSel").on('change',function(){
+        	$('#bankCode').val($("#bankCodeSel").val());
+        })
+        //tabs
+        $("#tabList").on('click','li',function(){
+            var index=$(this).index();
+            $("#tabList").children('li').removeClass('active').eq(index).addClass('active');
+            $("#attestationLayer").find('.tab-list').hide().eq(index).show();
+        })
+        $("#bankCardNum").on('click','.text-primary',function(){
+            layer.open({
+                type:1,
+                content:$("#supportBankModal"),
+                area: ['800px','600px'], //宽高
+                title:false
+            })
+        })
+    });
+    function showDlRz(){
+    	$("#attestationLayer").show();
+    	$("#attestationLayer2").hide();
+    }
+    function showGatRz(){
+    	$("#attestationLayer").hide();
+    	$("#attestationLayer2").show();
+    }
+    function changepic(obj) {
+        //console.log(obj.files[0]);//这里可以获取上传文件的name
+        var newsrc=getObjectURL(obj.files[0]);
+        console.log(obj.files[0])
+        var idcarddiv=$(obj).parent();
+        idcarddiv.find(".tip").hide();
+        var idcardpic=idcarddiv.find(".pic");
+        idcardpic.show().attr("src",newsrc);
+    }
+    //建立一個可存取到該file的url
+    function getObjectURL(file) {
+        var url = null ;
+        // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
+        if (window.createObjectURL!=undefined) { // basic
+            url = window.createObjectURL(file) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file) ;
+        }
+        return url ;
+    }
+    
+    //港澳台实名
+    function gatSubmit(){
+    	$("#gatFormSubmit").attr("disabled",true).addClass("disabled");
+    	var options = {
+			  	url: basePath + "/member/auth/gat-submit",
+				type: 'post',
+				dataType : 'json',
+				cache: false,
+				async: false,
+				success: function (data) {
+					var result = eval("("+data+")");
+			    	$("#gatFormSubmit").attr("disabled",false).removeClass("disabled");
+					if (result.success!=undefined&&!result.success) {
+		        		 layer.msg(result.msg);
+					}else{
+		 				layer.msg('申请成功');
+		 				window.location.href=basePath +"/member/auth/identifyResult";
+					}
+				}
+		};
+		$("#gatForm").ajaxSubmit(options);	
+    }
+</script>
+</body>
+</html>

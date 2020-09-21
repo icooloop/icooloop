@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>亿钱贷-A股上市公司深南股份携手红岭创投联袂打造的P2P平台</title>
+    <#include "/include/style_up.html" />
+    <link rel="stylesheet" href="${tzp.getContextPath()}/src/css/pages/static/assetsdetail.css">
+</head>
+<body class="bgmain">
+<#include "/include/header_up.html" />
+<div class="g-mainer">
+	<div class="md-assetsdetail">
+		<div class="maintitle">亿钱贷个人资产概况<button type="button" class="btn btn-primary btn-load" onclick="downloadPDF()">下载</button></div>
+		<div class="bd mt-30" id="assetsdetail">
+			<div class="title1"></div>
+			<ul class="md-baseinfo clearfix">
+				<li><em>用户ID：</em>${userId!''}</li>
+				<li><em>实名认证：</em>${realName!''}</li>
+				<li><em>用户名：</em>${userLoginName!''}</li>
+				<li><em>绑定手机：</em>${userPhone!''}</li>
+			</ul>
+			<div class="title2 mt-40">散标资产<div class="detail"> 共${(loanpageList.totalCount)!'0'}笔，合计待收${(holdPriInc?string(',##0.00'))!'-'}元</div></div>
+			<table class="datatable">
+				<thead>
+					<tr>
+						<th>服务编号</th>
+						<th>债权编号</th>
+						<th>待收本金</th>
+						<th>待收收益</th>
+						<th>到期时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<#list loanpageList.result as plist>
+						<tr>
+							<td>${(plist.loanTitle)!''}</td>
+							<td><a target="_blank" href="${tzp.getContextPath()}/member/invest/detail/${plist.debtId!''}" class="text-primary underline">${plist.debtCode!'--'}</a></td>
+							<td>${(plist.sumPrincipal?string(',##0.00'))!'-'}</td>
+							<td>${(plist.planIncome?string(',##0.00'))!'-'}</td>
+							<td>${(plist.settleDate?string('yyyy-MM-dd'))!'-'}</td>
+						</tr>
+					 </#list>
+				</tbody>
+			</table>
+			<div class="title2 mt-40">账户明细<div class="detail">单位：元</div></div>
+			<ul class="account-detail clearfix">
+				<li>注册时间<em>${(regTime?string('yyyy-MM-dd'))!'-'}</em></li>
+				<li>我的总资产<em>${(accountVo.totalAsset!0)?string(',##0.00')}</em></li>
+				<li>累计充值<em>${(recharge!0)?string(',##0.00')}</em></li>
+				<li>总待收本金<em>${(stillPrin!0)?string(',##0.00')}</em></li>
+				<li>累计提现<em>${(cash!0)?string(',##0.00')}</em></li>
+				<li>总待收利息<em>${(stillInt!0)?string(',##0.00')}</em></li>
+				<li>累计出借<em>${(accountVo.totalInvestAmt!0)?string(',##0.00')}</em></li>
+				<li>可用余额<em>${(accountVo.availableAmt!0)?string(',##0.00')}</em></li>
+				<li>累计收益<#if accountVo.obtainIncomeUnitStr??><#else>(元)</#if><em>${(accountVo.obtainIncomeStr!0)}<#if accountVo.obtainIncomeUnitStr??>万</#if></em></li>
+				<li>充提差<em>${((recharge-cash-accountVo.availableAmt)!0)?string(',##0.00')}</em></li>
+			</ul>
+			<div class="ft">深圳市亿钱贷电子商务有限公司<br>${.now?string("yyyy年MM月dd日")}</div>
+		</div>
+	</div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+<script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+<script>
+function downloadPDF(){
+   var element = $("#assetsdetail");    // 这个dom元素是要导出pdf的div容器
+   var w = element.width();    // 获得该容器的宽
+   var h = element.height();    // 获得该容器的高
+   var offsetTop = element.offset().top;    // 获得该容器到文档顶部的距离
+   var offsetLeft = element.offset().left;    // 获得该容器到文档最左的距离
+   var canvas = document.createElement("canvas");
+   var abs = 0;
+   var win_i = $(window).width();    // 获得当前可视窗口的宽度（不包含滚动条）
+   var win_o = window.innerWidth;    // 获得当前窗口的宽度（包含滚动条）
+   if(win_o>win_i){
+     abs = (win_o - win_i)/2;    // 获得滚动条长度的一半
+   }
+   canvas.width = w * 2;    // 将画布宽&&高放大两倍
+   canvas.height = h * 2;
+   var context = canvas.getContext("2d");
+   context.scale(2, 2);
+   context.translate(-offsetLeft-abs,-offsetTop);    
+   // 这里默认横向没有滚动条的情况，因为offset.left(),有无滚动条的时候存在差值，因此        
+   // translate的时候，要把这个差值去掉
+   html2canvas(element).then(function(canvas) {
+    var contentWidth = canvas.width;
+    var contentHeight = canvas.height;
+    //一页pdf显示html页面生成的canvas高度;
+    var pageHeight = contentWidth / 592.28 * 841.89;
+    //未生成pdf的html页面高度
+    var leftHeight = contentHeight;
+    //页面偏移
+    var position = 0;
+    //a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
+    var imgWidth = 595.28;
+    var imgHeight = 592.28/contentWidth * contentHeight;
+
+    var pageData = canvas.toDataURL('image/jpeg', 1.0);
+
+    var pdf = new jsPDF('', 'pt', 'a4');
+
+    //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
+    //当内容未超过pdf一页显示的范围，无需分页
+    if (leftHeight < pageHeight) {
+    pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight);
+    } else {    // 分页
+        while(leftHeight > 0) {
+            pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
+            leftHeight -= pageHeight;
+            position -= 841.89;
+            //避免添加空白页
+            if(leftHeight > 0) {
+              pdf.addPage();
+            }
+        }
+    }
+    pdf.save('平台个人资产概况.pdf');        
+  })
+}
+
+</script>
+</body>
+</html>

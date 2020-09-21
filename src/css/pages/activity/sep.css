@@ -1,0 +1,121 @@
+.main-content{
+    height: 3704px;
+    background: url("/public/images/activity/sep/main.jpg") no-repeat top center;
+}
+.main-content .container{
+    position: relative;
+    width:960px;
+}
+.main-content .title-info{
+    position: absolute;
+    top:657px;
+    left:20px;
+    width:420px;
+    color:#fff;
+    font-size: 18px;
+}
+.red-info{
+    position: absolute;
+    top:958px;
+    left:20px;
+    width:920px;
+    color:#fff;
+}
+.red-info .tips{
+    margin:0 0 53px;
+}
+.red-info table{
+    width:100%;
+}
+.red-info table th{
+    height: 58px;
+    text-align: center;
+}
+.red-info table td{
+    height: 100px;
+    text-align: center;
+}
+.red-info table td:first-child{
+    width:300px;
+}
+.red-info table td:nth-child(2){
+    width:118px;
+}
+.red-info table td:nth-child(3){
+    width:179px;
+}
+.red-info table td:nth-child(4){
+    width:159px;
+}
+.red-info table td .red-icon{
+    width:79px;
+    height: 72px;
+    background: url("/public/images/activity/sep/red_icon.png") no-repeat;
+    background-size: cover;
+    color:#fff;
+    padding:34px 0 0;
+    margin:0 auto;
+    font-size:28px;
+    text-align: center;
+}
+.red-info table td .red-icon span{
+    font-size:10px;
+}
+.year-rate-layer{
+    position: absolute;
+    top:1668px;
+    left:25px;
+    width:920px;
+    color:#fff;
+}
+.year-rate-layer .tips{
+    margin:0 0 50px;
+}
+.year-rate-layer table tr:first-child td{
+    height: 102px;
+}
+.year-rate-layer table tr:nth-child(3) td{
+    height: 118px;
+}
+.year-rate-layer table td:first-child{
+    width:280px;
+}
+.year-rate-layer table td:nth-child(2){
+    width:152px;
+}
+.year-rate-layer table td:nth-child(3){
+    width:178px;
+}
+.year-rate-layer table td:nth-child(4){
+    width:168px;
+}
+ul.rule{
+    position: absolute;
+    top:2776px;
+    line-height: 1.6;
+    margin:0;
+    color:#333;
+}
+ul.rule >li{
+    margin:0 0 25px;
+}
+ul.rule li ul{
+    margin:0 10px 30px;
+}
+ul.rule li ul li{
+    margin:0 0 5px;
+}
+.copy-right {
+    position: absolute;
+    width:100%;
+    top:3610px;
+    padding: 15px;
+    color: #333;
+    text-align: center;
+}
+.copy-right p{
+    margin:0 0 5px;
+}
+.copy-right a{
+    color:#333;
+}
